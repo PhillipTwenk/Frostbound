@@ -44,17 +44,17 @@ public class InteractionBuildingController : MonoBehaviour
         {
             InteractionEvent?.Invoke();
         }
-
-        //Vector3 lastPosition = Vector3.zero;
-        //Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition); 
-        //RaycastHit hit;
-        //if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask))
-        //{
-            //if (hit.collider.CompareTag("ClickOnBuilding") && hit.collider.transform.parent.gameObject == this.gameObject)
-            //{
-               // Here will be OnMouseDown functional :3
-            //}
-        //}
+        
+        // Нажатие на здание 
+        Ray ray = WorkersInterBuildingControl.MainCamera.ScreenPointToRay(Input.mousePosition); 
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask))
+        {
+            if (hit.collider.CompareTag("ClickOnBuilding") && hit.collider.transform.parent.gameObject == this.gameObject && Input.GetMouseButtonDown(0) && WorkersInterBuildingControl.SelectedWorker == null)
+            {
+                OnMouseDownBuilding();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,7 +71,7 @@ public class InteractionBuildingController : MonoBehaviour
         }
         
         // Если рабочий около здания
-        if(other.gameObject.CompareTag("Worker") && other.gameObject.GetComponent<WorkerMovementController>().SelectedBuilding != null)
+        if(other.gameObject.CompareTag("ClickOnWorker") && other.gameObject.GetComponent<WorkerMovementController>().SelectedBuilding != null)
         {
             WorkerMovementController workerMovementController =
                 other.gameObject.GetComponent<WorkerMovementController>();
@@ -172,7 +172,7 @@ public class InteractionBuildingController : MonoBehaviour
     /// <summary>
     /// Нажатие на здание
     /// </summary>
-    public void OnMouseDown()
+    public void OnMouseDownBuilding()
     {
         AddTextToDescriptionPanel.buildingData = _buildingData;
         AddTextToDescriptionPanel.buildingTransform = gameObject.transform;

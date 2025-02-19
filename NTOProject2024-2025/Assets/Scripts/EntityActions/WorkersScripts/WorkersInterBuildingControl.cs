@@ -32,6 +32,10 @@ public class WorkersInterBuildingControl : MonoBehaviour
     public static Camera MainCamera;
 
     private bool IsWorkersHere;
+    
+    [SerializeField] private LayerMask workerLayerMask;
+
+    private WorkerMovementController thisWorker;
 
     //public static int NumberOfSelectedWorkers;
 
@@ -42,6 +46,80 @@ public class WorkersInterBuildingControl : MonoBehaviour
         MainCamera = mainCamera;
         CurrentBuilding = null;
         NumberOfFreeWorkers = 1;
+        thisWorker = null;
+    }
+
+    private void Update()
+    {
+        if (!Input.GetMouseButtonDown(0))
+        {
+            MouseDownOnWorker(false); // Наводим мышку на персонажа
+        }
+        else
+        {
+            MouseDownOnWorker(true); // Нажимаем на рабочего
+        }
+    }
+
+    public void MouseDownOnWorker(bool OnClick)
+    {
+        Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        //Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.yellow, 5f);
+
+        if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask))
+        {
+            if (hit.collider.CompareTag("ClickOnWorker"))
+            {
+                thisWorker = hit.collider.GetComponent<WorkerMovementController>();
+                if (OnClick)
+                {
+                    if (thisWorker.possibilityClickOnWorker && thisWorker.isSelecting)
+                    {
+                        Debug.Log("Нажали на рабочего");
+                        if (!thisWorker.isSelected)
+                        {
+                            if (SelectedWorker != null)
+                            {
+                                SelectedWorker.isSelected = false;
+                                SelectedWorker.isSelecting = false;
+                            }
+
+                            thisWorker.OutlineRotate.SetActive(true);
+                            thisWorker.isSelected = true;
+                            SelectedWorker = thisWorker;
+                        }
+                        else
+                        {
+                            thisWorker.OutlineRotate.SetActive(false);
+                            thisWorker.isSelected = false;
+                            SelectedWorker = null;
+                        }
+                    }
+                }
+                else // Наведение без клика
+                {
+                    thisWorker.isSelecting = true;
+                    if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker)
+                    {
+                        thisWorker.OutlineRotate.SetActive(true);
+                    }
+                }
+
+                return; // Выход из метода, если Raycast попал в рабочего
+            }
+        }
+        
+        // Если Raycast НЕ попал в рабочего, сбрасываем выделение
+        if (thisWorker != null)
+        {
+            thisWorker.isSelecting = false;
+            if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker)
+            {
+                thisWorker.OutlineRotate.SetActive(false);
+            }
+            thisWorker = null;
+        }
     }
 
     /// <summary>
@@ -219,6 +297,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
         movementController.ArriveForBuildBuidling = false;
         movementController.isSelected = false;
         movementController.isSelecting = false;
+        movementController.possibilityClickOnWorker = true;
         movementController.gameObject.SetActive(true);
         
         NumberOfFreeWorkers += 1;

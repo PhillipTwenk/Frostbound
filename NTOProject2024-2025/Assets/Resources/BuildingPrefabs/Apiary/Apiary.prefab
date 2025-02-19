@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6695553539603438198}
   - component: {fileID: 9074159622393404839}
   - component: {fileID: 5222332172806135146}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube.045
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 1921367906539485437}
   - component: {fileID: 2265379559058404148}
   - component: {fileID: 5191380830695454330}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube.047
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 2778161542127745616}
   - component: {fileID: 6954164575053098708}
   - component: {fileID: 2070162472826142932}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cylinder.006
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -1031,7 +1031,7 @@ GameObject:
   - component: {fileID: 6556228375946121180}
   - component: {fileID: 1840693120354044775}
   - component: {fileID: 7127523943574813477}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: 'Myod '
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -1140,7 +1140,7 @@ GameObject:
   - component: {fileID: 6196861033878510893}
   - component: {fileID: 6972403230494033197}
   - component: {fileID: 8025891014917009869}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube.043
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -1249,7 +1249,7 @@ GameObject:
   - component: {fileID: 5397115410779680828}
   - component: {fileID: 7646767480560524558}
   - component: {fileID: 4932137827658403036}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Myod Sphere
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 979781543774957569}
   - component: {fileID: 1527871510614724042}
   - component: {fileID: 1682090686268515367}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cylinder.009
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 5708044410257663276}
   - component: {fileID: 7473675456414235026}
   - component: {fileID: 8248337418251467780}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube.044
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -1749,7 +1749,7 @@ GameObject:
   - component: {fileID: 1649829646258614135}
   m_Layer: 7
   m_Name: TechTriggerScripts
-  m_TagString: ClickOnBuilding
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1889,6 +1889,9 @@ MonoBehaviour:
   - {fileID: 1565688012296649702}
   - {fileID: 5927344406235161008}
   spawnWorker: {fileID: 2636491516842112944}
+  placementLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!65 &8276670124576503153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2019,7 +2022,7 @@ GameObject:
   - component: {fileID: 4581950273126312912}
   - component: {fileID: 1991878967954755172}
   - component: {fileID: 4641668818142942882}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube.004
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -2128,7 +2131,7 @@ GameObject:
   - component: {fileID: 7072191953388373720}
   - component: {fileID: 1870142016646298220}
   - component: {fileID: 7096208820978959336}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cylinder.010
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}
@@ -2237,7 +2240,7 @@ GameObject:
   - component: {fileID: 5321504886916422663}
   - component: {fileID: 2649476449307182139}
   - component: {fileID: 7410459511341350315}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube.046
   m_TagString: ClickOnBuilding
   m_Icon: {fileID: 0}

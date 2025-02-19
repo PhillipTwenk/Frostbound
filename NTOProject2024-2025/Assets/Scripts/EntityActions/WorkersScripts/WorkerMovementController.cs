@@ -20,13 +20,14 @@ public class WorkerMovementController : MonoBehaviour
     private Animator anim;
     public GameObject SelectedBuilding; // techTriggerScripts
     [SerializeField] private LayerMask placementLayerMask;
+    [SerializeField] private LayerMask workerLayerMask;
     public Camera MainCamera;
     [SerializeField] private Transform currentWalkingPoint;
     //[SerializeField] private Material OutlineMaterial;
     //[SerializeField] private Color OutlineColor;
     //[SerializeField] private Color BasedOutlineColor;
-    [SerializeField] private GameObject OutlineRotate;
-    [SerializeField] private GameObject OutlinePOD;
+    public GameObject OutlineRotate;
+    public GameObject OutlinePOD;
     
     private Rigidbody _rb;
     void Start()
@@ -104,6 +105,16 @@ public class WorkerMovementController : MonoBehaviour
                 SetWorkerDestination(currentWalkingPoint.transform, false);
             }
         }
+        // if (!Input.GetMouseButtonDown(0))
+        // {
+        //     MouseDownOnWorker(false); // Наводим мышку на персонажа
+        //     return;
+        // }
+        // if (Input.GetMouseButtonDown(0) && isSelecting)
+        // {
+        //     MouseDownOnWorker(true); // Нажимаем на рабочего
+        //     return;
+        // }
 
         
         if (WorkerPointOfDestination) 
@@ -129,30 +140,74 @@ public class WorkerMovementController : MonoBehaviour
         }
     }
 
+    // public void MouseDownOnWorker(bool OnClick)
+    // {
+    //     Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition); 
+    //     RaycastHit hit;
+    //     Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.yellow, 5f);
+    //
+    //     if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask))
+    //     {
+    //         if (hit.collider.CompareTag("ClickOnWorker"))
+    //         {
+    //             if (OnClick)
+    //             {
+    //                 if (possibilityClickOnWorker)
+    //                 {
+    //                     Debug.Log("Нажали на рабочего");
+    //                     if (!isSelected) 
+    //                     {
+    //                         if (WorkersInterBuildingControl.SelectedWorker != null)
+    //                         {
+    //                             WorkersInterBuildingControl.SelectedWorker.isSelected = false;
+    //                             WorkersInterBuildingControl.SelectedWorker.isSelecting = false;
+    //                         }
+    //                         OutlineRotate.SetActive(true);
+    //                         isSelected = true;
+    //                         WorkersInterBuildingControl.SelectedWorker = this;
+    //                     } 
+    //                     else 
+    //                     {
+    //                         OutlineRotate.SetActive(false);
+    //                         isSelected = false;
+    //                         WorkersInterBuildingControl.SelectedWorker = null;
+    //                     }
+    //                 }
+    //             }
+    //             else // Наведение без клика
+    //             {
+    //                 isSelecting = true;
+    //                 if (!isSelected && possibilityClickOnWorker)
+    //                 {
+    //                     OutlineRotate.SetActive(true);
+    //                 }
+    //             }
+    //             return; // Выход из метода, если Raycast попал в рабочего
+    //         }
+    //     }
+    //
+    //     // Если Raycast НЕ попал в рабочего, сбрасываем выделение
+    //     isSelecting = false;
+    //     if (!isSelected && possibilityClickOnWorker)
+    //     {
+    //         OutlineRotate.SetActive(false);
+    //     }
+    // }
+
     public Vector3 GetSelectedMapPosition()
     {
         Vector3 lastPosition = Vector3.zero;
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition); 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask))
+        Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.red, 5f);
+        if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask, QueryTriggerInteraction.Ignore))
         {
             lastPosition = hit.point; // Выбранная точка
 
             if (hit.collider.CompareTag("ClickOnBuilding"))
             {
-                Debug.Log("Выбрано здание");
-                if (hit.collider.gameObject.name == NameOfTTS)
-                {
-                    
-                    SelectedBuilding = hit.collider.gameObject; // Выбранное здание
-                     
-                }
-                else
-                {
-                    SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject; // Выбранное здание+
-                }
-                
-                Debug.Log(SelectedBuilding);  
+                SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject; // Выбранное здание
+                Debug.Log($"текущее здание для пострйоки{SelectedBuilding}");
             }
             else
             {
@@ -176,42 +231,42 @@ public class WorkerMovementController : MonoBehaviour
             //Debug.Log($"Setting destination to: {point.position}");
         }
     }
-    private void OnMouseDown() {
-        if (possibilityClickOnWorker)
-        {
-            if (!isSelected) {
-                if (WorkersInterBuildingControl.SelectedWorker != null)
-                {
-                    WorkersInterBuildingControl.SelectedWorker.isSelected = false;
-                    WorkersInterBuildingControl.SelectedWorker.isSelecting = false;
-                }
-                OutlineRotate.SetActive(true);
-                isSelected = true;
-                WorkersInterBuildingControl.SelectedWorker = this;
-            } else {
-                OutlineRotate.SetActive(false);
-                isSelected = false;
-                WorkersInterBuildingControl.SelectedWorker = this;
-            }
-        }
-    }
+    // private void OnMouseDown() {
+    //     if (possibilityClickOnWorker)
+    //     {
+    //         if (!isSelected) {
+    //             if (WorkersInterBuildingControl.SelectedWorker != null)
+    //             {
+    //                 WorkersInterBuildingControl.SelectedWorker.isSelected = false;
+    //                 WorkersInterBuildingControl.SelectedWorker.isSelecting = false;
+    //             }
+    //             OutlineRotate.SetActive(true);
+    //             isSelected = true;
+    //             WorkersInterBuildingControl.SelectedWorker = this;
+    //         } else {
+    //             OutlineRotate.SetActive(false);
+    //             isSelected = false;
+    //             WorkersInterBuildingControl.SelectedWorker = this;
+    //         }
+    //     }
+    // }
 
-    private void OnMouseEnter() {
-        isSelecting = true;
-        if(!isSelected && possibilityClickOnWorker)
-        {
-            OutlineRotate.SetActive(true);
-            //OutlineMaterial.color = OutlineColor;
-        }
-    }
-
-    private void OnMouseExit() {
-        isSelecting = false;
-        if(!isSelected && possibilityClickOnWorker){
-            OutlineRotate.SetActive(false);
-            //OutlineMaterial.color = BasedOutlineColor;
-        }
-    }
+    // private void OnMouseEnter() {
+    //     isSelecting = true;
+    //     if(!isSelected && possibilityClickOnWorker)
+    //     {
+    //         OutlineRotate.SetActive(true);
+    //         //OutlineMaterial.color = OutlineColor;
+    //     }
+    // }
+    //
+    // private void OnMouseExit() {
+    //     isSelecting = false;
+    //     if(!isSelected && possibilityClickOnWorker){
+    //         OutlineRotate.SetActive(false);
+    //         //OutlineMaterial.color = BasedOutlineColor;
+    //     }
+    // }
 
     private void OnDisable()
     {

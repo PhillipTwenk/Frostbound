@@ -15,6 +15,7 @@ TagManager:
   - Bullet
   - BaseHemisphere
   - ClickOnBuilding
+  - ClickOnWorker
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - UI
   - Ground
   - Building
-  - 
-  - 
+  - LayerClickOnBuilding
+  - LayerClickOnWorker
   - 
   - 
   - 
