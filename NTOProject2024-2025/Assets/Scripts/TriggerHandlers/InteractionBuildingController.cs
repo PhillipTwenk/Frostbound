@@ -25,6 +25,8 @@ public class InteractionBuildingController : MonoBehaviour
 
     public Transform spawnWorker;
 
+    [SerializeField] private LayerMask placementLayerMask; // Для клика по зданию
+
     private void Start()
     {
         _buildingData = GetComponent<BuildingData>();
@@ -42,6 +44,17 @@ public class InteractionBuildingController : MonoBehaviour
         {
             InteractionEvent?.Invoke();
         }
+
+        //Vector3 lastPosition = Vector3.zero;
+        //Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition); 
+        //RaycastHit hit;
+        //if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask))
+        //{
+            //if (hit.collider.CompareTag("ClickOnBuilding") && hit.collider.transform.parent.gameObject == this.gameObject)
+            //{
+               // Here will be OnMouseDown functional :3
+            //}
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
