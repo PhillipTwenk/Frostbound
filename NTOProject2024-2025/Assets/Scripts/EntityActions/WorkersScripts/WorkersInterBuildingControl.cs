@@ -28,6 +28,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
 
     public event Action IsWorkerHereEvent; // Игрок прибыл
     public static WorkerMovementController SelectedWorker;
+    public static PlayerMovementController SelectedPlayer;
     public Camera mainCamera;
     public static Camera MainCamera;
 
@@ -36,8 +37,9 @@ public class WorkersInterBuildingControl : MonoBehaviour
     [SerializeField] private LayerMask workerLayerMask;
 
     private WorkerMovementController thisWorker;
+    private PlayerMovementController thisPlayer;
 
-    //public static int NumberOfSelectedWorkers;
+    private bool firstMouseEnterOutlineIndicator; // Если нажали на рабочего/игрока для снятия с него выделения, то выделение при наведении будет работать только при повторном выделении
 
 
     private void Awake()
@@ -47,17 +49,20 @@ public class WorkersInterBuildingControl : MonoBehaviour
         CurrentBuilding = null;
         NumberOfFreeWorkers = 1;
         thisWorker = null;
+        firstMouseEnterOutlineIndicator = true;
     }
 
     private void Update()
     {
+        // Каждый кадр проверяем: если нажата левая кнопка, то пытаемся выделить (OnClick),
+        // иначе просто обновляем наведение (OnClick == false)
         if (!Input.GetMouseButtonDown(0))
         {
-            MouseDownOnWorker(false); // Наводим мышку на персонажа
+            MouseDownOnWorker(false); // Наведение
         }
         else
         {
-            MouseDownOnWorker(true); // Нажимаем на рабочего
+            MouseDownOnWorker(true); // Клик
         }
     }
 
@@ -65,32 +70,46 @@ public class WorkersInterBuildingControl : MonoBehaviour
     {
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        //Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.yellow, 5f);
 
         if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask))
         {
+            // Если попали в рабочего
             if (hit.collider.CompareTag("ClickOnWorker"))
             {
                 thisWorker = hit.collider.GetComponent<WorkerMovementController>();
+                thisPlayer = null; // Сбрасываем игрока
+
                 if (OnClick)
                 {
-                    if (thisWorker.possibilityClickOnWorker && thisWorker.isSelecting)
+                    // Если до этого был выбран игрок, сбрасываем его выбор
+                    if (SelectedPlayer != null)
+                    {
+                        SelectedPlayer.isSelected = false;
+                        SelectedPlayer.isSelecting = false;
+                        SelectedPlayer.OutlineRotate.SetActive(false);
+                        SelectedPlayer = null;
+                    }
+                    
+                    // Можно убрать проверку isSelecting, если клик уже гарантирует попадание
+                    if (thisWorker.possibilityClickOnWorker)
                     {
                         Debug.Log("Нажали на рабочего");
                         if (!thisWorker.isSelected)
                         {
+                            // Если был выбран другой рабочий, сбрасываем его выбор
                             if (SelectedWorker != null)
                             {
                                 SelectedWorker.isSelected = false;
                                 SelectedWorker.isSelecting = false;
+                                SelectedWorker.OutlineRotate.SetActive(false);
                             }
-
                             thisWorker.OutlineRotate.SetActive(true);
                             thisWorker.isSelected = true;
                             SelectedWorker = thisWorker;
                         }
                         else
                         {
+                            firstMouseEnterOutlineIndicator = false;
                             thisWorker.OutlineRotate.SetActive(false);
                             thisWorker.isSelected = false;
                             SelectedWorker = null;
@@ -100,27 +119,92 @@ public class WorkersInterBuildingControl : MonoBehaviour
                 else // Наведение без клика
                 {
                     thisWorker.isSelecting = true;
-                    if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker)
+                    if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker && firstMouseEnterOutlineIndicator)
                     {
                         thisWorker.OutlineRotate.SetActive(true);
                     }
                 }
+                return; // Если попали в рабочего – выходим
+            }
+            // Если попали в игрока
+            else if (hit.collider.CompareTag("Player"))
+            {
+                thisPlayer = hit.collider.GetComponent<PlayerMovementController>();
+                thisWorker = null; // Сбрасываем рабочего
 
-                return; // Выход из метода, если Raycast попал в рабочего
+                if (OnClick)
+                {
+                    // Сбрасываем выбор рабочего, если он был выбран
+                    if (SelectedWorker != null)
+                    {
+                        SelectedWorker.isSelected = false;
+                        SelectedWorker.isSelecting = false;
+                        SelectedWorker.OutlineRotate.SetActive(false);
+                        SelectedWorker = null;
+                    }
+
+                    
+                    if (thisPlayer.possibilityClickOnPlayer)
+                    {
+                        Debug.Log("Нажали на игрока");
+                        if (!thisPlayer.isSelected)
+                        {
+                            // Если уже выбран другой игрок, сбрасываем его
+                            if (SelectedPlayer != null)
+                            {
+                                SelectedPlayer.isSelected = false;
+                                SelectedPlayer.isSelecting = false;
+                                SelectedPlayer.OutlineRotate.SetActive(false);
+                            }
+                            thisPlayer.OutlineRotate.SetActive(true);
+                            thisPlayer.isSelected = true;
+                            SelectedPlayer = thisPlayer;
+                        }
+                        else
+                        {
+                            firstMouseEnterOutlineIndicator = false;
+                            thisPlayer.OutlineRotate.SetActive(false);
+                            thisPlayer.isSelected = false;
+                            SelectedPlayer = null;
+                        }
+                    }
+                }
+                else // Наведение без клика
+                {
+                    thisPlayer.isSelecting = true;
+                    if (!thisPlayer.isSelected && thisPlayer.possibilityClickOnPlayer && firstMouseEnterOutlineIndicator)
+                    {
+                        thisPlayer.OutlineRotate.SetActive(true);
+                    }
+                }
+                return; // Выходим, если попали в игрока
             }
         }
-        
-        // Если Raycast НЕ попал в рабочего, сбрасываем выделение
+
+        // Если луч не попал ни в одного из объектов,
+        // сбрасываем состояния для обоих (рабочего и игрока), чтобы убрать выделение при уходе курсора.
         if (thisWorker != null)
         {
             thisWorker.isSelecting = false;
             if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker)
             {
+                firstMouseEnterOutlineIndicator = true;
                 thisWorker.OutlineRotate.SetActive(false);
             }
             thisWorker = null;
         }
+        if (thisPlayer != null)
+        {
+            firstMouseEnterOutlineIndicator = true;
+            thisPlayer.isSelecting = false;
+            if (!thisPlayer.isSelected && thisPlayer.possibilityClickOnPlayer)
+            {
+                thisPlayer.OutlineRotate.SetActive(false);
+            }
+            thisPlayer = null;
+        }
     }
+
 
     /// <summary>
     /// Обновление общего количество рабочих при постройке нового здания

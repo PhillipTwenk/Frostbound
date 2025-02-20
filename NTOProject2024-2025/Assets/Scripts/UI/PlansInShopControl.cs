@@ -124,6 +124,7 @@ public class PlansInShopControl : MonoBehaviour
         if (WorkersInterBuildingControl.SelectedWorker != null)
         {
             WorkersInterBuildingControl.SelectedWorker.possibilityClickOnWorker = false;
+            WorkersInterBuildingControl.SelectedPlayer.possibilityClickOnPlayer = false;
         }
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }
@@ -133,6 +134,7 @@ public class PlansInShopControl : MonoBehaviour
         if (WorkersInterBuildingControl.SelectedWorker != null)
         {
             WorkersInterBuildingControl.SelectedWorker.possibilityClickOnWorker = true;
+            WorkersInterBuildingControl.SelectedPlayer.possibilityClickOnPlayer = true;
         }
         CloseShopTutorialTutorial.CheckAndUpdateTutorialState();
     }

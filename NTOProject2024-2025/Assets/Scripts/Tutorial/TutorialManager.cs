@@ -133,6 +133,7 @@ public class TutorialManager : MonoBehaviour
             if (WorkersInterBuildingControl.SelectedWorker != null)
             {
                 WorkersInterBuildingControl.SelectedWorker.possibilityClickOnWorker = false;
+                WorkersInterBuildingControl.SelectedPlayer.possibilityClickOnPlayer = false;
             }
             FadeFone.SetActive(true);
             Time.timeScale = 0f;
@@ -143,6 +144,7 @@ public class TutorialManager : MonoBehaviour
             if (WorkersInterBuildingControl.SelectedWorker != null)
             {
                 WorkersInterBuildingControl.SelectedWorker.possibilityClickOnWorker = true;
+                WorkersInterBuildingControl.SelectedPlayer.possibilityClickOnPlayer = true;
             }
             FadeFone.SetActive(false);
             Time.timeScale = 1f;

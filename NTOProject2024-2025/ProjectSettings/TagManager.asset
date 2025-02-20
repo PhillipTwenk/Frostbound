@@ -16,6 +16,7 @@ TagManager:
   - BaseHemisphere
   - ClickOnBuilding
   - ClickOnWorker
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Building
   - LayerClickOnBuilding
   - LayerClickOnWorker
-  - 
+  - LayerClickOnPlayer
   - 
   - 
   - 
