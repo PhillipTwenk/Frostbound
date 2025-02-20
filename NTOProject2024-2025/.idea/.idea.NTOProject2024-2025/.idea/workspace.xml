@@ -24,20 +24,24 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/3dObjects/Boris love/Gameprefab/Bear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3dObjects/Boris love/Gameprefab/Bear.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/WhiteDecal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Materials/WhiteDecal.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WalkingPoint.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WalkingPoint.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Worker.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Worker.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/CameraFollowTarget.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/CameraFollowTarget.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationCondensedoblique SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationCondensedoblique SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationDisplay SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationDisplay SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationDisplayoblique SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationDisplayoblique SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationDisplayobloutline SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationDisplayobloutline SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationDisplayoutline SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationDisplayoutline SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationExtended SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationExtended SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationExtendedoblique SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationExtendedoblique SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationStorm SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationStorm SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationStormoblique SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationStormoblique SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationText SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationText SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationTextobliqoutline SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationTextobliqoutline SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationTextoblique SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationTextoblique SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationTextoutline SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationTextoutline SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationWarped SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationWarped SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationWarpedoblique SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/GamestationWarpedoblique SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,7 +321,8 @@
       <workItem from="1739728482228" duration="12344000" />
       <workItem from="1740000659705" duration="6683000" />
       <workItem from="1740062415532" duration="3181000" />
-      <workItem from="1740066327135" duration="1619000" />
+      <workItem from="1740066327135" duration="2697000" />
+      <workItem from="1740081860658" duration="3830000" />
     </task>
     <servers />
   </component>
