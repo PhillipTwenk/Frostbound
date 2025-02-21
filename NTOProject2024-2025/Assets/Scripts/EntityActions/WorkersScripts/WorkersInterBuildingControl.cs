@@ -71,7 +71,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask))
+        if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask) && Time.timeScale == 1f)
         {
             // Если попали в рабочего
             if (hit.collider.CompareTag("ClickOnWorker"))

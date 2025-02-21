@@ -12,6 +12,8 @@ public class JSONSerializeManager : MonoBehaviour
     private string savePath;
     private static readonly object _lock = new object();
 
+    public static Action playerPrefsSaveMethods;
+
     private void Awake()
     {
         Instance = this;
@@ -86,6 +88,8 @@ public class JSONSerializeManager : MonoBehaviour
                     }
                 }
             }
+            
+            playerPrefsSaveMethods?.Invoke();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 namespace RTS_Cam
@@ -27,6 +28,7 @@ namespace RTS_Cam
         #endregion
 
         private Transform m_Transform; //camera tranform
+        private Camera thisCamera; // this Camera component 
         public bool useFixedUpdate = false; //use FixedUpdate() or Update()
 
         #region Movement
@@ -50,8 +52,12 @@ namespace RTS_Cam
         public float heightDampening = 5f; 
         public float keyboardZoomingSensitivity = 2f;
         public float scrollWheelZoomingSensitivity = 25f;
+        public float scrollWheelSizeZooming = 25f;
+        public float maxSizeZoomValue = 200f;
+        public float minSizeZoomValue = 100f;
 
         private float zoomPos = 0; //value in range (0, 1) used as t in Matf.Lerp
+        private float zoomSizePos = 0;
 
         #endregion
 
@@ -60,6 +66,7 @@ namespace RTS_Cam
         public bool limitMap = true;
         public float limitX = 50f; //x limit of map
         public float limitY = 50f; //z limit of map
+        [SerializeField] public Vector3 center = Vector3.zero;
 
         #endregion
 
@@ -99,6 +106,9 @@ namespace RTS_Cam
 
         public bool useScrollwheelZooming = true;
         public string zoomingAxis = "Mouse ScrollWheel";
+
+        public bool useSizeZooming = true;
+        public bool scrollWheelInversion = false;
 
         public bool useKeyboardRotation = true;
         public KeyCode rotateRightKey = KeyCode.X;
@@ -168,6 +178,14 @@ namespace RTS_Cam
         private void Start()
         {
             m_Transform = transform;
+            thisCamera = GetComponent<Camera>();
+            GetSaveSizeData();
+            JSONSerializeManager.playerPrefsSaveMethods += SaveNewSizeData;
+        }
+
+        private void OnDisable()
+        {
+            JSONSerializeManager.playerPrefsSaveMethods -= SaveNewSizeData;
         }
 
         private void Update()
@@ -256,6 +274,23 @@ namespace RTS_Cam
         /// </summary>
         private void HeightCalculation()
         {
+            if (useSizeZooming)
+            {
+                if (scrollWheelInversion)
+                {
+                    zoomSizePos += ScrollWheel * Time.deltaTime * scrollWheelSizeZooming;
+                }
+                else
+                {
+                    zoomSizePos -= ScrollWheel * Time.deltaTime * scrollWheelSizeZooming;
+                }
+
+                zoomSizePos = Mathf.Clamp01(zoomSizePos);
+
+                float currentSize = Mathf.Lerp(minSizeZoomValue, maxSizeZoomValue, zoomSizePos);
+
+                thisCamera.orthographicSize = currentSize;
+            }
             float distanceToGround = DistanceToGround();
             if(useScrollwheelZooming)
                 zoomPos += ScrollWheel * Time.deltaTime * scrollWheelZoomingSensitivity;
@@ -287,7 +322,7 @@ namespace RTS_Cam
         }
 
         /// <summary>
-        /// follow targetif target != null
+        /// follow target if target != null
         /// </summary>
         private void FollowTarget()
         {
@@ -302,10 +337,12 @@ namespace RTS_Cam
         {
             if (!limitMap)
                 return;
-                
-            m_Transform.position = new Vector3(Mathf.Clamp(m_Transform.position.x, -limitX, limitX),
+
+            m_Transform.position = new Vector3(
+                Mathf.Clamp(m_Transform.position.x, center.x - limitX, center.x + limitX),
                 m_Transform.position.y,
-                Mathf.Clamp(m_Transform.position.z, -limitY, limitY));
+                Mathf.Clamp(m_Transform.position.z, center.z - limitY, center.z + limitY)
+            );
         }
 
         /// <summary>
@@ -340,5 +377,67 @@ namespace RTS_Cam
         }
 
         #endregion
+
+        #region SaveData
+
+        private const string saveSizeKey = "PlayerPrefsSaveCameraZoomSizeData";
+        private float DefaultPPSaveSizeValue = 0.5f;
+        
+        /// <summary>
+        /// Получение сохраненных данных о значении зума
+        /// </summary>
+        private void GetSaveSizeData()
+        {
+            if (PlayerPrefs.HasKey(saveSizeKey))
+            {
+                zoomSizePos = PlayerPrefs.GetFloat(saveSizeKey);
+            }
+            else
+            {
+                PlayerPrefs.SetFloat(saveSizeKey, DefaultPPSaveSizeValue);
+                zoomSizePos = PlayerPrefs.GetFloat(saveSizeKey);
+            }
+            
+            Debug.Log($"Получено значение size камеры: {zoomSizePos}");
+        }
+
+        /// <summary>
+        /// Сохранение текущих данных о зуме камеры
+        /// Передается в ивент, вызывающийся при выходе из игры
+        /// </summary>
+        public void SaveNewSizeData()
+        {
+            PlayerPrefs.SetFloat(saveSizeKey, zoomSizePos);
+            Debug.Log($"Сохранено значение size камеры: {zoomSizePos}");
+        }
+        #endregion
+
+        #region Gizmoz
+
+        /// <summary>
+        /// Граница области движения камеры
+        /// </summary>
+        private void OnDrawGizmos()
+        {
+            if (!limitMap)
+                return;
+
+            Gizmos.color = Color.red;
+
+            // Определяем углы прямоугольника с учетом центра
+            Vector3 bottomLeft = new Vector3(center.x - limitX, thisCamera.transform.position.y, center.z - limitY);
+            Vector3 bottomRight = new Vector3(center.x + limitX, thisCamera.transform.position.y, center.z - limitY);
+            Vector3 topLeft = new Vector3(center.x - limitX, thisCamera.transform.position.y, center.z + limitY);
+            Vector3 topRight = new Vector3(center.x + limitX, thisCamera.transform.position.y, center.z + limitY);
+
+            Gizmos.DrawLine(bottomLeft, bottomRight);
+            Gizmos.DrawLine(bottomRight, topRight);
+            Gizmos.DrawLine(topRight, topLeft);
+            Gizmos.DrawLine(topLeft, bottomLeft);
+        }
+
+        #endregion
     }
+    
+    
 }

@@ -79,6 +79,10 @@ namespace RTS_Cam
                 camera.limitX = EditorGUILayout.FloatField("Limit X: ", camera.limitX);
                 camera.limitY = EditorGUILayout.FloatField("Limit Y: ", camera.limitY);
             }
+            if (camera.limitMap)
+            {
+                camera.center = EditorGUILayout.Vector3Field("Limits rectangle center: ", camera.center);
+            }
 
             GUILayout.Label("Follow target", EditorStyles.boldLabel);
             camera.targetFollow = EditorGUILayout.ObjectField("Target to follow: ", camera.targetFollow, typeof(Transform)) as Transform;
@@ -153,6 +157,32 @@ namespace RTS_Cam
                     camera.minHeight = EditorGUILayout.FloatField("Min height: ", camera.minHeight);
                 }
             }  
+            
+            using (new HorizontalBlock())
+            {
+                GUILayout.Label("[Custom] Size zooming: ", EditorStyles.boldLabel, GUILayout.Width(170f));
+                camera.useSizeZooming = EditorGUILayout.Toggle(camera.useSizeZooming);
+            }
+
+            if (camera.useSizeZooming)
+            {
+                camera.scrollWheelSizeZooming = EditorGUILayout.FloatField("Scrollwheel size zooming sensitivity: ", camera.scrollWheelSizeZooming);
+            }
+            
+            if (camera.useSizeZooming)
+            {
+                camera.scrollWheelInversion = EditorGUILayout.Toggle("Camera Size Inversion: ", camera.scrollWheelInversion);
+            }
+            
+            if (camera.useSizeZooming)
+            {
+                using (new HorizontalBlock())
+                {
+                    camera.maxSizeZoomValue = EditorGUILayout.FloatField("Max height: ", camera.maxSizeZoomValue);
+                    camera.minSizeZoomValue = EditorGUILayout.FloatField("Min height: ", camera.minSizeZoomValue);
+                }
+            }  
+            
         }
     }
 }
