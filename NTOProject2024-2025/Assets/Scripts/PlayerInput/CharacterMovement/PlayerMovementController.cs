@@ -15,6 +15,7 @@ public class PlayerMovementController : MonoBehaviour
     public bool isSelected;
     public bool isSelecting; // Мышь наведена на персонажа
     public bool possibilityClickOnPlayer;
+    private bool IsClickOnOtherEntity; // Кликнуи на рабочего
     
     [Header("System")]
     public Transform PlayerPointOfDestination;
@@ -35,6 +36,7 @@ public class PlayerMovementController : MonoBehaviour
     void Start()
     {
         possibilityClickOnPlayer = true;
+        IsClickOnOtherEntity = false;
         currentWalkingPoint.gameObject.SetActive(false);
         agent = GetComponent<NavMeshAgent>();
         isSelected = false;
@@ -64,15 +66,15 @@ public class PlayerMovementController : MonoBehaviour
     {
         
         
-        if(isSelected && possibilityClickOnPlayer){
+        if(isSelected && WorkersInterBuildingControl.possiilityControlEntities){
             
             if (Input.GetMouseButtonDown(0) && !isSelecting)
             {
                 Vector3 point = GetSelectedMapPosition();
                 currentWalkingPoint.gameObject.SetActive(true);
                 
-                // Если клинкули не на здание
-                if(SelectedBuilding == null){
+                // Если клинкули не на здание и не на рабочего
+                if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
                     if (!IsPlayerMove)
                     {
@@ -124,11 +126,19 @@ public class PlayerMovementController : MonoBehaviour
             {
                 SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject; // Выбранное здание
                 Debug.Log($"текущее здание для пострйоки{SelectedBuilding}");
+                IsClickOnOtherEntity = false;
+            }
+            else if (hit.collider.CompareTag("ClickOnWorker"))
+            {
+                Debug.Log("Кликнули на рабочего");
+                IsClickOnOtherEntity = true;
+                SelectedBuilding = null;
             }
             else
             {
                 SelectedBuilding = null;
                 OutlinePOD.SetActive(true);
+                IsClickOnOtherEntity = false;
             }
         }
 

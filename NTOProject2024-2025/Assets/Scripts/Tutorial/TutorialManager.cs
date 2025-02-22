@@ -130,22 +130,14 @@ public class TutorialManager : MonoBehaviour
 
         if (currentTutorialObjective.IsTimeStopOnThisStep)
         {
-            if (WorkersInterBuildingControl.SelectedWorker != null)
-            {
-                WorkersInterBuildingControl.SelectedWorker.possibilityClickOnWorker = false;
-                WorkersInterBuildingControl.SelectedPlayer.possibilityClickOnPlayer = false;
-            }
+            WorkersInterBuildingControl.possiilityControlEntities = false;
             FadeFone.SetActive(true);
             Time.timeScale = 0f;
             IsTutorialTimeStop = true;
         }
         else
         {
-            if (WorkersInterBuildingControl.SelectedWorker != null)
-            {
-                WorkersInterBuildingControl.SelectedWorker.possibilityClickOnWorker = true;
-                WorkersInterBuildingControl.SelectedPlayer.possibilityClickOnPlayer = true;
-            }
+            WorkersInterBuildingControl.possiilityControlEntities = true;
             FadeFone.SetActive(false);
             Time.timeScale = 1f;
             IsTutorialTimeStop = false;

@@ -296,24 +296,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementWorkerTutorial: {fileID: 11400000, guid: b05c7f6033a09cb47b7be44d995d4c12, type: 2}
   WorkerStartMovementToApiaryTutorial: {fileID: 11400000, guid: e5fa09fbcf9f97c4d9413fe3bc4d1483, type: 2}
-  NameOfTTS: TechTriggerScripts
-  WorkerPointOfDestination: {fileID: 0}
   ReadyForWork: 1
   ArriveForBuildBuidling: 0
   isSelected: 0
   isSelecting: 0
   possibilityClickOnWorker: 0
+  OutlineRotate: {fileID: 4887249124086083444}
+  OutlinePOD: {fileID: 0}
+  NameOfTTS: TechTriggerScripts
+  WorkerPointOfDestination: {fileID: 0}
   SelectedBuilding: {fileID: 0}
+  MainCamera: {fileID: 0}
+  currentWalkingPoint: {fileID: 0}
   placementLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 1856
   workerLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  MainCamera: {fileID: 0}
-  currentWalkingPoint: {fileID: 0}
-  OutlineRotate: {fileID: 4887249124086083444}
-  OutlinePOD: {fileID: 0}
 --- !u!195 &4964045910102140477
 NavMeshAgent:
   m_ObjectHideFlags: 0

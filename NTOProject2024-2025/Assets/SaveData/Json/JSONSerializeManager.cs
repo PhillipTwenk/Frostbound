@@ -67,7 +67,12 @@ public class JSONSerializeManager : MonoBehaviour
         }
     }
 
-    public void OnApplicationQuit()
+    private void OnApplicationQuit()
+    {
+        JSONSave();
+    }
+
+    public void JSONSave()
     {
         lock (_lock)
         {

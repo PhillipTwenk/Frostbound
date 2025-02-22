@@ -154,7 +154,7 @@ public class ResourceMiner : MonoBehaviour
             }
         }
         
-        JSONSerializeManager.Instance.OnApplicationQuit();
+        JSONSerializeManager.Instance.JSONSave();
     }
 
     
@@ -232,7 +232,7 @@ public class ResourceMiner : MonoBehaviour
             }
         }
         
-        JSONSerializeManager.Instance.OnApplicationQuit();
+        JSONSerializeManager.Instance.JSONSave();
     }
 
     private async Task UpdateResources(PlayerResources playerResources, EntityID playerID)

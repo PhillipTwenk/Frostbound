@@ -112,7 +112,7 @@ public class UIManagerMainMenu : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
-        JSONSerializeManager.Instance.OnApplicationQuit();
+        JSONSerializeManager.Instance.JSONSave();
         Application.Quit();
     }
     
@@ -168,7 +168,7 @@ public class UIManagerMainMenu : MonoBehaviour
          string shopName = $"{newName}'sShop";
          await APIManager.Instance.CreateShop(WhichPlayerCreate, shopName, StartValueApiaryShop, StartValueHoneyGunShop,StartValueMobileBaseShop,StartValueStorageShop,StartValueResidentialModuleShop,StartValueBreadwinnerShop,StartValuePierShop);
          
-         JSONSerializeManager.Instance.OnApplicationQuit();
+         JSONSerializeManager.Instance.JSONSave();
          
          StartGameAfterCreatingCharacter.TriggerEvent();
      }

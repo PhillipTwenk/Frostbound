@@ -40,11 +40,14 @@ public class WorkersInterBuildingControl : MonoBehaviour
     private PlayerMovementController thisPlayer;
 
     private bool firstMouseEnterOutlineIndicator; // Если нажали на рабочего/игрока для снятия с него выделения, то выделение при наведении будет работать только при повторном выделении
+    public static bool possiilityControlEntities;
 
 
     private void Awake()
     {
+        
         Instance = this;
+        possiilityControlEntities = true;
         MainCamera = mainCamera;
         CurrentBuilding = null;
         NumberOfFreeWorkers = 1;
@@ -71,7 +74,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask) && Time.timeScale == 1f)
+        if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask) && Time.timeScale == 1f && possiilityControlEntities)
         {
             // Если попали в рабочего
             if (hit.collider.CompareTag("ClickOnWorker"))
@@ -91,7 +94,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
                     }
                     
                     // Можно убрать проверку isSelecting, если клик уже гарантирует попадание
-                    if (thisWorker.possibilityClickOnWorker)
+                    if (possiilityControlEntities)
                     {
                         Debug.Log("Нажали на рабочего");
                         if (!thisWorker.isSelected)
@@ -119,7 +122,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
                 else // Наведение без клика
                 {
                     thisWorker.isSelecting = true;
-                    if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker && firstMouseEnterOutlineIndicator)
+                    if (!thisWorker.isSelected && possiilityControlEntities && firstMouseEnterOutlineIndicator)
                     {
                         thisWorker.OutlineRotate.SetActive(true);
                     }
@@ -144,7 +147,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
                     }
 
                     
-                    if (thisPlayer.possibilityClickOnPlayer)
+                    if (possiilityControlEntities)
                     {
                         Debug.Log("Нажали на игрока");
                         if (!thisPlayer.isSelected)
@@ -172,7 +175,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
                 else // Наведение без клика
                 {
                     thisPlayer.isSelecting = true;
-                    if (!thisPlayer.isSelected && thisPlayer.possibilityClickOnPlayer && firstMouseEnterOutlineIndicator)
+                    if (!thisPlayer.isSelected && possiilityControlEntities && firstMouseEnterOutlineIndicator)
                     {
                         thisPlayer.OutlineRotate.SetActive(true);
                     }

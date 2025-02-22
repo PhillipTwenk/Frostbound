@@ -24,11 +24,79 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/RTS_Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/RTS_Camera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/3dObjects/Boris love/Gameprefab/Bear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3dObjects/Boris love/Gameprefab/Bear.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Worker.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Worker.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/DemoScene.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/DemoScene.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Demo_Scene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Demo_Scene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Demo_SceneSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Demo_SceneSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Ground.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Ground.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Guidelines.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Guidelines.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Materials/GridProjector.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Materials/GridProjector.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Materials/LightProjector.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Materials/LightProjector.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Materials/ShadowProjector.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Materials/ShadowProjector.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Prefabs/BlobLightProjector.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Prefabs/BlobLightProjector.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Prefabs/BlobShadowProjector.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Prefabs/BlobShadowProjector.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Prefabs/GridProjector.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Prefabs/GridProjector.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Shaders/ProjectorLight.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Shaders/ProjectorLight.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Shaders/ProjectorMultiply.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Shaders/ProjectorMultiply.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures/Falloff.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures/Falloff.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures/Grid.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures/Grid.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures/Light.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures/Light.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures/Shadow.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Projectors/Textures/Shadow.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/TargetSelector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/TargetSelector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Targets.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Demo/Targets.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/RTS_Camera.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/RTS_Camera.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/Editor/LayoutHelpers.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/Editor/LayoutHelpers.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/RTS_Camera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RTS_Camera/Scripts/RTS_Camera.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DeletePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DeletePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/PauseUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/PauseUIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerMainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerMainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,6 +379,7 @@
       <workItem from="1740066327135" duration="2697000" />
       <workItem from="1740081860658" duration="3830000" />
       <workItem from="1740145486591" duration="7681000" />
+      <workItem from="1740207574293" duration="5389000" />
     </task>
     <servers />
   </component>

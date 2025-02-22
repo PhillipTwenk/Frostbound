@@ -232,7 +232,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 break;
         }
 
-        JSONSerializeManager.Instance.OnApplicationQuit();
+        JSONSerializeManager.Instance.JSONSave();
         
         return null;
     }

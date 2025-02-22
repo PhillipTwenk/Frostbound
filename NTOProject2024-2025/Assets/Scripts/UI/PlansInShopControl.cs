@@ -120,22 +120,17 @@ public class PlansInShopControl : MonoBehaviour
                     break;
             }
         }
-
-        if (WorkersInterBuildingControl.SelectedWorker != null)
-        {
-            WorkersInterBuildingControl.SelectedWorker.possibilityClickOnWorker = false;
-            WorkersInterBuildingControl.SelectedPlayer.possibilityClickOnPlayer = false;
-        }
+        
+        WorkersInterBuildingControl.possiilityControlEntities = false;
+        
+        
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }
 
     private void OnDisable()
     {
-        if (WorkersInterBuildingControl.SelectedWorker != null)
-        {
-            WorkersInterBuildingControl.SelectedWorker.possibilityClickOnWorker = true;
-            WorkersInterBuildingControl.SelectedPlayer.possibilityClickOnPlayer = true;
-        }
+        WorkersInterBuildingControl.possiilityControlEntities = true;
+        
         CloseShopTutorialTutorial.CheckAndUpdateTutorialState();
     }
 
