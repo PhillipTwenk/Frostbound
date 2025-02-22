@@ -13,7 +13,8 @@ public class WorkersInterBuildingControl : MonoBehaviour
     [Header("Texts in building hint")]
     [TextArea] [SerializeField] private string HintAwaitArriveWorker;
     [TextArea] [SerializeField] private string HintAwaitBuilding;
-
+    [TextArea] [SerializeField] private string HintAwaitTimeWorker;
+ 
     [Header("Control workers & players")]
     public int CurrentValueOfWorkers; // Общее текущее количество рабочих
     public int MaxValueOfWorkers; // Максимальное количество рабочих при параметрах потребления еды
@@ -312,7 +313,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
     ///</summary>
     public async Task WorkerEndWork(BuildingData buildingData)
     {
-        buildingData.TextPanelBuildingControl(true, HintAwaitBuilding);
+        //buildingData.TextPanelBuildingControl(true, HintAwaitBuilding);
 
         await AwaitEndWorking(buildingData);
 
@@ -326,6 +327,14 @@ public class WorkersInterBuildingControl : MonoBehaviour
         var taskCompletionSource = new TaskCompletionSource<bool>();
 
         Utility.Invoke(this, () => taskCompletionSource.SetResult(true), buildingData.buildingTypeSO.TimeAwaitBuildingThis);
+        
+        for (float i = buildingData.buildingTypeSO.TimeAwaitBuildingThis; i > 0; )
+        {
+            string newTimeText = $"{HintAwaitBuilding}\n {i} {HintAwaitTimeWorker}";
+            i--;
+            buildingData.TextPanelBuildingControl(true, newTimeText);
+            await Task.Delay(1000);
+        }
 
         await taskCompletionSource.Task;
     }
@@ -387,6 +396,8 @@ public class WorkersInterBuildingControl : MonoBehaviour
         movementController.isSelected = false;
         movementController.isSelecting = false;
         movementController.possibilityClickOnWorker = true;
+        movementController.OutlineRotate.SetActive(false);
+        movementController.OutlinePOD.SetActive(false);
         movementController.gameObject.SetActive(true);
         
         NumberOfFreeWorkers += 1;

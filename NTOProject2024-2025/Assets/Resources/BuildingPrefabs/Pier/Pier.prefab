@@ -638,7 +638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.9, y: 23.519985}
+  m_AnchoredPosition: {x: 4.2, y: 39.4}
   m_SizeDelta: {x: 6.4021, y: 0.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5702134165127819122
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u042B\u0410\u0410\u0410\u042B\u042B . . ."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 036d1620178df0740abc024233708885, type: 2}
   m_sharedMaterial: {fileID: -6251262882907199531, guid: 036d1620178df0740abc024233708885, type: 2}
@@ -2464,24 +2464,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingTypeSO: {fileID: 11400000, guid: 32cc812b594bfdc42a239181b28e4d7f, type: 2}
   Title: "\u041F\u0440\u0438\u0441\u0442\u0430\u043D\u044C"
-  textHintBuilding: {fileID: 6991439779238511762}
   Level: 1
   Durability: 65
   Storage: 
   Production: 000000001e000000
   HoneyConsumption: 0
   SaveListIndex: 0
-  AwaitBuildingThisTMPro: {fileID: 6991439779238511762}
-  TextAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u043D\u0438\u0435 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u0430.
-    . . "
-  TextAwaitBuildingThis: "\u0421\u0442\u0440\u043E\u0438\u043C. . . "
-  AwaitWorkerActionText: AwaitWorker
-  AwaitBuildingActionText: AwaitBuilding
   IsThisBuilt: 0
+  AwaitBuildingThisTMPro: {fileID: 6991439779238511762}
+  BuildingVE: {fileID: 5332231911640870583}
   StartBuildingFunctionEvent:
     m_PersistentCalls:
       m_Calls: []
-  BuildingVE: {fileID: 5332231911640870583}
 --- !u!65 &5335672928293937611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2515,10 +2509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcdf1e680146454fa6e7dac26900752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PossiblityPutEInThisBuilding: 1
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
-  OpenBarterMenuEvent: {fileID: 0}
-  CloseBarterMenuEvent: {fileID: 0}
+  PossiblityPutEInThisBuilding: 1
   InteractionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2549,7 +2541,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Texthint: {fileID: 4210148585073047384}
+  IsThereBarterHere: 0
+  OpenBarterMenuEvent: {fileID: 0}
+  CloseBarterMenuEvent: {fileID: 0}
   PointsOfBuildings:
   - {fileID: 7221401858447837154}
   - {fileID: 1090396276127618483}
@@ -2559,6 +2553,7 @@ MonoBehaviour:
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  Texthint: {fileID: 4210148585073047384}
 --- !u!114 &2561157871024344192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,8 +2583,8 @@ MonoBehaviour:
   CreateNewWorkerTutorial: {fileID: 0}
   CurrentNumberWorkersInThisBuilding: 0
   MaxValueOfWorkersInThisBuilding: 1
-  buildingSpawnWorkerPointTransform: {fileID: 7708379936889304414}
   WorkerPrefab: {fileID: 845355837700331742, guid: 31fe78fb1a4b70148a0cff384810ff37, type: 3}
+  buildingSpawnWorkerPointTransform: {fileID: 7708379936889304414}
 --- !u!1 &7734645520033639005
 GameObject:
   m_ObjectHideFlags: 0
