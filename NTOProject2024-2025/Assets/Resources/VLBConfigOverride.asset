@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9536b6488d9e024db1c753e8e90657e, type: 3}
+  m_Script: {fileID: 0}
   m_Name: VLBConfigOverride
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp:VLB:ConfigOverride
   geometryOverrideLayer: 1
   geometryLayerID: 1
   geometryTag: Untagged
   geometryRenderQueue: 3000
-  _RenderPipeline: 1
+  _RenderPipeline: 2
   _RenderingMode: 1
   ditheringFactor: 0
   sharedMeshSides: 24
@@ -34,5 +34,5 @@ MonoBehaviour:
   featureEnabledMeshSkewing: 1
   featureEnabledShaderAccuracyHigh: 1
   pluginVersion: 1960
-  _DummyMaterial: {fileID: 2100000, guid: f547127c0908fb449884f5e9d332596e, type: 2}
-  _BeamShader: {fileID: 4800000, guid: 83bc79657a44ee94d96f8ffee5f61897, type: 3}
+  _DummyMaterial: {fileID: 0}
+  _BeamShader: {fileID: 0}
