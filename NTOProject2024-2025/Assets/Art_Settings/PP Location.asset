@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4971219500526256386
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51a78e223a2e504bb88a059b55229ea, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  temperature:
+    m_OverrideState: 1
+    m_Value: -23.1
+  tint:
+    m_OverrideState: 1
+    m_Value: -2.8
+--- !u!114 &-3077692113643807703
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1be1b6c95cd2e41b27903b9270817f, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 0
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.375
+  smoothness:
+    m_OverrideState: 0
+    m_Value: 0.2
+  roundness:
+    m_OverrideState: 0
+    m_Value: 1
+  rounded:
+    m_OverrideState: 0
+    m_Value: 0
+  mask:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  opacity:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!114 &-2905770998565883833
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -59,6 +118,8 @@ MonoBehaviour:
   components:
   - {fileID: 4497987939976532617}
   - {fileID: -2905770998565883833}
+  - {fileID: -3077692113643807703}
+  - {fileID: -4971219500526256386}
 --- !u!114 &4497987939976532617
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -107,7 +168,7 @@ MonoBehaviour:
     m_Value: 634.3
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 449.29
+    m_Value: 448.93
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -116,13 +177,13 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   globalLightProbeDimmer:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.458
   depthExtent:
     m_OverrideState: 1
     m_Value: 707
   denoisingMode:
     m_OverrideState: 0
-    m_Value: 2
+    m_Value: 0
   anisotropy:
     m_OverrideState: 0
     m_Value: 0
