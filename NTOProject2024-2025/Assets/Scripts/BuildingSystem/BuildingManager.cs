@@ -168,10 +168,10 @@ public class BuildingManager : MonoBehaviour
                             TutorialPLacementBuildingsCheck(buildingData);
                             
                             //Ожидаем прибытия рабочего 
-                            await WorkersInterBuildingControl.Instance.SendWorkerToBuilding(true, buildingData, newBuildingObject.transform);
+                            await WorkersInterBuildingControl.Instance.SendWorkerToBuilding(true, buildingData);
                             
                             //Ожидаем завершения его строительства
-                            await WorkersInterBuildingControl.Instance.WorkerEndWork(buildingData, newBuildingObject.transform);
+                            await WorkersInterBuildingControl.Instance.WorkerEndWork(buildingData);
 
                             TutorialWaitWorkersCheck(buildingData);
                             

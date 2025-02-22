@@ -7,30 +7,25 @@ using UnityEngine.VFX;
 
 public class BuildingData : MonoBehaviour
 {
+    [Header("Building type source")] [Tooltip("Ссылка на SO здания")]
     public Building buildingTypeSO;
-    public string Title;
-    public TextMeshPro textHintBuilding;
 
-    public int Level;
-    public int Durability;
-    public List<int> Storage;
-    public List<int> Production;
-    public int HoneyConsumption;
-    public int SaveListIndex;
+    [Header("Properties")]
+    [Tooltip("Название")] public string Title;
+    [Tooltip("Текущий уровень данного здания")] public int Level;
+    [Tooltip("Текущее количество прочности здания")] public int Durability;
+    [Tooltip("Текущее количество хранимых ресурсов")] public List<int> Storage;
+    [Tooltip("Текущее количество производимых ресурсов")] public List<int> Production;
+    [Tooltip("Текущее количество потребления энергии")] public int HoneyConsumption;
+    [Tooltip("Индекс при сохранении здания")] public int SaveListIndex;
+    [Tooltip("Построено ли данное здание")] public bool IsThisBuilt;
     
+    [Header("Components")]
     public TextMeshPro AwaitBuildingThisTMPro;
-
-    [TextArea] public string TextAwaitArriveWorker;
-    [TextArea] public string TextAwaitBuildingThis;
-
-    public string AwaitWorkerActionText;
-    public string AwaitBuildingActionText;
-
-    public bool IsThisBuilt;
-
-    public UnityEvent StartBuildingFunctionEvent;
-
     public VisualEffect BuildingVE;
+
+    [Header("Function of this building")] [Tooltip("Функционал взаимодействия данного здания")]
+    public UnityEvent StartBuildingFunctionEvent;
 
     private void Start()
     {
@@ -40,19 +35,18 @@ public class BuildingData : MonoBehaviour
         }
     }
 
-    public void TextPanelBuildingControl(bool IsOpen, string WhichAction)
+    /// <summary>
+    /// Контроль текста над зданием
+    /// </summary>
+    /// <param name="IsOpen"> Появление/сокрытие текста </param>
+    /// <param name="WhichAction"> Какой текст</param>
+    public void TextPanelBuildingControl(bool IsOpen, string WhichText)
     {
         if (IsOpen)
         {
             AwaitBuildingThisTMPro.gameObject.SetActive(IsOpen);
 
-            if (WhichAction == AwaitWorkerActionText)
-            {
-                AwaitBuildingThisTMPro.text = TextAwaitArriveWorker;
-            }else if (WhichAction == AwaitBuildingActionText)
-            {
-                AwaitBuildingThisTMPro.text = TextAwaitBuildingThis;
-            }
+            AwaitBuildingThisTMPro.text = WhichText;
         }
         else
         {

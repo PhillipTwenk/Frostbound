@@ -405,20 +405,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingTypeSO: {fileID: 11400000, guid: 8d298ed468768774185c6e21b2dbb0d3, type: 2}
   Title: "\u0414\u043E\u0431\u044B\u0442\u0447\u0438\u043A"
-  textHintBuilding: {fileID: 1066252068129457369}
   Level: 1
   Durability: 100
   Storage: 
   Production: 2800000001000000
   HoneyConsumption: 10
   SaveListIndex: 0
-  AwaitBuildingThisTMPro: {fileID: 1066252068129457369}
-  TextAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u043D\u0438\u0435 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u0430.
-    . . "
-  TextAwaitBuildingThis: "\u0421\u0442\u0440\u043E\u0438\u043C. . . "
-  AwaitWorkerActionText: AwaitWorker
-  AwaitBuildingActionText: AwaitBuilding
   IsThisBuilt: 0
+  AwaitBuildingThisTMPro: {fileID: 1066252068129457369}
+  BuildingVE: {fileID: 3605468693236232073}
   StartBuildingFunctionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -434,7 +429,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  BuildingVE: {fileID: 3605468693236232073}
 --- !u!114 &3683477478396116158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,17 +441,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcdf1e680146454fa6e7dac26900752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PossiblityPutEInThisBuilding: 0
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
-  OpenBarterMenuEvent: {fileID: 0}
-  CloseBarterMenuEvent: {fileID: 0}
+  PossiblityPutEInThisBuilding: 0
   InteractionEvent:
     m_PersistentCalls:
       m_Calls: []
   TextOnEvent:
     m_PersistentCalls:
       m_Calls: []
-  Texthint: {fileID: 0}
+  IsThereBarterHere: 0
+  OpenBarterMenuEvent: {fileID: 0}
+  CloseBarterMenuEvent: {fileID: 0}
   PointsOfBuildings:
   - {fileID: 3848195277624563470}
   - {fileID: 1960861704675936411}
@@ -467,6 +461,7 @@ MonoBehaviour:
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  Texthint: {fileID: 0}
 --- !u!95 &1164435565411162428
 Animator:
   serializedVersion: 7

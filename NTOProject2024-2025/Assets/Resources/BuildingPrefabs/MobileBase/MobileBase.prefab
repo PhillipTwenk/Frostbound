@@ -979,7 +979,7 @@ Transform:
   m_GameObject: {fileID: 1858607121437976956}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.9995907, z: -0, w: -0.028609635}
-  m_LocalPosition: {x: -24.6, y: 0.104871035, z: 20.7}
+  m_LocalPosition: {x: -28.9, y: 0.104871035, z: 23.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2817,11 +2817,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8770141329945838586}
   - component: {fileID: 7209348819534025818}
-  - component: {fileID: 3260477847104120349}
   - component: {fileID: 4621078515220219383}
   - component: {fileID: 7397327128136730623}
   - component: {fileID: 7764499367831402566}
-  - component: {fileID: 6084861644597935267}
   - component: {fileID: 8281539622866198797}
   m_Layer: 7
   m_Name: TechTriggerScripts
@@ -2887,51 +2885,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5097370011884464057}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3260477847104120349
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5097370011884464057}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4621078515220219383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2967,20 +2920,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingTypeSO: {fileID: 11400000, guid: 1c664cdfdc9b9df4f987f9fa0083fdfb, type: 2}
   Title: "\u041C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0431\u0430\u0437\u0430"
-  textHintBuilding: {fileID: 6489670596414684063}
   Level: 1
   Durability: 175
   Storage: dc0500000a000000
   Production: 0000000014000000
   HoneyConsumption: 0
   SaveListIndex: 0
-  AwaitBuildingThisTMPro: {fileID: 6489670596414684063}
-  TextAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u043D\u0438\u0435 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u0430.
-    . . "
-  TextAwaitBuildingThis: "\u0421\u0442\u0440\u043E\u0438\u043C. . . "
-  AwaitWorkerActionText: AwaitWorker
-  AwaitBuildingActionText: AwaitBuilding
   IsThisBuilt: 1
+  AwaitBuildingThisTMPro: {fileID: 6489670596414684063}
+  BuildingVE: {fileID: 952179335023483407}
   StartBuildingFunctionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2996,7 +2944,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  BuildingVE: {fileID: 952179335023483407}
 --- !u!114 &7764499367831402566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,10 +2956,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcdf1e680146454fa6e7dac26900752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PossiblityPutEInThisBuilding: 1
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
-  OpenBarterMenuEvent: {fileID: 11400000, guid: 4921662764b76d143bb3b89a8e370e58, type: 2}
-  CloseBarterMenuEvent: {fileID: 11400000, guid: a6af6a147a616a34c801f8a2bd09b3b2, type: 2}
+  PossiblityPutEInThisBuilding: 1
   InteractionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -3031,7 +2976,9 @@ MonoBehaviour:
   TextOnEvent:
     m_PersistentCalls:
       m_Calls: []
-  Texthint: {fileID: 4235555856182636373}
+  IsThereBarterHere: 1
+  OpenBarterMenuEvent: {fileID: 11400000, guid: 4921662764b76d143bb3b89a8e370e58, type: 2}
+  CloseBarterMenuEvent: {fileID: 11400000, guid: a6af6a147a616a34c801f8a2bd09b3b2, type: 2}
   PointsOfBuildings:
   - {fileID: 5303162940219184309}
   - {fileID: 7433930302779310458}
@@ -3041,23 +2988,7 @@ MonoBehaviour:
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &6084861644597935267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5097370011884464057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33815807fd64a419d874f207d3b6f3b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CreateNewWorkerTutorial: {fileID: 0}
-  CurrentNumberWorkersInThisBuilding: 1
-  MaxValueOfWorkersInThisBuilding: 1
-  buildingSpawnWorkerPointTransform: {fileID: 8905097784749352164}
-  WorkerPrefab: {fileID: 67134279220973632, guid: 2b8c70bf79e155548b26a1276899683d, type: 3}
+  Texthint: {fileID: 4235555856182636373}
 --- !u!114 &8281539622866198797
 MonoBehaviour:
   m_ObjectHideFlags: 0

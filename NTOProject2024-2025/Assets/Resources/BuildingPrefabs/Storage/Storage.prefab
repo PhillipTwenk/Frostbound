@@ -1648,24 +1648,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingTypeSO: {fileID: 11400000, guid: c5486c64f7e54a540b018484d4110f4a, type: 2}
   Title: "\u0425\u0440\u0430\u043D\u0438\u043B\u0438\u0449\u0435"
-  textHintBuilding: {fileID: 6714352858663713054}
   Level: 1
   Durability: 100
   Storage: dc0500000a000000
   Production: 00000000
   HoneyConsumption: 0
   SaveListIndex: 0
-  AwaitBuildingThisTMPro: {fileID: 6714352858663713054}
-  TextAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u043D\u0438\u0435 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u0430.
-    . . "
-  TextAwaitBuildingThis: "\u0421\u0442\u0440\u043E\u0438\u043C. . . "
-  AwaitWorkerActionText: AwaitWorker
-  AwaitBuildingActionText: AwaitBuilding
   IsThisBuilt: 0
+  AwaitBuildingThisTMPro: {fileID: 6714352858663713054}
+  BuildingVE: {fileID: 3712741161494574104}
   StartBuildingFunctionEvent:
     m_PersistentCalls:
       m_Calls: []
-  BuildingVE: {fileID: 3712741161494574104}
 --- !u!114 &517443707910621167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1678,17 +1672,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcdf1e680146454fa6e7dac26900752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PossiblityPutEInThisBuilding: 0
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
   OpenBarterMenuEvent: {fileID: 0}
   CloseBarterMenuEvent: {fileID: 0}
+  PossiblityPutEInThisBuilding: 0
   InteractionEvent:
     m_PersistentCalls:
       m_Calls: []
   TextOnEvent:
     m_PersistentCalls:
       m_Calls: []
-  Texthint: {fileID: 0}
   PointsOfBuildings:
   - {fileID: 427550019803902708}
   - {fileID: 2777084632413483549}
@@ -1698,6 +1691,7 @@ MonoBehaviour:
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  Texthint: {fileID: 0}
 --- !u!65 &8437871356377438773
 BoxCollider:
   m_ObjectHideFlags: 0

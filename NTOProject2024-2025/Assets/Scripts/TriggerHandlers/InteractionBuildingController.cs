@@ -6,26 +6,30 @@ using UnityEngine.Events;
 
 public class InteractionBuildingController : MonoBehaviour
 {
-    private bool CanPutE;
-    [SerializeField] private bool PossiblityPutEInThisBuilding;
-    
+    [Header("Events")]
     [SerializeField] private GameEvent OpenDescriptionPanel;
-    public GameEvent OpenBarterMenuEvent;
-    public GameEvent CloseBarterMenuEvent;
+
+    [Header("InteractionSystem")]
+    [SerializeField] private bool PossiblityPutEInThisBuilding;
+    [ShowIfBool("PossiblityPutEInThisBuilding")][SerializeField] private UnityEvent InteractionEvent;
+    [ShowIfBool("PossiblityPutEInThisBuilding")][SerializeField] private UnityEvent TextOnEvent;
+    [ShowIfBool("PossiblityPutEInThisBuilding")][SerializeField] private bool IsThereBarterHere;
+    [ShowIfBool("IsThereBarterHere")]public GameEvent OpenBarterMenuEvent;
+    [ShowIfBool("IsThereBarterHere")]public GameEvent CloseBarterMenuEvent;
+    
+    [Header("Flags")]
+    private bool CanPutE;
+
+    [Header("Building Data")]
+    public List<Transform> PointsOfBuildings;
+    public Transform spawnWorker;
     private BuildingData _buildingData;
 
-    [Header("InteractionEvents")]
-    [SerializeField] private UnityEvent InteractionEvent;
-    [SerializeField] private UnityEvent TextOnEvent;
-    
-
-    public GameObject Texthint;
-
-    public List<Transform> PointsOfBuildings;
-
-    public Transform spawnWorker;
-
+    [Header("Layer masks")]
     [SerializeField] private LayerMask placementLayerMask; // Для клика по зданию
+    
+    [Header("Hint")]
+    public GameObject Texthint;
 
     private void Start()
     {

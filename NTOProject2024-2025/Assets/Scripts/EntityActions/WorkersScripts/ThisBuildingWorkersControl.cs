@@ -9,13 +9,13 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     [Header("Tutorial")]
     [SerializeField] private TutorialObjective CreateNewWorkerTutorial;
     
+    [Header("Workers control")]
     public int CurrentNumberWorkersInThisBuilding;
     public int MaxValueOfWorkersInThisBuilding;
-    //public int NumberOfActiveWorkersInThisBuilding;
-
-    public Transform buildingSpawnWorkerPointTransform;
-
     public GameObject WorkerPrefab;
+
+    [Header("Points")]
+    public Transform buildingSpawnWorkerPointTransform;
 
     /// <summary>
     /// Обновление текста панели

@@ -26,13 +26,12 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private Transform currentWalkingPoint;
     private NavMeshAgent agent;
     public Camera MainCamera;
+    private Rigidbody _rb;
     
     [Header("Visual")]
     public GameObject OutlineRotate;
     public GameObject OutlinePOD;
     private Animator anim;
-    
-    private Rigidbody _rb;
     void Start()
     {
         possibilityClickOnPlayer = true;
@@ -125,7 +124,7 @@ public class PlayerMovementController : MonoBehaviour
             if (hit.collider.CompareTag("ClickOnBuilding"))
             {
                 SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject; // Выбранное здание
-                Debug.Log($"текущее здание для пострйоки{SelectedBuilding}");
+                Debug.Log($"текущее здание для постройки {SelectedBuilding.GetComponent<BuildingData>().Title}");
                 IsClickOnOtherEntity = false;
             }
             else if (hit.collider.CompareTag("ClickOnWorker"))

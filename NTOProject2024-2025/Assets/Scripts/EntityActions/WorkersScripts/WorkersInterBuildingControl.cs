@@ -9,38 +9,40 @@ using UnityEngine.Rendering.Universal;
 public class WorkersInterBuildingControl : MonoBehaviour
 {
     public static WorkersInterBuildingControl Instance { get; set;}
-
-    //[TextArea] [SerializeField] private string HintTextNotEnoughtWorkers;
-    //[SerializeField] private float TimeHintActive;
+    
+    [Header("Texts in building hint")]
     [TextArea] [SerializeField] private string HintAwaitArriveWorker;
     [TextArea] [SerializeField] private string HintAwaitBuilding;
 
+    [Header("Control workers & players")]
     public int CurrentValueOfWorkers; // Общее текущее количество рабочих
     public int MaxValueOfWorkers; // Максимальное количество рабочих при параметрах потребления еды
-    public int NumberOfFreeWorkers; // количество рабочих, участвующий на данный момент в постройке здания или на работе в пасеке/пристани
-
-    public static BuildingData CurrentBuilding;
-
-    public List<ThisBuildingWorkersControl> listOfActiveBuildingWithWorkers;
-
-    // public GameObject TextHintGameObject;
-    // public TextMeshProUGUI HintTextTMPro;
-
-    public event Action IsWorkerHereEvent; // Игрок прибыл
+    public int NumberOfFreeWorkers; // количество рабочих, участвующий на данный момент в постройке здания или на работе в пасеке
+    
+    [Header("Selected entity")]
     public static WorkerMovementController SelectedWorker;
     public static PlayerMovementController SelectedPlayer;
-    public Camera mainCamera;
-    public static Camera MainCamera;
-
-    private bool IsWorkersHere;
-    
-    [SerializeField] private LayerMask workerLayerMask;
-
     private WorkerMovementController thisWorker;
     private PlayerMovementController thisPlayer;
-
+    
+    [Header("Flags")]
+    private bool IsWorkersHere;
     private bool firstMouseEnterOutlineIndicator; // Если нажали на рабочего/игрока для снятия с него выделения, то выделение при наведении будет работать только при повторном выделении
     public static bool possiilityControlEntities;
+    
+
+    [Header("Control building")]
+    public List<ThisBuildingWorkersControl> listOfActiveBuildingWithWorkers;
+    public static BuildingData CurrentBuilding;
+    
+    [Header("Camera")]
+    public Camera mainCamera;
+    public static Camera MainCamera;
+    
+    [Header("Layer masks")]
+    [SerializeField] private LayerMask workerLayerMask;
+    
+    public event Action IsWorkerHereEvent; // Игрок прибыл
 
 
     private void Awake()
@@ -248,7 +250,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
     ///<summary> 
     /// Отправляет рабочих на строительство / возвращает их обратно
     ///</summary>
-    public async Task SendWorkerToBuilding(bool IsSend, BuildingData buildingData, Transform buildingTransform)
+    public async Task SendWorkerToBuilding(bool IsSend, BuildingData buildingData)
     {
         if(IsSend) // Ержана дернули с кровати и отправили строить крымский мост
         {
@@ -256,7 +258,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
             
             Debug.Log("Рабочий отправился строить здание, ожидаем его прибытия");
 
-            buildingData.TextPanelBuildingControl(true, buildingData.AwaitWorkerActionText);
+            buildingData.TextPanelBuildingControl(true, HintAwaitArriveWorker);
 
             // SendWorkerToBuildingAnimationControl(buildingTransform);
             
@@ -308,15 +310,15 @@ public class WorkersInterBuildingControl : MonoBehaviour
     ///<summary> 
     /// Ожидание завершения строительства
     ///</summary>
-    public async Task WorkerEndWork(BuildingData buildingData, Transform buildingTransform)
+    public async Task WorkerEndWork(BuildingData buildingData)
     {
-        buildingData.TextPanelBuildingControl(true, buildingData.AwaitBuildingActionText);
+        buildingData.TextPanelBuildingControl(true, HintAwaitBuilding);
 
         await AwaitEndWorking(buildingData);
 
         //Debug.Log("Рабочий достроил, идет обратно");
         
-        buildingData.TextPanelBuildingControl(false, buildingData.AwaitBuildingActionText);
+        buildingData.TextPanelBuildingControl(false, HintAwaitBuilding);
     }
 
     private async Task AwaitEndWorking(BuildingData buildingData)

@@ -12,34 +12,10 @@ public class EnergyProduction : MonoBehaviour
     [SerializeField] private TutorialObjective WorkerStartWorkingOnApiaryTutorial;
     
     private BuildingData _buildingData;
+    
+    [Header("Events")]
     [SerializeField] private GameEvent ResourceUpdateEvent;
-
-    // private void OnEnable()
-    // {
-    //     _buildingData = GetComponent<BuildingData>();
-    //     if (_buildingData.Title == "Мобильная база")
-    //     {
-    //         _buildingData.StartBuildingFunctionEvent?.Invoke();
-    //     }
-    // }
-
-    // private void OnMouseDown()
-    // {
-    //     _buildingData = GetComponent<BuildingData>();
-    //     if (_buildingData.Storage[0] < 1)
-    //     {
-    //         WorkerGoToThisBuilding.TriggerEvent();
-    //     }
-    // }
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.gameObject.CompareTag("Worker") && other.gameObject.GetComponent<WorkerMovementController>().isSelected && other.gameObject.GetComponent<WorkerMovementController>().ReadyForWork)
-    //     {
-    //         _buildingData.Storage[0] += 1;
-    //     }
-    // }
-
+    
     public async void OnAddEnergy()
     {
         _buildingData = GetComponent<BuildingData>();

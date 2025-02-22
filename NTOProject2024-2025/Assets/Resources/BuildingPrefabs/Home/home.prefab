@@ -2236,24 +2236,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingTypeSO: {fileID: 11400000, guid: 1045c09b0f777c9448181554ec481f2c, type: 2}
   Title: "\u0416\u0438\u043B\u043E\u0439 \u043C\u043E\u0434\u0443\u043B\u044C"
-  textHintBuilding: {fileID: 4279403885778298507}
   Level: 1
   Durability: 150
   Storage: 02000000
   Production: 
   HoneyConsumption: 10
   SaveListIndex: 0
-  AwaitBuildingThisTMPro: {fileID: 4279403885778298507}
-  TextAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u043D\u0438\u0435 \u043A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440\u0430.
-    . . "
-  TextAwaitBuildingThis: "\u0421\u0442\u0440\u043E\u0438\u043C. . . "
-  AwaitWorkerActionText: AwaitWorker
-  AwaitBuildingActionText: AwaitBuilding
   IsThisBuilt: 0
+  AwaitBuildingThisTMPro: {fileID: 4279403885778298507}
+  BuildingVE: {fileID: 6155389542320789682}
   StartBuildingFunctionEvent:
     m_PersistentCalls:
       m_Calls: []
-  BuildingVE: {fileID: 6155389542320789682}
 --- !u!114 &2468893000708977087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2266,10 +2260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcdf1e680146454fa6e7dac26900752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PossiblityPutEInThisBuilding: 1
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
-  OpenBarterMenuEvent: {fileID: 11400000, guid: 4921662764b76d143bb3b89a8e370e58, type: 2}
-  CloseBarterMenuEvent: {fileID: 11400000, guid: a6af6a147a616a34c801f8a2bd09b3b2, type: 2}
+  PossiblityPutEInThisBuilding: 1
   InteractionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2300,7 +2292,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Texthint: {fileID: 3584302635231486536}
+  IsThereBarterHere: 0
+  OpenBarterMenuEvent: {fileID: 0}
+  CloseBarterMenuEvent: {fileID: 0}
   PointsOfBuildings:
   - {fileID: 5839593067991148040}
   - {fileID: 1541845875943574117}
@@ -2310,6 +2304,7 @@ MonoBehaviour:
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  Texthint: {fileID: 3584302635231486536}
 --- !u!114 &1293258829956571046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,8 +2320,8 @@ MonoBehaviour:
   CreateNewWorkerTutorial: {fileID: 11400000, guid: 5cd184f70bd4635449d504169676b263, type: 2}
   CurrentNumberWorkersInThisBuilding: 2
   MaxValueOfWorkersInThisBuilding: 2
-  buildingSpawnWorkerPointTransform: {fileID: 1551578056173623974}
   WorkerPrefab: {fileID: 845355837700331742, guid: 31fe78fb1a4b70148a0cff384810ff37, type: 3}
+  buildingSpawnWorkerPointTransform: {fileID: 1551578056173623974}
 --- !u!65 &8277959642194642565
 BoxCollider:
   m_ObjectHideFlags: 0
