@@ -8,30 +8,35 @@ public class WorkerMovementController : MonoBehaviour
     [SerializeField] private TutorialObjective WorkerStartMovementToApiaryTutorial;
     private bool IsWorkerMove;
     private bool IsWorkerMovetoApiary;
-
-    [SerializeField] private string NameOfTTS;
-    public Transform WorkerPointOfDestination;
-    private NavMeshAgent agent;
+    
+    [Header("Flags")]
     public bool ReadyForWork;
+    private bool IsClickOnOtherEntity; // Кликнули на игрока
     public bool ArriveForBuildBuidling;
     public bool isSelected;
     public bool isSelecting; // Мышь наведена на персонажа
     public bool possibilityClickOnWorker;
-    private Animator anim;
-    public GameObject SelectedBuilding; // techTriggerScripts
-    [SerializeField] private LayerMask placementLayerMask;
-    [SerializeField] private LayerMask workerLayerMask;
-    public Camera MainCamera;
-    [SerializeField] private Transform currentWalkingPoint;
-    //[SerializeField] private Material OutlineMaterial;
-    //[SerializeField] private Color OutlineColor;
-    //[SerializeField] private Color BasedOutlineColor;
+    
+    [Header("Visual")]
     public GameObject OutlineRotate;
     public GameObject OutlinePOD;
+    private Animator anim;
     
+    [Header("System")]
+    [SerializeField] private string NameOfTTS;
+    public Transform WorkerPointOfDestination;
+    private NavMeshAgent agent;
+    public GameObject SelectedBuilding; // techTriggerScripts
+    public Camera MainCamera;
+    [SerializeField] private Transform currentWalkingPoint;
     private Rigidbody _rb;
+    
+    [Header("LayerMasks")]
+    [SerializeField] private LayerMask placementLayerMask;
+    [SerializeField] private LayerMask workerLayerMask;
     void Start()
     {
+        IsClickOnOtherEntity = false;
         possibilityClickOnWorker = true;
         currentWalkingPoint.gameObject.SetActive(false);
         ReadyForWork = true;
@@ -52,15 +57,15 @@ public class WorkerMovementController : MonoBehaviour
 
     void Update()
     {
-        if(isSelected && possibilityClickOnWorker){
+        if(isSelected && WorkersInterBuildingControl.possiilityControlEntities){
             
             if (Input.GetMouseButtonDown(0) && !isSelecting)
             {
                 Vector3 point = GetSelectedMapPosition();
                 currentWalkingPoint.gameObject.SetActive(true);
                 
-                // Если клинкули не на здание
-                if(SelectedBuilding == null){
+                // Если клинкули не на здание и не на другую сущность
+                if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
                     ArriveForBuildBuidling = false;
                     if (!IsWorkerMove)
@@ -105,16 +110,6 @@ public class WorkerMovementController : MonoBehaviour
                 SetWorkerDestination(currentWalkingPoint.transform, false);
             }
         }
-        // if (!Input.GetMouseButtonDown(0))
-        // {
-        //     MouseDownOnWorker(false); // Наводим мышку на персонажа
-        //     return;
-        // }
-        // if (Input.GetMouseButtonDown(0) && isSelecting)
-        // {
-        //     MouseDownOnWorker(true); // Нажимаем на рабочего
-        //     return;
-        // }
 
         
         if (WorkerPointOfDestination) 
@@ -134,65 +129,8 @@ public class WorkerMovementController : MonoBehaviour
             anim.SetBool("Running", false);
             anim.SetBool("Idle", true);
             OutlinePOD.SetActive(false);
-            //if (SelectedBuilding){
-                //SelectedBuilding = null;
-            //}
         }
     }
-
-    // public void MouseDownOnWorker(bool OnClick)
-    // {
-    //     Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition); 
-    //     RaycastHit hit;
-    //     Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.yellow, 5f);
-    //
-    //     if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask))
-    //     {
-    //         if (hit.collider.CompareTag("ClickOnWorker"))
-    //         {
-    //             if (OnClick)
-    //             {
-    //                 if (possibilityClickOnWorker)
-    //                 {
-    //                     Debug.Log("Нажали на рабочего");
-    //                     if (!isSelected) 
-    //                     {
-    //                         if (WorkersInterBuildingControl.SelectedWorker != null)
-    //                         {
-    //                             WorkersInterBuildingControl.SelectedWorker.isSelected = false;
-    //                             WorkersInterBuildingControl.SelectedWorker.isSelecting = false;
-    //                         }
-    //                         OutlineRotate.SetActive(true);
-    //                         isSelected = true;
-    //                         WorkersInterBuildingControl.SelectedWorker = this;
-    //                     } 
-    //                     else 
-    //                     {
-    //                         OutlineRotate.SetActive(false);
-    //                         isSelected = false;
-    //                         WorkersInterBuildingControl.SelectedWorker = null;
-    //                     }
-    //                 }
-    //             }
-    //             else // Наведение без клика
-    //             {
-    //                 isSelecting = true;
-    //                 if (!isSelected && possibilityClickOnWorker)
-    //                 {
-    //                     OutlineRotate.SetActive(true);
-    //                 }
-    //             }
-    //             return; // Выход из метода, если Raycast попал в рабочего
-    //         }
-    //     }
-    //
-    //     // Если Raycast НЕ попал в рабочего, сбрасываем выделение
-    //     isSelecting = false;
-    //     if (!isSelected && possibilityClickOnWorker)
-    //     {
-    //         OutlineRotate.SetActive(false);
-    //     }
-    // }
 
     public Vector3 GetSelectedMapPosition()
     {
@@ -208,9 +146,17 @@ public class WorkerMovementController : MonoBehaviour
             {
                 SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject; // Выбранное здание
                 Debug.Log($"текущее здание для пострйоки{SelectedBuilding}");
+                IsClickOnOtherEntity = false;
+            }
+            else if (hit.collider.CompareTag("ClickOnWorker") || hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Кликнуи на игрока или другого рабочего");
+                IsClickOnOtherEntity = true;
+                SelectedBuilding = null;
             }
             else
             {
+                IsClickOnOtherEntity = false;
                 SelectedBuilding = null;
                 OutlinePOD.SetActive(true);
             }
@@ -231,42 +177,6 @@ public class WorkerMovementController : MonoBehaviour
             //Debug.Log($"Setting destination to: {point.position}");
         }
     }
-    // private void OnMouseDown() {
-    //     if (possibilityClickOnWorker)
-    //     {
-    //         if (!isSelected) {
-    //             if (WorkersInterBuildingControl.SelectedWorker != null)
-    //             {
-    //                 WorkersInterBuildingControl.SelectedWorker.isSelected = false;
-    //                 WorkersInterBuildingControl.SelectedWorker.isSelecting = false;
-    //             }
-    //             OutlineRotate.SetActive(true);
-    //             isSelected = true;
-    //             WorkersInterBuildingControl.SelectedWorker = this;
-    //         } else {
-    //             OutlineRotate.SetActive(false);
-    //             isSelected = false;
-    //             WorkersInterBuildingControl.SelectedWorker = this;
-    //         }
-    //     }
-    // }
-
-    // private void OnMouseEnter() {
-    //     isSelecting = true;
-    //     if(!isSelected && possibilityClickOnWorker)
-    //     {
-    //         OutlineRotate.SetActive(true);
-    //         //OutlineMaterial.color = OutlineColor;
-    //     }
-    // }
-    //
-    // private void OnMouseExit() {
-    //     isSelecting = false;
-    //     if(!isSelected && possibilityClickOnWorker){
-    //         OutlineRotate.SetActive(false);
-    //         //OutlineMaterial.color = BasedOutlineColor;
-    //     }
-    // }
 
     private void OnDisable()
     {

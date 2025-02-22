@@ -281,7 +281,7 @@ MonoBehaviour:
   WASDTutorial: {fileID: 11400000, guid: 732632575245b9d4ca0baa884ad02397, type: 2}
   placementLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 832
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 1024

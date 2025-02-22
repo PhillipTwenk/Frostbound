@@ -253,7 +253,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
         
         UpdateResourcesEvent.TriggerEvent();
 
-        JSONSerializeManager.Instance.OnApplicationQuit();
+        JSONSerializeManager.Instance.JSONSave();
         
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }
@@ -369,7 +369,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             }
         }
         
-        JSONSerializeManager.Instance.OnApplicationQuit();
+        JSONSerializeManager.Instance.JSONSave();
         
         UpdateResourcesEvent.TriggerEvent();
         
