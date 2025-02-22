@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &176569791
+GameObject:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176569793}
+  - component: {fileID: 176569792}
+  m_Layer: 0
+  m_Name: PrefabPainterSceneSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &176569792
+MonoBehaviour:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176569791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0d71238b38a4a38b35b955fbf5c019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentForPrefabs: {fileID: 0}
+--- !u!4 &176569793
+Transform:
+  m_ObjectHideFlags: 19
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176569791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &230031910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -450,10 +495,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8343fc79a9d7fef429f7d345b878a06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 655656493}
-  offsetPos: {x: -4, y: 4, z: -4}
-  moveSpeed: 20
-  smooth: 0
+  maxScrollSpeed: 10
+  acceleration: 5
+  deceleration: 5
+  edgeThreshold: 10
+  minBounds: {x: -50, y: -50}
+  maxBounds: {x: 50, y: 50}
 --- !u!4 &549604086
 Transform:
   m_ObjectHideFlags: 0
@@ -727,11 +774,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 402273569723118443, guid: 297b5f44613c4ae4f89f1c0f3dfc9856, type: 3}
   m_PrefabInstance: {fileID: 655656491}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &655656493 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6341044334749426316, guid: 297b5f44613c4ae4f89f1c0f3dfc9856, type: 3}
-  m_PrefabInstance: {fileID: 655656491}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &655656494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +787,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: {fileID: 11400000, guid: 7ebb1e7c1eb3f9443bba2238db1615d3, type: 2}
+  Speed: 0
+  SprintSpeed: 0
+  NormalSpeed: 0
   matrix: 1
 --- !u!1 &752511128
 GameObject:
@@ -1400,3 +1445,4 @@ SceneRoots:
   - {fileID: 1594307158}
   - {fileID: 1344539931}
   - {fileID: 230031910}
+  - {fileID: 176569793}
