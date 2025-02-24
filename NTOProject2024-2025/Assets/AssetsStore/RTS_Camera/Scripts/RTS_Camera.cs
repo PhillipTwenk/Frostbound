@@ -53,8 +53,8 @@ namespace RTS_Cam
         public float keyboardZoomingSensitivity = 2f;
         public float scrollWheelZoomingSensitivity = 25f;
         public float scrollWheelSizeZooming = 25f;
-        public float maxSizeZoomValue = 200f;
-        public float minSizeZoomValue = 100f;
+        public float maxSizeZoomValue = 30f;
+        public float minSizeZoomValue = 50f;
 
         private float zoomPos = 0; //value in range (0, 1) used as t in Matf.Lerp
         private float zoomSizePos = 0;
@@ -289,7 +289,7 @@ namespace RTS_Cam
 
                 float currentSize = Mathf.Lerp(minSizeZoomValue, maxSizeZoomValue, zoomSizePos);
 
-                thisCamera.orthographicSize = currentSize;
+                thisCamera.fieldOfView = currentSize;
             }
             float distanceToGround = DistanceToGround();
             if(useScrollwheelZooming)
@@ -381,7 +381,7 @@ namespace RTS_Cam
         #region SaveData
 
         private const string saveSizeKey = "PlayerPrefsSaveCameraZoomSizeData";
-        private float DefaultPPSaveSizeValue = 0.5f;
+        private float DefaultPPSaveSizeValue = 40f;
         
         /// <summary>
         /// Получение сохраненных данных о значении зума
