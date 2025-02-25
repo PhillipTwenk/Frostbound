@@ -22,4 +22,4 @@ MonoBehaviour:
   resourceProduction: 0
   PlanPrefab: {fileID: 1548010156175141855, guid: 403a162ede92c5c41882054e4ff115d5, type: 3}
   buildingSO: {fileID: 11400000, guid: c5486c64f7e54a540b018484d4110f4a, type: 2}
-  planSprite: {fileID: 21300000, guid: 627c3ded15de9a7469f944c15a181551, type: 3}
+  planSprite: {fileID: 21300000, guid: a0dfd113d8319ec418259fa6c845f8ca, type: 3}

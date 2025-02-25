@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using RTS_Cam;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -85,24 +86,37 @@ public class UIManager : MonoBehaviour
         Utility.Invoke(this, () => failedRequestLimitExceededUITMP_Text.transform.parent.gameObject.SetActive(false),
             8f);
     }
-
+    
+    public void CloseAndOpenBuildingPanel(bool IsOpenBuildingPanel)
+    {
+        if (IsOpenBuildingPanel)
+        {
+            Debug.Log("Открыта панель строительства");
+            RTS_Camera.possibilityZoomCamera = false;
+            PlansPanelOpenTutorial.CheckAndUpdateTutorialState();
+            OpenBuildingPanelEvent.TriggerEvent();
+            this.IsOpenBuildingPanel = false;
+        }
+        else
+        {
+            Debug.Log("Закрыта панель строительства");
+            RTS_Camera.possibilityZoomCamera = true;
+            EndPlacingBuildEvent.TriggerEvent();
+            CloseBuildingPanelEvent.TriggerEvent();
+            Destroy(BuildingManager.Instance.MouseIndicator);
+            this.IsOpenBuildingPanel = true;
+        }
+    }
     private void Update()
     {
         if (Input.GetButtonDown("OpenBuildingPanel") && IsOpenBuildingPanel)
         {
-            Debug.Log("Открыта панель строительства");
-            PlansPanelOpenTutorial.CheckAndUpdateTutorialState();
-            OpenBuildingPanelEvent.TriggerEvent();
-            IsOpenBuildingPanel = false;
+            CloseAndOpenBuildingPanel(IsOpenBuildingPanel);
             return;
         }
         if (Input.GetButtonDown("OpenBuildingPanel") && !IsOpenBuildingPanel)
         {
-            Debug.Log("Закрыта панель строительства");
-            EndPlacingBuildEvent.TriggerEvent();
-            CloseBuildingPanelEvent.TriggerEvent();
-            Destroy(BuildingManager.Instance.MouseIndicator);
-            IsOpenBuildingPanel = true;
+            CloseAndOpenBuildingPanel(IsOpenBuildingPanel);
             return;
         }
         if (IsExtremeActivated) 
@@ -217,6 +231,7 @@ public class UIManager : MonoBehaviour
     public void CloseBarterMenu()
     {
         CloseBarterMenuEvent.TriggerEvent();
+        RTS_Camera.possibilityZoomCamera = true;
     }
     
     /// <summary>

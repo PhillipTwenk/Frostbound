@@ -28,4 +28,4 @@ MonoBehaviour:
     / 10 \u0441\u0435\u043A\u0443\u043D\u0434"
   PlanPrefab: {fileID: 1548010156175141855, guid: 403a162ede92c5c41882054e4ff115d5, type: 3}
   buildingSO: {fileID: 11400000, guid: 8d298ed468768774185c6e21b2dbb0d3, type: 2}
-  planSprite: {fileID: 21300000, guid: 2cbfa2005b565de46a3880783db7305f, type: 3}
+  planSprite: {fileID: 21300000, guid: 127b2f172a4494a4faa3ea638592efb8, type: 3}

@@ -26,4 +26,4 @@ MonoBehaviour:
   resourceProduction: "1 \u0432\u044B\u0441\u0442\u0440\u0435\u043B / \u0441\u0435\u043A"
   PlanPrefab: {fileID: 1548010156175141855, guid: 403a162ede92c5c41882054e4ff115d5, type: 3}
   buildingSO: {fileID: 11400000, guid: 311937a1276102942b70bcfee2a5ef55, type: 2}
-  planSprite: {fileID: 21300000, guid: 3ecbf702c534ae849a08db4075846290, type: 3}
+  planSprite: {fileID: 21300000, guid: 0437df02640423149b22fde87deae351, type: 3}

@@ -59,6 +59,8 @@ namespace RTS_Cam
         private float zoomPos = 0; //value in range (0, 1) used as t in Matf.Lerp
         private float zoomSizePos = 0;
 
+        public static bool possibilityZoomCamera;
+
         #endregion
 
         #region MapLimits
@@ -181,6 +183,7 @@ namespace RTS_Cam
             thisCamera = GetComponent<Camera>();
             GetSaveSizeData();
             JSONSerializeManager.playerPrefsSaveMethods += SaveNewSizeData;
+            possibilityZoomCamera = true;
         }
 
         private void OnDisable()
@@ -274,7 +277,7 @@ namespace RTS_Cam
         /// </summary>
         private void HeightCalculation()
         {
-            if (useSizeZooming)
+            if (useSizeZooming && possibilityZoomCamera)
             {
                 if (scrollWheelInversion)
                 {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using RTS_Cam;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -142,25 +143,6 @@ public class InteractionBuildingController : MonoBehaviour
                     }
                 }
             }
-            
-            
-            // Если данное здание является текущим у данного рабочего
-            //if (WorkersInterBuildingControl.CurrentBuilding == gameObject.GetComponent<BuildingData>() && WorkersInterBuildingControl.CurrentBuilding.Title == GetComponent<BuildingData>().Title)
-            //{
-                
-                // Если данное здание может содержать рабочих, и при этом рабочий не занят постройкой здания + здание вообще построено
-                //if (GetComponent<ThisBuildingWorkersControl>() && !other.gameObject.GetComponent<WorkerMovementController>().ReadyForWork && BuildingManager.Instance.ProcessWorkerBuildingActive && _buildingData.IsThisBuilt)
-                //{
-                    //BuildingManager.Instance.ProcessWorkerBuildingActive = false;
-                    //return;
-                //} 
-            //}
-            
-            // Рабочий прибыл для работы на пасеке/пристани
-            //if ((other.gameObject.GetComponent<WorkerMovementController>().SelectedBuilding.GetComponent<BuildingData>().buildingTypeSO.IDoB == GetComponent<BuildingData>().buildingTypeSO.IDoB) && other.gameObject.GetComponent<WorkerMovementController>().ReadyForWork)
-            //{
-                
-            //}
         }
     }
     
@@ -193,6 +175,7 @@ public class InteractionBuildingController : MonoBehaviour
     public void OpenBarterMenu()
     {
         OpenBarterMenuEvent.TriggerEvent();
+        RTS_Camera.possibilityZoomCamera = false;
     }
     
     /// <summary>
