@@ -23,7 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/RTS_Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/RTS_Camera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Shop/PriceEmpty.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Shop/PriceEmpty.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,6 +314,7 @@
       <workItem from="1740207574293" duration="13421000" />
       <workItem from="1740235641203" duration="5245000" />
       <workItem from="1740426240327" duration="862000" />
+      <workItem from="1740469177606" duration="1959000" />
     </task>
     <servers />
   </component>
