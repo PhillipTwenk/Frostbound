@@ -12,41 +12,52 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TutorialObjective ApiaryStartBuildingTutorial;
     [SerializeField] private TutorialObjective HomeStartBuildingTutorial;
 
+    [Header("UI Control Event")]
     public GameEvent OpenBuildingPanelEvent;
     public GameEvent CloseBuildingPanelEvent;
     public GameEvent StartPlacingBuildEvent;
     public GameEvent EndPlacingBuildEvent;
     public GameEvent OpenBarterMenuEvent;
     public GameEvent CloseBarterMenuEvent;
-    public GameEvent OpenHiringWorkersPanelEvent;
-    public GameEvent CloseHiringWorkersPanelEvent;
-    public GameEvent CloseTabletMenuEvent;
-    public static TabletSO currentTablet; 
-
-    [SerializeField] private Transform NewPlanPosition;
-    [SerializeField] private Transform ContentPanel;
-    [SerializeField] private GameObject TabletPanel;
-    [SerializeField] private TMP_Text TitleTabletPanel;
-    [SerializeField] private TMP_Text DescriptionTabletPanel;
-    [SerializeField] private GameObject ImageTabletPanel;
-    [SerializeField] private GameObject Resources_Icons;
-    [SerializeField] private GameObject ExtremeCondImage;
     
+    [Header("UI Objects")]
+    [SerializeField] private GameObject Resources_Icons;
+    
+    [Header("Extreme")]
+    [SerializeField] private GameObject ExtremeCondImage;
+    public bool IsExtremeActivated;
+    private float timer;
+    private Color tempColor;
+    
+    [Header("Request Error UI")]
     [SerializeField] private TMP_Text failedRequestLimitExceededUITMP_Text;
     [TextArea] [SerializeField] private string failedRequestLimitExceededUIText;
     
-
+    [Header("Plans")]
     [SerializeField] private List<Plan> plansArray;
+    [SerializeField] private Transform NewPlanPosition;
+    [SerializeField] private Transform ContentPanel;
     
+    [Header("Settings initialization")]
     [SerializeField] private VolumeSlider _volumeSliderMusic;
     [SerializeField] private VolumeSlider _volumeSliderEffects;
-    
     [SerializeField] private ScreenResolutionControl _screenResolutionControl;
 
+    [Header("Flags")]
     private bool IsOpenBuildingPanel;
-    private float timer;
-    private Color tempColor;
-    public bool IsExtremeActivated;
+    
+
+    public bool PossibilityZoomCamera
+    {
+        set
+        {
+            RTS_Camera.possibilityZoomCamera = value;
+        }
+        get
+        {
+            return RTS_Camera.possibilityZoomCamera;
+        }
+    }
     
     public static UIManager Instance { get; set; }
 
@@ -234,43 +245,43 @@ public class UIManager : MonoBehaviour
         RTS_Camera.possibilityZoomCamera = true;
     }
     
-    /// <summary>
-    /// Октрытие меню торговли медведями
-    /// </summary>
-    public void OpenHiringWorkersPanel()
-    {
-        OpenHiringWorkersPanelEvent.TriggerEvent();
-    }
+    // /// <summary>
+    // /// Октрытие меню торговли медведями
+    // /// </summary>
+    // public void OpenHiringWorkersPanel()
+    // {
+    //     OpenHiringWorkersPanelEvent.TriggerEvent();
+    // }
+    //
+    // /// <summary>
+    // /// Закрытие меню торговли медведями
+    // /// </summary>
+    // public void CloseHiringWorkersPanel()
+    // {
+    //     CloseHiringWorkersPanelEvent.TriggerEvent();
+    // }
     
-    /// <summary>
-    /// Закрытие меню торговли медведями
-    /// </summary>
-    public void CloseHiringWorkersPanel()
-    {
-        CloseHiringWorkersPanelEvent.TriggerEvent();
-    }
-    
-    /// <summary>
-    /// ОТКРЫЛ ОКОШКО ДУШНО СТАЛО ЫЫЫЫ юный колонизатор 
-    /// </summary>
-    public void FunctionOpenTabletMenu()
-    {
-        Resources_Icons.SetActive(false);
-        TitleTabletPanel.text = "Юный колонизатор\n" + $"#{currentTablet.tablet_id} - " + currentTablet.title;
-        DescriptionTabletPanel.text = currentTablet.description;
-        ImageTabletPanel.GetComponent<Image>().sprite = currentTablet.picture;
+    // /// <summary>
+    // /// ОТКРЫЛ ОКОШКО ДУШНО СТАЛО ЫЫЫЫ юный колонизатор 
+    // /// </summary>
+    // public void FunctionOpenTabletMenu()
+    // {
+    //     Resources_Icons.SetActive(false);
+    //     TitleTabletPanel.text = "Юный колонизатор\n" + $"#{currentTablet.tablet_id} - " + currentTablet.title;
+    //     DescriptionTabletPanel.text = currentTablet.description;
+    //     ImageTabletPanel.GetComponent<Image>().sprite = currentTablet.picture;
+    //
+    //     TabletPanel.SetActive(true);       
+    // }
 
-        TabletPanel.SetActive(true);       
-    }
-
-    /// <summary>
-    /// закрываааааааает окошко юный колонизатор
-    /// </summary>
-    public void FunctionCloseTabletMenu()
-    {
-        Resources_Icons.SetActive(true);
-        TabletPanel.SetActive(false);
-    }
+    // /// <summary>
+    // /// закрываааааааает окошко юный колонизатор
+    // /// </summary>
+    // public void FunctionCloseTabletMenu()
+    // {
+    //     Resources_Icons.SetActive(true);
+    //     TabletPanel.SetActive(false);
+    // }
 
     public void FunctionStartExtremeConditions(){
         IsExtremeActivated = true;

@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f9168cf067106c40836d917dc3df619, type: 3}
-  m_Name: OpenTabletMenu
+  m_Name: OpenQuestPanel
   m_EditorClassIdentifier: 
   Description: 

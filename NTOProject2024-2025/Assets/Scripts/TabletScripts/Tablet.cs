@@ -26,7 +26,7 @@ public class Tablet : MonoBehaviour
             //Отмечаем в скрипте контроля уровня базы
             BaseUpgradeConditionManager.Instance.FindNote[int.Parse(TabletInfo.tablet_id) - 1] = true;
             
-            UIManager.currentTablet = TabletInfo;
+            //UIManager.currentTablet = TabletInfo;
             OpenTabletMenuEvent.TriggerEvent();
             
             gameObject.SetActive(false);

@@ -24,9 +24,39 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/RTS_Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/RTS_Camera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/3D Objects/Boer/TriggerMiner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3D Objects/Boer/TriggerMiner.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/3D Objects/Home/TriggerHome.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3D Objects/Home/TriggerHome.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/3D Objects/Stantion Hall/Stantion Hall Trigger.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3D Objects/Stantion Hall/Stantion Hall Trigger.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/3D Objects/Storage/Storage Trigger.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3D Objects/Storage/Storage Trigger.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/CloseBarterMenuEvent.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/CloseBarterMenuEvent.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/CloseHiringWorkersPanelEvent.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/CloseHiringWorkersPanelEvent.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/EndExtremeConditions.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/EndExtremeConditions.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OfflineModeOffEvent.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OfflineModeOffEvent.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OfflineModeOnEvent.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OfflineModeOnEvent.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OpenBarterMenuEvent.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OpenBarterMenuEvent.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OpenDescriptionPanel.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OpenDescriptionPanel.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OpenHiringWorkersPanelEvent.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/OpenHiringWorkersPanelEvent.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/StartExtremeConditions.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/StartExtremeConditions.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/TabletUIEvents.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/TabletUIEvents/CloseTabletMeny.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/TabletUIEvents/CloseTabletMeny.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/TabletUIEvents/OpenTabletMenu.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/TabletUIEvents/OpenTabletMenu.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/UpdateResourcesEvent.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/UiEvents/UpdateResourcesEvent.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TabletScripts/Tablet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TabletScripts/Tablet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,6 +347,7 @@
       <workItem from="1740469177606" duration="1959000" />
       <workItem from="1740507060307" duration="9162000" />
       <workItem from="1740566431961" duration="307000" />
+      <workItem from="1740607823284" duration="2053000" />
     </task>
     <servers />
   </component>
