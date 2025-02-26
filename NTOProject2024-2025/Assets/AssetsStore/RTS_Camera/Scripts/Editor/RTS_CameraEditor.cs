@@ -54,7 +54,7 @@ namespace RTS_Cam
 
             if(camera.useScreenEdgeInput)
             {
-                EditorGUILayout.FloatField("Screen edge border size: ", camera.screenEdgeBorder);
+                EditorGUILayout.FloatField("Screen edge border size: ", camera.newScreenEdgeBorder);
                 camera.screenEdgeMovementSpeed = EditorGUILayout.FloatField("Screen edge movement speed: ", camera.screenEdgeMovementSpeed);
             }
 

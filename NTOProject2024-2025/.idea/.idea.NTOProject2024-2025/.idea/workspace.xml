@@ -24,30 +24,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/3D Objects/Apiary/TriggerApiary.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3D Objects/Apiary/TriggerApiary.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/Editor/RTS_CameraEditor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/RTS_Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsStore/RTS_Camera/Scripts/RTS_Camera.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/Apiary.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/Apiary.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/Breadwinner.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/Breadwinner.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/HoneyGun.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/HoneyGun.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/MobileBase.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/MobileBase.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/Pier.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/Pier.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/ResidentialModule.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/ResidentialModule.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/Storage.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buildings/PlanSOs/Storage.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/PlanPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/PlanPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/SettingsPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/SettingsPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Shop/ApiaryPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Shop/ApiaryPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Shop/HomePanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Shop/HomePanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Shop/HoneyGunPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Shop/HoneyGunPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VLBConfigOverride.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/VLBConfigOverride.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/VLBConfigOverride.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/VLBConfigOverride.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,6 +316,7 @@
       <workItem from="1740426240327" duration="862000" />
       <workItem from="1740469177606" duration="1959000" />
       <workItem from="1740507060307" duration="9162000" />
+      <workItem from="1740566431961" duration="307000" />
     </task>
     <servers />
   </component>
