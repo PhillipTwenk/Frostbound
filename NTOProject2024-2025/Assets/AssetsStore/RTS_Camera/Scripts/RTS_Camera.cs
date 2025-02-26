@@ -53,11 +53,13 @@ namespace RTS_Cam
         public float keyboardZoomingSensitivity = 2f;
         public float scrollWheelZoomingSensitivity = 25f;
         public float scrollWheelSizeZooming = 25f;
-        public float maxSizeZoomValue = 200f;
-        public float minSizeZoomValue = 100f;
+        public float maxSizeZoomValue = 30f;
+        public float minSizeZoomValue = 50f;
 
         private float zoomPos = 0; //value in range (0, 1) used as t in Matf.Lerp
         private float zoomSizePos = 0;
+
+        public static bool possibilityZoomCamera;
 
         #endregion
 
@@ -91,7 +93,8 @@ namespace RTS_Cam
         #region Input
 
         public bool useScreenEdgeInput = true;
-        public float screenEdgeBorder = 25f;
+        public float screenEdgeBorder = 1f;
+        public float newScreenEdgeBorder = 1f;
 
         public bool useKeyboardInput = true;
         public string horizontalAxis = "Horizontal";
@@ -181,6 +184,7 @@ namespace RTS_Cam
             thisCamera = GetComponent<Camera>();
             GetSaveSizeData();
             JSONSerializeManager.playerPrefsSaveMethods += SaveNewSizeData;
+            possibilityZoomCamera = true;
         }
 
         private void OnDisable()
@@ -240,10 +244,10 @@ namespace RTS_Cam
             {
                 Vector3 desiredMove = new Vector3();
 
-                Rect leftRect = new Rect(0, 0, screenEdgeBorder, Screen.height);
-                Rect rightRect = new Rect(Screen.width - screenEdgeBorder, 0, screenEdgeBorder, Screen.height);
-                Rect upRect = new Rect(0, Screen.height - screenEdgeBorder, Screen.width, screenEdgeBorder);
-                Rect downRect = new Rect(0, 0, Screen.width, screenEdgeBorder);
+                Rect leftRect = new Rect(0, 0, newScreenEdgeBorder, Screen.height);
+                Rect rightRect = new Rect(Screen.width - newScreenEdgeBorder, 0, newScreenEdgeBorder, Screen.height);
+                Rect upRect = new Rect(0, Screen.height - newScreenEdgeBorder, Screen.width, newScreenEdgeBorder);
+                Rect downRect = new Rect(0, 0, Screen.width, newScreenEdgeBorder);
 
                 desiredMove.x = leftRect.Contains(MouseInput) ? -1 : rightRect.Contains(MouseInput) ? 1 : 0;
                 desiredMove.z = upRect.Contains(MouseInput) ? 1 : downRect.Contains(MouseInput) ? -1 : 0;
@@ -274,7 +278,7 @@ namespace RTS_Cam
         /// </summary>
         private void HeightCalculation()
         {
-            if (useSizeZooming)
+            if (useSizeZooming && possibilityZoomCamera)
             {
                 if (scrollWheelInversion)
                 {
@@ -289,7 +293,7 @@ namespace RTS_Cam
 
                 float currentSize = Mathf.Lerp(minSizeZoomValue, maxSizeZoomValue, zoomSizePos);
 
-                thisCamera.orthographicSize = currentSize;
+                thisCamera.fieldOfView = currentSize;
             }
             float distanceToGround = DistanceToGround();
             if(useScrollwheelZooming)
@@ -381,7 +385,7 @@ namespace RTS_Cam
         #region SaveData
 
         private const string saveSizeKey = "PlayerPrefsSaveCameraZoomSizeData";
-        private float DefaultPPSaveSizeValue = 0.5f;
+        private float DefaultPPSaveSizeValue = 40f;
         
         /// <summary>
         /// Получение сохраненных данных о значении зума

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RTS_Cam;
 using UnityEngine;
 using TMPro;
 using Unity.AI.Navigation;
@@ -44,8 +45,15 @@ public class BuildingManager : MonoBehaviour
 
     public NavMeshSurface _navMeshSurface;
 
-    public void StartPlacingBuild() => IsBuildingActive = true;
-    public void EndPlacingBuild() => IsBuildingActive = false;
+    public void StartPlacingBuild()
+    {
+        IsBuildingActive = true;
+    }
+
+    public void EndPlacingBuild()
+    {
+        IsBuildingActive = false;
+    }
 
     private void Awake()
     {
