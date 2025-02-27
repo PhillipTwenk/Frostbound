@@ -15,10 +15,31 @@ public class PauseUIManager : MonoBehaviour
     [SerializeField] [TextArea] private string textFullScreen;
     [SerializeField] [TextArea] private string textWindowScreen;
 
-    public void PauseOn() => PauseOnEvent.TriggerEvent();
-    public void PauseOff() => PauseOffEvent.TriggerEvent();
-    public void ClickSettingsPause() => ClickSettingsPauseEvent.TriggerEvent();
-    public void ArriveToPauseMenu() => ArriveToPauseMenuEvent.TriggerEvent();
+    public void PauseOn()
+    {
+        Time.timeScale = 0f;
+        PauseOnEvent.TriggerEvent();
+        UIManager.CancelLastOpenPanelEvent += PauseOff;
+    }
+
+    public void PauseOff()
+    {
+        Time.timeScale = 1f;
+        PauseOffEvent.TriggerEvent();
+        UIManager.CancelLastOpenPanelEvent -= PauseOff;
+    }
+
+    public void ClickSettingsPause()
+    {
+        ClickSettingsPauseEvent.TriggerEvent();
+        UIManager.CancelLastOpenPanelEvent += ArriveToPauseMenu;
+    }
+
+    public void ArriveToPauseMenu()
+    {
+        ArriveToPauseMenuEvent.TriggerEvent();
+        UIManager.CancelLastOpenPanelEvent -= ArriveToPauseMenu;
+    }
 
     private void Update()
     {
@@ -33,7 +54,6 @@ public class PauseUIManager : MonoBehaviour
         if (!PausePanel.activeSelf)
         {
             Debug.Log("Пауза");
-            Time.timeScale = 0f;
             PauseOn();
         }
         else

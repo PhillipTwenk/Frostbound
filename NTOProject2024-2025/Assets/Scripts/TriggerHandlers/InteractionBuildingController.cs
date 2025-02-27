@@ -176,6 +176,7 @@ public class InteractionBuildingController : MonoBehaviour
     {
         OpenBarterMenuEvent.TriggerEvent();
         RTS_Camera.possibilityZoomCamera = false;
+        UIManager.CancelLastOpenPanelEvent += UIManager.Instance.CloseBarterMenu;
     }
     
     /// <summary>

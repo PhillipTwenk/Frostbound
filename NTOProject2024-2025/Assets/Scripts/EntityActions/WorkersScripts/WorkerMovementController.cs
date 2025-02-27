@@ -76,7 +76,7 @@ public class WorkerMovementController : MonoBehaviour
                     }
                 } else {
                     // Если выбранное здание в процессе строительства и рабочий свободен, он идет его строить
-                    if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt)
+                    if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt && SelectedBuilding != null)
                     {
                         if (ReadyForWork)
                         {

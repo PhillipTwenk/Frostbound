@@ -112,13 +112,11 @@ public class WorkersInterBuildingControl : MonoBehaviour
                             thisWorker.OutlineRotate.SetActive(true);
                             thisWorker.isSelected = true;
                             SelectedWorker = thisWorker;
+                            UIManager.CancelLastOpenPanelEvent += ResetSelectedWorker;
                         }
                         else
                         {
-                            firstMouseEnterOutlineIndicator = false;
-                            thisWorker.OutlineRotate.SetActive(false);
-                            thisWorker.isSelected = false;
-                            SelectedWorker = null;
+                            ResetSelectedWorker();
                         }
                     }
                 }
@@ -165,13 +163,11 @@ public class WorkersInterBuildingControl : MonoBehaviour
                             thisPlayer.OutlineRotate.SetActive(true);
                             thisPlayer.isSelected = true;
                             SelectedPlayer = thisPlayer;
+                            UIManager.CancelLastOpenPanelEvent += ResetSelectedPlayer;
                         }
                         else
                         {
-                            firstMouseEnterOutlineIndicator = false;
-                            thisPlayer.OutlineRotate.SetActive(false);
-                            thisPlayer.isSelected = false;
-                            SelectedPlayer = null;
+                            ResetSelectedPlayer();
                         }
                     }
                 }
@@ -404,14 +400,31 @@ public class WorkersInterBuildingControl : MonoBehaviour
         Debug.Log($"<color=green>Свободные рабочие + 1: {NumberOfFreeWorkers}</color>");
         return;
     }
-    
-    ///<summary> 
-    /// Открытие / закрытие панели с подсказкой
-    ///</summary>
-    // private void ShowHint(string message)
-    // {
-    //     TextHintGameObject.SetActive(true);
-    //     Utility.Invoke(this, () => TextHintGameObject.SetActive(false), TimeHintActive);
-    //     HintTextTMPro.text = message;
-    // }
+
+    /// <summary>
+    /// Снятие выделения с рабочего/Игрока и отписка от ивента ESC
+    /// </summary>
+    public void ResetSelectedWorker()
+    {
+        if (SelectedWorker != null)
+        {
+            firstMouseEnterOutlineIndicator = false;
+            SelectedWorker.OutlineRotate.SetActive(false);
+            SelectedWorker.isSelected = false;
+            SelectedWorker = null;
+            UIManager.CancelLastOpenPanelEvent -= ResetSelectedWorker;
+        }
+    }
+    public void ResetSelectedPlayer()
+    {
+        if (SelectedPlayer != null)
+        {
+            firstMouseEnterOutlineIndicator = false;
+            SelectedPlayer.OutlineRotate.SetActive(false);
+            SelectedPlayer.isSelected = false;
+            SelectedPlayer = null;
+            UIManager.CancelLastOpenPanelEvent -= ResetSelectedPlayer;
+        }
+    }
+
 }

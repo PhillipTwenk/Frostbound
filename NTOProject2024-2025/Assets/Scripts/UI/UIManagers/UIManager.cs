@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using RTS_Cam;
 using TMPro;
 using UnityEngine;
@@ -12,13 +13,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TutorialObjective ApiaryStartBuildingTutorial;
     [SerializeField] private TutorialObjective HomeStartBuildingTutorial;
 
-    [Header("UI Control Event")]
+    [Header("UI Control Events")]
     public GameEvent OpenBuildingPanelEvent;
     public GameEvent CloseBuildingPanelEvent;
     public GameEvent StartPlacingBuildEvent;
     public GameEvent EndPlacingBuildEvent;
     public GameEvent OpenBarterMenuEvent;
     public GameEvent CloseBarterMenuEvent;
+    // public GameEvent ClosePauseMenu;
+    // public GameEvent CloseSettingsMenu;
+    public GameEvent OpenQuestPanelEvent;
+    public GameEvent CloseQuestPanelEvent;
+    
+    /// <summary>
+    /// Если какая-либо панель открывается, она подписывается на этот делегат при нажатии кнопки esc ( Добавление метода, реализующего закрытие себя же )
+    /// Если закрывается - отписывается
+    /// </summary>
+    public static event Action CancelLastOpenPanelEvent; 
+    
     
     [Header("UI Objects")]
     [SerializeField] private GameObject Resources_Icons;
@@ -77,6 +89,7 @@ public class UIManager : MonoBehaviour
     private void OnDisable()
     {
         HTTPRequests.FailedRequestLimitExceededEvent -= FailedRequestLimitExceededUI;
+        UnsubscribeAllCancelLastOpenPanelEvent();
     }
 
     public void Awake()
@@ -89,6 +102,37 @@ public class UIManager : MonoBehaviour
         InitializeData();
     }
 
+    /// <summary>
+    /// Отписка всех методов от делегата CancelLastOpenPanelEvent при окончании игры 
+    /// </summary>
+    private static void UnsubscribeAllCancelLastOpenPanelEvent()
+    {
+        if (CancelLastOpenPanelEvent == null) return;
+
+        foreach (Delegate d in CancelLastOpenPanelEvent.GetInvocationList())
+        {
+            CancelLastOpenPanelEvent -= (Action)d; 
+        }
+    }
+
+    /// <summary>
+    /// Добавление / удаления метода по закрытию панели квестов в делегат
+    /// </summary>
+    public void OpenQuestPanel()
+    {
+        OpenQuestPanelEvent.TriggerEvent();
+        CancelLastOpenPanelEvent += CloseQuestPanel;
+    }
+    public void CloseQuestPanel()
+    {
+        CloseQuestPanelEvent.TriggerEvent();
+        CancelLastOpenPanelEvent -= CloseQuestPanel;
+    }
+    
+    
+    /// <summary>
+    /// Вызов панели ошибки запросов и перевода в оффлайн режим
+    /// </summary>
     public void FailedRequestLimitExceededUI()
     {
         failedRequestLimitExceededUITMP_Text.transform.parent.gameObject.SetActive(true);
@@ -98,37 +142,56 @@ public class UIManager : MonoBehaviour
             8f);
     }
     
-    public void CloseAndOpenBuildingPanel(bool IsOpenBuildingPanel)
+    /// <summary>
+    /// Контроль панели строительства
+    /// </summary>
+    /// <param name="IsOpenBuildingPanel"></param>
+    public void OpenBuildingPanel()
     {
-        if (IsOpenBuildingPanel)
-        {
-            Debug.Log("Открыта панель строительства");
-            RTS_Camera.possibilityZoomCamera = false;
-            PlansPanelOpenTutorial.CheckAndUpdateTutorialState();
-            OpenBuildingPanelEvent.TriggerEvent();
-            this.IsOpenBuildingPanel = false;
-        }
-        else
-        {
-            Debug.Log("Закрыта панель строительства");
-            RTS_Camera.possibilityZoomCamera = true;
-            EndPlacingBuildEvent.TriggerEvent();
-            CloseBuildingPanelEvent.TriggerEvent();
-            Destroy(BuildingManager.Instance.MouseIndicator);
-            this.IsOpenBuildingPanel = true;
-        }
+        Debug.Log("Открыта панель строительства");
+        RTS_Camera.possibilityZoomCamera = false;
+        PlansPanelOpenTutorial.CheckAndUpdateTutorialState();
+        OpenBuildingPanelEvent.TriggerEvent();
+        IsOpenBuildingPanel = false;
+        CancelLastOpenPanelEvent += CloseBuildingPanel;
+    }
+    public void CloseBuildingPanel()
+    {
+        Debug.Log("Закрыта панель строительства");
+        RTS_Camera.possibilityZoomCamera = true;
+        EndPlacingBuildEvent.TriggerEvent();
+        CloseBuildingPanelEvent.TriggerEvent();
+        Destroy(BuildingManager.Instance.MouseIndicator);
+        IsOpenBuildingPanel = true;
+        CancelLastOpenPanelEvent -= CloseBuildingPanel;
+    }
+
+    /// <summary>
+    /// Получает информацию о том, какую панель закрыть при нажатии ESC
+    /// </summary>
+    private void ESCCloseLastOpenUIPanel()
+    {
+        var lastPanel = CancelLastOpenPanelEvent?.GetInvocationList().Last() as Action;
+        lastPanel?.Invoke();
     }
     private void Update()
     {
-        if (Input.GetButtonDown("OpenBuildingPanel") && IsOpenBuildingPanel)
+        if (Input.GetButtonDown("OpenBuildingPanel") && Time.timeScale == 1f)
         {
-            CloseAndOpenBuildingPanel(IsOpenBuildingPanel);
+            if (IsOpenBuildingPanel)
+            {
+                OpenBuildingPanel();
+            }
+            else
+            {
+                CloseBuildingPanel();
+            }
             return;
         }
-        if (Input.GetButtonDown("OpenBuildingPanel") && !IsOpenBuildingPanel)
+
+        if (Input.GetButtonDown("Cancel"))
         {
-            CloseAndOpenBuildingPanel(IsOpenBuildingPanel);
-            return;
+            ESCCloseLastOpenUIPanel();
         }
         if (IsExtremeActivated) 
         {
@@ -243,46 +306,9 @@ public class UIManager : MonoBehaviour
     {
         CloseBarterMenuEvent.TriggerEvent();
         RTS_Camera.possibilityZoomCamera = true;
+        CancelLastOpenPanelEvent -= CloseBarterMenu;
     }
     
-    // /// <summary>
-    // /// Октрытие меню торговли медведями
-    // /// </summary>
-    // public void OpenHiringWorkersPanel()
-    // {
-    //     OpenHiringWorkersPanelEvent.TriggerEvent();
-    // }
-    //
-    // /// <summary>
-    // /// Закрытие меню торговли медведями
-    // /// </summary>
-    // public void CloseHiringWorkersPanel()
-    // {
-    //     CloseHiringWorkersPanelEvent.TriggerEvent();
-    // }
-    
-    // /// <summary>
-    // /// ОТКРЫЛ ОКОШКО ДУШНО СТАЛО ЫЫЫЫ юный колонизатор 
-    // /// </summary>
-    // public void FunctionOpenTabletMenu()
-    // {
-    //     Resources_Icons.SetActive(false);
-    //     TitleTabletPanel.text = "Юный колонизатор\n" + $"#{currentTablet.tablet_id} - " + currentTablet.title;
-    //     DescriptionTabletPanel.text = currentTablet.description;
-    //     ImageTabletPanel.GetComponent<Image>().sprite = currentTablet.picture;
-    //
-    //     TabletPanel.SetActive(true);       
-    // }
-
-    // /// <summary>
-    // /// закрываааааааает окошко юный колонизатор
-    // /// </summary>
-    // public void FunctionCloseTabletMenu()
-    // {
-    //     Resources_Icons.SetActive(true);
-    //     TabletPanel.SetActive(false);
-    // }
-
     public void FunctionStartExtremeConditions(){
         IsExtremeActivated = true;
     }

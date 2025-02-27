@@ -592,9 +592,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 5e434502049ef6743a89a309b821fb83, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: TriggerEvent
+      - m_Target: {fileID: 462131444}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OpenQuestPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1292,16 +1292,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939850970696380053, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939850970696380053, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 4bede5fe7245ed445bbb68731edc3727, type: 2}
+      objectReference: {fileID: 1812387991}
+    - target: {fileID: 4939850970696380053, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
     - target: {fileID: 4939850970696380053, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ArriveToPauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939850970696380053, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: TriggerEvent
       objectReference: {fileID: 0}
     - target: {fileID: 4939850970696380053, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameEvent, Assembly-CSharp
+      value: PauseUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939850970696380053, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939850970696380053, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5147773069919646993, guid: 71b5460c90c421749a621ca4dbc10038, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1723,6 +1743,10 @@ MonoBehaviour:
   EndPlacingBuildEvent: {fileID: 11400000, guid: 2b5afc9116036644ebec60e9dabdb898, type: 2}
   OpenBarterMenuEvent: {fileID: 11400000, guid: 4921662764b76d143bb3b89a8e370e58, type: 2}
   CloseBarterMenuEvent: {fileID: 11400000, guid: a6af6a147a616a34c801f8a2bd09b3b2, type: 2}
+  ClosePauseMenu: {fileID: 0}
+  CloseSettingsMenu: {fileID: 0}
+  OpenQuestPanelEvent: {fileID: 11400000, guid: 5e434502049ef6743a89a309b821fb83, type: 2}
+  CloseQuestPanelEvent: {fileID: 11400000, guid: 54fa40fad0f0fc24bb84590300bcef73, type: 2}
   Resources_Icons: {fileID: 36106226}
   ExtremeCondImage: {fileID: 83811877}
   IsExtremeActivated: 0
@@ -1912,8 +1936,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462131444}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: CloseAndOpenBuildingPanel
-        m_Mode: 6
+        m_MethodName: CloseBuildingPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3846,8 +3870,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462131444}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: CloseAndOpenBuildingPanel
-        m_Mode: 6
+        m_MethodName: OpenBuildingPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5278,9 +5302,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 54fa40fad0f0fc24bb84590300bcef73, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: TriggerEvent
+      - m_Target: {fileID: 462131444}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: CloseQuestPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
