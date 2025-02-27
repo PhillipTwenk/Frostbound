@@ -54,10 +54,6 @@ PrefabInstance:
       value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 5123681624481053577, guid: 2b8c70bf79e155548b26a1276899683d, type: 3}
-      propertyPath: OutlinePOD
-      value: 
-      objectReference: {fileID: 1933745246930283452}
-    - target: {fileID: 5123681624481053577, guid: 2b8c70bf79e155548b26a1276899683d, type: 3}
       propertyPath: currentWalkingPoint
       value: 
       objectReference: {fileID: 1283057047272398351}
@@ -164,17 +160,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8066511207795694255, guid: 267ce52e6e387ac48b66d61ffcf5e20b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 267ce52e6e387ac48b66d61ffcf5e20b, type: 3}
 --- !u!4 &1283057047272398351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7271729741303131932, guid: 267ce52e6e387ac48b66d61ffcf5e20b, type: 3}
-  m_PrefabInstance: {fileID: 8440882846029033747}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1933745246930283452 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8066511207795694255, guid: 267ce52e6e387ac48b66d61ffcf5e20b, type: 3}
   m_PrefabInstance: {fileID: 8440882846029033747}
   m_PrefabAsset: {fileID: 0}

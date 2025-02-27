@@ -23,11 +23,11 @@ public class WorkerMovementController : MonoBehaviour
     [SerializeField] private LayerMask workerLayerMask;
     public Camera MainCamera;
     [SerializeField] private Transform currentWalkingPoint;
-    //[SerializeField] private Material OutlineMaterial;
-    //[SerializeField] private Color OutlineColor;
-    //[SerializeField] private Color BasedOutlineColor;
-    public GameObject OutlineRotate;
-    public GameObject OutlinePOD;
+    [SerializeField] private Material OutlineMaterial;
+    [SerializeField] private Color OutlineColor;
+    [SerializeField] private Color BasedOutlineColor;
+    // public GameObject OutlineRotate;
+    // public GameObject OutlinePOD;
     
     private Rigidbody _rb;
     void Start()
@@ -41,8 +41,8 @@ public class WorkerMovementController : MonoBehaviour
         anim = GetComponent<Animator>();
         Debug.Log(agent);
         _rb = GetComponent<Rigidbody>(); 
-        OutlinePOD.SetActive(false);
-        OutlineRotate.SetActive(false);
+        // OutlinePOD.SetActive(false);
+        // OutlineRotate.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -133,7 +133,7 @@ public class WorkerMovementController : MonoBehaviour
             agent.isStopped = true;
             anim.SetBool("Running", false);
             anim.SetBool("Idle", true);
-            OutlinePOD.SetActive(false);
+            //OutlinePOD.SetActive(false);
             //if (SelectedBuilding){
                 //SelectedBuilding = null;
             //}
@@ -212,7 +212,6 @@ public class WorkerMovementController : MonoBehaviour
             else
             {
                 SelectedBuilding = null;
-                OutlinePOD.SetActive(true);
             }
         }
 

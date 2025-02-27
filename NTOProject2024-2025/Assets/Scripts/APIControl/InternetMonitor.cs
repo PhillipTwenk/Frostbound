@@ -85,14 +85,14 @@ public class InternetMonitor : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("OfflineMode", 0);
-            IsOfflineMode = false;
-            OfflineModeUI.SetActive(false);
+            PlayerPrefs.SetInt("OfflineMode", 1);
+            IsOfflineMode = true;
+            OfflineModeUI.SetActive(true);
             Debug.Log("Оффлайн режим отключен, игрок играет в первый раз");
         }
         NoInternetUI.SetActive(!isInternetAvailable);
         
-        StartCoroutine(CheckInternetConnection());
+        //StartCoroutine(CheckInternetConnection());
     }
 
     private IEnumerator CheckInternetConnection()

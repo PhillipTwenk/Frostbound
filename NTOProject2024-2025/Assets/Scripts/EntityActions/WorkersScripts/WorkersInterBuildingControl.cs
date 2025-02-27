@@ -84,14 +84,12 @@ public class WorkersInterBuildingControl : MonoBehaviour
                                 SelectedWorker.isSelected = false;
                                 SelectedWorker.isSelecting = false;
                             }
-
-                            thisWorker.OutlineRotate.SetActive(true);
+                            
                             thisWorker.isSelected = true;
                             SelectedWorker = thisWorker;
                         }
                         else
                         {
-                            thisWorker.OutlineRotate.SetActive(false);
                             thisWorker.isSelected = false;
                             SelectedWorker = null;
                         }
@@ -102,7 +100,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
                     thisWorker.isSelecting = true;
                     if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker)
                     {
-                        thisWorker.OutlineRotate.SetActive(true);
+                        
                     }
                 }
 
@@ -116,7 +114,6 @@ public class WorkersInterBuildingControl : MonoBehaviour
             thisWorker.isSelecting = false;
             if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker)
             {
-                thisWorker.OutlineRotate.SetActive(false);
             }
             thisWorker = null;
         }
