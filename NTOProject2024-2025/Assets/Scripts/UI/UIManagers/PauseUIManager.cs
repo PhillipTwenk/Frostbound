@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class PauseUIManager : MonoBehaviour
@@ -9,6 +10,10 @@ public class PauseUIManager : MonoBehaviour
     [SerializeField] private GameEvent ArriveToPauseMenuEvent;
 
     [SerializeField] private GameObject PausePanel;
+    
+    [SerializeField] private TextMeshProUGUI ScreenModeText;
+    [SerializeField] [TextArea] private string textFullScreen;
+    [SerializeField] [TextArea] private string textWindowScreen;
 
     public void PauseOn() => PauseOnEvent.TriggerEvent();
     public void PauseOff() => PauseOffEvent.TriggerEvent();
@@ -46,18 +51,28 @@ public class PauseUIManager : MonoBehaviour
         }
     }
     
-    public void WindowScreen()
+    /// <summary>
+    ///  Поменять режим экрана
+    /// </summary>
+    public void ChangeScreenMode()
     {
-        Screen.SetResolution(Screen.width, Screen.height, false);
-        PlayerPrefs.SetInt("ScreenMode", 0);
-        Debug.Log("Оконный");
+        int screenMode = PlayerPrefs.GetInt("ScreenMode");
+        if (screenMode == 0)
+        {
+            Screen.SetResolution(Screen.width, Screen.height, true, 60);
+            PlayerPrefs.SetInt("ScreenMode", 1);
+            Debug.Log("Полноэкранный");
+            ScreenModeText.text = textFullScreen;
+        }
+        else
+        {
+            Screen.SetResolution(Screen.width, Screen.height, false);
+            PlayerPrefs.SetInt("ScreenMode", 0);
+            Debug.Log("Оконный");
+            ScreenModeText.text = textWindowScreen;
+        }
     }
-    public void FullScreen()
-    {
-        Screen.SetResolution(Screen.width, Screen.height, true, 60);
-        PlayerPrefs.SetInt("ScreenMode", 1);
-        Debug.Log("Полноэкранный");
-    }
+    
     
     public void QuitGame()
     {

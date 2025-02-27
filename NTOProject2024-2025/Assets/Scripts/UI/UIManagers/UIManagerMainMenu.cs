@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManagerMainMenu : MonoBehaviour
 {
+    [Header("GameEvents")]
     [SerializeField] private GameEvent StartGameButtonClickEvent;
     [SerializeField] private GameEvent SettingsButtonClickEvent;
     [SerializeField] private GameEvent ReturnToMainMenuEvent;
@@ -14,12 +15,13 @@ public class UIManagerMainMenu : MonoBehaviour
     [SerializeField] private GameEvent StartGameAfterCreatingCharacter;
     [SerializeField] private GameEvent StartTutorialEvent;
     
-    [SerializeField] private TMP_InputField inputFieldNewName;
+    [Header("Resources default values")]
     [SerializeField] private int StartValueIron;
     [SerializeField] private int StartValueEnergy;
     [SerializeField] private int StartValueFood;
     [SerializeField] private int StartValueCrioCrystal;
     
+    [Header("Products default values")]
     [SerializeField] private PriceShopProduct StartValueApiaryShop;
     [SerializeField] private PriceShopProduct StartValueHoneyGunShop;
     [SerializeField] private PriceShopProduct StartValueMobileBaseShop;
@@ -27,15 +29,22 @@ public class UIManagerMainMenu : MonoBehaviour
     [SerializeField] private PriceShopProduct StartValueResidentialModuleShop;
     [SerializeField] private PriceShopProduct StartValueBreadwinnerShop;
     [SerializeField] private PriceShopProduct StartValuePierShop;
-
+    
     public static EntityID WhichPlayerCreate;
 
+    [Header("Settings")]
     [SerializeField] private VolumeSlider volumeMusic;
     [SerializeField] private VolumeSlider volumeEffect;
-    //[SerializeField] private EntityID player1;
-    //[SerializeField] private EntityID player2;
-    //[SerializeField] private EntityID player3;
-    
+    [SerializeField] private TextMeshProUGUI ScreenModeText;
+    [SerializeField] private TMP_InputField inputFieldNewName;
+    [SerializeField] [TextArea] private string textFullScreen;
+    [SerializeField] [TextArea] private string textWindowScreen;
+
+
+    private void Start()
+    {
+        StartGameScreenMode();
+    }
 
     /// <summary>
     /// Запускает игру по нажатию на кнопку старта
@@ -69,12 +78,14 @@ public class UIManagerMainMenu : MonoBehaviour
                 Debug.Log("Установлен полноэкранный режим");
                 Screen.SetResolution(Screen.width, Screen.height, true, 60);
                 PlayerPrefs.SetInt("ScreenMode", 1);
+                ScreenModeText.text = textFullScreen;
             }
             else
             {
                 Debug.Log("Установлен оконный режим");
                 Screen.SetResolution(Screen.width, Screen.height, false, 60);
                 PlayerPrefs.SetInt("ScreenMode", 0);
+                ScreenModeText.text = textWindowScreen;
             }
         }
         else
@@ -82,30 +93,9 @@ public class UIManagerMainMenu : MonoBehaviour
             Debug.Log("Установлен полноэкранный режим");
             Screen.SetResolution(Screen.width, Screen.height, true);
             PlayerPrefs.SetInt("ScreenMode", 1);
+            ScreenModeText.text = textFullScreen;
         }
     }
-    
-    /// <summary>
-    /// Установка полноэкранного режима
-    /// </summary>
-    public void WindowScreen()
-    {
-        Screen.SetResolution(Screen.width, Screen.height, false);
-        PlayerPrefs.SetInt("ScreenMode", 0);
-        Debug.Log("Оконный");
-    }
-    
-    
-    /// <summary>
-    /// Установка оконного режима
-    /// </summary>
-    public void FullScreen()
-    {
-        Screen.SetResolution(Screen.width, Screen.height, true, 60);
-        PlayerPrefs.SetInt("ScreenMode", 1);
-        Debug.Log("Полноэкранный");
-    }
-    
     
     /// <summary>
     /// Выход из игры
@@ -116,6 +106,27 @@ public class UIManagerMainMenu : MonoBehaviour
         Application.Quit();
     }
     
+    /// <summary>
+    ///  Поменять режим экрана
+    /// </summary>
+    public void ChangeScreenMode()
+    {
+        int screenMode = PlayerPrefs.GetInt("ScreenMode");
+        if (screenMode == 0)
+        {
+            Screen.SetResolution(Screen.width, Screen.height, true, 60);
+            PlayerPrefs.SetInt("ScreenMode", 1);
+            Debug.Log("Полноэкранный");
+            ScreenModeText.text = textFullScreen;
+        }
+        else
+        {
+            Screen.SetResolution(Screen.width, Screen.height, false);
+            PlayerPrefs.SetInt("ScreenMode", 0);
+            Debug.Log("Оконный");
+            ScreenModeText.text = textWindowScreen;
+        }
+    }
     /// <summary>
     /// Вернуться в основное главное меню
     /// </summary>

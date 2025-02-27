@@ -22,6 +22,10 @@ public class InternetMonitor : MonoBehaviour
     // Offline mode control
     public static bool IsOfflineMode;
     
+    // GameEvents
+    public GameEvent OnOfflineGameEvent;
+    public GameEvent OffOfflineGameEvent;
+    
     private void OnEnable()
     {
         HTTPRequests.FailedRequestLimitExceededEvent += FailedRequestLimitExceeded;
@@ -41,6 +45,7 @@ public class InternetMonitor : MonoBehaviour
         Debug.LogWarning("Переход в оффлайн режим, похоже что Никита сломал сервер");
         IsOfflineMode = true;
         OfflineModeUI.SetActive(true);
+        OnOfflineGameEvent.TriggerEvent();
     }
     
     /// <summary>
@@ -76,10 +81,14 @@ public class InternetMonitor : MonoBehaviour
             {
                 IsOfflineMode = true;
                 Debug.Log("Оффлайн режим включен");
+                OnOfflineGameEvent.TriggerEvent();
+                OfflineModeUI.SetActive(true);
             }else if (OMvalue == 0)
             {
                 IsOfflineMode = false;
                 Debug.Log("Оффлайн режим отключен");
+                OffOfflineGameEvent.TriggerEvent();
+                OfflineModeUI.SetActive(false);
             }
             OfflineModeUI.SetActive(IsOfflineMode);
         }
@@ -89,6 +98,7 @@ public class InternetMonitor : MonoBehaviour
             IsOfflineMode = false;
             OfflineModeUI.SetActive(false);
             Debug.Log("Оффлайн режим отключен, игрок играет в первый раз");
+            OffOfflineGameEvent.TriggerEvent();
         }
         NoInternetUI.SetActive(!isInternetAvailable);
         
