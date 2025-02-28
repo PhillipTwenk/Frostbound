@@ -24,18 +24,20 @@ public class Objective : ScriptableObject
     public bool Completed { get; set; }
 
     //Расположение цели
-    public Transform waypoint;
+    // public Transform waypoint;
 
     //Описание
     [TextArea]
     public string description;
 
-    //Для завершения цели
+    /// <summary>
+    /// Заврешение данной цели
+    /// </summary>
     public void CompleteObjective()
     {
-        if ((parentQuest.currentObjective == this || !required) && parentQuest.active)
+        if ((parentQuest.currentObjective == this || !required) && parentQuest.Active)
         {
-            Debug.Log($"===========Цель №{parentQuest.objectives.IndexOf(this)} - [{this.description}] в квесте {parentQuest.questDescription} выполненa==========");
+            Debug.Log($"===========Цель №{parentQuest.objectives.IndexOf(this)} - [{this.description}] в квесте {parentQuest.QuestDescription} выполненa==========");
             Completed = true;
             parentQuest.TryEndQuest();
         }

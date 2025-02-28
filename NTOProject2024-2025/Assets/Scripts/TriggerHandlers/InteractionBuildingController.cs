@@ -135,7 +135,7 @@ public class InteractionBuildingController : MonoBehaviour
 
                         Destroy(other.gameObject.transform.parent.gameObject);
                         
-                        PlayerSaveData playerSaveData = UIManagerLocation.Instance.WhichPlayerDataUse();
+                        PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                         playerSaveData.BuildingWorkersInformationList[_buildingData.SaveListIndex]
                                 .CurrentNumberOfWorkersInThisBuilding =
                             thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding;

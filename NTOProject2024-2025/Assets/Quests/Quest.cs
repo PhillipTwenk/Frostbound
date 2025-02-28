@@ -23,14 +23,14 @@ public class Quest : ScriptableObject
     public event Action<Quest> OnQuestCompleted;
 
     //Активен ли
-    public bool active;
+    public bool Active { get; set; }
 
     //Завершен ли
-    public bool completed { get; private set; }
+    public bool Completed { get; private set; }
 
     //Описание
     [TextArea]
-    public string questDescription;
+    public string QuestDescription { get; private set; }
 
     //Список целей квеста
     public List<Objective> objectives = new List<Objective>();
@@ -39,10 +39,10 @@ public class Quest : ScriptableObject
     public Objective currentObjective;
     
     //Соответствующий ивент старта этого квеста
-    public GameEvent startQuestEvent;
+    //public GameEvent startQuestEvent;
     
     //Ивент срабатывающий при получении новой задачи в данном квесте
-    public GameEvent startNewObjection;
+    //public GameEvent startNewObjection;
 
     //Метод для попытки завершения квеста, если все его необходимые цели выполнены
     public void TryEndQuest()
@@ -57,15 +57,15 @@ public class Quest : ScriptableObject
 
                     currentObjective = objectives[i];
                     
-                    startNewObjection.TriggerEvent();
+                    //startNewObjection.TriggerEvent();
                     
                     return;
                 }
             }
         }
         
-        completed = true;
-        active = false;
+        Completed = true;
+        Active = false;
 
         OnQuestCompleted?.Invoke(this);
     }

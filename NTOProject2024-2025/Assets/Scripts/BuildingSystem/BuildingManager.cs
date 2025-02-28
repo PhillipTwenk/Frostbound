@@ -112,9 +112,9 @@ public class BuildingManager : MonoBehaviour
         Building buildingPrefabSO = CurrentBuilding.gameObject.transform.GetChild(0).GetComponent<BuildingData>().buildingTypeSO;
         int priceBuilding = buildingPrefabSO.priceBuilding;
 
-        string playerName = UIManagerLocation.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
         PlayerResources playerResources =
-            await APIManager.Instance.GetPlayerResources(UIManagerLocation.WhichPlayerCreate);
+            await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
 
         int HoneyConsumptionBuilding =
             MouseIndicator.GetComponent<PreviouslyBuidlingTriggerDataStorage>().HoneyConsumption;
@@ -147,7 +147,7 @@ public class BuildingManager : MonoBehaviour
 
                             await SyncManager.Enqueue(async () =>
                             {
-                                await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerResources.Iron - priceBuilding,
+                                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceBuilding,
                                     playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
                             });
                             UpdateResourcesEvent.TriggerEvent();
@@ -186,7 +186,7 @@ public class BuildingManager : MonoBehaviour
                             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
                             
                             //Сохранение данных здания в SO сохранения
-                            PlayerSaveData pLayerSaveData = UIManagerLocation.Instance.WhichPlayerDataUse();
+                            PlayerSaveData pLayerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                             pLayerSaveData.playerBuildings.Add(buildingData.buildingTypeSO.PrefabBuilding);
                 
                             TransformData transformData = new TransformData(newBuildingObject.transform);

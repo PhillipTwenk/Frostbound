@@ -1,50 +1,45 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
+/// =========================================================================================
 /// Предоставление методов для работы с активными квестами
 /// Висит на игроке
+/// =========================================================================================
 /// </summary>
 public class QuestController : MonoBehaviour
 {
     private EntityID playerID;
 
-    //Установление нового активного квеста
+    /// <summary>
+    /// Установление нового активного квеста
+    /// </summary>
+    /// <param name="quest"> Ссылка на квест </param>
     public void ReceiveNewQuest(Quest quest)
     {
         playerID.openQuests.Add(quest);
-        quest.active = true;
-        playerID.currentQuest = quest;
+        quest.Active = true;
         quest.OnQuestCompleted += RemoveCompletedQuest;
     }
 
-    //Убрать завершенный квест
+    /// <summary>
+    /// Убрать завершенный квест
+    /// </summary>
+    /// <param name="quest"> Ссылка на квест </param>
     void RemoveCompletedQuest(Quest quest)
     {
-        if (playerID.currentQuest == quest)
-        {
-            playerID.currentQuest = null;
-        }
-
         quest.OnQuestCompleted -= RemoveCompletedQuest;
         playerID.openQuests.Remove(quest);
-
-        if (playerID.openQuests.Count > 0)
-        {
-            // sets the next quest in the list as the current quest
-            playerID.currentQuest = playerID.openQuests[0];
-        }
     }
 
-    //При старте игры проверка завершенных квестов и их убирание из массива
+    /// <summary>
+    /// При старте игры проверка завершенных квестов и их убирание из массива
+    /// </summary>
     public void QuestInitialize()
     {
-        Debug.Log(0000000000000000000000000);
-        playerID = UIManagerLocation.WhichPlayerCreate;
-        for(int i = playerID.openQuests.Count -1; i>=0; i--)
+        playerID = CurrentPlayersDataControl.WhichPlayerCreate;
+        for(int i = playerID.openQuests.Count; i>0; i--)
         {
-            if (playerID.openQuests[i].completed)
+            if (playerID.openQuests[i].Completed)
             {
                 RemoveCompletedQuest(playerID.openQuests[i]);
             }
@@ -55,6 +50,9 @@ public class QuestController : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Отписка от ивента при окончании игры
+    /// </summary>
     void OnDisable()
     {
         foreach (Quest quest in playerID.openQuests)

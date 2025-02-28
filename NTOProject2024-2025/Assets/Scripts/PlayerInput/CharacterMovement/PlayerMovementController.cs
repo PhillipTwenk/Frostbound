@@ -48,7 +48,7 @@ public class PlayerMovementController : MonoBehaviour
     
     public void InitializePlayer()
     {
-        playerID = UIManagerLocation.WhichPlayerCreate;
+        playerID = CurrentPlayersDataControl.WhichPlayerCreate;
         IsSceneLoaded = true;
         Debug.Log("Персонаж готов");
     }

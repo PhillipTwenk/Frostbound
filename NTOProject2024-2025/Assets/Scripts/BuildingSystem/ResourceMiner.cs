@@ -66,14 +66,14 @@ public class ResourceMiner : MonoBehaviour
 
             BuildingData buildingData = GetComponent<BuildingData>();
         
-            PlayerSaveData playerSaveData = UIManagerLocation.Instance.WhichPlayerDataUse();
+            PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
 
             if (MinerType == IronMinerType)
             {
-                await MinerIronAsync(UIManagerLocation.WhichPlayerCreate, playerSaveData, buildingData);
+                await MinerIronAsync(CurrentPlayersDataControl.WhichPlayerCreate, playerSaveData, buildingData);
             } else if (MinerType == CCMinerType)
             {
-                 await MinerCCAsync(UIManagerLocation.WhichPlayerCreate, playerSaveData, buildingData);
+                 await MinerCCAsync(CurrentPlayersDataControl.WhichPlayerCreate, playerSaveData, buildingData);
             }
         }
     }

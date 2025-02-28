@@ -63,10 +63,10 @@ public class BaseUpgradeConditionManager : MonoBehaviour
     public List<string> CanUpgradeMobileBase(PlayerResources playerResources)
     {
         int WorkersCount = WorkersInterBuildingControl.Instance.MaxValueOfWorkers;
-        string playerName = UIManagerLocation.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
         int IronCountPlayer = playerResources.Iron;
-        List<GameObject> CurrentBuidlings = UIManagerLocation.WhichPlayerCreate._playerSaveData.playerBuildings;
-        List<BuildingSaveData> buildingSDs = UIManagerLocation.WhichPlayerCreate._playerSaveData.BuildingDatas;
+        List<GameObject> CurrentBuidlings = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.playerBuildings;
+        List<BuildingSaveData> buildingSDs = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.BuildingDatas;
 
         List<string> resultReport = new List<string>();
         bool IsThisReportUnsuccess = false;

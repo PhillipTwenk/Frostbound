@@ -11,7 +11,7 @@ public class EntryLocationControl : MonoBehaviour
     {
         UpdateResourcesEvent.TriggerEvent();
 
-        PlayerSaveData pLayerSaveData = UIManagerLocation.Instance.WhichPlayerDataUse();
+        PlayerSaveData pLayerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
         pLayerSaveData.InitializeBuildings();
         BaseSongStartEvent.TriggerEvent();
 

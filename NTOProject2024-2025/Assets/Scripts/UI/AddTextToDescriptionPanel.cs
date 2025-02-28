@@ -214,8 +214,8 @@ public class AddTextToDescriptionPanel : MonoBehaviour
 
         HideDescriptionPanel();
         
-        string playerName = UIManagerLocation.WhichPlayerCreate.Name;
-        PlayerResources playerResources = await GetResourcesPLayer(UIManagerLocation.WhichPlayerCreate);
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        PlayerResources playerResources = await GetResourcesPLayer(CurrentPlayersDataControl.WhichPlayerCreate);
         
         GameObject building = buildingTransform.gameObject;
         BuildingData buildingData = building.GetComponent<BuildingData>();
@@ -243,12 +243,12 @@ public class AddTextToDescriptionPanel : MonoBehaviour
 
         await SyncManager.Enqueue(async () =>
         {
-            await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerResources.Iron + NewIron, playerResources.Energy, playerResources.Food,
+            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron + NewIron, playerResources.Energy, playerResources.Food,
                 playerResources.CryoCrystal);
         });
        
         
-        PlayerSaveData playerSaveData = UIManagerLocation.Instance.WhichPlayerDataUse();
+        PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
         
         playerSaveData.DeleteBuilding(building);
         
@@ -266,8 +266,8 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     {
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
 
-        string playerName = UIManagerLocation.WhichPlayerCreate.Name;
-        PlayerResources playerResources = await GetResourcesPLayer(UIManagerLocation.WhichPlayerCreate);
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        PlayerResources playerResources = await GetResourcesPLayer(CurrentPlayersDataControl.WhichPlayerCreate);
 
         int priceUpgrade = buildingSO.priceUpgrade;
         int BaseLevel = BaseUpgradeConditionManager.CurrentBaseLevel;
@@ -308,11 +308,11 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                             playerResources.Food += (buildingData.Production[1] -
                                                      (buildingSO.Production(buildingData.Level - 1).resources[1]));
                         }
-                        await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
                             playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
                     });
                     
-                    PlayerSaveData playerSaveData = UIManagerLocation.Instance.WhichPlayerDataUse();
+                    PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                     
                     BuildingSaveData buildingSaveData = new BuildingSaveData(buildingData);
                     playerSaveData.BuildingDatas[buildingData.SaveListIndex] = buildingSaveData;
@@ -340,7 +340,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                 
                 await SyncManager.Enqueue(async () =>
                 {
-                    await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
+                    await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
                         playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
                 });
                
@@ -350,7 +350,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
 
                 BaseUpgradeConditionManager.CurrentBaseLevel = buildingData.Level;
 
-                PlayerSaveData playerSaveData = UIManagerLocation.Instance.WhichPlayerDataUse();
+                PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                     
                 BuildingSaveData buildingSaveData = new BuildingSaveData(buildingData);
                 playerSaveData.BuildingDatas[buildingData.SaveListIndex] = buildingSaveData;

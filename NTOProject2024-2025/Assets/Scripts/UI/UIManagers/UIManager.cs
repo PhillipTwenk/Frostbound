@@ -244,9 +244,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public async void InitializeBuildingPanel()
     {
-        string playerName = UIManagerLocation.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
         string shopName = $"{playerName}'sShop";
-        ShopResources shopResources = await APIManager.Instance.GetShopResources(UIManagerLocation.WhichPlayerCreate, shopName);
+        ShopResources shopResources = await APIManager.Instance.GetShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName);
 
         if (shopResources.Apiary.IsPurchased)
             AddNewPlanInPanel(plansArray[0]);

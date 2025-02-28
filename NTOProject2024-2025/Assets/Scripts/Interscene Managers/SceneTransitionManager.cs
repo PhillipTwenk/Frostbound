@@ -38,7 +38,7 @@ public class SceneTransitionManager : MonoBehaviour
             SceneManager.LoadSceneAsync(LocationSceneName, LoadSceneMode.Additive);
         yield return new WaitUntil(()=>LoadingSceneLocation.isDone);
         
-        UIManagerLocation.WhichPlayerCreate = ActivePlayer;
+        CurrentPlayersDataControl.WhichPlayerCreate = ActivePlayer;
 
         //Установка уровня как основной сцены
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(LocationSceneName));

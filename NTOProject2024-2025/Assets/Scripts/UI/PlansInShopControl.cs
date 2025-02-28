@@ -63,7 +63,7 @@ public class PlansInShopControl : MonoBehaviour
         PanelHoneyGunBought.SetActive(false);
         PanelStorageBought.SetActive(false);
         PanelPierBought.SetActive(false);
-        string playerName = UIManagerLocation.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
         string shopName = $"{playerName}'sShop";
         ShopResources shopResources = await GetResourcesShop(playerName, shopName);
         if (TutorialManager.IsTutorialActive)
@@ -140,7 +140,7 @@ public class PlansInShopControl : MonoBehaviour
     public async void ClickBuyPlanButton(string TypeBuyButton)
     {
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
-        string playerName = UIManagerLocation.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
         PlayerResources playerResources = await GetResourcesPLayer(playerName);
 
         string shopName = $"{playerName}'sShop";
@@ -174,10 +174,10 @@ public class PlansInShopControl : MonoBehaviour
                     
                     await SyncManager.Enqueue(async () =>
                     {
-                        await APIManager.Instance.PutShopResources(UIManagerLocation.WhichPlayerCreate, shopName, shopResources.Apiary,
+                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
                             shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
                             shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerIron - shopResources.Apiary.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Apiary.CryoCrystalPrice);
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.Apiary.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Apiary.CryoCrystalPrice);
                         plansBuyCounter++;
                         if (plansBuyCounter == 3)
                         {
@@ -218,10 +218,10 @@ public class PlansInShopControl : MonoBehaviour
                     
                     await SyncManager.Enqueue(async () =>
                     {
-                        await APIManager.Instance.PutShopResources(UIManagerLocation.WhichPlayerCreate, shopName, shopResources.Apiary,
+                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
                             shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
                             shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerIron - shopResources.ResidentialModule.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.ResidentialModule.CryoCrystalPrice);
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.ResidentialModule.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.ResidentialModule.CryoCrystalPrice);
                         plansBuyCounter++;
                         if (plansBuyCounter == 3)
                         {
@@ -262,10 +262,10 @@ public class PlansInShopControl : MonoBehaviour
                     
                     await SyncManager.Enqueue(async () =>
                     {
-                        await APIManager.Instance.PutShopResources(UIManagerLocation.WhichPlayerCreate, shopName, shopResources.Apiary,
+                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
                             shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
                             shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerIron - shopResources.Minner.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Minner.CryoCrystalPrice);
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.Minner.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Minner.CryoCrystalPrice);
                         plansBuyCounter++;
                         if (plansBuyCounter == 3)
                         {
@@ -306,10 +306,10 @@ public class PlansInShopControl : MonoBehaviour
                     
                     await SyncManager.Enqueue(async () =>
                     {
-                        await APIManager.Instance.PutShopResources(UIManagerLocation.WhichPlayerCreate, shopName, shopResources.Apiary,
+                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
                             shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
                             shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerIron - shopResources.HoneyGun.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.HoneyGun.CryoCrystalPrice);
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.HoneyGun.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.HoneyGun.CryoCrystalPrice);
                     });
                     PanelHoneyGunBought.SetActive(true);
                     _buttonHG.gameObject.SetActive(false);
@@ -345,10 +345,10 @@ public class PlansInShopControl : MonoBehaviour
                     
                     await SyncManager.Enqueue(async () =>
                     {
-                        await APIManager.Instance.PutShopResources(UIManagerLocation.WhichPlayerCreate, shopName, shopResources.Apiary,
+                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
                             shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
                             shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerIron - shopResources.Storage.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Storage.CryoCrystalPrice);
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.Storage.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Storage.CryoCrystalPrice);
                     });
                    
                     PanelStorageBought.SetActive(true);
@@ -385,10 +385,10 @@ public class PlansInShopControl : MonoBehaviour
                     
                     await SyncManager.Enqueue(async () =>
                     {
-                        await APIManager.Instance.PutShopResources(UIManagerLocation.WhichPlayerCreate, shopName, shopResources.Apiary,
+                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
                             shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
                             shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerIron - shopResources.Pier.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Pier.CryoCrystalPrice);
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.Pier.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Pier.CryoCrystalPrice);
                     });
                     
                     PanelPierBought.SetActive(true);
@@ -417,7 +417,7 @@ public class PlansInShopControl : MonoBehaviour
         PlayerResources playerResources = null;
         await SyncManager.Enqueue(async () =>
         {
-            playerResources = await APIManager.Instance.GetPlayerResources(UIManagerLocation.WhichPlayerCreate);
+            playerResources = await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
         });
         return playerResources;
     }
@@ -427,7 +427,7 @@ public class PlansInShopControl : MonoBehaviour
         ShopResources shopResources = null;
         await SyncManager.Enqueue(async () =>
         {
-            shopResources = await APIManager.Instance.GetShopResources(UIManagerLocation.WhichPlayerCreate, shopName);
+            shopResources = await APIManager.Instance.GetShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName);
         });
         return shopResources;
     }

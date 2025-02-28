@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-public class UIManagerLocation : MonoBehaviour
+public class CurrentPlayersDataControl : MonoBehaviour
 {
-    public static UIManagerLocation Instance { get; private set; }
+    public static CurrentPlayersDataControl Instance { get; private set; }
     public static EntityID WhichPlayerCreate;
 
     [SerializeField] private PlayerSaveData player1SaveData;

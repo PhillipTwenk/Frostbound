@@ -29,12 +29,12 @@ public class EnergyProduction : MonoBehaviour
         
             Debug.Log($"Производство меда: {honeyProduction}");
 
-            string playerName = UIManagerLocation.WhichPlayerCreate.Name;
+            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
             PlayerResources playerResources = null;
             await SyncManager.Enqueue(async () =>
             {
                 playerResources =
-                    await APIManager.Instance.GetPlayerResources(UIManagerLocation.WhichPlayerCreate);
+                    await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
             });
             int OldEnergyValue = playerResources.Energy;
             int OldFoodValue = playerResources.Food;
@@ -44,7 +44,7 @@ public class EnergyProduction : MonoBehaviour
 
             await SyncManager.Enqueue(async () =>
             {
-                await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
+                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
                     playerResources.Food, playerResources.CryoCrystal);
                 ResourceUpdateEvent.TriggerEvent();
                 WorkerStartWorkingOnApiaryTutorial.CheckAndUpdateTutorialState();
@@ -64,7 +64,7 @@ public class EnergyProduction : MonoBehaviour
             int honeyProduction = _buildingData.Production[0];
             int foodProduction = _buildingData.Production[1];
 
-            string playerName = UIManagerLocation.WhichPlayerCreate.Name;
+            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
             int OldEnergyValue = playerResources.Energy;
             int OldFoodValue = playerResources.Food;
             playerResources.Energy -= honeyProduction;
@@ -97,9 +97,9 @@ public class EnergyProduction : MonoBehaviour
             int honeyProduction = _buildingData.Production[0];
             int foodProduction = _buildingData.Production[1];
 
-            string playerName = UIManagerLocation.WhichPlayerCreate.Name;
+            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
             PlayerResources playerResources =
-                await APIManager.Instance.GetPlayerResources(UIManagerLocation.WhichPlayerCreate);
+                await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
             int OldEnergyValue = playerResources.Energy;
             int OldFoodValue = playerResources.Food;
             playerResources.Energy -= honeyProduction;
@@ -107,7 +107,7 @@ public class EnergyProduction : MonoBehaviour
             LogSender(playerName, $"{_buildingData.Title} прекратила производство энергии и мёда", playerResources.Energy - OldEnergyValue, playerResources.Food - OldFoodValue );
             await SyncManager.Enqueue(async () =>
             {
-                await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
+                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
                     playerResources.Food, playerResources.CryoCrystal);
             });
             ResourceUpdateEvent.TriggerEvent();

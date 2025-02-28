@@ -13,7 +13,7 @@ public class ExtremeConditionsManager : MonoBehaviour
     void Update(){
         if(!IsSafe){
             timer += Time.deltaTime;
-            UIManagerLocation.WhichPlayerCreate.speed = 40f - timer/2;
+            CurrentPlayersDataControl.WhichPlayerCreate.speed = 40f - timer/2;
             if(timer >= 120f){
                 timer = 0;
             }

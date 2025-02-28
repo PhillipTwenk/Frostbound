@@ -35,7 +35,6 @@ public class EntityID : ScriptableObject, ISerializableSO
     //public int jumpForce;
 
     [Header("Quests")]
-    public Quest currentQuest;
     public List<Quest> openQuests;
 
     [Header("OfflineData")] 
@@ -48,6 +47,9 @@ public class EntityID : ScriptableObject, ISerializableSO
     public PlayerSaveData _playerSaveData;
     public PlayerSaveData DefaultPlayerSaveData;
 
+    /// <summary>
+    /// Обнуление данных этого персонажа
+    /// </summary>
     public async Task DefaultRevert()
     {
         if (Name != DefaultName)

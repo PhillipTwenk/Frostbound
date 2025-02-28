@@ -11,7 +11,7 @@ public class UpdatePanelResources : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CryoCrystalTextPanel;
     private void Start()
     {
-        ActivePlayer = UIManagerLocation.WhichPlayerCreate;
+        ActivePlayer = CurrentPlayersDataControl.WhichPlayerCreate;
     }
 
     public async void UpdateResources()

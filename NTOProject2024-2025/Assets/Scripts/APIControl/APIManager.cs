@@ -93,7 +93,7 @@ public class APIManager : MonoBehaviour
     {
         Debug.Log("Интернет снова доступен! Выполняю нужные действия...");
 
-        EntityID playerID = UIManagerLocation.WhichPlayerCreate;
+        EntityID playerID = CurrentPlayersDataControl.WhichPlayerCreate;
         await SyncManager.Enqueue(async () =>
         {
             await PutPlayerResources(playerID, playerID.playerResources.Iron, playerID.playerResources.Energy, playerID.playerResources.Food, playerID.playerResources.CryoCrystal);
