@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _StoneStylized
-  m_Shader: {fileID: -6465566751694194690, guid: afde8f41e4d791245a332d38179c32e5, type: 3}
+  m_Name: Water
+  m_Shader: {fileID: -6465566751694194690, guid: 1144b45bbde724e4496b0d96c2562c78, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -30,14 +30,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _SampleTexture2D_00701a085ad34faab9f0f9d4c5d129c2_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: b3fa60ffd38186848bc83cadc5d10a90, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_40dedc3250bc4dfdbeda229bc324b714_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 292bbbb3172f17c40b9c081912b22cb1, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -71,6 +63,9 @@ Material:
     - _ExcludeFromTUAndAA: 0
     - _MaterialID: 1
     - _MaterialTypeMask: 2
+    - _MaxClamp: 0.31
+    - _MinClamp: 0.06
+    - _Normal_Intensity: 0
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0
     - _RayTracing: 0
@@ -79,7 +74,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Roughness: 0.17
+    - _Roughness: 1.04
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -107,13 +102,13 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
+    - _Color: {r: 0.1505874, g: 0.18016724, b: 0.2264151, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Spacing: {r: 10, g: 10, b: 0, a: 0}
-    - _Tint: {r: 0.623131, g: 0.62800974, b: 0.6320754, a: 0}
+    - _Scale: {r: 25, g: 25, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7411800829467033896
+--- !u!114 &1091269211622925752
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
