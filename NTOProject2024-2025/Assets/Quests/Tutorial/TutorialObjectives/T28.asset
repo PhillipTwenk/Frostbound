@@ -25,7 +25,7 @@ MonoBehaviour:
     \u043C\u0435\u0442\u0430\u043B\u043B\u0430"
   IsActive: 0
   IsTimeStopOnThisStep: 0
-  MainUIPositionTypeOnThisStep: 2
+  MainUIPositionTypeOnThisStep: 0
   TechUIPositionTypeOnThisStep: 1
   IsTechPanelActiveOnThisStep: 1
   IsAutomaticalyEnterOnThisStep: 0

@@ -176,6 +176,11 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            ESCCloseLastOpenUIPanel();
+        }
+        
         if (Input.GetButtonDown("OpenBuildingPanel") && Time.timeScale == 1f)
         {
             if (IsOpenBuildingPanel)
@@ -187,11 +192,6 @@ public class UIManager : MonoBehaviour
                 CloseBuildingPanel();
             }
             return;
-        }
-
-        if (Input.GetButtonDown("Cancel"))
-        {
-            ESCCloseLastOpenUIPanel();
         }
         if (IsExtremeActivated) 
         {

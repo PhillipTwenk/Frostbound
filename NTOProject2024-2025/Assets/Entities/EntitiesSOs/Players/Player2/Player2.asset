@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: None
   DefaultName: None
+  thisPlayerID: 2
   speed: 60
   sprintSpeed: 80
   normalSpeed: 60
@@ -21,38 +22,38 @@ MonoBehaviour:
   currentQuest: {fileID: 0}
   openQuests: []
   playerResources:
-    Iron: 0
-    Energy: 0
-    Food: 0
-    CryoCrystal: 0
+    Iron: 25
+    Energy: 40
+    Food: 60
+    CryoCrystal: 9
   shopResources:
     Apiary:
-      IronPrice: 0
-      CryoCrystalPrice: 0
-      IsPurchased: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
+      IsPurchased: 1
     HoneyGun:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
     MobileBase:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
     Storage:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
     ResidentialModule:
-      IronPrice: 0
-      CryoCrystalPrice: 0
-      IsPurchased: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
+      IsPurchased: 1
     Minner:
-      IronPrice: 0
-      CryoCrystalPrice: 0
-      IsPurchased: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
+      IsPurchased: 1
     Pier:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
   DefaultPlayerResources:
     Iron: 0

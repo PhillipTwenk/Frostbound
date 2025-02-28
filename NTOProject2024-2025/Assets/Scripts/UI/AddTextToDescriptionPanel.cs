@@ -59,6 +59,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
         }
     }
 
+    public void EventODP() => UIManager.CancelLastOpenPanelEvent += HideDescriptionPanel;
     /// <summary>
     /// Нажали на здание, открытие панели подробной информации
     /// </summary>
@@ -189,7 +190,6 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             //DescriptionCanvas.renderMode = RenderMode.WorldSpace;
             //DescriptionCanvas.worldCamera = mainCamera;
         }
-        
     }
 
     /// <summary>
@@ -200,6 +200,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
         IsPanelActive = false;
         point.SetActive(false);
         panel.SetActive(false);
+        UIManager.CancelLastOpenPanelEvent -= HideDescriptionPanel;
         //DescriptionCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
         //DescriptionCanvas.worldCamera = null;
     }

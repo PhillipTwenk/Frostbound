@@ -25,6 +25,7 @@ public class EntityID : ScriptableObject, ISerializableSO
     [Header("Info")]
     [TextArea] public string Name;
     public string DefaultName;
+    public int thisPlayerID;
     
     [Header("Stats")]
     public float speed;

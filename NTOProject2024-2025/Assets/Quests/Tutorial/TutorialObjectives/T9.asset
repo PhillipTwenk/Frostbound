@@ -23,7 +23,7 @@ MonoBehaviour:
   TechnicalTExtOnThisObjective: 
   IsActive: 0
   IsTimeStopOnThisStep: 1
-  MainUIPositionTypeOnThisStep: 0
+  MainUIPositionTypeOnThisStep: 2
   TechUIPositionTypeOnThisStep: 0
   IsTechPanelActiveOnThisStep: 0
   IsAutomaticalyEnterOnThisStep: 1

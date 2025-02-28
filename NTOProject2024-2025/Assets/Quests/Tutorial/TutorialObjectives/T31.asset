@@ -22,10 +22,10 @@ MonoBehaviour:
     \u043C\u0435\u0441\u0442\u043E\u0440\u043E\u0436\u0434\u0435\u043D\u0438\u0435
     \u043A\u0440\u0438\u043E\u043A\u0440\u0438\u0441\u0442\u0430\u043B\u043B\u043E\u0432"
   TechnicalTExtOnThisObjective: 
-  tutorialObjective: {fileID: 11400000, guid: 69a50a80625270e40b14a630d19cdc41, type: 2}
   IsActive: 0
   IsTimeStopOnThisStep: 0
-  MainUIPositionTypeOnThisStep: 2
+  MainUIPositionTypeOnThisStep: 1
   TechUIPositionTypeOnThisStep: 0
   IsTechPanelActiveOnThisStep: 0
   IsAutomaticalyEnterOnThisStep: 1
+  IsClosePlanMenuOnThisStep: 0

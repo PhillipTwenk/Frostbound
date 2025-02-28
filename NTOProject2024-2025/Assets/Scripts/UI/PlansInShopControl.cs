@@ -72,19 +72,19 @@ public class PlansInShopControl : MonoBehaviour
             if (shopResources.ResidentialModule.IsPurchased)
             {
                 PanelRHBought.SetActive(true);
-                _buttonHome.enabled = false;
+                _buttonHome.gameObject.SetActive(false);
             }
             PanelA.SetActive(true);
             if (shopResources.Apiary.IsPurchased)
             {
                 PanelABought.SetActive(true);
-                _buttonApiary.enabled = false;
+                _buttonApiary.gameObject.SetActive(false);
             }
             PanelM.SetActive(true);
             if (shopResources.Minner.IsPurchased)
             {
                 PanelMBought.SetActive(true);
-                _buttonMiner.enabled = false;
+                _buttonMiner.gameObject.SetActive(false);
             }
         }
         else
@@ -99,7 +99,7 @@ public class PlansInShopControl : MonoBehaviour
                     if (shopResources.HoneyGun.IsPurchased)
                     {
                         PanelHoneyGunBought.SetActive(true);
-                        _buttonHG.enabled = false;
+                        _buttonHG.gameObject.SetActive(false);
                     }
                     break;
                 case 2:
@@ -107,7 +107,7 @@ public class PlansInShopControl : MonoBehaviour
                     if (shopResources.Storage.IsPurchased)
                     {
                         PanelStorageBought.SetActive(true);
-                        _buttonS.enabled = false;
+                        _buttonS.gameObject.SetActive(false);
                     }
                     break;
                 case 3:
@@ -115,7 +115,7 @@ public class PlansInShopControl : MonoBehaviour
                     if (shopResources.Pier.IsPurchased)
                     {
                         PanelPierBought.SetActive(true);
-                        _buttonP.enabled = false;
+                        _buttonP.gameObject.SetActive(false);
                     }
                     break;
             }
@@ -185,7 +185,7 @@ public class PlansInShopControl : MonoBehaviour
                         }
                     });
                     PanelABought.SetActive(true);
-                    _buttonApiary.enabled = false;
+                    _buttonApiary.gameObject.SetActive(false);
                     UIManager.Instance.AddNewPlanInPanel(APlan);
                 }
                 else
@@ -196,7 +196,7 @@ public class PlansInShopControl : MonoBehaviour
             else
             {
                 PanelABought.SetActive(true);
-                _buttonApiary.enabled = false;
+                _buttonApiary.gameObject.SetActive(false);
             }
         }
         
@@ -229,7 +229,7 @@ public class PlansInShopControl : MonoBehaviour
                         }
                     });
                     PanelRHBought.SetActive(true);
-                    _buttonHome.enabled = false;
+                    _buttonHome.gameObject.SetActive(false);
                     UIManager.Instance.AddNewPlanInPanel(HPlan);
                 }
                 else
@@ -240,7 +240,7 @@ public class PlansInShopControl : MonoBehaviour
             else
             {
                 PanelRHBought.SetActive(true);
-                _buttonHome.enabled = false;
+                _buttonHome.gameObject.SetActive(false);
             }
         }
         
@@ -273,7 +273,7 @@ public class PlansInShopControl : MonoBehaviour
                         }
                     });
                     PanelMBought.SetActive(true);
-                    _buttonMiner.enabled = false;
+                    _buttonMiner.gameObject.SetActive(false);
                     UIManager.Instance.AddNewPlanInPanel(MPlan);
                 }
                 else
@@ -284,7 +284,7 @@ public class PlansInShopControl : MonoBehaviour
             else
             {
                 PanelMBought.SetActive(true);
-                _buttonMiner.enabled = false;
+                _buttonMiner.gameObject.SetActive(false);
             }
         }
         
@@ -312,7 +312,7 @@ public class PlansInShopControl : MonoBehaviour
                         await APIManager.Instance.PutPlayerResources(UIManagerLocation.WhichPlayerCreate, playerIron - shopResources.HoneyGun.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.HoneyGun.CryoCrystalPrice);
                     });
                     PanelHoneyGunBought.SetActive(true);
-                    _buttonHG.enabled = false;
+                    _buttonHG.gameObject.SetActive(false);
                     UIManager.Instance.AddNewPlanInPanel(HGPlan);
                 }
                 else
@@ -323,7 +323,7 @@ public class PlansInShopControl : MonoBehaviour
             else
             {
                 PanelHoneyGunBought.SetActive(true);
-                _buttonHG.enabled = false;
+                _buttonHG.gameObject.SetActive(false);
             }
         }
 
@@ -352,7 +352,7 @@ public class PlansInShopControl : MonoBehaviour
                     });
                    
                     PanelStorageBought.SetActive(true);
-                    _buttonS.enabled = false;
+                    _buttonS.gameObject.SetActive(false);
                     UIManager.Instance.AddNewPlanInPanel(SPlan);
                 }
                 else
@@ -363,7 +363,7 @@ public class PlansInShopControl : MonoBehaviour
             else
             {
                 PanelHoneyGunBought.SetActive(true);
-                _buttonHG.enabled = false;
+                _buttonHG.gameObject.SetActive(false);
             }
         }
 
@@ -392,7 +392,7 @@ public class PlansInShopControl : MonoBehaviour
                     });
                     
                     PanelPierBought.SetActive(true);
-                    _buttonP.enabled = false;
+                    _buttonP.gameObject.SetActive(false);
                     UIManager.Instance.AddNewPlanInPanel(PPlan);
                 }
                 else
@@ -403,7 +403,7 @@ public class PlansInShopControl : MonoBehaviour
             else
             {
                 PanelHoneyGunBought.SetActive(true);
-                _buttonHG.enabled = false;
+                _buttonHG.gameObject.SetActive(false);
             }
         }
 

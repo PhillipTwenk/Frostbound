@@ -10,7 +10,9 @@ public class UIManagerMainMenu : MonoBehaviour
     [SerializeField] private GameEvent SettingsButtonClickEvent;
     [SerializeField] private GameEvent ReturnToMainMenuEvent;
     [SerializeField] private GameEvent ReturnToPlayerChoicePanelEvent;
-    [SerializeField] private GameEvent ClickCreateNewPlayerButtonEvent;
+    [SerializeField] private GameEvent CreateNewPlayer1Event;
+    [SerializeField] private GameEvent CreateNewPlayer2Event;
+    [SerializeField] private GameEvent CreateNewPlayer3Event;
     [SerializeField] private GameEvent StartGameInChoiceCharacterPanel;
     [SerializeField] private GameEvent StartGameAfterCreatingCharacter;
     [SerializeField] private GameEvent StartTutorialEvent;
@@ -36,7 +38,11 @@ public class UIManagerMainMenu : MonoBehaviour
     [SerializeField] private VolumeSlider volumeMusic;
     [SerializeField] private VolumeSlider volumeEffect;
     [SerializeField] private TextMeshProUGUI ScreenModeText;
-    [SerializeField] private TMP_InputField inputFieldNewName;
+    [SerializeField] private TMP_InputField inputFieldNewNamePlayer1;
+    [SerializeField] private TMP_InputField inputFieldNewNamePlayer2;
+    [SerializeField] private TMP_InputField inputFieldNewNamePlayer3;
+    private TMP_InputField currentIFNP;
+    private string newPLayerName;
     [SerializeField] [TextArea] private string textFullScreen;
     [SerializeField] [TextArea] private string textWindowScreen;
 
@@ -153,7 +159,22 @@ public class UIManagerMainMenu : MonoBehaviour
         if (player.Name == player.DefaultName)
         {
             Debug.Log("Создание нового персонажа");
-            ClickCreateNewPlayerButtonEvent.TriggerEvent(); 
+            switch (player.thisPlayerID)
+            {
+                case 1:
+                    CreateNewPlayer1Event.TriggerEvent();
+                    currentIFNP = inputFieldNewNamePlayer1; 
+                    break;
+                case 2:
+                    CreateNewPlayer2Event.TriggerEvent();
+                    currentIFNP = inputFieldNewNamePlayer2; 
+                    break;
+                case 3:
+                    CreateNewPlayer3Event.TriggerEvent();
+                    currentIFNP = inputFieldNewNamePlayer3; 
+                    break;
+            }
+            //ClickCreateNewPlayerButtonEvent.TriggerEvent(); 
             StartTutorialEvent.TriggerEvent();
         }
         else
@@ -171,8 +192,9 @@ public class UIManagerMainMenu : MonoBehaviour
      /// </summary>
      public async void StartGameAfterCreateChoice()
      {
+         Debug.Log("Нажата кнопка создания персонажа1");
          LoadingCanvasController.Instance.LoadingCanvasNotTransparent.SetActive(true);
-         string newName = inputFieldNewName.text; 
+         string newName = currentIFNP.text; 
          WhichPlayerCreate.Name = newName;
          await APIManager.Instance.CreatePlayer(WhichPlayerCreate, StartValueIron, StartValueEnergy,StartValueFood,StartValueCrioCrystal);
 
@@ -182,6 +204,8 @@ public class UIManagerMainMenu : MonoBehaviour
          JSONSerializeManager.Instance.JSONSave();
          
          StartGameAfterCreatingCharacter.TriggerEvent();
+
+         Debug.Log("Нажата кнопка создания персонажа2");
      }
      
      
