@@ -5,6 +5,7 @@ public class CurrentPlayersDataControl : MonoBehaviour
 {
     public static CurrentPlayersDataControl Instance { get; private set; }
     public static EntityID WhichPlayerCreate;
+    public static QuestController CurrentQuestController;
 
     [SerializeField] private PlayerSaveData player1SaveData;
     [SerializeField] private PlayerSaveData player2SaveData;

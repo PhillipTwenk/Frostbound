@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Сохранения данных о зданиях 
 /// </summary>
-[CreateAssetMenu(menuName = "SaveData/PLayerSaveData")]
+[CreateAssetMenu(menuName = "SaveData/PlayerSaveData")]
 public class PlayerSaveData : ScriptableObject, ISerializableSO
 {
     [SerializeField] private string BuildingPrefabsPath;

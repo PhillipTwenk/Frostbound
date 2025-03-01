@@ -4,6 +4,7 @@ using System.Linq;
 using RTS_Cam;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -34,10 +35,15 @@ public class UIManager : MonoBehaviour
     
     [Header("UI Objects")]
     [SerializeField] private GameObject Resources_Icons;
+
+    [Header("Quests")] 
+    [SerializeField] private Transform uiListForQuestTransform;
+    private List<GameObject> _currentsUIQuestPanels;
     
+    [FormerlySerializedAs("ExtremeCondImage")]
     [Header("Extreme")]
-    [SerializeField] private GameObject ExtremeCondImage;
-    public bool IsExtremeActivated;
+    [SerializeField] private GameObject extremeCondImage;
+    public bool isExtremeActivated;
     private float timer;
     private Color tempColor;
     
@@ -57,7 +63,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Flags")]
     private bool IsOpenBuildingPanel;
-    
+
 
     public bool PossibilityZoomCamera
     {
@@ -81,20 +87,50 @@ public class UIManager : MonoBehaviour
         _screenResolutionControl.Initialization();
     }
 
+    /// <summary>
+    /// При старте нового квеста он отображается на панели квестов
+    /// </summary>
+    /// <param name="quest"> Ссылка на SO квеста </param>
+    public void AddNewQuestItemInQuestPanel(Quest quest)
+    {
+        GameObject newQuestItemGameObject = Instantiate(quest.UIItemOnQuestPanel, uiListForQuestTransform);
+        _currentsUIQuestPanels.Add(newQuestItemGameObject);
+    }
+
+    /// <summary>
+    /// Убрать завершенный квест из панели UI
+    /// </summary>
+    /// <param name="quest"></param>
+    public void RemoveQuestItemInQuestPanel(Quest quest)
+    {
+        foreach (var uiQuestPanel in _currentsUIQuestPanels)
+        {
+            if (uiQuestPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == quest.Name)
+            {
+                Debug.Log($"{uiQuestPanel.name}");
+                _currentsUIQuestPanels.Remove(uiQuestPanel);
+                Destroy(uiQuestPanel);
+                return;
+            }
+        }
+    }
     private void OnEnable()
     {
         HTTPRequests.FailedRequestLimitExceededEvent += FailedRequestLimitExceededUI;
+        QuestController.OnStartNewQuest += AddNewQuestItemInQuestPanel;
     }
 
     private void OnDisable()
     {
         HTTPRequests.FailedRequestLimitExceededEvent -= FailedRequestLimitExceededUI;
+        QuestController.OnStartNewQuest -= AddNewQuestItemInQuestPanel;
         UnsubscribeAllCancelLastOpenPanelEvent();
     }
 
     public void Awake()
     {
         Instance = this;
+        _currentsUIQuestPanels = new List<GameObject>();
     }
     private void Start()
     {
@@ -193,22 +229,22 @@ public class UIManager : MonoBehaviour
             }
             return;
         }
-        if (IsExtremeActivated) 
+        if (isExtremeActivated) 
         {
             Debug.Log("SHEEEEESH");
             timer += Time.deltaTime;
             if (timer >= 120f){
                 timer = 120f;
             } else {
-                tempColor = ExtremeCondImage.GetComponent<Image>().color;
+                tempColor = extremeCondImage.GetComponent<Image>().color;
                 tempColor.a = timer/120f;
-                ExtremeCondImage.GetComponent<Image>().color = new Color(tempColor.r, tempColor.g, tempColor.b, tempColor.a);
+                extremeCondImage.GetComponent<Image>().color = new Color(tempColor.r, tempColor.g, tempColor.b, tempColor.a);
             }
         } else {
             timer = 0f;
-            tempColor = ExtremeCondImage.GetComponent<Image>().color;
+            tempColor = extremeCondImage.GetComponent<Image>().color;
             tempColor.a = 0f;
-            ExtremeCondImage.GetComponent<Image>().color = tempColor;
+            extremeCondImage.GetComponent<Image>().color = tempColor;
         }
     }
 
@@ -310,10 +346,10 @@ public class UIManager : MonoBehaviour
     }
     
     public void FunctionStartExtremeConditions(){
-        IsExtremeActivated = true;
+        isExtremeActivated = true;
     }
 
     public void FunctionEndExtremeConditions(){
-        IsExtremeActivated = false;
+        isExtremeActivated = false;
     }
 }

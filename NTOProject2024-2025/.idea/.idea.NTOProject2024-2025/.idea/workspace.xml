@@ -24,12 +24,22 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CEResetPlayersData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_ResetPlayersData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CEResetPlayersData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_ResetPlayersData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Materials/SimpleMaterials/Yellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Materials/SimpleMaterials/Yellow.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Entities/EntityID.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntityID.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/BaseQuestUIPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/BaseQuestUIPanel.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quests/Objective.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/Objective.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Quest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/Quest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestOwner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestOwner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/VLBConfigOverride.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/VLBConfigOverride.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestBuy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TestBuy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestMovementCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TestMovementCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/CurrentPlayersDataControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/CurrentPlayersDataControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +334,7 @@
       <workItem from="1740652917059" duration="21287000" />
       <workItem from="1740749525387" duration="12567000" />
       <workItem from="1740773325410" duration="1631000" />
-      <workItem from="1740834825728" duration="13589000" />
+      <workItem from="1740834825728" duration="24581000" />
     </task>
     <servers />
   </component>

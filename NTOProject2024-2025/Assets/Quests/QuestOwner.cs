@@ -7,7 +7,6 @@ public class QuestOwner : MonoBehaviour
     public void GiveQuest(QuestController player)
     {
         player.ReceiveNewQuest(myQuest);
-        //myQuest.startQuestEvent.TriggerEvent();
-        //myQuest.startNewObjection.TriggerEvent();
+        Debug.Log($"<color=green> Квест {myQuest.Name} выдан игроку</color>");
     }
 }

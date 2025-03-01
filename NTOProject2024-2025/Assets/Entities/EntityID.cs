@@ -35,7 +35,6 @@ public class EntityID : ScriptableObject, ISerializableSO
     public float sprintSpeed;
     public float normalSpeed;
     public float speedTurn;
-    //public int jumpForce;
 
     [Header("Quests")]
     public List<Quest> openQuests;

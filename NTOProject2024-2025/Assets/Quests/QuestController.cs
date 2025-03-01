@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -9,6 +10,12 @@ using UnityEngine;
 public class QuestController : MonoBehaviour
 {
     private EntityID playerID;
+    public static event Action<Quest> OnStartNewQuest;
+
+    private void Awake()
+    {
+        CurrentPlayersDataControl.CurrentQuestController = this;
+    }
 
     /// <summary>
     /// Установление нового активного квеста
@@ -19,6 +26,8 @@ public class QuestController : MonoBehaviour
         playerID.openQuests.Add(quest);
         quest.active = true;
         quest.OnQuestCompleted += RemoveCompletedQuest;
+        quest.OnQuestCompleted += UIManager.Instance.RemoveQuestItemInQuestPanel;
+        OnStartNewQuest?.Invoke(quest);
     }
 
     /// <summary>
@@ -28,7 +37,9 @@ public class QuestController : MonoBehaviour
     void RemoveCompletedQuest(Quest quest)
     {
         quest.OnQuestCompleted -= RemoveCompletedQuest;
+        quest.OnQuestCompleted -= UIManager.Instance.RemoveQuestItemInQuestPanel;
         playerID.openQuests.Remove(quest);
+        Debug.Log($"<color=green> Квест {quest.Name} Завершен </color>");
     }
 
     /// <summary>

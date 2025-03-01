@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -6,8 +8,23 @@ using UnityEngine.Serialization;
 /// Предоставляет метод для завершения цели
 /// </summary>
 [CreateAssetMenu(menuName = "QuestScriptableObjects/Objective")]
-public class Objective : ScriptableObject
+public class Objective : ScriptableObject, ISerializableSO
 {
+    /// <summary>
+    /// Реализация ISerializableSO
+    /// </summary>
+    /// <returns></returns>
+    public string SerializeToJson()
+    {
+        return JsonUtility.ToJson(this, true);
+    }
+
+    public void DeserializeFromJson(string json)
+    {
+        JsonUtility.FromJsonOverwrite(json, this);
+    }
+    
+    
     // //!!! При старте игры обнуляет прохождение выполненных целей, не учитывает сохранения игры в билде
     // public void OnEnable()
     // {
@@ -25,6 +42,8 @@ public class Objective : ScriptableObject
     
     [Tooltip("Описание")] [TextArea] public string description;
 
+    public event Action OnObjectiveComplete;  
+
     /// <summary>
     /// Заврешение данной цели
     /// </summary>
@@ -32,8 +51,9 @@ public class Objective : ScriptableObject
     {
         if ((parentQuest.currentObjective == this || !required) && parentQuest.active)
         {
-            Debug.Log($"===========Цель №{parentQuest.objectives.IndexOf(this)} - [{this.description}] в квесте {parentQuest.questDescription} выполненa==========");
+            Debug.Log($"<color=green>===========Цель №{parentQuest.objectives.IndexOf(this)} - [{this.description}] в квесте {parentQuest.Name} выполненa==========</color>");
             completed = true;
+            OnObjectiveComplete?.Invoke();
             parentQuest.TryEndQuest();
         }
     }
