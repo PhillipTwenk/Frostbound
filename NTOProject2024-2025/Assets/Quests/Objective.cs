@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Описание свойств цели определенного квеста
@@ -7,38 +8,32 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "QuestScriptableObjects/Objective")]
 public class Objective : ScriptableObject
 {
-    //!!! При старте игры обнуляет прохождение выполненных целей, не учитывает сохранения игры в билде
-    public void OnEnable()
-    {
-        this.Completed = false;
-    }
-    //
+    // //!!! При старте игры обнуляет прохождение выполненных целей, не учитывает сохранения игры в билде
+    // public void OnEnable()
+    // {
+    //     this.completed = false;
+    // }
+    // //
     
-    //Родительский квест
-    public Quest parentQuest;
+    [Tooltip("Родительский квест")] public Quest parentQuest;
+    
+    [Tooltip("Необходим ли")] public bool required = true;
+    
+    [Tooltip("Завершен ли")] public bool completed;
 
-    //Необходим ли
-    public bool required = true;
-
-    //Завершен ли
-    public bool Completed { get; set; }
-
-    //Расположение цели
-    // public Transform waypoint;
-
-    //Описание
-    [TextArea]
-    public string description;
+    [Tooltip("Имя цели")] public string Name;
+    
+    [Tooltip("Описание")] [TextArea] public string description;
 
     /// <summary>
     /// Заврешение данной цели
     /// </summary>
     public void CompleteObjective()
     {
-        if ((parentQuest.currentObjective == this || !required) && parentQuest.Active)
+        if ((parentQuest.currentObjective == this || !required) && parentQuest.active)
         {
-            Debug.Log($"===========Цель №{parentQuest.objectives.IndexOf(this)} - [{this.description}] в квесте {parentQuest.QuestDescription} выполненa==========");
-            Completed = true;
+            Debug.Log($"===========Цель №{parentQuest.objectives.IndexOf(this)} - [{this.description}] в квесте {parentQuest.questDescription} выполненa==========");
+            completed = true;
             parentQuest.TryEndQuest();
         }
     }

@@ -1,55 +1,70 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Описание свойств квеста
 /// </summary>
 [CreateAssetMenu(menuName = "QuestScriptableObjects/Quest")]
-public class Quest : ScriptableObject
+public class Quest : ScriptableObject, ISerializableSO
 {
+    /// <summary>
+    /// Реализация ISerializableSO
+    /// </summary>
+    /// <returns></returns>
+    public string SerializeToJson()
+    {
+        return JsonUtility.ToJson(this, true);
+    }
+
+    public void DeserializeFromJson(string json)
+    {
+        JsonUtility.FromJsonOverwrite(json, this);
+    }
+    
+    
+    
+    
+    
     public string Name
     {
         get
         {
             return name;
         }
+        set
+        {
+            name = value;
+        }
     }
-
-    //Имя квеста
-    [SerializeField]private string name;
     
-    //Ивент для завершения квеста
-    public event Action<Quest> OnQuestCompleted;
-
-    //Активен ли
-    public bool Active { get; set; }
-
-    //Завершен ли
-    public bool Completed { get; private set; }
-
-    //Описание
-    [TextArea]
-    public string QuestDescription { get; private set; }
-
-    //Список целей квеста
-    public List<Objective> objectives = new List<Objective>();
+    [Tooltip("Имя квеста")] [SerializeField]private string name;
     
-    //Текущая цель для этого квеста
-    public Objective currentObjective;
+    [Tooltip("Ивент для завершения квеста")]public event Action<Quest> OnQuestCompleted;
     
-    //Соответствующий ивент старта этого квеста
-    //public GameEvent startQuestEvent;
+    [Tooltip("Активен ли")] public bool active;
     
-    //Ивент срабатывающий при получении новой задачи в данном квесте
-    //public GameEvent startNewObjection;
+    [Tooltip("Завершен ли")] public bool completed;
+    
+    [Tooltip("Описание")] [TextArea] public string questDescription;
+    
+    [Tooltip("Список целей квеста")] public List<Objective> objectives = new List<Objective>();
+    
+    [Tooltip("Текущая цель для этого квеста")] public Objective currentObjective;
 
-    //Метод для попытки завершения квеста, если все его необходимые цели выполнены
+    [Space] [Header("UI Control")] [Tooltip("Префаб пункта квеста на панели с квестами")]
+    public GameObject UIItemOnQuestPanel;
+    
+
+    /// <summary>
+    /// Метод для попытки завершения квеста, если все его необходимые цели выполнены
+    /// </summary>
     public void TryEndQuest()
     {
         for (int i = 0; i < objectives.Count; i++)
         {
-            if (objectives[i].Completed != true)
+            if (objectives[i].completed != true)
             {
                 if (objectives[i].required)
                 {
@@ -64,13 +79,15 @@ public class Quest : ScriptableObject
             }
         }
         
-        Completed = true;
-        Active = false;
+        completed = true;
+        active = false;
 
         OnQuestCompleted?.Invoke(this);
     }
 
-    //У всех целей присваиение данного квеста родительским
+    /// <summary>
+    /// У всех целей присваиение данного квеста родительским
+    /// </summary>
     public void OnEnable()
     {
         for (int i = 0; i < objectives.Count; i++)

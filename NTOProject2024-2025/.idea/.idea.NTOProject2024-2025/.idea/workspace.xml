@@ -24,31 +24,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CEResetPlayersData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_ResetPlayersData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CEResetPlayersData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_ResetPlayersData.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Entities/EntityID.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntityID.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quests/Objective.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/Objective.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quests/Quest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/Quest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestOwner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestOwner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtremeConditionsScripts/ExtremeConditionsControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtremeConditionsScripts/ExtremeConditionsControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interscene Managers/SceneTransitionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interscene Managers/SceneTransitionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/MovementCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/MovementCharacter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestBuy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TestBuy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerLocation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/CurrentPlayersDataControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerLocation.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/CurrentPlayersDataControl.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UpdatePanelResources.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UpdatePanelResources.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +50,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Buildings/Building.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Buildings/Other/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Buildings/Plan.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CustomEditorScripts/CE_CreateNewQuest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CustomEditorScripts/ShowIfBoolAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CustomEditorScripts/ShowIfBoolDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Entities/EntityID.cs" root0="FORCE_HIGHLIGHTING" />
@@ -128,7 +110,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SelectThisButtonMainMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/PauseUIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerLocation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerMainMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UpdatePanelResources.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/VolumeSlider.cs" root0="FORCE_HIGHLIGHTING" />
@@ -343,6 +324,7 @@
       <workItem from="1740652917059" duration="21287000" />
       <workItem from="1740749525387" duration="12567000" />
       <workItem from="1740773325410" duration="1631000" />
+      <workItem from="1740834825728" duration="13589000" />
     </task>
     <servers />
   </component>

@@ -17,7 +17,7 @@ public class QuestController : MonoBehaviour
     public void ReceiveNewQuest(Quest quest)
     {
         playerID.openQuests.Add(quest);
-        quest.Active = true;
+        quest.active = true;
         quest.OnQuestCompleted += RemoveCompletedQuest;
     }
 
@@ -39,7 +39,7 @@ public class QuestController : MonoBehaviour
         playerID = CurrentPlayersDataControl.WhichPlayerCreate;
         for(int i = playerID.openQuests.Count; i>0; i--)
         {
-            if (playerID.openQuests[i].Completed)
+            if (playerID.openQuests[i].completed)
             {
                 RemoveCompletedQuest(playerID.openQuests[i]);
             }

@@ -18,31 +18,18 @@ public static class PathsEditorWindow
         "Assets/SaveData/playerSaveDatas/Player1SaveData.asset",
         "Assets/SaveData/playerSaveDatas/Player2SaveData.asset",
         "Assets/SaveData/playerSaveDatas/Player3SaveData.asset"
-        
     };
 }
 
 #if UNITY_EDITOR
-public class CEResetPlayersData: EditorWindow
+public class CE_ResetPlayersData: EditorWindow
 {
-    private PlayerSaveData DefaultPSD;
-    private Vector2 scrollPosition;
-
-    
     [MenuItem("Custom Tools/Reset players data")]
     public static void ShowWindow()
     {
-        GetWindow<CEResetPlayersData>("Reset players data window");
+        GetWindow<CE_ResetPlayersData>("Reset players data window");
     }
-
-    private void OnEnable()
-    {
-    }
-
-    private void OnDisable()
-    {
-    }
-
+    
     private void OnGUI()
     {
         GUILayout.Label("Reset JSON data", EditorStyles.boldLabel);
@@ -64,7 +51,7 @@ public class CEResetPlayersData: EditorWindow
         GUILayout.Space(20);
         
         
-        GUILayout.Label("Reset Entities Datas");
+        GUILayout.Label("Reset Entities Datas" , EditorStyles.boldLabel);
         
         if (GUILayout.Button("Reset"))
         {

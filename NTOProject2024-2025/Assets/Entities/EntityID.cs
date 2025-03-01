@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 [CreateAssetMenu(menuName = "ForEntities/Entity")]
 public class EntityID : ScriptableObject, ISerializableSO
 {
-    // Реализация ISerializableSO
+    /// <summary>
+    /// Реализация ISerializableSO
+    /// </summary>
+    /// <returns></returns>
     public string SerializeToJson()
     {
         return JsonUtility.ToJson(this, true);
