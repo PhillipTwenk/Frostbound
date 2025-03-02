@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+using Object = UnityEngine.Object;
 
 /// <summary>
 /// Пути для создания файлов квеста и его целей
@@ -254,8 +255,8 @@ public class CE_CreateNewQuest: EditorWindow
         {
             Objective newObjective = ScriptableObject.CreateInstance<Objective>();
 
-            newObjective.name = $"[{quest.name}] - Obj{i+1}";
-            newObjective.Name = QuestObjectivesNames[i];
+            ((Object)newObjective).name = $"[{quest.name}] - Obj{i+1}";
+            newObjective.name = QuestObjectivesNames[i];
             newObjective.description = QuestObjectivesAndHisDescriptions[i];
             newObjective.required = QuestObjectivesIsRequired[i];
 
@@ -263,7 +264,7 @@ public class CE_CreateNewQuest: EditorWindow
             
             newObjective.parentQuest = quest;
             
-            string pathThis = $"{path}/{newObjective.name}.asset";
+            string pathThis = $"{path}/{((Object)newObjective).name}.asset";
             AssetDatabase.CreateAsset(newObjective, pathThis);
         
             AssetDatabase.SaveAssets();

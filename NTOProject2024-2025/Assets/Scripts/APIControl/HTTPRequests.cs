@@ -73,7 +73,7 @@ public class HTTPRequests: MonoBehaviour
 
             request.SendWebRequest();
 
-            while (!request.isDone)
+            while (!request.isDone && !InternetMonitor.IsOfflineMode)
             {
                 //Debug.Log($"Current request time: {Time.realtimeSinceStartup - startTime} 0.o");
                 if (Time.realtimeSinceStartup - startTime > timeoutValue)

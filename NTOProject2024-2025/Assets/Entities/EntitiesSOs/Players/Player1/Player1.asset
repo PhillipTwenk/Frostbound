@@ -19,8 +19,8 @@ MonoBehaviour:
   sprintSpeed: 80
   normalSpeed: 60
   speedTurn: 360
-  currentQuest: {fileID: 0}
-  openQuests: []
+  openQuests:
+  - {fileID: 11400000, guid: b54a04fad64a3f3489b69f0accc334b9, type: 2}
   playerResources:
     Iron: 0
     Energy: 0

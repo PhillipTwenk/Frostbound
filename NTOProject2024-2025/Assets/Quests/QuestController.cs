@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -11,6 +12,7 @@ public class QuestController : MonoBehaviour
 {
     private EntityID playerID;
     public static event Action<Quest> OnStartNewQuest;
+    public static event Action<List<Quest>> OnInitializationQuests;
 
     private void Awake()
     {
@@ -25,8 +27,8 @@ public class QuestController : MonoBehaviour
     {
         playerID.openQuests.Add(quest);
         quest.active = true;
-        quest.OnQuestCompleted += RemoveCompletedQuest;
         quest.OnQuestCompleted += UIManager.Instance.RemoveQuestItemInQuestPanel;
+        quest.OnQuestCompleted += RemoveCompletedQuest;
         OnStartNewQuest?.Invoke(quest);
     }
 
@@ -36,8 +38,8 @@ public class QuestController : MonoBehaviour
     /// <param name="quest"> Ссылка на квест </param>
     void RemoveCompletedQuest(Quest quest)
     {
-        quest.OnQuestCompleted -= RemoveCompletedQuest;
         quest.OnQuestCompleted -= UIManager.Instance.RemoveQuestItemInQuestPanel;
+        quest.OnQuestCompleted -= RemoveCompletedQuest;
         playerID.openQuests.Remove(quest);
         Debug.Log($"<color=green> Квест {quest.Name} Завершен </color>");
     }
@@ -47,9 +49,11 @@ public class QuestController : MonoBehaviour
     /// </summary>
     public void QuestInitialize()
     {
+        Debug.Log("Инициализация квестов");
         playerID = CurrentPlayersDataControl.WhichPlayerCreate;
-        for(int i = playerID.openQuests.Count; i>0; i--)
+        for(int i = playerID.openQuests.Count -  1; i>=0; i--)
         {
+            Debug.Log($"Проверка квестов: {playerID.openQuests[i].Name}");
             if (playerID.openQuests[i].completed)
             {
                 RemoveCompletedQuest(playerID.openQuests[i]);
@@ -57,6 +61,12 @@ public class QuestController : MonoBehaviour
             else
             {
                 playerID.openQuests[i].OnQuestCompleted += RemoveCompletedQuest;
+                OnInitializationQuests?.Invoke(playerID.openQuests);
+            }
+
+            if (i == 0)
+            {
+                break;
             }
         }
     }

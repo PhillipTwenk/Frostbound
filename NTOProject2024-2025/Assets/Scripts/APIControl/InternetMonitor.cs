@@ -68,7 +68,7 @@ public class InternetMonitor : MonoBehaviour
         
         OfflineModeUI.SetActive(IsOfflineMode);
     }
-    private void Start()
+    public void Initialization()
     {
         // Инициализация состояния интернета
         isInternetAvailable = Application.internetReachability != NetworkReachability.NotReachable;
@@ -90,15 +90,15 @@ public class InternetMonitor : MonoBehaviour
                 OffOfflineGameEvent.TriggerEvent();
                 OfflineModeUI.SetActive(false);
             }
-            OfflineModeUI.SetActive(IsOfflineMode);
+            // OfflineModeUI.SetActive(IsOfflineMode);
         }
         else
         {
-            PlayerPrefs.SetInt("OfflineMode", 0);
-            IsOfflineMode = false;
-            OfflineModeUI.SetActive(false);
-            Debug.Log("Оффлайн режим отключен, игрок играет в первый раз");
-            OffOfflineGameEvent.TriggerEvent();
+            PlayerPrefs.SetInt("OfflineMode", 1);
+            IsOfflineMode = true;
+            OfflineModeUI.SetActive(true);
+            Debug.Log("Оффлайн режим включен, игрок играет в первый раз");
+            OnOfflineGameEvent.TriggerEvent();
         }
         NoInternetUI.SetActive(!isInternetAvailable);
         

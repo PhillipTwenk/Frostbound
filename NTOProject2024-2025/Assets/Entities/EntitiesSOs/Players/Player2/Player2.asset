@@ -12,20 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ae3d7a2c70f8e45a7c5fd09cbe68af, type: 3}
   m_Name: Player2
   m_EditorClassIdentifier: 
-  Name: None
+  Name: "\u0444\u044B\u0432\u0444\u044B\u0432"
   DefaultName: None
   thisPlayerID: 2
   speed: 60
   sprintSpeed: 80
   normalSpeed: 60
   speedTurn: 360
-  currentQuest: {fileID: 0}
   openQuests: []
   playerResources:
-    Iron: 25
-    Energy: 40
+    Iron: 1500
+    Energy: 30
     Food: 60
-    CryoCrystal: 9
+    CryoCrystal: 1
   shopResources:
     Apiary:
       IronPrice: 50

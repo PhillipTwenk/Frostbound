@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abaf1a60fc60e8458b5b0093d962a36, type: 3}
+  m_Name: SkibidiQuest
+  m_EditorClassIdentifier: 
+  name: ChkebedeQuest
+  active: 0
+  completed: 0
+  questDescription: MegaSkibidiQuest
+  objectives:
+  - {fileID: 11400000, guid: 8f015114e84e1e9478e540a05b5dbd78, type: 2}
+  - {fileID: 11400000, guid: 447f3be9ec853984aa39f4aee773b012, type: 2}
+  currentObjective: {fileID: 11400000, guid: 447f3be9ec853984aa39f4aee773b012, type: 2}
+  UIItemOnQuestPanel: {fileID: 7955306229360465755, guid: f1c3d709cb35f1448ab8217b6b00e9a5, type: 3}

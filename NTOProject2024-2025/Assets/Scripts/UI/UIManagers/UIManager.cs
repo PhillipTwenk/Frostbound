@@ -39,6 +39,12 @@ public class UIManager : MonoBehaviour
     [Header("Quests")] 
     [SerializeField] private Transform uiListForQuestTransform;
     private List<GameObject> _currentsUIQuestPanels;
+    [SerializeField] private List<GameObject> AllUIQuestPanels;
+    [SerializeField] private TextMeshProUGUI NameOfObjective;
+    [SerializeField] private TextMeshProUGUI DescriptionOfObjective;
+    [SerializeField] private GameObject IsCompletedObjective;
+    private GameObject SelectedItemObjectiveIdicator;
+    private Objective selectedObjective;
     
     [FormerlySerializedAs("ExtremeCondImage")]
     [Header("Extreme")]
@@ -85,6 +91,8 @@ public class UIManager : MonoBehaviour
         _volumeSliderEffects.Initialization();
         
         _screenResolutionControl.Initialization();
+
+        QuestController.OnInitializationQuests += InitializationQuestPanel;
     }
 
     /// <summary>
@@ -93,8 +101,54 @@ public class UIManager : MonoBehaviour
     /// <param name="quest"> Ссылка на SO квеста </param>
     public void AddNewQuestItemInQuestPanel(Quest quest)
     {
-        GameObject newQuestItemGameObject = Instantiate(quest.UIItemOnQuestPanel, uiListForQuestTransform);
-        _currentsUIQuestPanels.Add(newQuestItemGameObject);
+        //GameObject newQuestItemGameObject = Instantiate(quest.UIItemOnQuestPanel, uiListForQuestTransform);
+        
+        foreach (var uiQuestPanel in AllUIQuestPanels)
+        {
+            if (uiQuestPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == quest.Name)
+            {
+                Debug.Log($" Добавлен квест в панель: {uiQuestPanel.name}");
+                _currentsUIQuestPanels.Add(uiQuestPanel);
+                uiQuestPanel.SetActive(true);
+                return;
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Загрузка данных о цели в панель подроного описания 
+    /// </summary>
+    /// <param name="objective"> SO цели </param>
+    public void LoadDataInDescriptionUIPanel(Objective objective)
+    {
+        NameOfObjective.text = objective.name;
+        DescriptionOfObjective.text = objective.description;
+        IsCompletedObjective.SetActive(objective.completed);
+        
+        selectedObjective = null;
+        selectedObjective = objective;
+    }
+
+    /// <summary>
+    /// Обновить активных индикатор выделенной цели
+    /// </summary>
+    /// <param name="newIdicator"> Ссылка на gameObject индикатора </param>
+    public void NewIndicator(GameObject newIdicator)
+    {
+        SelectedItemObjectiveIdicator?.SetActive(false);
+        SelectedItemObjectiveIdicator = newIdicator;
+        SelectedItemObjectiveIdicator?.SetActive(true);
+        
+
+        // if (newIdicator == null)
+        // {
+        //     // Убрать выделение квеста на панели квестов при нажатии 
+        //     CancelLastOpenPanelEvent += () =>
+        //     {
+        //         SelectedItemObjectiveIdicator?.SetActive(false);
+        //         SelectedItemObjectiveIdicator = null;
+        //     };
+        // }
     }
 
     /// <summary>
@@ -109,11 +163,41 @@ public class UIManager : MonoBehaviour
             {
                 Debug.Log($"{uiQuestPanel.name}");
                 _currentsUIQuestPanels.Remove(uiQuestPanel);
-                Destroy(uiQuestPanel);
+                uiQuestPanel.SetActive(false);
+                if (selectedObjective.parentQuest.Name == quest.Name)
+                {
+                    DescriptionOfObjective.transform.parent.gameObject.SetActive(false);
+                }
                 return;
             }
         }
     }
+
+    /// <summary>
+    /// Инициализация панели квестов
+    /// </summary>
+    /// <param name="quests"> Активные квесты </param>
+    public void InitializationQuestPanel(List<Quest> quests)
+    {
+        Debug.Log("Начата инициализация панели квестов");
+        List<string> listOfActiveQuests = new List<string>();
+        for (int i = 0; i < quests.Count; i++)
+        {
+            listOfActiveQuests.Add(quests[i].Name);
+        }
+        
+        for (int i = 0; i < AllUIQuestPanels.Count; i++)
+        {
+            string questName = AllUIQuestPanels[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text;
+            if (listOfActiveQuests.Contains(questName))
+            {
+                Debug.Log($"Инициализирован квест: {AllUIQuestPanels[i].name}");
+                _currentsUIQuestPanels.Add(AllUIQuestPanels[i]);
+                AllUIQuestPanels[i].SetActive(true);
+            }
+        }
+    }
+    
     private void OnEnable()
     {
         HTTPRequests.FailedRequestLimitExceededEvent += FailedRequestLimitExceededUI;
@@ -124,6 +208,7 @@ public class UIManager : MonoBehaviour
     {
         HTTPRequests.FailedRequestLimitExceededEvent -= FailedRequestLimitExceededUI;
         QuestController.OnStartNewQuest -= AddNewQuestItemInQuestPanel;
+        QuestController.OnInitializationQuests -= InitializationQuestPanel;
         UnsubscribeAllCancelLastOpenPanelEvent();
     }
 
@@ -134,6 +219,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
+        SelectedItemObjectiveIdicator = null;
         IsOpenBuildingPanel = true;
         InitializeData();
     }
@@ -157,6 +243,10 @@ public class UIManager : MonoBehaviour
     public void OpenQuestPanel()
     {
         OpenQuestPanelEvent.TriggerEvent();
+        if (selectedObjective != null)
+        {
+            IsCompletedObjective?.SetActive(selectedObjective.completed);
+        }
         CancelLastOpenPanelEvent += CloseQuestPanel;
     }
     public void CloseQuestPanel()
@@ -209,6 +299,7 @@ public class UIManager : MonoBehaviour
     {
         var lastPanel = CancelLastOpenPanelEvent?.GetInvocationList().Last() as Action;
         lastPanel?.Invoke();
+        CancelLastOpenPanelEvent -= lastPanel;
     }
     private void Update()
     {

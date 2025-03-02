@@ -38,7 +38,7 @@ public class Objective : ScriptableObject, ISerializableSO
     
     [Tooltip("Завершен ли")] public bool completed;
 
-    [Tooltip("Имя цели")] public string Name;
+    [Tooltip("Имя цели")] public string name;
     
     [Tooltip("Описание")] [TextArea] public string description;
 
