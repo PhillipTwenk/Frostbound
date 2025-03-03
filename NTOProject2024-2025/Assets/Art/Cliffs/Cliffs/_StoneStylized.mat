@@ -79,7 +79,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Roughness: 0.17
+    - _Roughness: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -109,8 +109,8 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Spacing: {r: 10, g: 10, b: 0, a: 0}
-    - _Tint: {r: 0.623131, g: 0.62800974, b: 0.6320754, a: 0}
+    - _Spacing: {r: 1, g: 1, b: 0, a: 0}
+    - _Tint: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &7411800829467033896

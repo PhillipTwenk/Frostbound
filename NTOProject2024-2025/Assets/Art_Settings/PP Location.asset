@@ -147,25 +147,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   m_Version: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: PP Location
-  m_EditorClassIdentifier: 
-  components:
-  - {fileID: 4497987939976532617}
-  - {fileID: -2905770998565883833}
-  - {fileID: -3077692113643807703}
-  - {fileID: -4971219500526256386}
-  - {fileID: -4705060554002447218}
---- !u!114 &4497987939976532617
+--- !u!114 &-1224527957432223717
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,17 +167,17 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   colorMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   color:
     m_OverrideState: 0
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   tint:
-    m_OverrideState: 1
-    m_Value: {r: 0.5319509, g: 0.8113208, b: 0.8113208, a: 1}
-  maxFogDistance:
     m_OverrideState: 0
-    m_Value: 5000
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  maxFogDistance:
+    m_OverrideState: 1
+    m_Value: 5148.8
   mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.5
@@ -207,28 +189,28 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 1052
+    m_Value: 0
   maximumHeight:
-    m_OverrideState: 0
-    m_Value: 1183.2
+    m_OverrideState: 1
+    m_Value: 1015.5
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 2213.5
+    m_Value: 481
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
   albedo:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   globalLightProbeDimmer:
     m_OverrideState: 1
-    m_Value: 0.458
+    m_Value: 1
   depthExtent:
     m_OverrideState: 1
-    m_Value: 1520.4
+    m_Value: 5599.6
   denoisingMode:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 2
   anisotropy:
     m_OverrideState: 0
     m_Value: 0
@@ -256,3 +238,21 @@ MonoBehaviour:
   directionalLightsOnly:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: PP Location
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: -2905770998565883833}
+  - {fileID: -3077692113643807703}
+  - {fileID: -4971219500526256386}
+  - {fileID: -4705060554002447218}
+  - {fileID: -1224527957432223717}
