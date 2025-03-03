@@ -72,11 +72,11 @@ public class MovementCharacter : MonoBehaviour
         Vector3 movement = transform.forward * _input.magnitude * playerID.speed;
         _rb.linearVelocity = new Vector3(movement.x, _rb.linearVelocity.y, movement.z); // Сохраняем вертикальную скорость для гравитации
 
-        if (!IsBearMove)
-        {
-            Utility.Invoke(this, () => WASDTutorial.CheckAndUpdateTutorialState(), 2f);
-            IsBearMove = true;
-        }
+        // if (!IsBearMove)
+        // {
+        //     Utility.Invoke(this, () => WASDTutorial.CheckAndUpdateTutorialState(), 2f);
+        //     IsBearMove = true;
+        // }
     }
 
 

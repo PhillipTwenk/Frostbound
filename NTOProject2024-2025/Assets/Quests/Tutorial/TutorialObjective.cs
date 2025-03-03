@@ -20,11 +20,11 @@ public class TutorialObjective : ScriptableObject
 
     public bool IsClosePlanMenuOnThisStep;
 
-    public void CheckAndUpdateTutorialState()
-    {
-        if (IsActive && TutorialManager.IsTutorialActive)
-        {
-            TutorialManager.UpdateTutorialStateEvent?.Invoke();
-        }
-    }
+    // public void CheckAndUpdateTutorialState()
+    // {
+    //     if (IsActive && TutorialManager.IsTutorialActive)
+    //     {
+    //         TutorialManager.UpdateTutorialStateEvent?.Invoke();
+    //     }
+    // }
 }

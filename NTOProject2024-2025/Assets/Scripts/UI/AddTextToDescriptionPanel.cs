@@ -277,7 +277,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             ButtonUpgrade.SetActive(false); 
         }
 
-        if (buildingData.Title != "Мобильная база")
+        if (buildingData.buildingTypeSO.IDoB != 3)
         {
             if (playerResources.Iron >= priceUpgrade)
             {

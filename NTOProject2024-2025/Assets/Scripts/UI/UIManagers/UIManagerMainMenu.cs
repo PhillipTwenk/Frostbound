@@ -175,7 +175,7 @@ public class UIManagerMainMenu : MonoBehaviour
                     break;
             }
             //ClickCreateNewPlayerButtonEvent.TriggerEvent(); 
-            StartTutorialEvent.TriggerEvent();
+            //StartTutorialEvent.TriggerEvent();
         }
         else
         {

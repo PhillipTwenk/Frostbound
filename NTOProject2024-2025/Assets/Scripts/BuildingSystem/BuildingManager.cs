@@ -173,7 +173,7 @@ public class BuildingManager : MonoBehaviour
                             await _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
                             Debug.Log("NavMesh updated");
 
-                            TutorialPLacementBuildingsCheck(buildingData);
+                            //TutorialPLacementBuildingsCheck(buildingData);
                             
                             //Ожидаем прибытия рабочего 
                             await WorkersInterBuildingControl.Instance.SendWorkerToBuilding(true, buildingData);
@@ -181,7 +181,7 @@ public class BuildingManager : MonoBehaviour
                             //Ожидаем завершения его строительства
                             await WorkersInterBuildingControl.Instance.WorkerEndWork(buildingData);
 
-                            TutorialWaitWorkersCheck(buildingData);
+                            //TutorialWaitWorkersCheck(buildingData);
                             
                             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
                             
@@ -266,38 +266,38 @@ public class BuildingManager : MonoBehaviour
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }
 
-    private void TutorialPLacementBuildingsCheck(BuildingData buildingData)
-    {
-        string BuildingName = buildingData.Title;
-        switch (BuildingName)
-        {
-            case "Пасека":
-                ApiaryPlacementTutorial.CheckAndUpdateTutorialState();
-                break;
-            case "Жилой модуль":
-                HomePlacementTutorial.CheckAndUpdateTutorialState();
-                break;
-            case "Добытчик":
-                MinerPlacementTutorial.CheckAndUpdateTutorialState();
-                break;
-        }
-    }
+    // private void TutorialPLacementBuildingsCheck(BuildingData buildingData)
+    // {
+    //     string BuildingName = buildingData.Title;
+    //     switch (BuildingName)
+    //     {
+    //         case "Пасека":
+    //             ApiaryPlacementTutorial.CheckAndUpdateTutorialState();
+    //             break;
+    //         case "Жилой модуль":
+    //             HomePlacementTutorial.CheckAndUpdateTutorialState();
+    //             break;
+    //         case "Добытчик":
+    //             MinerPlacementTutorial.CheckAndUpdateTutorialState();
+    //             break;
+    //     }
+    // }
     
-    private void TutorialWaitWorkersCheck(BuildingData buildingData)
-    {
-        string BuildingName = buildingData.Title;
-        switch (BuildingName)
-        {
-            case "Пасека":
-                WaitWorkerApiaryTutorial.CheckAndUpdateTutorialState();
-                break;
-            case "Жилой модуль":
-                WaitWorkerHomeTutorial.CheckAndUpdateTutorialState();
-                break;
-            case "Добытчик":
-                WaitWorkerMinerTutorial.CheckAndUpdateTutorialState();
-                break;
-        }
-    }
+    // private void TutorialWaitWorkersCheck(BuildingData buildingData)
+    // {
+    //     string BuildingName = buildingData.Title;
+    //     switch (BuildingName)
+    //     {
+    //         case "Пасека":
+    //             WaitWorkerApiaryTutorial.CheckAndUpdateTutorialState();
+    //             break;
+    //         case "Жилой модуль":
+    //             WaitWorkerHomeTutorial.CheckAndUpdateTutorialState();
+    //             break;
+    //         case "Добытчик":
+    //             WaitWorkerMinerTutorial.CheckAndUpdateTutorialState();
+    //             break;
+    //     }
+    // }
 }
 

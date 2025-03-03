@@ -70,7 +70,7 @@ public class WorkerMovementController : MonoBehaviour
                     ArriveForBuildBuidling = false;
                     if (!IsWorkerMove)
                     {
-                        MovementWorkerTutorial.CheckAndUpdateTutorialState();
+                        //MovementWorkerTutorial.CheckAndUpdateTutorialState();
                         IsWorkerMove = true;
                         Debug.Log("Рабочий начал движение");
                     }
@@ -103,7 +103,7 @@ public class WorkerMovementController : MonoBehaviour
                     
                     if (!IsWorkerMovetoApiary)
                     {
-                        WorkerStartMovementToApiaryTutorial.CheckAndUpdateTutorialState();
+                        //WorkerStartMovementToApiaryTutorial.CheckAndUpdateTutorialState();
                         IsWorkerMovetoApiary = true;
                     }
                 }

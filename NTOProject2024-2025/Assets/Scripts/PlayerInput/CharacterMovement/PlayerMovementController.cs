@@ -75,11 +75,11 @@ public class PlayerMovementController : MonoBehaviour
                 // Если клинкули не на здание и не на рабочего
                 if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
-                    if (!IsPlayerMove)
-                    {
-                        IsPlayerMove = true;
-                        Utility.Invoke(this, () => WASDTutorial.CheckAndUpdateTutorialState(), 2f);
-                    }
+                    // if (!IsPlayerMove)
+                    // {
+                    //     IsPlayerMove = true;
+                    //     Utility.Invoke(this, () => WASDTutorial.CheckAndUpdateTutorialState(), 2f);
+                    // }
                 } else {
                     currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
                 }

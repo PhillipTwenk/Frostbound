@@ -276,7 +276,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Открыта панель строительства");
         RTS_Camera.possibilityZoomCamera = false;
-        PlansPanelOpenTutorial.CheckAndUpdateTutorialState();
+        //PlansPanelOpenTutorial.CheckAndUpdateTutorialState();
         OpenBuildingPanelEvent.TriggerEvent();
         IsOpenBuildingPanel = false;
         CancelLastOpenPanelEvent += CloseBuildingPanel;
@@ -408,14 +408,14 @@ public class UIManager : MonoBehaviour
         BuildingManager.Instance.MouseIndicator = PlaceNewBuildingTrigger;
         BuildingManager.Instance.CurrentBuilding = plan.buildingSO.PrefabBuilding;
         StartPlacingBuildEvent.TriggerEvent();
-        if (plan.buildingSO.PrefabBuilding.transform.GetChild(0).GetComponent<BuildingData>().Title == "Пасека")
-        {
-            ApiaryStartBuildingTutorial.CheckAndUpdateTutorialState();
-        }
-        if (plan.buildingSO.PrefabBuilding.transform.GetChild(0).GetComponent<BuildingData>().Title == "Жилой модуль")
-        {
-            HomeStartBuildingTutorial.CheckAndUpdateTutorialState();
-        }
+        // if (plan.buildingSO.PrefabBuilding.transform.GetChild(0).GetComponent<BuildingData>().Title == "Пасека")
+        // {
+        //     ApiaryStartBuildingTutorial.CheckAndUpdateTutorialState();
+        // }
+        // if (plan.buildingSO.PrefabBuilding.transform.GetChild(0).GetComponent<BuildingData>().Title == "Жилой модуль")
+        // {
+        //     HomeStartBuildingTutorial.CheckAndUpdateTutorialState();
+        // }
     }
 
     /// <summary>

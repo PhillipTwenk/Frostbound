@@ -47,7 +47,7 @@ public class EnergyProduction : MonoBehaviour
                 await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
                     playerResources.Food, playerResources.CryoCrystal);
                 ResourceUpdateEvent.TriggerEvent();
-                WorkerStartWorkingOnApiaryTutorial.CheckAndUpdateTutorialState();
+                //WorkerStartWorkingOnApiaryTutorial.CheckAndUpdateTutorialState();
             });
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
         }
