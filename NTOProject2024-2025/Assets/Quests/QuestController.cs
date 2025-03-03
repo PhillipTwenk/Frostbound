@@ -60,6 +60,7 @@ public class QuestController : MonoBehaviour
             }
             else
             {
+                playerID.openQuests[i].OnQuestCompleted += UIManager.Instance.RemoveQuestItemInQuestPanel;
                 playerID.openQuests[i].OnQuestCompleted += RemoveCompletedQuest;
                 OnInitializationQuests?.Invoke(playerID.openQuests);
             }

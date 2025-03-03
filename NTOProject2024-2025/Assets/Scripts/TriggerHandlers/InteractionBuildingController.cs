@@ -12,11 +12,11 @@ public class InteractionBuildingController : MonoBehaviour
 
     [Header("InteractionSystem")]
     [SerializeField] private bool PossiblityPutEInThisBuilding;
-    [ShowIfBool("PossiblityPutEInThisBuilding")][SerializeField] private UnityEvent InteractionEvent;
-    [ShowIfBool("PossiblityPutEInThisBuilding")][SerializeField] private UnityEvent TextOnEvent;
-    [ShowIfBool("PossiblityPutEInThisBuilding")][SerializeField] private bool IsThereBarterHere;
-    [ShowIfBool("IsThereBarterHere")]public GameEvent OpenBarterMenuEvent;
-    [ShowIfBool("IsThereBarterHere")]public GameEvent CloseBarterMenuEvent;
+    [SerializeField] private UnityEvent InteractionEvent;
+    [SerializeField] private UnityEvent TextOnEvent;
+    [SerializeField] private bool IsThereBarterHere;
+    public GameEvent OpenBarterMenuEvent;
+    public GameEvent CloseBarterMenuEvent;
     
     [Header("Flags")]
     private bool CanPutE;

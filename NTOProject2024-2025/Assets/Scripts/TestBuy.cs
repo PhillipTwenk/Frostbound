@@ -16,11 +16,12 @@ public class TestBuy : MonoBehaviour
             if (id == 0)
             {
                 obj1.CompleteObjective();
+                Destroy(this.gameObject);
             }
             else if (id == 1)
             {
                 obj2.CompleteObjective();
-                obj4.CompleteObjective();
+                // obj4.CompleteObjective();
             }  
             else if (id == 2)
             {

@@ -24,50 +24,33 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/3D Objects/Boer/TriggerMiner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3D Objects/Boer/TriggerMiner.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/3D Objects/Home/TriggerHome.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/3D Objects/Home/TriggerHome.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_CreateNewQuest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_CreateNewQuest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Ground/_arch/Water/Textures/New HDRenderPipelineAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Ground/_arch/Water/Textures/New HDRenderPipelineAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_CreateNewQuest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_CreateNewQuest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_ResetPlayersData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/CE_ResetPlayersData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/ShowIfBoolAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/ShowIfBoolAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/ShowIfBoolDrawer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CustomEditorScripts/ShowIfBoolDrawer.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player1/Player1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player1/Player1.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player2/Player2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player2/Player2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/SettingsPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/SettingsPanel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UISceneElements/QuestPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UISceneElements/QuestPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/BaseQuestUIPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/BaseQuestUIPanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Objective.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/Objective.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/Quest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/Quest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/EQ2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/EQ2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/Objectives.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/Objectives/[EQ2] - Obj1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/Objectives/[EQ2] - Obj1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/Objectives/[EQ2] - Obj2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/Objectives/[EQ2] - Obj2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/UI/[EQ2] - UI Item.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/EQ2/UI/[EQ2] - UI Item.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/ExampleQuest.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/ExampleQuest.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/Objectives.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/Objectives/[ExampleQuest] - Obj1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/Objectives/[ExampleQuest] - Obj1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/Objectives/[ExampleQuest] - Obj2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/Objectives/[ExampleQuest] - Obj2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/Objectives/[ExampleQuest] - Obj3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/Objectives/[ExampleQuest] - Obj3.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/UI/[ExampleQuest] - UI Item.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/ExampleQuest/UI/[ExampleQuest] - UI Item.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Tutorial.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Tutorial.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/SkibidiQuest/Objectives/[SkibidiQuest] - Obj1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/SkibidiQuest/Objectives/[SkibidiQuest] - Obj1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/SkibidiQuest/Objectives/[SkibidiQuest] - Obj2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/SkibidiQuest/Objectives/[SkibidiQuest] - Obj2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/SkibidiQuest/SkibidiQuest.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/SkibidiQuest/SkibidiQuest.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/HTTPRequests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/HTTPRequests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/InternetMonitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/InternetMonitor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestBuy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TestBuy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -365,6 +348,7 @@
       <workItem from="1740773325410" duration="1631000" />
       <workItem from="1740834825728" duration="24581000" />
       <workItem from="1740910974555" duration="21497000" />
+      <workItem from="1741010387720" duration="6660000" />
     </task>
     <servers />
   </component>

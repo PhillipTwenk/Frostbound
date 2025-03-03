@@ -161,7 +161,7 @@ public class UIManager : MonoBehaviour
         {
             if (uiQuestPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == quest.Name)
             {
-                Debug.Log($"{uiQuestPanel.name}");
+                Debug.Log($" Завершен квест {uiQuestPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text}, убираем его из панели квестов ");
                 _currentsUIQuestPanels.Remove(uiQuestPanel);
                 uiQuestPanel.SetActive(false);
                 if (selectedObjective.parentQuest.Name == quest.Name)

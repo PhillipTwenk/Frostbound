@@ -82,6 +82,7 @@ public class Quest : ScriptableObject, ISerializableSO
         completed = true;
         active = false;
 
+        Debug.Log($"Завершен квест {this.Name}, вызов ивента завершения квеста ");
         OnQuestCompleted?.Invoke(this);
     }
 
