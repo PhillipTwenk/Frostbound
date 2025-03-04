@@ -21,7 +21,7 @@ public class DeletePlayer : MonoBehaviour
 
         await playerID.DefaultRevert();
         
-        playerID.Name = "None";
+        playerID.entityName = "None";
         
         gameObject.SetActive(false);
         

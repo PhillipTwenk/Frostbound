@@ -6,45 +6,34 @@ using UnityEngine.UI;
 
 public class PlansInShopControl : MonoBehaviour
 {
-    [Header("Tutorial")]
-    [SerializeField] private TutorialObjective OpenShopTutorial;
-    [SerializeField] private TutorialObjective BuyAllPlansTutorial;
-    [SerializeField] private TutorialObjective CloseShopTutorialTutorial;
-    private int plansBuyCounter;
+    // [Header("Tutorial")]
+    // [SerializeField] private TutorialObjective OpenShopTutorial;
+    // [SerializeField] private TutorialObjective BuyAllPlansTutorial;
+    // [SerializeField] private TutorialObjective CloseShopTutorialTutorial;
+    // private int plansBuyCounter;
     
-    [SerializeField] private GameObject PanelHoneyGun;
-    [SerializeField] private GameObject PanelStorage;
-    [SerializeField] private GameObject PanelPier;
-
-    [SerializeField] private GameObject PanelRH;
-    [SerializeField] private GameObject PanelM;
-    [SerializeField] private GameObject PanelA;
     [SerializeField] private GameObject PanelRHBought;
     [SerializeField] private GameObject PanelMBought;
     [SerializeField] private GameObject PanelABought;
-    
-    [SerializeField] private GameObject PanelHoneyGunBought;
     [SerializeField] private GameObject PanelStorageBought;
     [SerializeField] private GameObject PanelPierBought;
+    
     [SerializeField] private GameObject NotEnoughtResourcesTextPanel;
 
     [SerializeField] private GameEvent UpdateResourcesEvent;
-
-    [SerializeField] private Button _buttonHG;
+    
     [SerializeField] private Button _buttonS;
     [SerializeField] private Button _buttonP;
     [SerializeField] private Button _buttonApiary;
     [SerializeField] private Button _buttonMiner;
     [SerializeField] private Button _buttonHome;
     
-    [SerializeField] private string HoneyGunName;
     [SerializeField] private string StorageName;
     [SerializeField] private string PierName;
     [SerializeField] private string ApiaryName;
     [SerializeField] private string MinerName;
     [SerializeField] private string HomeName;
-
-    [SerializeField] private Plan HGPlan;
+    
     [SerializeField] private Plan SPlan;
     [SerializeField] private Plan PPlan;
     [SerializeField] private Plan APlan;
@@ -59,66 +48,73 @@ public class PlansInShopControl : MonoBehaviour
         //OpenShopTutorial.CheckAndUpdateTutorialState();
         
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
+        
         NotEnoughtResourcesTextPanel.SetActive(false);
-        PanelHoneyGunBought.SetActive(false);
+        
         PanelStorageBought.SetActive(false);
         PanelPierBought.SetActive(false);
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        PanelABought.SetActive(false);
+        PanelRHBought.SetActive(false);
+        PanelMBought.SetActive(false);
+        
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         string shopName = $"{playerName}'sShop";
         ShopResources shopResources = await GetResourcesShop(playerName, shopName);
         if (TutorialManager.IsTutorialActive)
         {
-            PanelRH.SetActive(true);
-            if (shopResources.ResidentialModule.IsPurchased)
-            {
-                PanelRHBought.SetActive(true);
-                _buttonHome.gameObject.SetActive(false);
-            }
-            PanelA.SetActive(true);
-            if (shopResources.Apiary.IsPurchased)
-            {
-                PanelABought.SetActive(true);
-                _buttonApiary.gameObject.SetActive(false);
-            }
-            PanelM.SetActive(true);
-            if (shopResources.Minner.IsPurchased)
-            {
-                PanelMBought.SetActive(true);
-                _buttonMiner.gameObject.SetActive(false);
-            }
+            
         }
         else
         {
-            PanelRH.SetActive(false);
-            PanelA.SetActive(false);
-            PanelM.SetActive(false);
-            switch (BaseUpgradeConditionManager.CurrentBaseLevel)
+            // Определяем текущий уровень базы
+            int baseLevel = BaseUpgradeConditionManager.CurrentBaseLevel;
+
+            // Словарь: уровень базы → товары, доступные на этом уровне
+            Dictionary<int, List<PriceShopProduct>> baseLevelProducts = new Dictionary<int, List<PriceShopProduct>>
             {
-                case 1:
-                    PanelHoneyGun.SetActive(true);
-                    if (shopResources.HoneyGun.IsPurchased)
+                { 1, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier } },
+                { 2, new List<PriceShopProduct> { shopResources.Storage } },
+                // { 3, new List<PriceShopProduct> { shopResources.Pier } }
+            };
+
+            // Словарь: товар → его купленный UI + кнопка
+            Dictionary<PriceShopProduct, (GameObject boughtPanel, GameObject buttonParent)> shopUIElements =
+                new Dictionary<PriceShopProduct, (GameObject, GameObject)>
+                {
+                    { shopResources.ResidentialModule, (PanelRHBought, _buttonHome.transform.parent.gameObject) },
+                    { shopResources.Apiary, (PanelABought, _buttonApiary.transform.parent.gameObject) },
+                    { shopResources.Minner, (PanelMBought, _buttonMiner.transform.parent.gameObject) },
+                    { shopResources.Pier, (PanelPierBought, _buttonP.transform.parent.gameObject) },
+                    { shopResources.Storage, (PanelStorageBought, _buttonS.transform.parent.gameObject) }
+                };
+
+            // Проверяем, какие товары доступны на этом уровне базы
+            if (baseLevelProducts.TryGetValue(baseLevel, out var products))
+            {
+                foreach (var product in products)
+                {
+                    if (shopUIElements.TryGetValue(product, out var uiElements))
                     {
-                        PanelHoneyGunBought.SetActive(true);
-                        _buttonHG.gameObject.SetActive(false);
+                        uiElements.boughtPanel.transform.parent.gameObject.SetActive(true); // Включаем панель чертежа (родитель купленного UI)
+                        if (product.IsPurchased)
+                        {
+                            uiElements.boughtPanel.SetActive(true); // Показываем, что товар куплен
+                            uiElements.buttonParent.SetActive(false); // Скрываем кнопку (родителя кнопки)
+                        }
                     }
-                    break;
-                case 2:
-                    PanelStorage.SetActive(true);
-                    if (shopResources.Storage.IsPurchased)
-                    {
-                        PanelStorageBought.SetActive(true);
-                        _buttonS.gameObject.SetActive(false);
-                    }
-                    break;
-                case 3:
-                    PanelPier.SetActive(true);
-                    if (shopResources.Pier.IsPurchased)
-                    {
-                        PanelPierBought.SetActive(true);
-                        _buttonP.gameObject.SetActive(false);
-                    }
-                    break;
+                }
             }
+
+            // Дополнительно: активируем купленные панели вне зависимости от уровня
+            foreach (var item in shopUIElements)
+            {
+                if (item.Key.IsPurchased)
+                {
+                    item.Value.boughtPanel.SetActive(true);
+                    item.Value.buttonParent.SetActive(false);
+                }
+            }
+
         }
         
         WorkersInterBuildingControl.possiilityControlEntities = false;
@@ -137,280 +133,72 @@ public class PlansInShopControl : MonoBehaviour
     /// <summary>
     /// Нажатие на кнопку покупки чертежа
     /// </summary>
-    public async void ClickBuyPlanButton(string TypeBuyButton)
+    public async void ClickBuyPlanButton(string typeBuyButton)
     {
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         PlayerResources playerResources = await GetResourcesPLayer(playerName);
-
         string shopName = $"{playerName}'sShop";
         ShopResources shopResources = await GetResourcesShop(playerName, shopName);
 
-        int playerIron = playerResources.Iron;
-        int playerCryoCrystal = playerResources.CryoCrystal;
-        int playerEnergy = playerResources.Energy;
-        int playerFood = playerResources.Food;
-
         NotEnoughtResourcesTextPanel.SetActive(false);
 
-        Dictionary<string,string> shopDictionary = new Dictionary<string, string>();
-        Dictionary<string,string> playerResourcesDictionary = new Dictionary<string, string>();
-        
-        if (TypeBuyButton == ApiaryName)
+        // Словарь соответствий: название чертежа → его данные
+        Dictionary<string, (PriceShopProduct product, GameObject boughtPanel, GameObject button, Plan planUI)> shopItems =
+            new Dictionary<string, (PriceShopProduct, GameObject, GameObject, Plan)>
+            {
+                { ApiaryName, (shopResources.Apiary, PanelABought, _buttonApiary.gameObject, APlan) },
+                { HomeName, (shopResources.ResidentialModule, PanelRHBought, _buttonHome.gameObject, HPlan) },
+                { MinerName, (shopResources.Minner, PanelMBought, _buttonMiner.gameObject, MPlan) },
+                { StorageName, (shopResources.Storage, PanelStorageBought, _buttonS.gameObject, SPlan) },
+                { PierName, (shopResources.Pier, PanelPierBought, _buttonP.gameObject, PPlan) }
+            };
+
+        // Проверяем, есть ли товар в словаре
+        if (!shopItems.TryGetValue(typeBuyButton, out var shopItem)) return;
+
+        var (product, boughtPanel, button, planUI) = shopItem;
+
+        // Проверяем, куплен ли уже этот чертеж
+        if (product.IsPurchased)
         {
-            if (!shopResources.Apiary.IsPurchased && TutorialManager.IsTutorialActive)
-            {
-                if (playerIron >= shopResources.Apiary.IronPrice &&
-                    playerCryoCrystal >= shopResources.Apiary.CryoCrystalPrice)
-                {
-                    shopResources.Apiary.IsPurchased = true;
-                    
-                    shopDictionary.Add("ApiaryShopValueUpdate", "true");
-                    APIManager.Instance.CreateShopLog("Куплен чертеж пасеки (товары в единичном экземпляре)", playerName, shopName, shopDictionary);
-                    
-                    playerResourcesDictionary.Add("IronValueUpdate", $"{(playerIron - shopResources.Apiary.IronPrice) - playerIron}");
-                    playerResourcesDictionary.Add("CrytoCrystalValueUpdate", $"{(playerCryoCrystal - shopResources.Apiary.CryoCrystalPrice) - playerCryoCrystal}");
-                    APIManager.Instance.CreatePlayerLog("Куплен чертеж пасеки в магазине, потрачены металл и кристаллы", playerName, playerResourcesDictionary);
-                    
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
-                            shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
-                            shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.Apiary.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Apiary.CryoCrystalPrice);
-                        plansBuyCounter++;
-                        // if (plansBuyCounter == 3)
-                        // {
-                        //     BuyAllPlansTutorial.CheckAndUpdateTutorialState();
-                        // }
-                    });
-                    PanelABought.SetActive(true);
-                    _buttonApiary.gameObject.SetActive(false);
-                    UIManager.Instance.AddNewPlanInPanel(APlan);
-                }
-                else
-                {
-                    NotEnoughtResourcesTextPanel.SetActive(true);
-                }
-            }
-            else
-            {
-                PanelABought.SetActive(true);
-                _buttonApiary.gameObject.SetActive(false);
-            }
-        }
-        
-        if (TypeBuyButton == HomeName)
-        {
-            if (!shopResources.ResidentialModule.IsPurchased && TutorialManager.IsTutorialActive)
-            {
-                if (playerIron >= shopResources.ResidentialModule.IronPrice &&
-                    playerCryoCrystal >= shopResources.ResidentialModule.CryoCrystalPrice)
-                {
-                    shopResources.ResidentialModule.IsPurchased = true;
-                    
-                    shopDictionary.Add("ResidentialModuleShopValueUpdate", "true");
-                    APIManager.Instance.CreateShopLog("Куплен чертеж жилого модуля (товары в единичном экземпляре)", playerName, shopName, shopDictionary);
-                    
-                    playerResourcesDictionary.Add("IronValueUpdate", $"{(playerIron - shopResources.ResidentialModule.IronPrice) - playerIron}");
-                    playerResourcesDictionary.Add("CrytoCrystalValueUpdate", $"{(playerCryoCrystal - shopResources.ResidentialModule.CryoCrystalPrice) - playerCryoCrystal}");
-                    APIManager.Instance.CreatePlayerLog("Куплен чертеж жилого модуля в магазине, потрачены металл и кристаллы", playerName, playerResourcesDictionary);
-                    
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
-                            shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
-                            shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.ResidentialModule.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.ResidentialModule.CryoCrystalPrice);
-                        plansBuyCounter++;
-                        // if (plansBuyCounter == 3)
-                        // {
-                        //     BuyAllPlansTutorial.CheckAndUpdateTutorialState();
-                        // }
-                    });
-                    PanelRHBought.SetActive(true);
-                    _buttonHome.gameObject.SetActive(false);
-                    UIManager.Instance.AddNewPlanInPanel(HPlan);
-                }
-                else
-                {
-                    NotEnoughtResourcesTextPanel.SetActive(true);
-                }
-            }
-            else
-            {
-                PanelRHBought.SetActive(true);
-                _buttonHome.gameObject.SetActive(false);
-            }
-        }
-        
-        if (TypeBuyButton == MinerName)
-        {
-            if (!shopResources.Minner.IsPurchased && TutorialManager.IsTutorialActive)
-            {
-                if (playerIron >= shopResources.Minner.IronPrice &&
-                    playerCryoCrystal >= shopResources.Minner.CryoCrystalPrice)
-                {
-                    shopResources.Minner.IsPurchased = true;
-                    
-                    shopDictionary.Add("MinnerShopValueUpdate", "true");
-                    APIManager.Instance.CreateShopLog("Куплен чертеж добывающего здания (товары в единичном экземпляре)", playerName, shopName, shopDictionary);
-                    
-                    playerResourcesDictionary.Add("IronValueUpdate", $"{(playerIron - shopResources.Minner.IronPrice) - playerIron}");
-                    playerResourcesDictionary.Add("CryoCrystalValueUpdate", $"{(playerCryoCrystal - shopResources.Minner.CryoCrystalPrice) - playerCryoCrystal}");
-                    APIManager.Instance.CreatePlayerLog("Куплен чертеж добывающего здания в магазине, потрачены металл и кристаллы", playerName, playerResourcesDictionary);
-                    
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
-                            shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
-                            shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.Minner.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Minner.CryoCrystalPrice);
-                        plansBuyCounter++;
-                        // if (plansBuyCounter == 3)
-                        // {
-                        //     BuyAllPlansTutorial.CheckAndUpdateTutorialState();
-                        // }
-                    });
-                    PanelMBought.SetActive(true);
-                    _buttonMiner.gameObject.SetActive(false);
-                    UIManager.Instance.AddNewPlanInPanel(MPlan);
-                }
-                else
-                {
-                    NotEnoughtResourcesTextPanel.SetActive(true);
-                }
-            }
-            else
-            {
-                PanelMBought.SetActive(true);
-                _buttonMiner.gameObject.SetActive(false);
-            }
-        }
-        
-        if (TypeBuyButton == HoneyGunName)
-        {
-            if (!shopResources.HoneyGun.IsPurchased)
-            {
-                if (playerIron >= shopResources.HoneyGun.IronPrice &&
-                    playerCryoCrystal >= shopResources.HoneyGun.CryoCrystalPrice)
-                {
-                    shopResources.HoneyGun.IsPurchased = true;
-                    
-                    shopDictionary.Add("HoneyGunShopValueUpdate", "true");
-                    APIManager.Instance.CreateShopLog("Куплен чертеж медовой пушки (товары в единичном экземпляре)", playerName, shopName, shopDictionary);
-                    
-                    playerResourcesDictionary.Add("IronValueUpdate", $"{(playerIron - shopResources.HoneyGun.IronPrice) - playerIron}");
-                    playerResourcesDictionary.Add("CrytoCrystalValueUpdate", $"{(playerCryoCrystal - shopResources.HoneyGun.CryoCrystalPrice) - playerCryoCrystal}");
-                    APIManager.Instance.CreatePlayerLog("Куплен чертеж медовой пушки в магазине, потрачены металл и кристаллы", playerName, playerResourcesDictionary);
-                    
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
-                            shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
-                            shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.HoneyGun.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.HoneyGun.CryoCrystalPrice);
-                    });
-                    PanelHoneyGunBought.SetActive(true);
-                    _buttonHG.gameObject.SetActive(false);
-                    UIManager.Instance.AddNewPlanInPanel(HGPlan);
-                }
-                else
-                {
-                    NotEnoughtResourcesTextPanel.SetActive(true);
-                }
-            }
-            else
-            {
-                PanelHoneyGunBought.SetActive(true);
-                _buttonHG.gameObject.SetActive(false);
-            }
+            boughtPanel.SetActive(true);
+            button.SetActive(false);
+            return;
         }
 
-        if (TypeBuyButton == StorageName)
+        // Проверяем, хватает ли ресурсов
+        if (playerResources.Iron >= product.IronPrice && playerResources.CryoCrystal >= product.CryoCrystalPrice)
         {
-            if (!shopResources.Storage.IsPurchased)
-            {
-                if (playerIron >= shopResources.Storage.IronPrice &&
-                    playerCryoCrystal >= shopResources.Storage.CryoCrystalPrice)
-                {
-                    shopResources.Storage.IsPurchased = true;
-                    
-                    shopDictionary.Add("StorageShopValueUpdate", "true");
-                    APIManager.Instance.CreateShopLog("Куплен чертеж хранилища ресурсов (товары в единичном экземпляре)", playerName, shopName, shopDictionary);
-                    
-                    playerResourcesDictionary.Add("IronValueUpdate", $"{(playerIron - shopResources.Storage.IronPrice) - playerIron}");
-                    playerResourcesDictionary.Add("CrytoCrystalValueUpdate", $"{(playerCryoCrystal - shopResources.Storage.CryoCrystalPrice) - playerCryoCrystal}");
-                    APIManager.Instance.CreatePlayerLog("Куплен чертеж хранилища в магазине, потрачены металл и кристаллы", playerName, playerResourcesDictionary);
-                    
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
-                            shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
-                            shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.Storage.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Storage.CryoCrystalPrice);
-                    });
-                   
-                    PanelStorageBought.SetActive(true);
-                    _buttonS.gameObject.SetActive(false);
-                    UIManager.Instance.AddNewPlanInPanel(SPlan);
-                }
-                else
-                {
-                    NotEnoughtResourcesTextPanel.SetActive(true);
-                }
-            }
-            else
-            {
-                PanelHoneyGunBought.SetActive(true);
-                _buttonHG.gameObject.SetActive(false);
-            }
-        }
+            product.IsPurchased = true;
 
-        if (TypeBuyButton == PierName)
+            await SyncManager.Enqueue(async () =>
+            {
+                await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, 
+                    shopResources.Apiary, shopResources.MobileBase, shopResources.Storage,
+                    shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
+                
+                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, 
+                    playerResources.Iron - product.IronPrice, 
+                    playerResources.Energy, playerResources.Food, 
+                    playerResources.CryoCrystal - product.CryoCrystalPrice);
+            });
+
+            // Обновляем UI
+            boughtPanel.SetActive(true);
+            button.SetActive(false);
+            UIManager.Instance.AddNewPlanInPanel(planUI);
+        }
+        else
         {
-            if (!shopResources.Pier.IsPurchased)
-            {
-                if (playerIron >= shopResources.Pier.IronPrice &&
-                    playerCryoCrystal >= shopResources.Pier.CryoCrystalPrice)
-                {
-                    shopResources.Pier.IsPurchased = true;
-                    
-                    shopDictionary.Add("PierShopValueUpdate", "true");
-                    APIManager.Instance.CreateShopLog("Куплен чертеж пристани (товары в единичном экземпляре)", playerName, shopName, shopDictionary);
-                    
-                    playerResourcesDictionary.Add("IronValueUpdate", $"{(playerIron - shopResources.Pier.IronPrice) - playerIron}");
-                    playerResourcesDictionary.Add("CrytoCrystalValueUpdate", $"{(playerCryoCrystal - shopResources.Pier.CryoCrystalPrice) - playerCryoCrystal}");
-                    APIManager.Instance.CreatePlayerLog("Куплен чертеж пристани в магазине, потрачены металл и кристаллы", playerName, playerResourcesDictionary);
-                    
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary,
-                            shopResources.HoneyGun, shopResources.MobileBase, shopResources.Storage,
-                            shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerIron - shopResources.Pier.IronPrice, playerEnergy, playerFood, playerCryoCrystal - shopResources.Pier.CryoCrystalPrice);
-                    });
-                    
-                    PanelPierBought.SetActive(true);
-                    _buttonP.gameObject.SetActive(false);
-                    UIManager.Instance.AddNewPlanInPanel(PPlan);
-                }
-                else
-                {
-                    NotEnoughtResourcesTextPanel.SetActive(true);
-                }
-            }
-            else
-            {
-                PanelHoneyGunBought.SetActive(true);
-                _buttonHG.gameObject.SetActive(false);
-            }
+            NotEnoughtResourcesTextPanel.SetActive(true);
         }
 
         UpdateResourcesEvent.TriggerEvent();
-
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }
+
     
     private async Task<PlayerResources> GetResourcesPLayer(string playerName)
     {

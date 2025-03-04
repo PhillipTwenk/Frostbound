@@ -112,7 +112,7 @@ public class BuildingManager : MonoBehaviour
         Building buildingPrefabSO = CurrentBuilding.gameObject.transform.GetChild(0).GetComponent<BuildingData>().buildingTypeSO;
         int priceBuilding = buildingPrefabSO.priceBuilding;
 
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         PlayerResources playerResources =
             await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
 
@@ -134,23 +134,17 @@ public class BuildingManager : MonoBehaviour
                     {
                         if ((playerResources.Food - FoodConsumptionBuilding * 20) >= 0)
                         {
-                            int OldEnergyValue = playerResources.Energy;
-                            int OldFoodValue = playerResources.Food;
+                            // int OldEnergyValue = playerResources.Energy;
+                            // int OldFoodValue = playerResources.Food;
                             playerResources.Energy -= HoneyConsumptionBuilding;
                             playerResources.Food -= FoodConsumptionBuilding * 20; 
                             
-                            Dictionary<string,string> buildingDictionary = new Dictionary<string, string>();
-                            buildingDictionary.Add("EnergyValueUpdate", $"{playerResources.Energy - OldEnergyValue}");
-                            buildingDictionary.Add("FoodValueUpdate", $"{playerResources.Food - OldFoodValue}");
-                            buildingDictionary.Add("IronValueUpdate", $"{(playerResources.Iron - priceBuilding) - playerResources.Iron}");
-                            APIManager.Instance.CreatePlayerLog("Начата стройка нового здания, потрачен металл, энергия, и еда, если здание обладает рабочими", playerName, buildingDictionary);
-
-                            await SyncManager.Enqueue(async () =>
-                            {
-                                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceBuilding,
-                                    playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                            });
-                            UpdateResourcesEvent.TriggerEvent();
+                            // Dictionary<string,string> buildingDictionary = new Dictionary<string, string>();
+                            // buildingDictionary.Add("EnergyValueUpdate", $"{playerResources.Energy - OldEnergyValue}");
+                            // buildingDictionary.Add("FoodValueUpdate", $"{playerResources.Food - OldFoodValue}");
+                            // buildingDictionary.Add("IronValueUpdate", $"{(playerResources.Iron - priceBuilding) - playerResources.Iron}");
+                            // APIManager.Instance.CreatePlayerLog("Начата стройка нового здания, потрачен металл, энергия, и еда, если здание обладает рабочими", playerName, buildingDictionary);
+                            
                             
                             //Создаем новое здание, устанавливаем его позицию и удаляем триггер для строительства
                             MouseIndicator.transform.position = new Vector3(mousePosition.x, YplaceVector, mousePosition.z);
@@ -182,6 +176,12 @@ public class BuildingManager : MonoBehaviour
                             await WorkersInterBuildingControl.Instance.WorkerEndWork(buildingData);
 
                             //TutorialWaitWorkersCheck(buildingData);
+                            await SyncManager.Enqueue(async () =>
+                            {
+                                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceBuilding,
+                                    playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
+                            });
+                            UpdateResourcesEvent.TriggerEvent();
                             
                             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
                             

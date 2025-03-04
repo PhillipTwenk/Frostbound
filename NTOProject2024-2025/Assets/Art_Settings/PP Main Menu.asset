@@ -321,10 +321,10 @@ MonoBehaviour:
     m_Value: 0.63
   intensity:
     m_OverrideState: 1
-    m_Value: 0.91
+    m_Value: 0.973
   scatter:
     m_OverrideState: 1
-    m_Value: 0.706
+    m_Value: 1
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}

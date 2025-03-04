@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class EnergyProduction : MonoBehaviour
 {
-    [Header("Tutorial")]
-    [SerializeField] private TutorialObjective WorkerStartWorkingOnApiaryTutorial;
+    // [Header("Tutorial")]
+    // [SerializeField] private TutorialObjective WorkerStartWorkingOnApiaryTutorial;
     
     private BuildingData _buildingData;
     
@@ -29,7 +29,7 @@ public class EnergyProduction : MonoBehaviour
         
             Debug.Log($"Производство меда: {honeyProduction}");
 
-            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
             PlayerResources playerResources = null;
             await SyncManager.Enqueue(async () =>
             {
@@ -64,7 +64,7 @@ public class EnergyProduction : MonoBehaviour
             int honeyProduction = _buildingData.Production[0];
             int foodProduction = _buildingData.Production[1];
 
-            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
             int OldEnergyValue = playerResources.Energy;
             int OldFoodValue = playerResources.Food;
             playerResources.Energy -= honeyProduction;
@@ -97,7 +97,7 @@ public class EnergyProduction : MonoBehaviour
             int honeyProduction = _buildingData.Production[0];
             int foodProduction = _buildingData.Production[1];
 
-            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
             PlayerResources playerResources =
                 await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
             int OldEnergyValue = playerResources.Energy;

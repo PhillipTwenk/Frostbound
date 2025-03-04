@@ -371,14 +371,12 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public async void InitializeBuildingPanel()
     {
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         string shopName = $"{playerName}'sShop";
         ShopResources shopResources = await APIManager.Instance.GetShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName);
 
         if (shopResources.Apiary.IsPurchased)
             AddNewPlanInPanel(plansArray[0]);
-        if (shopResources.HoneyGun.IsPurchased)
-            AddNewPlanInPanel(plansArray[1]);
         if (shopResources.MobileBase.IsPurchased)
             AddNewPlanInPanel(plansArray[2]);
         if (shopResources.Storage.IsPurchased)

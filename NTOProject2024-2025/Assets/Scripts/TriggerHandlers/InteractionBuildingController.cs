@@ -36,10 +36,10 @@ public class InteractionBuildingController : MonoBehaviour
     {
         _buildingData = GetComponent<BuildingData>();
         CanPutE = false;
-        if (_buildingData.buildingTypeSO.IDoB == 3)
-        {
-            Texthint.SetActive(false);
-        }
+        // if (_buildingData.buildingTypeSO.IDoB == 3)
+        // {
+        //     Texthint.SetActive(false);
+        // }
     }
 
     private void Update()

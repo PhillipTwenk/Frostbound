@@ -14,6 +14,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
     [TextArea] [SerializeField] private string HintAwaitArriveWorker;
     [TextArea] [SerializeField] private string HintAwaitBuilding;
     [TextArea] [SerializeField] private string HintAwaitTimeWorker;
+    [TextArea] public string HintNotNeededWorkerType;       
  
     [Header("Control workers & players")]
     public int CurrentValueOfWorkers; // Общее текущее количество рабочих
@@ -77,7 +78,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask) && Time.timeScale == 1f && possiilityControlEntities)
+        if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask) && Time.timeScale > 0f && possiilityControlEntities)
         {
             // Если попали в рабочего
             if (hit.collider.CompareTag("ClickOnWorker"))

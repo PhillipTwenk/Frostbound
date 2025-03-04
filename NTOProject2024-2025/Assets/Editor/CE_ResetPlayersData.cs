@@ -125,7 +125,7 @@ public class CE_ResetPlayersData: EditorWindow
             EntityID entityID = AssetDatabase.LoadAssetAtPath<EntityID>(PathsEditorWindow.EntitiesPaths[i]);
             PlayerSaveData PSD = AssetDatabase.LoadAssetAtPath<PlayerSaveData>(PathsEditorWindow.PSDPaths[i + 1]);
             
-            entityID.Name = entityID.DefaultName;
+            entityID.entityName = entityID.DefaultName;
             entityID._playerSaveData = PSD;
             entityID.DefaultPlayerSaveData = dPSD;
             entityID.openQuests.Clear();

@@ -114,7 +114,7 @@ public class ResourceMiner : MonoBehaviour
                 int OldIronValue = playerResources.Iron;
                 playerResources.Iron += buildingData.Production[0];
                 Debug.Log($"Новое количество металла: {playerResources.Iron}");
-                LogSender(playerID.Name, OldIronValue, playerResources.Iron, IronMinerType);
+                LogSender(playerID.entityName, OldIronValue, playerResources.Iron, IronMinerType);
                 await UpdateResources(playerResources, playerID);
                 await Task.Delay(TimeProduction);
             } else if ((playerResources.Iron + buildingData.Production[0]) > IronLimit)
@@ -126,7 +126,7 @@ public class ResourceMiner : MonoBehaviour
                 int DifferenceIron = (playerResources.Iron + buildingData.Production[0]) - IronLimit; // Разница между лимитом металла и значением текущего металла + производство
                 playerResources.Iron += buildingData.Production[0] - DifferenceIron;
                 Debug.Log($"Новое количество металла: {playerResources.Iron}");
-                LogSender(playerID.Name, OldIronValue, playerResources.Iron, IronMinerType);
+                LogSender(playerID.entityName, OldIronValue, playerResources.Iron, IronMinerType);
                 await UpdateResources(playerResources, playerID);
                 await Task.Delay(TimeProduction);
                 
@@ -193,7 +193,7 @@ public class ResourceMiner : MonoBehaviour
                 int OldCCValue = playerResources.CryoCrystal;
                 playerResources.CryoCrystal += buildingData.Production[1];
                 Debug.Log($"Новое количество КриоКристаллов: {playerResources.CryoCrystal}");
-                LogSender(playerID.Name, OldCCValue, playerResources.CryoCrystal, CCMinerType);
+                LogSender(playerID.entityName, OldCCValue, playerResources.CryoCrystal, CCMinerType);
                 await UpdateResources(playerResources, playerID);
                 await Task.Delay(TimeProduction);
             } else if ((playerResources.CryoCrystal + buildingData.Production[1]) > CCLimit)
@@ -204,7 +204,7 @@ public class ResourceMiner : MonoBehaviour
                 int DifferenceCC = (playerResources.CryoCrystal + buildingData.Production[1]) - CCLimit;
                 playerResources.CryoCrystal += buildingData.Production[1] - DifferenceCC;
                 Debug.Log($"Новое количество КриоКристаллов: {playerResources.CryoCrystal}");
-                LogSender(playerID.Name, OldCCValue, playerResources.CryoCrystal, CCMinerType);
+                LogSender(playerID.entityName, OldCCValue, playerResources.CryoCrystal, CCMinerType);
                 await UpdateResources(playerResources, playerID);
                 await Task.Delay(TimeProduction);
                 

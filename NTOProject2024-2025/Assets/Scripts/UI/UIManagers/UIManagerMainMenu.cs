@@ -156,7 +156,7 @@ public class UIManagerMainMenu : MonoBehaviour
     /// </summary>
     public void ChoiceNewPlayer(EntityID player)
     {
-        if (player.Name == player.DefaultName)
+        if (player.entityName == player.DefaultName)
         {
             Debug.Log("Создание нового персонажа");
             switch (player.thisPlayerID)
@@ -195,11 +195,11 @@ public class UIManagerMainMenu : MonoBehaviour
          Debug.Log("Нажата кнопка создания персонажа1");
          LoadingCanvasController.Instance.LoadingCanvasNotTransparent.SetActive(true);
          string newName = currentIFNP.text; 
-         WhichPlayerCreate.Name = newName;
+         WhichPlayerCreate.entityName = newName;
          await APIManager.Instance.CreatePlayer(WhichPlayerCreate, StartValueIron, StartValueEnergy,StartValueFood,StartValueCrioCrystal);
 
          string shopName = $"{newName}'sShop";
-         await APIManager.Instance.CreateShop(WhichPlayerCreate, shopName, StartValueApiaryShop, StartValueHoneyGunShop,StartValueMobileBaseShop,StartValueStorageShop,StartValueResidentialModuleShop,StartValueBreadwinnerShop,StartValuePierShop);
+         await APIManager.Instance.CreateShop(WhichPlayerCreate, shopName, StartValueApiaryShop,StartValueMobileBaseShop,StartValueStorageShop,StartValueResidentialModuleShop,StartValueBreadwinnerShop,StartValuePierShop);
          
          JSONSerializeManager.Instance.JSONSave();
          

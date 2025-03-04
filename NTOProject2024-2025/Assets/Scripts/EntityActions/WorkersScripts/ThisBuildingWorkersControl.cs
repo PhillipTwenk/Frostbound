@@ -13,6 +13,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     public int CurrentNumberWorkersInThisBuilding;
     public int MaxValueOfWorkersInThisBuilding;
     public GameObject WorkerPrefab;
+    public WorkersType suitableWorkerDataForThisBuilding;
 
     [Header("Points")]
     public Transform buildingSpawnWorkerPointTransform;

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: SkibidiQuest
   m_EditorClassIdentifier: 
   name: ChkebedeQuest
-  active: 0
+  active: 1
   completed: 0
   questDescription: MegaSkibidiQuest
   objectives:
   - {fileID: 11400000, guid: 8f015114e84e1e9478e540a05b5dbd78, type: 2}
   - {fileID: 11400000, guid: 447f3be9ec853984aa39f4aee773b012, type: 2}
-  currentObjective: {fileID: 11400000, guid: 447f3be9ec853984aa39f4aee773b012, type: 2}
+  currentObjective: {fileID: 0}
   UIItemOnQuestPanel: {fileID: 7955306229360465755, guid: f1c3d709cb35f1448ab8217b6b00e9a5, type: 3}

@@ -842,17 +842,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dda38788b59494790c4afd25c581f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializableObjects:
+  entitiesScriptableObjects:
   - {fileID: 11400000, guid: 7ebb1e7c1eb3f9443bba2238db1615d3, type: 2}
   - {fileID: 11400000, guid: fece30a5395bb1044867d15a78a33fa1, type: 2}
   - {fileID: 11400000, guid: d09f65a1a74320746a42ef5838d8e41f, type: 2}
+  psdScriptableObjects:
   - {fileID: 11400000, guid: c830670e2d972f446b66a992c2da4028, type: 2}
   - {fileID: 11400000, guid: 70832cd75e7eb8642918827c39cad79a, type: 2}
   - {fileID: 11400000, guid: 7a32648b7e2733242b500ac38a3c4a14, type: 2}
+  questsScriptableObjects:
   - {fileID: 11400000, guid: b54a04fad64a3f3489b69f0accc334b9, type: 2}
+  - {fileID: 11400000, guid: 3f4bac489bafbeb4a9b5d467b17248a6, type: 2}
+  objectivesScriptableObjects:
   - {fileID: 11400000, guid: 8f015114e84e1e9478e540a05b5dbd78, type: 2}
   - {fileID: 11400000, guid: 447f3be9ec853984aa39f4aee773b012, type: 2}
-  - {fileID: 11400000, guid: 3f4bac489bafbeb4a9b5d467b17248a6, type: 2}
   - {fileID: 11400000, guid: be4cf4bc34a462542bf80dd3718e76ea, type: 2}
   - {fileID: 11400000, guid: 02a7afe6cfb1282498bc346aa85a84ae, type: 2}
 --- !u!1 &2147065575

@@ -154,10 +154,11 @@ GameObject:
   - component: {fileID: 4426162424371824740}
   - component: {fileID: 3647611592747158119}
   - component: {fileID: 5123681624481053577}
-  - component: {fileID: 4964045910102140477}
   - component: {fileID: 3421886237767497727}
+  - component: {fileID: 4964045910102140477}
+  - component: {fileID: -2810993098645214172}
   m_Layer: 9
-  m_Name: Worker
+  m_Name: '[Worker] - Beekeeper'
   m_TagString: ClickOnWorker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,8 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e8ed65be2878b47a18be86cfab5b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementWorkerTutorial: {fileID: 11400000, guid: b05c7f6033a09cb47b7be44d995d4c12, type: 2}
-  WorkerStartMovementToApiaryTutorial: {fileID: 11400000, guid: e5fa09fbcf9f97c4d9413fe3bc4d1483, type: 2}
   ReadyForWork: 1
   ArriveForBuildBuidling: 0
   isSelected: 0
@@ -314,6 +313,22 @@ MonoBehaviour:
   workerLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  notNeededWorkerAttention: "\u0414\u0430\u043D\u043D\u044B\u0439 \u0440\u0430\u0431\u043E\u0447\u0438\u0439
+    \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u043F\u0430\u0441\u0435\u0447\u043D\u0438\u043A\u043E\u043C"
+--- !u!114 &3421886237767497727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67134279220973632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7e513837b65c94896f55061b06d741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 5392838105507835447}
+  footstepSounds: {fileID: 8300000, guid: 90e292e34972c904bbb238b0f3d0d0b2, type: 3}
 --- !u!195 &4964045910102140477
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -336,7 +351,7 @@ NavMeshAgent:
   m_BaseOffset: -0.06
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
---- !u!114 &3421886237767497727
+--- !u!114 &-2810993098645214172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,11 +360,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 67134279220973632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f7e513837b65c94896f55061b06d741, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ee0151155eb6c046b95f88869a1f83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 5392838105507835447}
-  footstepSounds: {fileID: 8300000, guid: 90e292e34972c904bbb238b0f3d0d0b2, type: 3}
+  workerType: 0
 --- !u!1 &454466408095048598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,8 +2396,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0c5c2da905e158e40b6eed4e94e494b1, type: 2}
-  - {fileID: 2100000, guid: 0c5c2da905e158e40b6eed4e94e494b1, type: 2}
+  - {fileID: 2100000, guid: c8774c8c326854c4fb8157c8afcb80bb, type: 2}
+  - {fileID: 2100000, guid: c8774c8c326854c4fb8157c8afcb80bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

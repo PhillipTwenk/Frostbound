@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Общее описание свойств сущности
 /// </summary>
 [CreateAssetMenu(menuName = "ForEntities/Entity")]
-public class EntityID : ScriptableObject, ISerializableSO
+public class EntityID : ScriptableObject, ISerializableSO 
 {
     /// <summary>
     /// Реализация ISerializableSO
@@ -25,8 +26,9 @@ public class EntityID : ScriptableObject, ISerializableSO
     
     
     
+    [FormerlySerializedAs("Name")]
     [Header("Info")]
-    [TextArea] public string Name;
+    [TextArea] public string entityName;
     public string DefaultName;
     public int thisPlayerID;
     
@@ -54,15 +56,15 @@ public class EntityID : ScriptableObject, ISerializableSO
     /// </summary>
     public async Task DefaultRevert()
     {
-        if (Name != DefaultName)
+        if (entityName != DefaultName)
         {
-            string shopName = $"{Name}'sShop";
+            string shopName = $"{entityName}'sShop";
             await APIManager.Instance.DeleteShop(this, shopName);
             
             await APIManager.Instance.DeletePlayer(this);
         }
         
-        Name = DefaultName;
+        entityName = DefaultName;
 
         playerResources = DefaultPlayerResources;
         shopResources = DefaultShopResources;

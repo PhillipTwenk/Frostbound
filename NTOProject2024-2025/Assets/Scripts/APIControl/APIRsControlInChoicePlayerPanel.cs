@@ -16,7 +16,7 @@ public class APIRsControlInChoicePlayerPanel : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        if (player.Name == player.DefaultName)
+        if (player.entityName == player.DefaultName)
         {
             textNewCharacter.gameObject.SetActive(true);
             textNewCharacter.text = DefaultPlayername;
@@ -26,7 +26,7 @@ public class APIRsControlInChoicePlayerPanel : MonoBehaviour
         else
         {
             textPlayerName.gameObject.SetActive(true);
-            textPlayerName.text = player.Name;
+            textPlayerName.text = player.entityName;
             textNewCharacter.gameObject.SetActive(false);
             DeletePlayerPanel.SetActive(true);
         }

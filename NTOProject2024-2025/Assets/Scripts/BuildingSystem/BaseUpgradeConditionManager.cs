@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BaseUpgradeConditionManager : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class BaseUpgradeConditionManager : MonoBehaviour
     public List<int> NumberOfWorkersForDifferentLevels;
     
     [TextArea] public string NotEnoughtResourcesTextError;  
-    [TextArea] public string NotFoundNoteTextError;
     [TextArea] public string NotEnoughtWorkers;
     [TextArea] public string NotEnoughtLevelSomeBuildings;
     [TextArea] public string SuccesUpgradeText;
-    [TextArea] public string NoGunBuidlingText;
+    [TextArea] public string NoStorageBuidlingText;
+    [TextArea] public string NoApiaryBuidlingText;
+    [TextArea] public string NoMinerBuidlingText;
+    [TextArea] public string NoPierBuidlingText;
+    [TextArea] public string NoHomeBuidlingText;
     
     [TextArea] public string ENDGAME;
 
@@ -63,7 +67,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
     public List<string> CanUpgradeMobileBase(PlayerResources playerResources)
     {
         int WorkersCount = WorkersInterBuildingControl.Instance.MaxValueOfWorkers;
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         int IronCountPlayer = playerResources.Iron;
         List<GameObject> CurrentBuidlings = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.playerBuildings;
         List<BuildingSaveData> buildingSDs = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.BuildingDatas;
@@ -77,12 +81,6 @@ public class BaseUpgradeConditionManager : MonoBehaviour
         {
             case 1:
                 //Перепроверка условий
-                if (!FindNote[0])
-                {
-                    IsThisReportUnsuccess = true;
-                    string report = $"{NotFoundNoteTextError} 1";
-                    resultReport.Add(report);
-                }
                 if (playerResources.Iron < buildingDataMB.buildingTypeSO.priceUpgrade)
                 {
                     IsThisReportUnsuccess = true;
@@ -96,10 +94,28 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevel1;
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 2, 1))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 0, 1))
                 {
                     IsThisReportUnsuccess = true;
-                    string report = $"{NoGunBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
+                    string report = $"{NoApiaryBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 5, 1))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoHomeBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 4, 1))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoPierBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 1, 1))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoMinerBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevelMBL1;
@@ -129,12 +145,6 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 break;
             case 2:
                 //Перепроверка условий
-                if (!FindNote[1])
-                {
-                    IsThisReportUnsuccess = true;
-                    string report = $"{NotFoundNoteTextError} 2";
-                    resultReport.Add(report);
-                }
                 if (playerResources.Iron < buildingDataMB.buildingTypeSO.priceUpgrade)
                 {
                     IsThisReportUnsuccess = true;
@@ -149,10 +159,34 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 }
 
                 int currentNumberNeededBuildingLevel2;
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel2, CurrentBuidlings, 2, 2))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel2, CurrentBuidlings, 6, 1))
                 {
                     IsThisReportUnsuccess = true;
-                    string report = $"{NoGunBuidlingText}: {currentNumberNeededBuildingLevel2} / {2}";
+                    string report = $"{NoStorageBuidlingText}: {currentNumberNeededBuildingLevel2} / {1}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 0, 2))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoApiaryBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 5, 2))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoHomeBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 1, 2))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoMinerBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 4, 2))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoPierBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevelMBL2;
@@ -180,12 +214,6 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 break;
             case 3:
                 //Перепроверка условий
-                if (!FindNote[2])
-                {
-                    IsThisReportUnsuccess = true;
-                    string report = $"{NotFoundNoteTextError} 3";
-                    resultReport.Add(report);
-                }
                 if (playerResources.Iron < buildingDataMB.buildingTypeSO.priceUpgrade)
                 {
                     IsThisReportUnsuccess = true;
@@ -199,10 +227,34 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevel3;
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel3, CurrentBuidlings, 2, 3))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel3, CurrentBuidlings, 6, 2))
                 {
                     IsThisReportUnsuccess = true;
-                    string report = $"{NoGunBuidlingText}: {currentNumberNeededBuildingLevel3} / {3}";
+                    string report = $"{NoStorageBuidlingText}: {currentNumberNeededBuildingLevel3} / {2}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 0, 3))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoApiaryBuidlingText}: {currentNumberNeededBuildingLevel1} / {3}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 1, 2))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoMinerBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 4, 4))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoPierBuidlingText}: {currentNumberNeededBuildingLevel1} / {4}";
+                    resultReport.Add(report);
+                }
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 5, 3))
+                {
+                    IsThisReportUnsuccess = true;
+                    string report = $"{NoHomeBuidlingText}: {currentNumberNeededBuildingLevel1} / {3}";
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevelMBL3;

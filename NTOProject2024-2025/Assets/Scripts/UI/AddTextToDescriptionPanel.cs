@@ -214,7 +214,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
 
         HideDescriptionPanel();
         
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         PlayerResources playerResources = await GetResourcesPLayer(CurrentPlayersDataControl.WhichPlayerCreate);
         
         GameObject building = buildingTransform.gameObject;
@@ -266,7 +266,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     {
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
 
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.Name;
+        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         PlayerResources playerResources = await GetResourcesPLayer(CurrentPlayersDataControl.WhichPlayerCreate);
 
         int priceUpgrade = buildingSO.priceUpgrade;

@@ -98,7 +98,7 @@ public class APIManager : MonoBehaviour
         {
             await PutPlayerResources(playerID, playerID.playerResources.Iron, playerID.playerResources.Energy, playerID.playerResources.Food, playerID.playerResources.CryoCrystal);
             
-            await PutShopResources(playerID, $"{playerID.Name}'sShop", playerID.shopResources.Apiary, playerID.shopResources.HoneyGun, playerID.shopResources.MobileBase, playerID.shopResources.Storage, playerID.shopResources.ResidentialModule, playerID.shopResources.Minner, playerID.shopResources.Pier);
+            await PutShopResources(playerID, $"{playerID.entityName}'sShop", playerID.shopResources.Apiary, playerID.shopResources.MobileBase, playerID.shopResources.Storage, playerID.shopResources.ResidentialModule, playerID.shopResources.Minner, playerID.shopResources.Pier);
             // PlayerResources playerResources = await GetPlayerResources(UIManagerMainMenu.WhichPlayerCreate);
             // await PutPlayerResources(UIManagerMainMenu.WhichPlayerCreate, playerResources.Iron, playerResources.Energy, playerResources.Food, playerResources.CryoCrystal); 
         });
@@ -117,7 +117,7 @@ public class APIManager : MonoBehaviour
         // Создаем объект PlayerData
         PlayerData playerData = new PlayerData()
         {
-            name = playerID.Name,
+            name = playerID.entityName,
             resources = new PlayerResources()
             {
                 Iron = playerIron,
@@ -228,7 +228,7 @@ public class APIManager : MonoBehaviour
     /// <returns></returns>
     public async Task<PlayerResources> GetPlayerResources(EntityID playerID)          
     {
-        string URL = Requests.GetPlayerURL(playerID.Name);
+        string URL = Requests.GetPlayerURL(playerID.entityName);
 
         // Создаем TaskCompletionSource для ожидания результата запроса
         var taskCompletionSource = new TaskCompletionSource<PlayerResources>();
@@ -275,7 +275,7 @@ public class APIManager : MonoBehaviour
         // Создаем объект PlayerData
         PlayerData playerData = new PlayerData()
         {
-            name = playerID.Name,
+            name = playerID.entityName,
             resources = new PlayerResources()
             {
                 Iron = playerIron,
@@ -294,7 +294,7 @@ public class APIManager : MonoBehaviour
         Debug.Log(json);
 
         // Формируем URL для PUT-запроса
-        string URL = Requests.PutPlayerURL(playerID.Name);
+        string URL = Requests.PutPlayerURL(playerID.entityName);
 
         // Создаем TaskCompletionSource для ожидания завершения запроса
         var taskCompletionSource = new TaskCompletionSource<bool>();
@@ -334,7 +334,7 @@ public class APIManager : MonoBehaviour
     public async Task DeletePlayer(EntityID playerID)
     {
         // Формируем URL для удаления игрока
-        string URL = Requests.DeletePlayerURL(playerID.Name);
+        string URL = Requests.DeletePlayerURL(playerID.entityName);
 
         // Создаем TaskCompletionSource для обработки результата запроса
         var taskCompletionSource = new TaskCompletionSource<bool>();
@@ -425,17 +425,16 @@ public class APIManager : MonoBehaviour
     /// <summary>
     /// Создает магазин
     /// </summary>
-    /// <param name="playerName"> имя игрока </param>
+    /// <param name="playerID"> имя игрока </param>
     /// <param name="shopName"> имя магазина </param>
     /// <param name="apiaryShop"> чертеж пасеки </param>
-    /// <param name="honeyGunShop"> чертеж медопушки </param>
     /// <param name="mobileBaseShop"> чертеж мобильной базы </param>
     /// <param name="storageShop"> чертеж хранилища </param>
     /// <param name="residentialModuleShop"> чертеж жилого модуля </param>
     /// <param name="breadwinnerShop"> чертеж добытчика</param>
     /// <param name="pierShop"> чертеж пристани </param>
     /// <returns></returns>
-    public async Task CreateShop(EntityID playerID, string shopName, PriceShopProduct apiaryShop, PriceShopProduct honeyGunShop, PriceShopProduct mobileBaseShop, PriceShopProduct storageShop, PriceShopProduct residentialModuleShop, PriceShopProduct breadwinnerShop, PriceShopProduct pierShop)
+    public async Task CreateShop(EntityID playerID, string shopName, PriceShopProduct apiaryShop, PriceShopProduct mobileBaseShop, PriceShopProduct storageShop, PriceShopProduct residentialModuleShop, PriceShopProduct breadwinnerShop, PriceShopProduct pierShop)
     {
         // Создаем объект ShopData
         ShopData shopData = new ShopData()
@@ -444,7 +443,6 @@ public class APIManager : MonoBehaviour
             resources = new ShopResources()
             {
                 Apiary = apiaryShop,
-                HoneyGun = honeyGunShop,
                 MobileBase = mobileBaseShop,
                 Storage = storageShop,
                 ResidentialModule = residentialModuleShop,
@@ -465,7 +463,7 @@ public class APIManager : MonoBehaviour
         if (!InternetMonitor.IsOfflineMode)
         {
             // Выполняем POST-запрос
-            HTTPRequests.Instance.Post(Requests.CreateShopURL(playerID.Name), TimeoutValues.CreateShopTimeoutValue,json, 
+            HTTPRequests.Instance.Post(Requests.CreateShopURL(playerID.entityName), TimeoutValues.CreateShopTimeoutValue,json, 
                 onSuccess: response =>
                 {
                     Debug.Log("Магазин персонажа успешно создан");
@@ -542,12 +540,12 @@ public class APIManager : MonoBehaviour
     /// <summary>
     /// Получение данных о ресурсах магазина 
     /// </summary>
-    /// <param name="playerName"> Имя игрока </param>
+    /// <param name="playerID"> Имя игрока </param>
     /// <param name="shopName"> Имя магазина </param>
     /// <returns></returns>
     public async Task<ShopResources> GetShopResources(EntityID playerID, string shopName)
     {
-        string URL = Requests.GetShopURL(playerID.Name, shopName);
+        string URL = Requests.GetShopURL(playerID.entityName, shopName);
 
         // Создаем TaskCompletionSource для ожидания результата запроса
         var taskCompletionSource = new TaskCompletionSource<ShopResources>();
@@ -580,17 +578,16 @@ public class APIManager : MonoBehaviour
     /// <summary>
     /// Обновляет ресурсы в магазине
     /// </summary>
-    /// <param name="playerName"> имя игрока </param>
+    /// <param name="playerID"> имя игрока </param>
     /// <param name="shopName"> имя магазина </param>
     /// <param name="apiaryShop"> чертеж пасеки </param>
-    /// <param name="honeyGunShop"> чертеж медопушки </param>
     /// <param name="mobileBaseShop"> чертеж мобильной базы </param>
     /// <param name="storageShop"> чертеж хранилища </param>
     /// <param name="residentialModuleShop"> чертеж жилого модуля </param>
     /// <param name="breadwinnerShop"> чертеж добытчика</param>
     /// <param name="pierShop"> чертеж пристани </param>
     /// <returns></returns>
-    public async Task PutShopResources(EntityID playerID, string shopName, PriceShopProduct apiaryShop, PriceShopProduct honeyGunShop, PriceShopProduct mobileBaseShop, PriceShopProduct storageShop, PriceShopProduct residentialModuleShop, PriceShopProduct breadwinnerShop, PriceShopProduct pierShop)
+    public async Task PutShopResources(EntityID playerID, string shopName, PriceShopProduct apiaryShop, PriceShopProduct mobileBaseShop, PriceShopProduct storageShop, PriceShopProduct residentialModuleShop, PriceShopProduct breadwinnerShop, PriceShopProduct pierShop)
     {
         // Создаем объект ShopData
         ShopData shopData = new ShopData()
@@ -599,7 +596,6 @@ public class APIManager : MonoBehaviour
             resources = new ShopResources()
             {
                 Apiary = apiaryShop,
-                HoneyGun = honeyGunShop,
                 MobileBase = mobileBaseShop,
                 Storage = storageShop,
                 ResidentialModule = residentialModuleShop,
@@ -620,7 +616,7 @@ public class APIManager : MonoBehaviour
         if (!InternetMonitor.IsOfflineMode)
         {
              // Выполняем PUT-запрос
-            HTTPRequests.Instance.Put(Requests.PutShopURL(playerID.Name, shopName), TimeoutValues.PutShopResourcesTimeoutValue,json, 
+            HTTPRequests.Instance.Put(Requests.PutShopURL(playerID.entityName, shopName), TimeoutValues.PutShopResourcesTimeoutValue,json, 
                 onSuccess: response =>
                 {
                     Debug.Log("Магазин персонажа успешно обновлен");
@@ -646,13 +642,13 @@ public class APIManager : MonoBehaviour
     /// <summary>
     /// Удаляет магазин определенного игрока
     /// </summary>
-    /// <param name="playerName"> имя игрока </param>
+    /// <param name="playerID"> имя игрока </param>
     /// <param name="shopName"> имя магазина </param>
     /// <returns></returns>
     public async Task DeleteShop(EntityID playerID, string shopName)
     {
         // Формируем URL для удаления игрока
-        string URL = Requests.DeleteShopURL(playerID.Name, shopName);
+        string URL = Requests.DeleteShopURL(playerID.entityName, shopName);
 
         // Создаем TaskCompletionSource для обработки результата запроса
         var taskCompletionSource = new TaskCompletionSource<bool>();

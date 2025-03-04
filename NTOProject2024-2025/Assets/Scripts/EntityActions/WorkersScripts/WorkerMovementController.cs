@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
+
 public class WorkerMovementController : MonoBehaviour
 {
-    [Header("Tutorial")]
-    [SerializeField] private TutorialObjective MovementWorkerTutorial;
-    [SerializeField] private TutorialObjective WorkerStartMovementToApiaryTutorial;
-    private bool IsWorkerMove;
-    private bool IsWorkerMovetoApiary;
+    // [Header("Tutorial")]
+    // [SerializeField] private TutorialObjective MovementWorkerTutorial;
+    // [SerializeField] private TutorialObjective WorkerStartMovementToApiaryTutorial;
+    // private bool IsWorkerMove;
+    // private bool IsWorkerMovetoApiary;
     
     [Header("Flags")]
     public bool ReadyForWork;
@@ -30,10 +32,14 @@ public class WorkerMovementController : MonoBehaviour
     public Camera MainCamera;
     [SerializeField] private Transform currentWalkingPoint;
     private Rigidbody _rb;
+    private WorkerData _thisWorkerData;
     
     [Header("LayerMasks")]
     [SerializeField] private LayerMask placementLayerMask;
     [SerializeField] private LayerMask workerLayerMask;
+
+    [Header("Texts for hints")] [TextArea] [SerializeField]
+    private string notNeededWorkerAttention;
     void Start()
     {
         IsClickOnOtherEntity = false;
@@ -45,7 +51,8 @@ public class WorkerMovementController : MonoBehaviour
         isSelecting = false;
         anim = GetComponent<Animator>();
         Debug.Log(agent);
-        _rb = GetComponent<Rigidbody>(); 
+        _rb = GetComponent<Rigidbody>();
+        _thisWorkerData = GetComponent<WorkerData>();
         OutlinePOD.SetActive(false);
         OutlineRotate.SetActive(false);
     }
@@ -68,22 +75,31 @@ public class WorkerMovementController : MonoBehaviour
                 if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
                     ArriveForBuildBuidling = false;
-                    if (!IsWorkerMove)
-                    {
-                        //MovementWorkerTutorial.CheckAndUpdateTutorialState();
-                        IsWorkerMove = true;
-                        Debug.Log("Рабочий начал движение");
-                    }
+                    // if (!IsWorkerMove)
+                    // {
+                    //     //MovementWorkerTutorial.CheckAndUpdateTutorialState();
+                    //     IsWorkerMove = true;
+                    //     Debug.Log("Рабочий начал движение");
+                    // }
                 } else {
                     // Если выбранное здание в процессе строительства и рабочий свободен, он идет его строить
-                    if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt && SelectedBuilding != null)
+                    if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt && SelectedBuilding != null )
                     {
-                        if (ReadyForWork)
+                        if (_thisWorkerData.workerType == WorkersType.Constructor)
                         {
-                            ArriveForBuildBuidling = true;
+                            if (ReadyForWork)
+                            {
+                                ArriveForBuildBuidling = true;
+                            }
+                        }
+                        else
+                        {
+                            SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text 
+                                = $"{WorkersInterBuildingControl.Instance.HintNotNeededWorkerType}:\n{notNeededWorkerAttention} ";
+                            Utility.Invoke(this, () => SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text = "", 4f);
                         }
                     }
-                    else
+                    else 
                     {
                         // Если выбранное здание уже построено, проверяем есть ли у него возможность содержать рабочих
                         // Если нет, рабочий не двинется
@@ -96,16 +112,32 @@ public class WorkerMovementController : MonoBehaviour
                         {
                             return;
                         }
+                        // Чувак, я пасечник а не работяга ! 
+                        else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType != WorkersType.Constructor && SelectedBuilding.GetComponent<BuildingData>().Production[0] == 0)
+                        {
+                            SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text 
+                                = $"{WorkersInterBuildingControl.Instance.HintNotNeededWorkerType}:\n{notNeededWorkerAttention} ";
+                            Utility.Invoke(this, () => SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text = "", 4f);
+                            return;
+                        }
+                        // Чувак, я работяга а не пасечник ! 
+                        else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType == WorkersType.Constructor && SelectedBuilding.GetComponent<BuildingData>().Production[1] == 0)
+                        {
+                            SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text 
+                                = $"{WorkersInterBuildingControl.Instance.HintNotNeededWorkerType}:\n{notNeededWorkerAttention} ";
+                            Utility.Invoke(this, () => SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text = "", 4f);
+                            return;
+                        }
                     }
                     
                     
                     currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
                     
-                    if (!IsWorkerMovetoApiary)
-                    {
-                        //WorkerStartMovementToApiaryTutorial.CheckAndUpdateTutorialState();
-                        IsWorkerMovetoApiary = true;
-                    }
+                    // if (!IsWorkerMovetoApiary)
+                    // {
+                    //     //WorkerStartMovementToApiaryTutorial.CheckAndUpdateTutorialState();
+                    //     IsWorkerMovetoApiary = true;
+                    // }
                 }
                 SetWorkerDestination(currentWalkingPoint.transform, false);
             }
