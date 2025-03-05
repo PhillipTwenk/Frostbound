@@ -18,9 +18,9 @@ MonoBehaviour:
   durabilityListLevel: 320000004b000000
   energyHoneyConsumptionListLevel: 0000000000000000
   resourceProductionListLevel:
-  - resources: 2800000028000000
+  - resources: 0000000028000000
     SpriteAssetsUsingIndex: 0000000001000000
-  - resources: 3c0000003c000000
+  - resources: 000000003c000000
     SpriteAssetsUsingIndex: 0000000001000000
   storageListLevel:
   - resources: 01000000

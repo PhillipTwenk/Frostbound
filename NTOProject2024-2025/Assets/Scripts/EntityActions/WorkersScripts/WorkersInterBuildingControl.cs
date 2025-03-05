@@ -11,10 +11,11 @@ public class WorkersInterBuildingControl : MonoBehaviour
     public static WorkersInterBuildingControl Instance { get; set;}
     
     [Header("Texts in building hint")]
-    [TextArea] [SerializeField] private string HintAwaitArriveWorker;
-    [TextArea] [SerializeField] private string HintAwaitBuilding;
-    [TextArea] [SerializeField] private string HintAwaitTimeWorker;
-    [TextArea] public string HintNotNeededWorkerType;       
+    [TextArea] [SerializeField] public string HintAwaitArriveWorker;
+    [TextArea] [SerializeField] public string HintAwaitBuilding;
+    [TextArea] [SerializeField] public string HintAwaitTimeWorker;
+    [TextArea] public string HintNotNeededWorkerType; 
+    [TextArea] public string HintNoBeAbleToBuildWorker;
  
     [Header("Control workers & players")]
     public int CurrentValueOfWorkers; // Общее текущее количество рабочих

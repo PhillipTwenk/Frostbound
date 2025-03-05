@@ -83,7 +83,7 @@ public class WorkerMovementController : MonoBehaviour
                     // }
                 } else {
                     // Если выбранное здание в процессе строительства и рабочий свободен, он идет его строить
-                    if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt && SelectedBuilding != null )
+                    if (SelectedBuilding != null && !SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt)
                     {
                         if (_thisWorkerData.workerType == WorkersType.Constructor)
                         {
@@ -94,11 +94,11 @@ public class WorkerMovementController : MonoBehaviour
                         }
                         else
                         {
-                            HintBuildingUpdate(SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не является конструктором, он не может потроить это здание </color>");
+                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNoBeAbleToBuildWorker, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не является конструктором, он не может потроить это здание </color>");
                             return;
                         }
                     }
-                    else 
+                    else if (SelectedBuilding != null)
                     {
                         // Если выбранное здание уже построено, проверяем есть ли у него возможность содержать рабочих
                         // Если нет, рабочий не двинется
@@ -107,14 +107,14 @@ public class WorkerMovementController : MonoBehaviour
                             return;
                         }
                         // Рабочий не побежит к зданию с возможностью содержать рабочих, если там не осталось места
-                        else if (SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding)
+                        else if (SelectedBuilding != null && SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding)
                         {
                             return;
                         }
                         // Чувак, я пасечник а не работяга ! 
-                        else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType != SelectedBuilding.GetComponent<EnergyProduction>().suitableWorkerDataForThisBuilding)
+                        else if (SelectedBuilding != null && SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType != SelectedBuilding.GetComponent<EnergyProduction>().suitableWorkerDataForThisBuilding)
                         {
-                            HintBuildingUpdate(SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не подходи по роли для данного здания </color>");
+                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNotNeededWorkerType, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не подходи по роли для данного здания </color>");
                             return;
                         }
                     }
@@ -221,15 +221,17 @@ public class WorkerMovementController : MonoBehaviour
     /// Добваление текста в подскакзки при выводе информации об ошибке, связанной с типами рабочих
     /// </summary>
     /// <param name="buildingData"></param>
-    private void HintBuildingUpdate(BuildingData buildingData, string debug)
+    private void HintBuildingUpdate(string WhichTypeActionText, BuildingData buildingData, string debug)
     {
         Debug.Log(debug);
-        
-        
-        string oldText = buildingData.AwaitBuildingThisTMPro.text;
-        buildingData.AwaitBuildingThisTMPro.text 
-            = $"{WorkersInterBuildingControl.Instance.HintNotNeededWorkerType}:\n{notNeededWorkerAttention} ";
-        Utility.Invoke(this, () => SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text = oldText, 4f);
+
+        if (buildingData.AwaitBuildingThisTMPro.text != $"{WhichTypeActionText}:\n{notNeededWorkerAttention} ")
+        {
+            string oldText = buildingData.AwaitBuildingThisTMPro.text;
+            buildingData.AwaitBuildingThisTMPro.text 
+                = $"{WhichTypeActionText}:\n{notNeededWorkerAttention} ";
+            Utility.Invoke(this, () => SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text = oldText, 4f);
+        }
     }
     
 }
