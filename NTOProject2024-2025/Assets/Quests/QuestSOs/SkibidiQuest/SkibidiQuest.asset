@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SkibidiQuest
   m_EditorClassIdentifier: 
   name: ChkebedeQuest
-  active: 1
+  active: 0
   completed: 0
   questDescription: MegaSkibidiQuest
   objectives:

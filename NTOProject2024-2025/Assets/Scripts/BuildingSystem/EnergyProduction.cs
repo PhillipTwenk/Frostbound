@@ -16,6 +16,9 @@ public class EnergyProduction : MonoBehaviour
     [Header("Events")]
     [SerializeField] private GameEvent ResourceUpdateEvent;
     
+    [Header("Units")]
+    public WorkersType suitableWorkerDataForThisBuilding;
+    
     public async void OnAddEnergy()
     {
         _buildingData = GetComponent<BuildingData>();

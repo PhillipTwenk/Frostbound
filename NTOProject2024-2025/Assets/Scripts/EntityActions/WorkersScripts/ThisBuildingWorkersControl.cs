@@ -6,14 +6,13 @@ using UnityEngine.AI;
 
 public class ThisBuildingWorkersControl : MonoBehaviour
 {
-    [Header("Tutorial")]
-    [SerializeField] private TutorialObjective CreateNewWorkerTutorial;
+    // [Header("Tutorial")]
+    // [SerializeField] private TutorialObjective CreateNewWorkerTutorial;
     
     [Header("Workers control")]
     public int CurrentNumberWorkersInThisBuilding;
     public int MaxValueOfWorkersInThisBuilding;
     public GameObject WorkerPrefab;
-    public WorkersType suitableWorkerDataForThisBuilding;
 
     [Header("Points")]
     public Transform buildingSpawnWorkerPointTransform;

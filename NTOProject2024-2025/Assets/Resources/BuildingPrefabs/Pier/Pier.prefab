@@ -2586,8 +2586,8 @@ MonoBehaviour:
   CreateNewWorkerTutorial: {fileID: 0}
   CurrentNumberWorkersInThisBuilding: 0
   MaxValueOfWorkersInThisBuilding: 1
-  WorkerPrefab: {fileID: 845355837700331742, guid: 31fe78fb1a4b70148a0cff384810ff37, type: 3}
-  suitableWorkerDataForThisBuilding: 0
+  WorkerPrefab: {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
+  suitableWorkerDataForThisBuilding: 1
   buildingSpawnWorkerPointTransform: {fileID: 7708379936889304414}
 --- !u!1 &7734645520033639005
 GameObject:
