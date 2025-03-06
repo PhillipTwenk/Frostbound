@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 59b149c5e659ec143a209695c5eddead
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 304712
+  packageName: HierarchyVisionPlus
+  packageVersion: 1.0.3
+  assetPath: Assets/Plugins/Editor/HierarchyVisionPlus/README.md
+  uploadId: 725310
