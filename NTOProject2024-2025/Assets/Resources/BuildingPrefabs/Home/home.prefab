@@ -651,6 +651,7 @@ GameObject:
   - component: {fileID: 6149116483158351243}
   - component: {fileID: 5916483935490455775}
   - component: {fileID: 4279403885778298507}
+  - component: {fileID: 1566133437137397925}
   m_Layer: 7
   m_Name: BuidingStatus
   m_TagString: Building
@@ -667,7 +668,7 @@ RectTransform:
   m_GameObject: {fileID: 3353555803824662855}
   m_LocalRotation: {x: 0, y: 0.9599766, z: -0, w: -0.28008017}
   m_LocalPosition: {x: 0, y: 0, z: 2.9}
-  m_LocalScale: {x: 12, y: 12, z: 12}
+  m_LocalScale: {x: -12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 53077826904575096}
@@ -819,6 +820,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 5916483935490455775}
   m_maskType: 0
+--- !u!114 &1566133437137397925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353555803824662855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883d132e4bab5d843bb13b940b9004b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3472285845442865281
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +968,7 @@ RectTransform:
   m_GameObject: {fileID: 3584302635231486536}
   m_LocalRotation: {x: 0, y: 0.9622181, z: -0, w: -0.2722801}
   m_LocalPosition: {x: 0, y: 0, z: 1.8}
-  m_LocalScale: {x: 12, y: 12, z: 12}
+  m_LocalScale: {x: -12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 53077826904575096}
@@ -1034,7 +1047,7 @@ MonoBehaviour:
     \u0432\u044B\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043E\u0434\u043D\u043E\u0433\u043E
     \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E (2/2)"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 036d1620178df0740abc024233708885, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
   m_sharedMaterial: {fileID: -6251262882907199531, guid: 036d1620178df0740abc024233708885, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1042,7 +1055,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278255608
-  m_fontColor: {r: 0.9719955, g: 1, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1103,7 +1116,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_renderer: {fileID: 663452756492814280}
   m_maskType: 0
 --- !u!1 &3745510168053583549
@@ -2320,11 +2333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33815807fd64a419d874f207d3b6f3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreateNewWorkerTutorial: {fileID: 11400000, guid: 5cd184f70bd4635449d504169676b263, type: 2}
   CurrentNumberWorkersInThisBuilding: 0
   MaxValueOfWorkersInThisBuilding: 2
   WorkerPrefab: {fileID: 845355837700331742, guid: 31fe78fb1a4b70148a0cff384810ff37, type: 3}
-  suitableWorkerDataForThisBuilding: 0
   buildingSpawnWorkerPointTransform: {fileID: 1551578056173623974}
 --- !u!65 &8277959642194642565
 BoxCollider:

@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 3856817332167768254}
   - component: {fileID: 5075673325753300629}
   - component: {fileID: 7901257772715885846}
+  - component: {fileID: 1612155007744369767}
   m_Layer: 7
   m_Name: BuidingStatus
   m_TagString: Untagged
@@ -632,7 +633,7 @@ RectTransform:
   m_GameObject: {fileID: 2842010636042421151}
   m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: 1.4}
-  m_LocalScale: {x: 9.03012, y: 9.03012, z: 9.03012}
+  m_LocalScale: {x: -9.03012, y: 9.03012, z: 9.03012}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5421121965012733969}
@@ -784,6 +785,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 1
   m_renderer: {fileID: 5075673325753300629}
   m_maskType: 0
+--- !u!114 &1612155007744369767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842010636042421151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883d132e4bab5d843bb13b940b9004b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2912194593195421641
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +870,7 @@ GameObject:
   - component: {fileID: 8122565496893955290}
   - component: {fileID: 7856530958911225459}
   - component: {fileID: 3887119700643781421}
+  - component: {fileID: 3949476158735462988}
   m_Layer: 7
   m_Name: Hint
   m_TagString: Building
@@ -873,14 +887,14 @@ RectTransform:
   m_GameObject: {fileID: 4081042062586841090}
   m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: -0.8}
-  m_LocalScale: {x: 12, y: 12, z: 12}
+  m_LocalScale: {x: -12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5421121965012733969}
   m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.6, y: 45.8}
+  m_AnchoredPosition: {x: -0.6, y: 30}
   m_SizeDelta: {x: 4.5848, y: 0.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7856530958911225459
@@ -906,7 +920,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6251262882907199531, guid: 036d1620178df0740abc024233708885, type: 2}
+  - {fileID: 8713269978437595444, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -948,17 +962,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0432\u0432\u0432\u0432\u0432"
+  m_text: ssssssssssssssssssssssssssssssssssssssssssssssssssss
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 036d1620178df0740abc024233708885, type: 2}
-  m_sharedMaterial: {fileID: -6251262882907199531, guid: 036d1620178df0740abc024233708885, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
+  m_sharedMaterial: {fileID: 8713269978437595444, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255608
-  m_fontColor: {r: 0.9719955, g: 1, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -983,7 +997,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1022,6 +1036,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 7856530958911225459}
   m_maskType: 0
+--- !u!114 &3949476158735462988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081042062586841090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883d132e4bab5d843bb13b940b9004b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4330281814339657923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1826,7 @@ MonoBehaviour:
   Level: 1
   Durability: 50
   Storage: 00000000
-  Production: 2800000000000000
+  Production: 0000000028000000
   HoneyConsumption: 0
   SaveListIndex: 0
   IsThisBuilt: 0
@@ -1843,7 +1869,7 @@ MonoBehaviour:
         m_MethodName: OnWorkerLeave
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3887119700643781421}
+          m_ObjectArgument: {fileID: 7901257772715885846}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1855,7 +1881,7 @@ MonoBehaviour:
         m_MethodName: SpawnWorkersInThisBuilding
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3887119700643781421}
+          m_ObjectArgument: {fileID: 7901257772715885846}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1870,7 +1896,7 @@ MonoBehaviour:
         m_MethodName: TextChangerEnergy
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3887119700643781421}
+          m_ObjectArgument: {fileID: 7901257772715885846}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1885,11 +1911,11 @@ MonoBehaviour:
   - {fileID: 2723910873337516857}
   - {fileID: 1565688012296649702}
   - {fileID: 5927344406235161008}
-  spawnWorker: {fileID: 2636491516842112944}
+  spawnWorker: {fileID: 6218351955974572490}
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  Texthint: {fileID: 4081042062586841090}
+  Texthint: {fileID: 2842010636042421151}
 --- !u!65 &8276670124576503153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1924,6 +1950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceUpdateEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
+  suitableWorkerDataForThisBuilding: 0
 --- !u!114 &1649829646258614135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1936,12 +1963,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33815807fd64a419d874f207d3b6f3b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreateNewWorkerTutorial: {fileID: 11400000, guid: 5cd184f70bd4635449d504169676b263, type: 2}
   CurrentNumberWorkersInThisBuilding: 0
   MaxValueOfWorkersInThisBuilding: 1
   WorkerPrefab: {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
-  suitableWorkerDataForThisBuilding: 0
-  buildingSpawnWorkerPointTransform: {fileID: 2636491516842112944}
+  buildingSpawnWorkerPointTransform: {fileID: 6218351955974572490}
 --- !u!1 &6461373108980604029
 GameObject:
   m_ObjectHideFlags: 0

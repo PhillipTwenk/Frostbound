@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8086396840258833494}
   - component: {fileID: 8677907249777965519}
   - component: {fileID: 4429404362972513929}
+  - component: {fileID: 3760772533302933190}
   m_Layer: 0
   m_Name: crystal_2_low
   m_TagString: Untagged
@@ -86,3 +87,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3760772533302933190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741758730848805715}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08460659, y: 0.08786093, z: 0.16370794}
+  m_Center: {x: -0.004590177, y: -0.0011761641, z: 0.076601446}

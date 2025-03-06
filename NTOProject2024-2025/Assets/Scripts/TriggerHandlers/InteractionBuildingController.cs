@@ -20,6 +20,7 @@ public class InteractionBuildingController : MonoBehaviour
     
     [Header("Flags")]
     private bool CanPutE;
+    [NonSerialized]public bool IsTextStartWorkingActive;
 
     [Header("Building Data")]
     public List<Transform> PointsOfBuildings;
@@ -36,6 +37,7 @@ public class InteractionBuildingController : MonoBehaviour
     {
         _buildingData = GetComponent<BuildingData>();
         CanPutE = false;
+        IsTextStartWorkingActive = false;
         // if (_buildingData.buildingTypeSO.IDoB == 3)
         // {
         //     Texthint.SetActive(false);
@@ -126,14 +128,31 @@ public class InteractionBuildingController : MonoBehaviour
                         {
                             EnergyProduction energyProduction = GetComponent<EnergyProduction>();
                             energyProduction.OnAddEnergy();
-                            text.text = $"{_buildingData.Title} запущена ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/1) \n Нажмите E чтобы выгрузить рабочего";
+                            string newText = $"{_buildingData.Title} запущена ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
+                            if (!text.gameObject.activeSelf)
+                            {
+                                text.gameObject.SetActive(true);
+                                IsTextStartWorkingActive = true;
+                                Utility.Invoke(this, () =>
+                                {
+                                    if (text.text == newText)
+                                    {
+                                        IsTextStartWorkingActive = false;
+                                        text.gameObject.SetActive(false);
+                                    }
+                                }, 4f);
+                            }
+
+                            text.text = newText;
                         }
                         else
                         {
-                            text.text = $"Нажмите E чтобы выгрузить одного рабочего ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/2)";
+                            text.text = $"Нажмите E чтобы выгрузить одного рабочего ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
                         }
 
-                        Destroy(other.gameObject.transform.parent.gameObject);
+                        thisBuildingWorkersControl.currentWorkerInThisBuilding =
+                            other.gameObject.GetComponent<WorkerMovementController>();
+                        other.gameObject.transform.parent.gameObject.SetActive(false);
                         
                         PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                         playerSaveData.BuildingWorkersInformationList[_buildingData.SaveListIndex]

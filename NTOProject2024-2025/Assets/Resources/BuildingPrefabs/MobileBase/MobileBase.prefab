@@ -2181,6 +2181,7 @@ GameObject:
   - component: {fileID: 2248755061148662378}
   - component: {fileID: 5286275388705615052}
   - component: {fileID: 9134928026796908284}
+  - component: {fileID: 8731009536015045581}
   m_Layer: 7
   m_Name: TapE
   m_TagString: Building
@@ -2230,7 +2231,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6251262882907199531, guid: 036d1620178df0740abc024233708885, type: 2}
+  - {fileID: 8713269978437595444, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2275,15 +2276,15 @@ MonoBehaviour:
   m_text: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0431\u0430\u0440\u0442\u0435\u0440
     ( \u0415 )"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 036d1620178df0740abc024233708885, type: 2}
-  m_sharedMaterial: {fileID: -6251262882907199531, guid: 036d1620178df0740abc024233708885, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
+  m_sharedMaterial: {fileID: 8713269978437595444, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278254591
-  m_fontColor: {r: 1, g: 0.98480475, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2300,8 +2301,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5.7
-  m_fontSizeBase: 5.7
+  m_fontSize: 7.5
+  m_fontSizeBase: 7.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2347,6 +2348,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 5286275388705615052}
   m_maskType: 0
+--- !u!114 &8731009536015045581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4235555856182636373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883d132e4bab5d843bb13b940b9004b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4303875988199220501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,7 +2387,7 @@ RectTransform:
   m_GameObject: {fileID: 4303875988199220501}
   m_LocalRotation: {x: -0, y: -0.4550839, z: -0, w: 0.8904486}
   m_LocalPosition: {x: 0, y: 0, z: -0.7}
-  m_LocalScale: {x: -10.309689, y: 9.03012, z: 9.03012}
+  m_LocalScale: {x: 10.30969, y: 9.03012, z: 9.03012}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5894361588510789822}
@@ -3005,6 +3018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceUpdateEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
+  suitableWorkerDataForThisBuilding: 0
 --- !u!1 &5136938154985716010
 GameObject:
   m_ObjectHideFlags: 0

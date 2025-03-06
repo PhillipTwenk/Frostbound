@@ -44,13 +44,13 @@ public class BuildingData : MonoBehaviour
     {
         if (IsOpen)
         {
-            AwaitBuildingThisTMPro.gameObject.SetActive(IsOpen);
+            AwaitBuildingThisTMPro.gameObject.SetActive(true);
 
             AwaitBuildingThisTMPro.text = WhichText;
         }
         else
         {
-            AwaitBuildingThisTMPro.gameObject.SetActive(IsOpen);
+            AwaitBuildingThisTMPro.gameObject.SetActive(false);
         }
     }
 }

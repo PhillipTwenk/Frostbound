@@ -81,9 +81,9 @@ public class WorkerMovementController : MonoBehaviour
                     //     IsWorkerMove = true;
                     //     Debug.Log("Рабочий начал движение");
                     // }
-                } else {
+                } else if (SelectedBuilding != null){
                     // Если выбранное здание в процессе строительства и рабочий свободен, он идет его строить
-                    if (SelectedBuilding != null && !SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt)
+                    if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt)
                     {
                         if (_thisWorkerData.workerType == WorkersType.Constructor)
                         {
@@ -94,34 +94,32 @@ public class WorkerMovementController : MonoBehaviour
                         }
                         else
                         {
-                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNoBeAbleToBuildWorker, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не является конструктором, он не может потроить это здание </color>");
+                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNoBeAbleToBuildWorker, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не является конструктором, он не может потроить это здание </color>", 0);
                             return;
                         }
                     }
-                    else if (SelectedBuilding != null)
+                    else 
                     {
                         // Если выбранное здание уже построено, проверяем есть ли у него возможность содержать рабочих
                         // Если нет, рабочий не двинется
-                        if (!SelectedBuilding.GetComponent<ThisBuildingWorkersControl>())
-                        {
-                            return;
-                        }
+                        // if (!SelectedBuilding.GetComponent<ThisBuildingWorkersControl>())
+                        // {
+                        //     return;
+                        // }
                         // Рабочий не побежит к зданию с возможностью содержать рабочих, если там не осталось места
-                        else if (SelectedBuilding != null && SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding)
+                        if (SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding)
                         {
+                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.FullWorkerInThisBuilding, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не пролезет в здании нет места </color>", 1);
                             return;
                         }
                         // Чувак, я пасечник а не работяга ! 
-                        else if (SelectedBuilding != null && SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType != SelectedBuilding.GetComponent<EnergyProduction>().suitableWorkerDataForThisBuilding)
+                        else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType != SelectedBuilding.GetComponent<EnergyProduction>().suitableWorkerDataForThisBuilding)
                         {
-                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNotNeededWorkerType, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не подходи по роли для данного здания </color>");
+                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNotNeededWorkerType, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не подходи по роли для данного здания </color>",  0);
                             return;
                         }
                     }
-                    
-                    
                     currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
-                    
                     // if (!IsWorkerMovetoApiary)
                     // {
                     //     //WorkerStartMovementToApiaryTutorial.CheckAndUpdateTutorialState();
@@ -153,6 +151,11 @@ public class WorkerMovementController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Получение информации о нажатой на карте точке
+    /// Учитывается только нажатие по указанным в placementLayerMask слоям
+    /// </summary>
+    /// <returns> Позиция нажатой точки </returns>
     public Vector3 GetSelectedMapPosition()
     {
         Vector3 lastPosition = Vector3.zero;
@@ -187,7 +190,11 @@ public class WorkerMovementController : MonoBehaviour
     }
 
     
-    
+    /// <summary>
+    /// Задать направление пути юниту
+    /// </summary>
+    /// <param name="point"></param>
+    /// <param name="isAutomatic"></param>
     public void SetWorkerDestination(Transform point, bool isAutomatic){
         if(isAutomatic && SelectedBuilding != null){
             currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
@@ -221,16 +228,36 @@ public class WorkerMovementController : MonoBehaviour
     /// Добваление текста в подскакзки при выводе информации об ошибке, связанной с типами рабочих
     /// </summary>
     /// <param name="buildingData"></param>
-    private void HintBuildingUpdate(string WhichTypeActionText, BuildingData buildingData, string debug)
+    private void HintBuildingUpdate(string WhichTypeActionText, BuildingData buildingData, string debug, int mode)
     {
         Debug.Log(debug);
 
-        if (buildingData.AwaitBuildingThisTMPro.text != $"{WhichTypeActionText}:\n{notNeededWorkerAttention} ")
+        if (buildingData.AwaitBuildingThisTMPro.text != $"{WhichTypeActionText}:\n{notNeededWorkerAttention} " && !buildingData.gameObject.GetComponent<InteractionBuildingController>().IsTextStartWorkingActive)
         {
             string oldText = buildingData.AwaitBuildingThisTMPro.text;
-            buildingData.AwaitBuildingThisTMPro.text 
-                = $"{WhichTypeActionText}:\n{notNeededWorkerAttention} ";
-            Utility.Invoke(this, () => SelectedBuilding.gameObject.GetComponent<BuildingData>().AwaitBuildingThisTMPro.text = oldText, 4f);
+            bool oldTMPStateBool = buildingData.AwaitBuildingThisTMPro.gameObject.activeSelf;
+            
+            buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(true);
+            switch (mode)
+            {
+                case 0:
+                    buildingData.AwaitBuildingThisTMPro.text 
+                        = $"{WhichTypeActionText}:\n{notNeededWorkerAttention} ";
+                    break;
+                case 1:
+                    buildingData.AwaitBuildingThisTMPro.text 
+                        = $"{WhichTypeActionText}";
+                    break;
+            }
+            Utility.Invoke(this, () =>
+            {
+                buildingData.AwaitBuildingThisTMPro.text = oldText;
+                Debug.Log($"Прошлое состояние текста над зданием {buildingData.Title}: {oldTMPStateBool}");
+                if (!oldTMPStateBool)
+                {
+                    buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(false);
+                }
+            }, 4f);
         }
     }
     

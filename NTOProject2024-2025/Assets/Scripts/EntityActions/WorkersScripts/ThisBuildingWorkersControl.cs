@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,19 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     public int CurrentNumberWorkersInThisBuilding;
     public int MaxValueOfWorkersInThisBuilding;
     public GameObject WorkerPrefab;
+    [NonSerialized] public WorkerMovementController currentWorkerInThisBuilding;
+
+    private void Start()
+    {
+        if (CurrentNumberWorkersInThisBuilding == 0)
+        {
+            currentWorkerInThisBuilding = null;
+        }
+        else
+        {
+            
+        }
+    }
 
     [Header("Points")]
     public Transform buildingSpawnWorkerPointTransform;
@@ -23,7 +37,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     /// <param name="text"></param>
     public void TextChanger(TextMeshPro text)
     {
-        text.text = $"Нажмите E чтобы выгрузить одного рабочего ({CurrentNumberWorkersInThisBuilding}/2)";
+        text.text = $"Нажмите E чтобы выгрузить одного рабочего ({CurrentNumberWorkersInThisBuilding}/{MaxValueOfWorkersInThisBuilding})";
     }
     
     /// <summary>
@@ -37,11 +51,24 @@ public class ThisBuildingWorkersControl : MonoBehaviour
             WorkersInterBuildingControl.Instance.NumberOfFreeWorkers += 1;
             Debug.Log($"<color=green>Свободные рабочие + 1: {WorkersInterBuildingControl.Instance.NumberOfFreeWorkers}</color>");
             CurrentNumberWorkersInThisBuilding -= 1;
-            GameObject newWorker = Instantiate(WorkerPrefab, null);
-            newWorker.transform.position = buildingSpawnWorkerPointTransform.position;
-            newWorker.transform.rotation = buildingSpawnWorkerPointTransform.rotation;
-            newWorker.transform.SetParent(null);
-            newWorker.transform.GetChild(0).GetComponent<WorkerMovementController>().MainCamera = WorkersInterBuildingControl.MainCamera;
+            if (currentWorkerInThisBuilding != null)
+            {
+                currentWorkerInThisBuilding.gameObject.transform.parent.gameObject.SetActive(true);
+                currentWorkerInThisBuilding.ReadyForWork = true;
+                currentWorkerInThisBuilding.SelectedBuilding = null;
+                currentWorkerInThisBuilding.ArriveForBuildBuidling = false;
+                currentWorkerInThisBuilding.isSelected = false;
+                currentWorkerInThisBuilding.isSelecting = false;
+                currentWorkerInThisBuilding.possibilityClickOnWorker = true;
+                currentWorkerInThisBuilding.OutlineRotate.SetActive(false);
+                currentWorkerInThisBuilding.OutlinePOD.SetActive(false);
+            }
+            //GameObject newWorker = Instantiate(WorkerPrefab, null);
+            
+            // newWorker.transform.position = buildingSpawnWorkerPointTransform.position;
+            //
+            // newWorker.transform.SetParent(null);
+            // newWorker.transform.GetChild(0).GetComponent<WorkerMovementController>().MainCamera = WorkersInterBuildingControl.MainCamera;
             TextChanger(text);
             // if (GetComponent<BuildingData>().Title == "Жилой модуль")
             // {

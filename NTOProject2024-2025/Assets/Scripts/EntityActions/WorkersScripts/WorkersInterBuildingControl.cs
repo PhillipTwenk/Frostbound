@@ -4,11 +4,10 @@ using System;
 using System.Linq;
 using TMPro;
 using System.Threading.Tasks;
-using UnityEngine.Rendering.Universal;
 
 public class WorkersInterBuildingControl : MonoBehaviour
 {
-    public static WorkersInterBuildingControl Instance { get; set;}
+    public static WorkersInterBuildingControl Instance { get; private set;}
     
     [Header("Texts in building hint")]
     [TextArea] [SerializeField] public string HintAwaitArriveWorker;
@@ -16,6 +15,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
     [TextArea] [SerializeField] public string HintAwaitTimeWorker;
     [TextArea] public string HintNotNeededWorkerType; 
     [TextArea] public string HintNoBeAbleToBuildWorker;
+    [TextArea] public string FullWorkerInThisBuilding;
  
     [Header("Control workers & players")]
     public int CurrentValueOfWorkers; // Общее текущее количество рабочих
@@ -317,7 +317,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
 
         //Debug.Log("Рабочий достроил, идет обратно");
         
-        buildingData.TextPanelBuildingControl(false, HintAwaitBuilding);
+        buildingData.TextPanelBuildingControl(false, "");
     }
 
     private async Task AwaitEndWorking(BuildingData buildingData)

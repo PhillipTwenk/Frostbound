@@ -134,7 +134,7 @@ public class EnergyProduction : MonoBehaviour
         }
         else
         {
-            text.text =  $"{_buildingData.Title} работает ({GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding}/1) \n Нажмите E чтобы выгрузить рабочего";
+            text.text =  $"{_buildingData.Title} работает ({GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding}/{GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding}) \n Нажмите E чтобы выгрузить рабочего";
         }
     }
 

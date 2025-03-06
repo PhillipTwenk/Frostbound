@@ -19,8 +19,8 @@ MonoBehaviour:
   playerBuildings:
   - {fileID: 4160612270241140356, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
   buildingsTransform:
-  - position: {x: -278.8537, y: 2.262222, z: -1.092743}
-    rotation: {x: 0, y: -0.70710677, z: 0, w: 0.70710677}
+  - position: {x: 3354, y: 0.000061035156, z: 292}
+    rotation: {x: 0, y: -1, z: 0, w: -0.00000004371139}
     scale: {x: 2.585373, y: 2.585373, z: 2.585403}
   BuildingDatas:
   - Level: 1

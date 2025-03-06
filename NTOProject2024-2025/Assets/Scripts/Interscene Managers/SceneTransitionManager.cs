@@ -6,7 +6,7 @@ public class SceneTransitionManager : MonoBehaviour
 {
     [SerializeField] private GameEvent EndMoveToSceneLocationEvent;
     [SerializeField] private GameEvent StartTutorial;
-    [SerializeField] private string LocationSceneName;
+    [SerializeField] private string MainLocationSceneName;
     [SerializeField] private string MainMenuSceneName;
     [SerializeField] private string UISceneName;
     private bool IsNewPlayer;
@@ -35,13 +35,13 @@ public class SceneTransitionManager : MonoBehaviour
         
         //Загрузка уровня
         AsyncOperation LoadingSceneLocation = 
-            SceneManager.LoadSceneAsync(LocationSceneName, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(MainLocationSceneName, LoadSceneMode.Additive);
         yield return new WaitUntil(()=>LoadingSceneLocation.isDone);
         
         CurrentPlayersDataControl.WhichPlayerCreate = ActivePlayer;
 
         //Установка уровня как основной сцены
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(LocationSceneName));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(MainLocationSceneName));
         
         Debug.Log(IsNewPlayer);
 
