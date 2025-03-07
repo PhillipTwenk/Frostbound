@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b1747875eeec945aaf7034e37a0e2d, type: 3}
   m_Name: Player1SaveData
   m_EditorClassIdentifier: 
-  BuildingPrefabsPath: 
-  UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
   TabletInitializationEvent: {fileID: 11400000, guid: 0a5d37ead4429114b80c5d4ea08ef114, type: 2}
   ShieldInitializationEvent: {fileID: 11400000, guid: c7d42b4d8b9d521448b9533eeb0a3645, type: 2}
   playerBuildings:
@@ -32,3 +30,29 @@ MonoBehaviour:
   BuildingWorkersInformationList:
   - CurrentNumberOfWorkersInThisBuilding: 1
     MaxValueOfWorkersInThisBuilding: 1
+  workers:
+  - {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
+  - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
+  - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
+  workersTransform:
+  - position: {x: 3321.5852, y: 48.6, z: 548.3433}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 3463, y: 52.1, z: 687}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 3501, y: 52.1, z: 697}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+  workerDatas:
+  - IsWorkerAtWork: 0
+    SaveListIndex: 0
+  - IsWorkerAtWork: 0
+    SaveListIndex: 1
+  - IsWorkerAtWork: 0
+    SaveListIndex: 2
+  player: {fileID: 5840928571377694232, guid: 4f02f1be8d4c7c74a88ddc9404ac2b57, type: 3}
+  transformPlayer:
+    position: {x: 3478, y: 28.9, z: 573}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    scale: {x: 1, y: 1, z: 1}

@@ -151,14 +151,21 @@ public class InteractionBuildingController : MonoBehaviour
                             text.text = $"Нажмите E чтобы выгрузить одного рабочего ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
                         }
 
-                        thisBuildingWorkersControl.currentWorkerInThisBuilding =
+                        other.gameObject.GetComponent<WorkerData>().IsWorkerAtWork = true;
+                        
+                        GetComponent<ThisBuildingWorkersControl>().currentWorkerInThisBuilding =
                             other.gameObject.GetComponent<WorkerMovementController>();
+                        GetComponent<ThisBuildingWorkersControl>().CurrentWorkerDataInThisBuilding =
+                            other.gameObject.GetComponent<WorkerData>();
                         other.gameObject.transform.parent.gameObject.SetActive(false);
+                        
                         
                         PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                         playerSaveData.BuildingWorkersInformationList[_buildingData.SaveListIndex]
                                 .CurrentNumberOfWorkersInThisBuilding =
-                            thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding;
+                            GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding;
+                        
+                        JSONSerializeManager.Instance.JSONSave();
                         return;
                     }
                 }

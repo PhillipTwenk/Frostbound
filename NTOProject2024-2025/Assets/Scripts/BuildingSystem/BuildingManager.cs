@@ -205,7 +205,7 @@ public class BuildingManager : MonoBehaviour
                             if (ComponentContainingBuilding.GetComponent<ThisBuildingWorkersControl>())
                             {
                                 ThisBuildingWorkersControl thisBuildingWorkersControl = ComponentContainingBuilding.GetComponent<ThisBuildingWorkersControl>();
-                                WorkersContolSaveData worlersSaveData = new WorkersContolSaveData(thisBuildingWorkersControl);
+                                WorkersControlSaveData worlersSaveData = new WorkersControlSaveData(thisBuildingWorkersControl);
                                 pLayerSaveData.BuildingWorkersInformationList.Add(worlersSaveData);
 
                                 WorkersInterBuildingControl.Instance.AddNewBuilding(thisBuildingWorkersControl);

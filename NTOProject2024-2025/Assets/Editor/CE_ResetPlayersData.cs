@@ -113,6 +113,13 @@ public class CE_ResetPlayersData: EditorWindow
             PSD.buildingsTransform = dPSD.buildingsTransform;
             PSD.BuildingDatas = dPSD.BuildingDatas;
             PSD.BuildingWorkersInformationList = dPSD.BuildingWorkersInformationList;
+
+            PSD.workers = dPSD.workers;
+            PSD.workersTransform = dPSD.workersTransform;
+            PSD.workerDatas = dPSD.workerDatas;
+            
+            PSD.player = dPSD.player;
+            PSD.transformPlayer = dPSD.transformPlayer;
         }
     }
 

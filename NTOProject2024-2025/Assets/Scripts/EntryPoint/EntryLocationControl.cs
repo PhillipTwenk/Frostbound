@@ -12,7 +12,7 @@ public class EntryLocationControl : MonoBehaviour
         UpdateResourcesEvent.TriggerEvent();
 
         PlayerSaveData pLayerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
-        pLayerSaveData.InitializeBuildings();
+        pLayerSaveData.InitializeData();
         BaseSongStartEvent.TriggerEvent();
 
         LoadingCanvasController.Instance.LoadingCanvasNotTransparent.SetActive(false);

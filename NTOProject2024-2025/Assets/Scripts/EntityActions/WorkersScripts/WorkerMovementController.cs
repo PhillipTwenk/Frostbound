@@ -113,7 +113,7 @@ public class WorkerMovementController : MonoBehaviour
                             return;
                         }
                         // Чувак, я пасечник а не работяга ! 
-                        else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType != SelectedBuilding.GetComponent<EnergyProduction>().suitableWorkerDataForThisBuilding)
+                        else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType != SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().suitableWorkerDataForThisBuilding)
                         {
                             HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNotNeededWorkerType, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не подходи по роли для данного здания </color>",  0);
                             return;

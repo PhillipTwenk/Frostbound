@@ -14,17 +14,17 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     public int CurrentNumberWorkersInThisBuilding;
     public int MaxValueOfWorkersInThisBuilding;
     public GameObject WorkerPrefab;
-    [NonSerialized] public WorkerMovementController currentWorkerInThisBuilding;
+    public WorkerMovementController currentWorkerInThisBuilding;
+    public WorkerData CurrentWorkerDataInThisBuilding;
 
+    [Header("Units")]
+    public WorkersType suitableWorkerDataForThisBuilding;
+    
     private void Start()
     {
-        if (CurrentNumberWorkersInThisBuilding == 0)
+        if (CurrentNumberWorkersInThisBuilding == 0 && CurrentWorkerDataInThisBuilding == null)
         {
             currentWorkerInThisBuilding = null;
-        }
-        else
-        {
-            
         }
     }
 
@@ -46,7 +46,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     /// <param name="text"></param>
     public void SpawnWorkersInThisBuilding(TextMeshPro text)
     {
-        if (CurrentNumberWorkersInThisBuilding > 0)
+        if (CurrentNumberWorkersInThisBuilding > 0 && CurrentWorkerDataInThisBuilding != null)
         {
             WorkersInterBuildingControl.Instance.NumberOfFreeWorkers += 1;
             Debug.Log($"<color=green>Свободные рабочие + 1: {WorkersInterBuildingControl.Instance.NumberOfFreeWorkers}</color>");
@@ -62,6 +62,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
                 currentWorkerInThisBuilding.possibilityClickOnWorker = true;
                 currentWorkerInThisBuilding.OutlineRotate.SetActive(false);
                 currentWorkerInThisBuilding.OutlinePOD.SetActive(false);
+                currentWorkerInThisBuilding.gameObject.GetComponent<WorkerData>().IsWorkerAtWork = false;
             }
             //GameObject newWorker = Instantiate(WorkerPrefab, null);
             
@@ -74,6 +75,50 @@ public class ThisBuildingWorkersControl : MonoBehaviour
             // {
             //     CreateNewWorkerTutorial.CheckAndUpdateTutorialState();
             // }
+            
+            JSONSerializeManager.Instance.JSONSave();
+        }
+        else if (CurrentWorkerDataInThisBuilding == null && CurrentNumberWorkersInThisBuilding > 0)
+        {
+            PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
+            foreach (var workerData in playerSaveData.workerDatas)
+            {
+                if (workerData.IsWorkerAtWork && workerData.workerType == suitableWorkerDataForThisBuilding)
+                {
+                    workerData.IsWorkerAtWork = false;
+
+                    GameObject newWorker = Instantiate(playerSaveData.workers[workerData.SaveListIndex]);
+                    
+                    //Инициализация расположения
+                    NavMeshAgent agent = newWorker.transform.GetChild(0).GetComponent<NavMeshAgent>();
+                    agent.enabled = false;
+                
+                    newWorker.transform.position = Vector3.zero;
+                    newWorker.transform.rotation = Quaternion.Euler(0,0,0);
+                    newWorker.transform.localScale = Vector3.one;
+                
+                    newWorker.transform.GetChild(0).transform.position = playerSaveData.workersTransform[workerData.SaveListIndex].position;
+                    newWorker.transform.GetChild(0).transform.rotation = playerSaveData.workersTransform[workerData.SaveListIndex].rotation;
+                    newWorker.transform.GetChild(0).transform.localScale = playerSaveData.workersTransform[workerData.SaveListIndex].scale;
+                
+                    agent.enabled = true;
+                
+                    // Иницилиазация игровых данных
+                    GameObject newWorkerСomponentsContainingObject = newWorker.transform.GetChild(0).gameObject;
+                    WorkerData workerDataNewWorker = newWorkerСomponentsContainingObject.GetComponent<WorkerData>();
+                    workerDataNewWorker.SaveListIndex = workerData.SaveListIndex;
+                    workerDataNewWorker.workerType = workerData.workerType;
+
+                    newWorkerСomponentsContainingObject.GetComponent<WorkerMovementController>().MainCamera =
+                        WorkersInterBuildingControl.MainCamera;
+                    
+                    
+                    
+                    
+                    CurrentNumberWorkersInThisBuilding -= 1;
+                    break;
+                }
+            }
         }
     }
 

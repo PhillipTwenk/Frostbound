@@ -2622,7 +2622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceUpdateEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
-  suitableWorkerDataForThisBuilding: 1
 --- !u!114 &7208875820102810698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2638,6 +2637,7 @@ MonoBehaviour:
   CurrentNumberWorkersInThisBuilding: 0
   MaxValueOfWorkersInThisBuilding: 1
   WorkerPrefab: {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
+  suitableWorkerDataForThisBuilding: 1
   buildingSpawnWorkerPointTransform: {fileID: 4311764023263790760}
 --- !u!1 &7734645520033639005
 GameObject:

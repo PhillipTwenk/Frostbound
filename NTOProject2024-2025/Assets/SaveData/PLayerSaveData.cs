@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /// <summary>
 /// Сохранения данных о зданиях 
@@ -7,14 +8,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SaveData/PlayerSaveData")]
 public class PlayerSaveData : ScriptableObject, ISerializableSO
 {
-    [SerializeField] private string BuildingPrefabsPath;
-
-    [SerializeField] private GameEvent UpdateResourcesEvent;
-
     [SerializeField] private GameEvent TabletInitializationEvent;
     [SerializeField] private GameEvent ShieldInitializationEvent;
-    
-    // Реализация ISerializableSO   
+
+    #region Реализация ISerializableSO 
+
     public string SerializeToJson()
     {
         // Сохраняем только данные для сериализации, а не ссылки на объекты
@@ -23,7 +21,12 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
             buildingNames = playerBuildings.ConvertAll(b => b.name),
             buildingsTransform = buildingsTransform,
             BuildingDatas = BuildingDatas,
-            WorkersContolSaveDatas = BuildingWorkersInformationList
+            WorkersContolSaveDatas = BuildingWorkersInformationList,
+            workerNames = workers.ConvertAll(w => w.name),
+            WorkersTransform = workersTransform,
+            workersDatas = workerDatas,
+            playerName = player.name,
+            playerTransform = transformPlayer
         };
         return JsonUtility.ToJson(serializableData, true);
     }
@@ -43,51 +46,96 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 playerBuildings.Add(prefab);
             }
         }
-
+        
         buildingsTransform = serializableData.buildingsTransform;
         BuildingDatas = serializableData.BuildingDatas;
         BuildingWorkersInformationList = serializableData.WorkersContolSaveDatas;
+
+        // Восстанавливаем префабы рабочих по именам
+        workers = new List<GameObject>();
+        foreach (var workerName in serializableData.workerNames)
+        {
+            GameObject prefab = Resources.Load<GameObject>($"UnitsPrefabs/{workerName}");
+            Debug.Log($"UnitsPrefabs/{workerName}");
+            if (prefab != null)
+            {
+                workers.Add(prefab);
+            }
+        }
+
+        workersTransform = serializableData.WorkersTransform;
+        workerDatas = serializableData.workersDatas;
+        
+        
+        // Восстановление префаба игрока по имени
+        GameObject playerPrefab = Resources.Load<GameObject>($"UnitsPrefabs/{serializableData.playerName}");
+        Debug.Log($"UnitsPrefabs/{serializableData.playerName}");
+        if (playerPrefab != null)
+        {
+            player = playerPrefab;
+        }
+
+        transformPlayer = serializableData.playerTransform;
     }
+
+    #endregion  
     
     
     
     
-    
-    public List<GameObject> playerBuildings;
-    public List<TransformData> buildingsTransform;
-    public List<BuildingSaveData> BuildingDatas;
-    public List<WorkersContolSaveData> BuildingWorkersInformationList;
+    [Header("Building Save Data")]
+    [Tooltip("Игровые объекты построенных зданий")] public List<GameObject> playerBuildings;
+    [Tooltip("Расположения построенных зданий")] public List<TransformData> buildingsTransform;
+    [Tooltip("Игровая информация о построенных зданиях")] public List<BuildingSaveData> BuildingDatas;
+    [Tooltip("Информация о рабочих внутри здания, если здание может их хранить")] public List<WorkersControlSaveData> BuildingWorkersInformationList;
+
+    [Header("Workers Save Data")]
+    [Tooltip("Игровые объекты рабочих")] public List<GameObject> workers;
+    [Tooltip("Расположения рабочих")] public List<TransformData> workersTransform;
+    [Tooltip("Информации о ролях и состоянии рабочих")] public List<WorkersDataSaveData> workerDatas;
+
+    [Header("Player Save Data")] 
+    [Tooltip("Игровой объект игрока")] public GameObject player;
+    [Tooltip("Расположение игрока")] public TransformData transformPlayer;
 
     private bool IsDeleteBuidlingProcessActive;
 
     /// <summary>
     /// Инициализирует все построеные здания в игре
     /// </summary>
-    public async void InitializeBuildings()
+    public async void InitializeData()
     {
+        #region Инициализация зданий
+
         IsDeleteBuidlingProcessActive = false;
         if (playerBuildings is not null)
         {
-            int i = 0;
+            int index = 0;
+            // List<int> usedWorkerdata = new List<int>() {-1};
             foreach (var building in playerBuildings)
             {
-                Debug.Log($"Здание номеееерррр {i}");
+                Debug.Log($"Инициализация здания №{index}");
+                
                 GameObject newBuilding = Instantiate(building);
-                newBuilding.transform.position = buildingsTransform[i].position;
-                newBuilding.transform.rotation = buildingsTransform[i].rotation;
-                newBuilding.transform.localScale = buildingsTransform[i].scale;
+                
+                //Инициализация расположения
+                newBuilding.transform.position = buildingsTransform[index].position;
+                newBuilding.transform.rotation = buildingsTransform[index].rotation;
+                newBuilding.transform.localScale = buildingsTransform[index].scale;
 
-                GameObject ComponentContainingBuilding = newBuilding.transform.GetChild(0).gameObject;
-
-                BuildingData buildingData = ComponentContainingBuilding.GetComponent<BuildingData>();
-                buildingData.Level = BuildingDatas[i].Level; 
-                buildingData.Durability = BuildingDatas[i].Durability;
-                buildingData.Storage = BuildingDatas[i].Storage;
-                buildingData.SaveListIndex = BuildingDatas[i].SaveListIndex;
-                buildingData.HoneyConsumption = BuildingDatas[i].HoneyConsumption;
-                buildingData.Production = BuildingDatas[i].Production;
+                // Иницилиазация игровых данных
+                GameObject componentContainingBuilding = newBuilding.transform.GetChild(0).gameObject;
+                BuildingData buildingData = componentContainingBuilding.GetComponent<BuildingData>();
+                buildingData.Level = BuildingDatas[index].Level; 
+                buildingData.Durability = BuildingDatas[index].Durability;
+                buildingData.Storage = BuildingDatas[index].Storage;
+                buildingData.SaveListIndex = BuildingDatas[index].SaveListIndex;
+                buildingData.HoneyConsumption = BuildingDatas[index].HoneyConsumption;
+                buildingData.Production = BuildingDatas[index].Production;
                 buildingData.IsThisBuilt = true;
-                if (i == 0)
+                
+                // Инициализация мобильной базы
+                if (index == 0)
                 {
                     BaseUpgradeConditionManager.buildingDataMB = buildingData;
                     BaseUpgradeConditionManager.CurrentBaseLevel = buildingData.Level;
@@ -95,22 +143,113 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                     ShieldInitializationEvent.TriggerEvent();
                 }
 
-                if (ComponentContainingBuilding.GetComponent<ThisBuildingWorkersControl>())
+                // Если здание может содержать рабочих
+                if (componentContainingBuilding.GetComponent<ThisBuildingWorkersControl>())
                 {
-                    Debug.Log($"Здание {buildingData.name}, количество рабочих в нем: <color=green>{BuildingWorkersInformationList[i].CurrentNumberOfWorkersInThisBuilding}</color>");
-                    ThisBuildingWorkersControl workers = ComponentContainingBuilding.GetComponent<ThisBuildingWorkersControl>();
-                    workers.CurrentNumberWorkersInThisBuilding = BuildingWorkersInformationList[i].CurrentNumberOfWorkersInThisBuilding;
-                    workers.MaxValueOfWorkersInThisBuilding = BuildingWorkersInformationList[i].MaxValueOfWorkersInThisBuilding;
+                    Debug.Log($"Здание {buildingData.name}, количество рабочих в нем: <color=green>{BuildingWorkersInformationList[index].CurrentNumberOfWorkersInThisBuilding}</color>");
+                    ThisBuildingWorkersControl thisBuildingWorkersControl = componentContainingBuilding.GetComponent<ThisBuildingWorkersControl>();
+                    thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding = BuildingWorkersInformationList[index].CurrentNumberOfWorkersInThisBuilding;
+                    thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding = BuildingWorkersInformationList[index].MaxValueOfWorkersInThisBuilding;
+                    thisBuildingWorkersControl.suitableWorkerDataForThisBuilding =
+                        BuildingWorkersInformationList[index].suitableWorkerDataForThisBuilding;
 
-                    WorkersInterBuildingControl.Instance.AddNewBuilding(workers);
+                    // if (thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding > 0 && thisBuildingWorkersControl.CurrentWorkerDataInThisBuilding != null)
+                    // {
+                    //     int SLI = 0;
+                    //     foreach (var workerData in workerDatas)
+                    //     {
+                    //         if (workerData.IsWorkerAtWork && workerData.workerType == thisBuildingWorkersControl.suitableWorkerDataForThisBuilding && !usedWorkerdata.Contains(workerData.SaveListIndex) )
+                    //         {
+                    //             usedWorkerdata.Add(workerData.SaveListIndex);
+                    //             SLI = workerData.SaveListIndex;
+                    //         }
+                    //     }
+                    //
+                    //     GameObject newWorkerInBuilding = CreateWorker(SLI);
+                    //     WorkerMovementController workerMovementController = newWorkerInBuilding.transform.GetChild(0)
+                    //         .gameObject.GetComponent<WorkerMovementController>();
+                    //
+                    //     thisBuildingWorkersControl.currentWorkerInThisBuilding = workerMovementController;
+                    // }
+
+                    WorkersInterBuildingControl.Instance.AddNewBuilding(thisBuildingWorkersControl);
                 }
                 else
                 {
                     WorkersInterBuildingControl.Instance.AddNewBuilding(null);
                 }
-                i++;
+                index++;
             }
         }
+
+        #endregion
+
+        #region Инициализация рабочих
+
+        if (workers is not null)
+        {
+            for (int i = 0; i < workers.Count; i++)
+            {
+                Debug.Log($"Инициализация рабочего №{i}");
+                
+                if (workerDatas[i].IsWorkerAtWork)
+                {
+                    Debug.Log($"Рабочий №{i} работает");
+                    continue;
+                }
+                
+                GameObject newWorker = Instantiate(workers[i]);
+                
+                //Инициализация расположения
+                NavMeshAgent agent = newWorker.transform.GetChild(0).GetComponent<NavMeshAgent>();
+                agent.enabled = false;
+                
+                newWorker.transform.position = Vector3.zero;
+                newWorker.transform.rotation = Quaternion.Euler(0,0,0);
+                newWorker.transform.localScale = Vector3.one;
+                
+                newWorker.transform.GetChild(0).transform.position = workersTransform[i].position;
+                newWorker.transform.GetChild(0).transform.rotation = workersTransform[i].rotation;
+                newWorker.transform.GetChild(0).transform.localScale = workersTransform[i].scale;
+                
+                agent.enabled = true;
+                
+                // Иницилиазация игровых данных
+                GameObject newWorkerСomponentsContainingObject = newWorker.transform.GetChild(0).gameObject;
+                WorkerData workerData = newWorkerСomponentsContainingObject.GetComponent<WorkerData>();
+                workerData.IsWorkerAtWork = workerDatas[i].IsWorkerAtWork;
+                workerData.SaveListIndex = workerDatas[i].SaveListIndex;
+                workerData.workerType = workerDatas[i].workerType;
+
+                workerData.gameObject.GetComponent<WorkerMovementController>().MainCamera =
+                    WorkersInterBuildingControl.MainCamera;
+
+            }
+        }
+
+        #endregion
+
+        #region Инициализация игрока
+
+        GameObject newPlayer = Instantiate(player);
+        
+        //Инициализация расположения
+        NavMeshAgent agentPlayer = newPlayer.transform.GetChild(0).GetComponent<NavMeshAgent>();
+        agentPlayer.enabled = false;
+        
+        newPlayer.transform.position = Vector3.zero;
+        newPlayer.transform.rotation = Quaternion.Euler(0,0,0);
+        newPlayer.transform.localScale = Vector3.one;
+        
+        newPlayer.transform.GetChild(0).transform.position = transformPlayer.position;
+        newPlayer.transform.GetChild(0).transform.rotation =transformPlayer.rotation;
+        newPlayer.transform.GetChild(0).transform.localScale = transformPlayer.scale;
+
+        agentPlayer.enabled = true;
+        newPlayer.gameObject.transform.GetChild(0).gameObject.GetComponent<PlayerMovementController>().MainCamera =
+            WorkersInterBuildingControl.MainCamera;
+        
+        #endregion
         
         await BuildingManager.Instance._navMeshSurface.UpdateNavMesh(BuildingManager.Instance._navMeshSurface.navMeshData);
     }
@@ -159,6 +298,45 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
         }
     }
     
+    // public GameObject CreateWorker(int SaveListIndex)
+    // {
+    //     GameObject prefab = Resources.Load<GameObject>($"UnitsPrefabs/{workers[SaveListIndex].name}");
+    //     if (prefab != null)
+    //     {
+    //         GameObject newWorker = Instantiate(prefab);
+    //         
+    //         //Инициализация расположения
+    //         NavMeshAgent agent = newWorker.transform.GetChild(0).GetComponent<NavMeshAgent>();
+    //         agent.enabled = false;
+    //             
+    //         newWorker.transform.position = Vector3.zero;
+    //         newWorker.transform.rotation = Quaternion.Euler(0,0,0);
+    //         newWorker.transform.localScale = Vector3.one;
+    //             
+    //         newWorker.transform.GetChild(0).transform.position = workersTransform[SaveListIndex].position;
+    //         newWorker.transform.GetChild(0).transform.rotation = workersTransform[SaveListIndex].rotation;
+    //         newWorker.transform.GetChild(0).transform.localScale = workersTransform[SaveListIndex].scale;
+    //             
+    //         agent.enabled = true;
+    //             
+    //         // Иницилиазация игровых данных
+    //         GameObject newWorkerСomponentsContainingObject = newWorker.transform.GetChild(0).gameObject;
+    //         WorkerData workerData = newWorkerСomponentsContainingObject.GetComponent<WorkerData>();
+    //         workerData.IsWorkerAtWork = workerDatas[SaveListIndex].IsWorkerAtWork;
+    //         workerData.SaveListIndex = workerDatas[SaveListIndex].SaveListIndex;
+    //         workerData.workerType = workerDatas[SaveListIndex].workerType;
+    //
+    //         workerData.gameObject.GetComponent<WorkerMovementController>().MainCamera =
+    //             WorkersInterBuildingControl.MainCamera;
+    //         
+    //         
+    //         newWorker.SetActive(false);
+    //         return newWorker;
+    //     }
+    //     Debug.LogError($"Не найден префаб рабочего: {workers[SaveListIndex].name}");
+    //     return null;
+    // }
+    
 }
 
 [System.Serializable]
@@ -198,15 +376,32 @@ public class BuildingSaveData
 }
 
 [System.Serializable]
-public class WorkersContolSaveData
+public class WorkersControlSaveData
 {
     public int CurrentNumberOfWorkersInThisBuilding;
     public int MaxValueOfWorkersInThisBuilding;
+    public WorkersType suitableWorkerDataForThisBuilding;
 
-    public WorkersContolSaveData(ThisBuildingWorkersControl buildingWorkersControl)
+    public WorkersControlSaveData(ThisBuildingWorkersControl buildingWorkersControl)
     {
         CurrentNumberOfWorkersInThisBuilding = buildingWorkersControl.CurrentNumberWorkersInThisBuilding;
         MaxValueOfWorkersInThisBuilding = buildingWorkersControl.MaxValueOfWorkersInThisBuilding;
+        suitableWorkerDataForThisBuilding = buildingWorkersControl.suitableWorkerDataForThisBuilding;
+    }
+}
+
+[System.Serializable]
+public class WorkersDataSaveData
+{
+    public bool IsWorkerAtWork;
+    public int SaveListIndex;
+    public WorkersType workerType;
+
+    public WorkersDataSaveData(WorkerData workerData)
+    {
+        IsWorkerAtWork = workerData.IsWorkerAtWork;
+        SaveListIndex = workerData.SaveListIndex;
+        workerType = workerData.workerType;
     }
 }
 
@@ -216,5 +411,13 @@ public class SerializableData
     public List<string> buildingNames;
     public List<TransformData> buildingsTransform;
     public List<BuildingSaveData> BuildingDatas;
-    public List<WorkersContolSaveData> WorkersContolSaveDatas;
+    public List<WorkersControlSaveData> WorkersContolSaveDatas;
+
+    public List<string> workerNames;
+    public List<TransformData> WorkersTransform;
+    public List<WorkersDataSaveData> workersDatas;
+
+    public string playerName;
+    public TransformData playerTransform;
 }
+

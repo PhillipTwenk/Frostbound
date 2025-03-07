@@ -17,6 +17,7 @@ public class JSONSerializeManager : MonoBehaviour
     private static readonly object _lock = new object();
 
     public static Action playerPrefsSaveMethods;
+    public static Action streamingDataSaveEvent;
 
     private void Awake()
     {
@@ -78,6 +79,7 @@ public class JSONSerializeManager : MonoBehaviour
             
             
             playerPrefsSaveMethods?.Invoke();
+            streamingDataSaveEvent?.Invoke();
         }
     }
 

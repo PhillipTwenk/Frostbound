@@ -16,9 +16,6 @@ public class EnergyProduction : MonoBehaviour
     [Header("Events")]
     [SerializeField] private GameEvent ResourceUpdateEvent;
     
-    [Header("Units")]
-    public WorkersType suitableWorkerDataForThisBuilding;
-    
     public async void OnAddEnergy()
     {
         _buildingData = GetComponent<BuildingData>();
@@ -92,6 +89,8 @@ public class EnergyProduction : MonoBehaviour
     {
         if (GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= 1)
         {
+            _buildingData = GetComponent<BuildingData>();
+            
             // GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding -= 1;
             // _buildingData = GetComponent<BuildingData>();
         
