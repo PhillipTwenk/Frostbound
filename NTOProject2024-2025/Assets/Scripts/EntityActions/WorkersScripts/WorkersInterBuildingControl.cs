@@ -410,6 +410,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
     {
         if (SelectedWorker != null)
         {
+            Debug.Log($"<color=yellow> Снято выделение с выбранного рабочего </color>");
             firstMouseEnterOutlineIndicator = false;
             SelectedWorker.OutlineRotate.SetActive(false);
             SelectedWorker.isSelected = false;
@@ -421,6 +422,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
     {
         if (SelectedPlayer != null)
         {
+            Debug.Log($"<color=yellow> Снято выделение с игрока </color>");
             firstMouseEnterOutlineIndicator = false;
             SelectedPlayer.OutlineRotate.SetActive(false);
             SelectedPlayer.isSelected = false;

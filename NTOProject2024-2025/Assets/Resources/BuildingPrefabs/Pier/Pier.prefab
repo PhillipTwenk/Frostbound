@@ -2553,6 +2553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
   PossiblityPutEInThisBuilding: 1
+  nameOfFunction: "\u0412\u044B\u0437\u0432\u0430\u0442\u044C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E"
   InteractionEvent:
     m_PersistentCalls:
       m_Calls:

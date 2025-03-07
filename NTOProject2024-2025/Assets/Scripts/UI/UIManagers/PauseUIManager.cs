@@ -24,6 +24,7 @@ public class PauseUIManager : MonoBehaviour
 
     public void PauseOff()
     {
+        Debug.Log($"<color=yellow> Вернулись в игру из паузы </color>");
         Time.timeScale = 1f;
         PauseOffEvent.TriggerEvent();
         UIManager.CancelLastOpenPanelEvent -= PauseOff;
@@ -37,6 +38,7 @@ public class PauseUIManager : MonoBehaviour
 
     public void ArriveToPauseMenu()
     {
+        Debug.Log($"<color=yellow> Вернулись в меню паузы </color>");
         ArriveToPauseMenuEvent.TriggerEvent();
         UIManager.CancelLastOpenPanelEvent -= ArriveToPauseMenu;
     }

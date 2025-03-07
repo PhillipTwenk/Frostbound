@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AddTextToDescriptionPanel : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI HintPanel;
     [SerializeField] private TextMeshProUGUI ButtonUpgradeTextPanel;
+    [SerializeField] private TextMeshProUGUI ButtonFunctionTextPanel;
     [TextArea] [SerializeField] private string TextNotEnoughtResources;
     [TextArea] [SerializeField] private string TextNotEnoughtBaseLevel;
     [TextArea] [SerializeField] private string UpgradeLevelBuildingInformation;
@@ -30,10 +32,12 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     [SerializeField] private GameObject panel;
     [SerializeField] private GameObject point;
     [SerializeField] private GameObject ButtonUpgrade;
+    [SerializeField] private GameObject ButtonFunctionThisBuilding;
 
     public static BuildingData buildingData;
     public static Transform buildingTransform;
     public static Building buildingSO;
+    private InteractionBuildingController currentIBC;
 
     [SerializeField] private Transform pointInPanelAngle1;
     [SerializeField] private Transform pointInPanelAngle2;
@@ -45,6 +49,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
 
     private void Start()
     {
+        currentIBC = null;
         panel.SetActive(false);
         point.SetActive(false);
         ButtonUpgrade.SetActive(false);
@@ -59,14 +64,34 @@ public class AddTextToDescriptionPanel : MonoBehaviour
         }
     }
 
-    public void EventODP() => UIManager.CancelLastOpenPanelEvent += HideDescriptionPanel;
+    /// <summary>
+    /// Выполняется 1 раз перед открытием панели подробного описания 
+    /// </summary>
+    public void EventODP()
+    {
+        if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
+            WorkersInterBuildingControl.SelectedWorker == null && WorkersInterBuildingControl.SelectedPlayer == null)
+        {
+            UIManager.CancelLastOpenPanelEvent += HideDescriptionPanel;
+            currentIBC = buildingData.gameObject.GetComponent<InteractionBuildingController>();
+            Debug.Log("Открыта панель подробного описания информации о здании ");
+        }
+    }
+    
+    /// <summary>
+    /// Нажали на кнопку функции здания в меню подробного просмотра информации о здании 
+    /// </summary>
+    public void ClickOnFunctionButtonInDescriptionPanel()
+    {
+        currentIBC?.InteractionEvent?.Invoke();
+    }
+    
     /// <summary>
     /// Нажали на здание, открытие панели подробной информации
     /// </summary>
-    /// <param name="building"></param>
     public void ShowDescriptionPanel()
     {
-        if (buildingData.IsThisBuilt && Time.timeScale == 1f && !TutorialManager.IsTutorialActive && WorkersInterBuildingControl.SelectedWorker == null && WorkersInterBuildingControl.SelectedPlayer == null)
+        if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive && WorkersInterBuildingControl.SelectedWorker == null && WorkersInterBuildingControl.SelectedPlayer == null)
         {
             IsPanelActive = true;
         
@@ -81,6 +106,16 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             else
             {
                 ButtonUpgrade.SetActive(false);
+            }
+            
+            if (currentIBC.PossiblityPutEInThisBuilding)
+            {
+                ButtonFunctionThisBuilding.SetActive(true);
+                ButtonFunctionTextPanel.text = currentIBC.nameOfFunction;
+            }
+            else
+            {
+                ButtonFunctionThisBuilding.SetActive(false);
             }
 
             // Центр экрана
@@ -186,9 +221,6 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             {
                 Storage.gameObject.SetActive(false);
             }
-
-            //DescriptionCanvas.renderMode = RenderMode.WorldSpace;
-            //DescriptionCanvas.worldCamera = mainCamera;
         }
     }
 
@@ -197,6 +229,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     /// </summary>
     public void HideDescriptionPanel()
     {
+        Debug.Log($"<color=yellow> Закрыто окно подробного просмотра </color>");
         IsPanelActive = false;
         point.SetActive(false);
         panel.SetActive(false);
@@ -370,9 +403,9 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             }
         }
         
-        JSONSerializeManager.Instance.JSONSave();
+        JSONSerializeManager.Instance?.JSONSave();
         
-        UpdateResourcesEvent.TriggerEvent();
+        UpdateResourcesEvent?.TriggerEvent();
         
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }

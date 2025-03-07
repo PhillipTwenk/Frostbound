@@ -231,9 +231,16 @@ public class UIManager : MonoBehaviour
     {
         if (CancelLastOpenPanelEvent == null) return;
 
-        foreach (Delegate d in CancelLastOpenPanelEvent.GetInvocationList())
+        // foreach (Delegate d in CancelLastOpenPanelEvent.GetInvocationList())
+        // {
+        //     Debug.Log($"Отменено действие под номером {}");
+        //     CancelLastOpenPanelEvent -= (Action)d; 
+        // }
+        
+        for (int i = 0; i < CancelLastOpenPanelEvent?.GetInvocationList().Length; i++)
         {
-            CancelLastOpenPanelEvent -= (Action)d; 
+            Debug.Log($"Отменено действие под номером {i}");
+            CancelLastOpenPanelEvent -= (Action)CancelLastOpenPanelEvent?.GetInvocationList()[i];
         }
     }
 
@@ -242,6 +249,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OpenQuestPanel()
     {
+        
         OpenQuestPanelEvent.TriggerEvent();
         if (selectedObjective != null)
         {
@@ -251,6 +259,7 @@ public class UIManager : MonoBehaviour
     }
     public void CloseQuestPanel()
     {
+        Debug.Log($"<color=yellow> Закрыта панель квестов </color>");
         CloseQuestPanelEvent.TriggerEvent();
         CancelLastOpenPanelEvent -= CloseQuestPanel;
     }
@@ -283,7 +292,7 @@ public class UIManager : MonoBehaviour
     }
     public void CloseBuildingPanel()
     {
-        Debug.Log("Закрыта панель строительства");
+        Debug.Log($"<color=yellow> Закрыта панель строительства </color>");
         RTS_Camera.possibilityZoomCamera = true;
         EndPlacingBuildEvent.TriggerEvent();
         CloseBuildingPanelEvent.TriggerEvent();
@@ -308,7 +317,7 @@ public class UIManager : MonoBehaviour
             ESCCloseLastOpenUIPanel();
         }
         
-        if (Input.GetButtonDown("OpenBuildingPanel") && Time.timeScale == 1f)
+        if (Input.GetButtonDown("OpenBuildingPanel") && Mathf.Approximately(Time.timeScale, 1f))
         {
             if (IsOpenBuildingPanel)
             {
@@ -429,6 +438,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void CloseBarterMenu()
     {
+        Debug.Log($"<color=yellow> Закрыта панель магазина </color>");
         CloseBarterMenuEvent.TriggerEvent();
         RTS_Camera.possibilityZoomCamera = true;
         CancelLastOpenPanelEvent -= CloseBarterMenu;

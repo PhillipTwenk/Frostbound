@@ -10,16 +10,17 @@ public class InteractionBuildingController : MonoBehaviour
     [Header("Events")]
     [SerializeField] private GameEvent OpenDescriptionPanel;
 
-    [Header("InteractionSystem")]
-    [SerializeField] private bool PossiblityPutEInThisBuilding;
-    [SerializeField] private UnityEvent InteractionEvent;
-    [SerializeField] private UnityEvent TextOnEvent;
-    [SerializeField] private bool IsThereBarterHere;
+    [Header("Interaction System")]
+    [Tooltip("Есть ли функицонал у этого здания")] public bool PossiblityPutEInThisBuilding;
+    [Tooltip("Название функционала")] public string nameOfFunction;
+    [Tooltip("Функции, срабатывающие при нажатии E около здания")] public UnityEvent InteractionEvent;
+    [Tooltip("Функции, срабатывающие при нахождении игрока рядом со зданием")] [SerializeField] private UnityEvent TextOnEvent;
+    [Tooltip("Позволяет ли данное здание подключиться к магазину")] [SerializeField] private bool IsThereBarterHere;
     public GameEvent OpenBarterMenuEvent;
     public GameEvent CloseBarterMenuEvent;
     
     [Header("Flags")]
-    private bool CanPutE;
+    [NonSerialized]public bool CanPutE;
     [NonSerialized]public bool IsTextStartWorkingActive;
 
     [Header("Building Data")]

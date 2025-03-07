@@ -24,53 +24,21 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Buildings/Apiary/TriggerApiary.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Buildings/Apiary/TriggerApiary.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Buildings/Whaft/TriggerPier.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Buildings/Whaft/TriggerPier.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Gameprefab/Bear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Gameprefab/Bear.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Bones/Bone_4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Bones/Bone_4.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Ground.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Ground_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Ground_2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneArc.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneArc.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneArc2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneArc2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneHead.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneHead.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneMiddle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneMiddle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneThorn.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneThorn.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneThorn2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneThorn2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_1_low.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_1_low.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_2_low.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_2_low.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_3_low.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_3_low.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art_Aseets/AkiDevCat/MicroAVL/Editor/MicroAVLShaderGUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_Aseets/AkiDevCat/MicroAVL/Editor/MicroAVLShaderGUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WorkerS/Types of workers/[Worker] - Beekeeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WorkerS/Types of workers/[Worker] - Beekeeper.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WorkerS/Types of workers/[Worker] - Constructor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WorkerS/Types of workers/[Worker] - Constructor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/DescriptionPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/DescriptionPanel.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Apiary/Apiary.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Apiary/Apiary.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Home/home.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Home/home.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/HoneyGun.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/HoneyGun/Bullet.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/HoneyGun/Bullet.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/HoneyGun/HoneyGun.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/HoneyGun/HoneyGun.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/HoneyGun/TriggerHGPrefab.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/HoneyGun/TriggerHGPrefab.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Miner/Miner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Miner/Miner.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/MobileBase/MobileBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/MobileBase/MobileBase.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Pier/Pier.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Pier/Pier.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/Storage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/Storage.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/Player1SaveData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/Player1SaveData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/Player2SaveData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/Player2SaveData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/Player3SaveData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/Player3SaveData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interscene Managers/SceneTransitionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interscene Managers/SceneTransitionManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/PauseUIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/PauseUIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,6 +338,7 @@
       <workItem from="1741157533904" duration="4999000" />
       <workItem from="1741277448282" duration="1748000" />
       <workItem from="1741289464126" duration="11592000" />
+      <workItem from="1741342588475" duration="9776000" />
     </task>
     <servers />
   </component>

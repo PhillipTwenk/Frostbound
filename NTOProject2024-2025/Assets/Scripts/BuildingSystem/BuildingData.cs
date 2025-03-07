@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.VFX;
 
 public class BuildingData : MonoBehaviour
@@ -24,8 +25,8 @@ public class BuildingData : MonoBehaviour
     public TextMeshPro AwaitBuildingThisTMPro;
     public VisualEffect BuildingVE;
 
-    [Header("Function of this building")] [Tooltip("Функционал взаимодействия данного здания")]
-    public UnityEvent StartBuildingFunctionEvent;
+    [Header("Function of this building")] 
+    [Tooltip("Функционал взаимодействия данного здания")] public UnityEvent StartBuildingFunctionEvent;
 
     private void Start()
     {
