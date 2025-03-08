@@ -2867,7 +2867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoneyConsumption: 0
-  NumberOfWorkers: 2
+  NumberOfWorkers: 0
 --- !u!1 &8740356966427635173
 GameObject:
   m_ObjectHideFlags: 0

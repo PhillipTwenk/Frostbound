@@ -224,6 +224,8 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 workerData.gameObject.GetComponent<WorkerMovementController>().MainCamera =
                     WorkersInterBuildingControl.MainCamera;
 
+                WorkersInterBuildingControl.Instance.CurrentValueOfWorkers += 1;
+                WorkersInterBuildingControl.Instance.NumberOfFreeWorkers += 1;
             }
         }
 
@@ -297,45 +299,6 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
             IsDeleteBuidlingProcessActive = false;
         }
     }
-    
-    // public GameObject CreateWorker(int SaveListIndex)
-    // {
-    //     GameObject prefab = Resources.Load<GameObject>($"UnitsPrefabs/{workers[SaveListIndex].name}");
-    //     if (prefab != null)
-    //     {
-    //         GameObject newWorker = Instantiate(prefab);
-    //         
-    //         //Инициализация расположения
-    //         NavMeshAgent agent = newWorker.transform.GetChild(0).GetComponent<NavMeshAgent>();
-    //         agent.enabled = false;
-    //             
-    //         newWorker.transform.position = Vector3.zero;
-    //         newWorker.transform.rotation = Quaternion.Euler(0,0,0);
-    //         newWorker.transform.localScale = Vector3.one;
-    //             
-    //         newWorker.transform.GetChild(0).transform.position = workersTransform[SaveListIndex].position;
-    //         newWorker.transform.GetChild(0).transform.rotation = workersTransform[SaveListIndex].rotation;
-    //         newWorker.transform.GetChild(0).transform.localScale = workersTransform[SaveListIndex].scale;
-    //             
-    //         agent.enabled = true;
-    //             
-    //         // Иницилиазация игровых данных
-    //         GameObject newWorkerСomponentsContainingObject = newWorker.transform.GetChild(0).gameObject;
-    //         WorkerData workerData = newWorkerСomponentsContainingObject.GetComponent<WorkerData>();
-    //         workerData.IsWorkerAtWork = workerDatas[SaveListIndex].IsWorkerAtWork;
-    //         workerData.SaveListIndex = workerDatas[SaveListIndex].SaveListIndex;
-    //         workerData.workerType = workerDatas[SaveListIndex].workerType;
-    //
-    //         workerData.gameObject.GetComponent<WorkerMovementController>().MainCamera =
-    //             WorkersInterBuildingControl.MainCamera;
-    //         
-    //         
-    //         newWorker.SetActive(false);
-    //         return newWorker;
-    //     }
-    //     Debug.LogError($"Не найден префаб рабочего: {workers[SaveListIndex].name}");
-    //     return null;
-    // }
     
 }
 

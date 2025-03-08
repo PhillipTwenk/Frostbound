@@ -85,6 +85,8 @@ public class ThisBuildingWorkersControl : MonoBehaviour
             {
                 if (workerData.IsWorkerAtWork && workerData.workerType == suitableWorkerDataForThisBuilding)
                 {
+                    WorkersInterBuildingControl.Instance.NumberOfFreeWorkers += 1;
+                    
                     workerData.IsWorkerAtWork = false;
 
                     GameObject newWorker = Instantiate(playerSaveData.workers[workerData.SaveListIndex]);
@@ -96,10 +98,8 @@ public class ThisBuildingWorkersControl : MonoBehaviour
                     newWorker.transform.position = Vector3.zero;
                     newWorker.transform.rotation = Quaternion.Euler(0,0,0);
                     newWorker.transform.localScale = Vector3.one;
-                
-                    newWorker.transform.GetChild(0).transform.position = playerSaveData.workersTransform[workerData.SaveListIndex].position;
-                    newWorker.transform.GetChild(0).transform.rotation = playerSaveData.workersTransform[workerData.SaveListIndex].rotation;
-                    newWorker.transform.GetChild(0).transform.localScale = playerSaveData.workersTransform[workerData.SaveListIndex].scale;
+
+                    newWorker.transform.GetChild(0).transform.position = buildingSpawnWorkerPointTransform.position;
                 
                     agent.enabled = true;
                 

@@ -55,7 +55,6 @@ public class WorkersInterBuildingControl : MonoBehaviour
         possiilityControlEntities = true;
         MainCamera = mainCamera;
         CurrentBuilding = null;
-        NumberOfFreeWorkers = 1;
         thisWorker = null;
         firstMouseEnterOutlineIndicator = true;
     }
@@ -219,7 +218,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
         if (newBuilding != null) 
         {
             listOfActiveBuildingWithWorkers.Add(newBuilding);
-            MaxValueOfWorkers += newBuilding.MaxValueOfWorkersInThisBuilding;
+            // MaxValueOfWorkers += newBuilding.MaxValueOfWorkersInThisBuilding;
             CurrentValueOfWorkers += newBuilding.CurrentNumberWorkersInThisBuilding;
         }
         else

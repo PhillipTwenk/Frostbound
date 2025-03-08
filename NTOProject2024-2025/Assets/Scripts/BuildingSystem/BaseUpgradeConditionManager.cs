@@ -39,10 +39,8 @@ public class BaseUpgradeConditionManager : MonoBehaviour
 
     public void Initialization()
     {
-        if (CurrentBaseLevel > 3)
-        {
-            ShieldRenderer.material = ShieldColor;
-        }
+        WorkersInterBuildingControl.Instance.MaxValueOfWorkers =
+            NumberOfWorkersForDifferentLevels[CurrentBaseLevel - 1];
     }
 
     private void Update()

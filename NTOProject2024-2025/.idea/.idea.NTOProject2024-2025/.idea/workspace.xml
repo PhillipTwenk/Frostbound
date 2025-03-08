@@ -24,29 +24,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Gameprefab/Bear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Gameprefab/Bear.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Gameprefab/PlayerSet.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Gameprefab/PlayerSet.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/CE_ResetPlayersData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/CE_ResetPlayersData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FolderColor/SaveSetUp/FolderModificationData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WorkerS/Types of workers/WorkerSet - Beekeeper.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WorkerS/Types of workers/WorkerSet - Beekeeper.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WorkerS/Types of workers/WorkerSet - Constructor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/WorkerS/Types of workers/WorkerSet - Constructor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Pier/Pier.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Pier/Pier.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/Json/Jsons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art_VFX/6 Gon Force Field/SpawnHoneyCumb Variant.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_VFX/6 Gon Force Field/SpawnHoneyCumb Variant.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/MobileBase/_t Stantion Hall Trigger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/MobileBase/_t Stantion Hall Trigger.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/Player1SaveData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/Player1SaveData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,6 +334,7 @@
       <workItem from="1741277448282" duration="1748000" />
       <workItem from="1741289464126" duration="11592000" />
       <workItem from="1741342588475" duration="39284000" />
+      <workItem from="1741472296622" duration="2267000" />
     </task>
     <servers />
   </component>
