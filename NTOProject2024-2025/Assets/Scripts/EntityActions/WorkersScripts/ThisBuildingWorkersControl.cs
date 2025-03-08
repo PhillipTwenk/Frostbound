@@ -64,17 +64,8 @@ public class ThisBuildingWorkersControl : MonoBehaviour
                 currentWorkerInThisBuilding.OutlinePOD.SetActive(false);
                 currentWorkerInThisBuilding.gameObject.GetComponent<WorkerData>().IsWorkerAtWork = false;
             }
-            //GameObject newWorker = Instantiate(WorkerPrefab, null);
             
-            // newWorker.transform.position = buildingSpawnWorkerPointTransform.position;
-            //
-            // newWorker.transform.SetParent(null);
-            // newWorker.transform.GetChild(0).GetComponent<WorkerMovementController>().MainCamera = WorkersInterBuildingControl.MainCamera;
             TextChanger(text);
-            // if (GetComponent<BuildingData>().Title == "Жилой модуль")
-            // {
-            //     CreateNewWorkerTutorial.CheckAndUpdateTutorialState();
-            // }
             
             JSONSerializeManager.Instance.JSONSave();
         }
