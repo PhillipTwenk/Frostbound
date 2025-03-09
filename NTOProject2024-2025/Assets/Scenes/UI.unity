@@ -6541,6 +6541,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1871247926}
     m_Modifications:
+    - target: {fileID: 456007987394197807, guid: c335289de9500f143b7c90d98a5907c0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 792393930692478458, guid: c335289de9500f143b7c90d98a5907c0, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -6625,6 +6629,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1474404796285536198, guid: c335289de9500f143b7c90d98a5907c0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.0999794
+      objectReference: {fileID: 0}
     - target: {fileID: 2500253194578549771, guid: c335289de9500f143b7c90d98a5907c0, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
@@ -6637,6 +6645,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6743036972369037336, guid: c335289de9500f143b7c90d98a5907c0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.0999794
+      objectReference: {fileID: 0}
     - target: {fileID: 7816357271230736598, guid: c335289de9500f143b7c90d98a5907c0, type: 3}
       propertyPath: m_Name
       value: HighPanel
@@ -6644,6 +6656,10 @@ PrefabInstance:
     - target: {fileID: 7905328038691090555, guid: c335289de9500f143b7c90d98a5907c0, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062451740370375959, guid: c335289de9500f143b7c90d98a5907c0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.0999794
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
