@@ -2938,7 +2938,7 @@ MonoBehaviour:
   Title: "\u041C\u043E\u0431\u0438\u043B\u044C\u043D\u0430\u044F \u0431\u0430\u0437\u0430"
   Level: 1
   Durability: 175
-  Storage: dc0500000a000000
+  Storage: 
   Production: 0000000014000000
   HoneyConsumption: 0
   SaveListIndex: 0
@@ -2974,6 +2974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
   PossiblityPutEInThisBuilding: 1
+  OnlyShowText: 0
   nameOfFunction: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u043C\u0430\u0433\u0430\u0437\u0438\u043D"
   InteractionEvent:
     m_PersistentCalls:
@@ -3019,7 +3020,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourceUpdateEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
-  suitableWorkerDataForThisBuilding: 0
 --- !u!1 &5136938154985716010
 GameObject:
   m_ObjectHideFlags: 0

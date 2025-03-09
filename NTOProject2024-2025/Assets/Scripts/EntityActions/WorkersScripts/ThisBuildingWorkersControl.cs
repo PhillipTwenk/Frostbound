@@ -14,8 +14,8 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     public int CurrentNumberWorkersInThisBuilding;
     public int MaxValueOfWorkersInThisBuilding;
     public GameObject WorkerPrefab;
-    public WorkerMovementController currentWorkerInThisBuilding;
-    public WorkerData CurrentWorkerDataInThisBuilding;
+    [NonSerialized] public WorkerMovementController currentWorkerInThisBuilding;
+    [NonSerialized] public WorkerData CurrentWorkerDataInThisBuilding;
 
     [Header("Units")]
     public WorkersType suitableWorkerDataForThisBuilding;

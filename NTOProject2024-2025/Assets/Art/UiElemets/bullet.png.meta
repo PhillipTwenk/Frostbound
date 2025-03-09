@@ -145,9 +145,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 304
-        y: 40
+        y: 37
         width: 134
-        height: 58
+        height: 65
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,9 +167,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 473
-        y: 9
+        y: 7
         width: 70
-        height: 144
+        height: 146
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: bullet_6
       rect:
         serializedVersion: 2
-        x: 707
-        y: 0
-        width: 162
-        height: 155
+        x: 726
+        y: 14
+        width: 143
+        height: 141
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,6 +224,28 @@ TextureImporter:
       bones: []
       spriteID: cc64a1d1653e2c545b82e818ae87aff2
       internalID: -74643039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet_5
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 0
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 625aaefac0cfbdb49b0998f33efbb94d
+      internalID: 1933949525
       vertices: []
       indices: 
       edges: []

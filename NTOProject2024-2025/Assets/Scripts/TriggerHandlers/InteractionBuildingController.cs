@@ -12,6 +12,7 @@ public class InteractionBuildingController : MonoBehaviour
 
     [Header("Interaction System")]
     [Tooltip("Есть ли функицонал у этого здания")] public bool PossiblityPutEInThisBuilding;
+    [Tooltip("При подходе игрока текст может просто отображать какую-либо инфорамацию о нем")] public bool OnlyShowText;
     [Tooltip("Название функционала")] public string nameOfFunction;
     [Tooltip("Функции, срабатывающие при нажатии E около здания")] public UnityEvent InteractionEvent;
     [Tooltip("Функции, срабатывающие при нахождении игрока рядом со зданием")] [SerializeField] private UnityEvent TextOnEvent;
@@ -68,7 +69,7 @@ public class InteractionBuildingController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Если игрок около здания, вызываем подсказку о нажатии на Е и позволяем использование функционала
-        if (other.gameObject.CompareTag("Player") && PossiblityPutEInThisBuilding)
+        if (other.gameObject.CompareTag("Player") && (PossiblityPutEInThisBuilding || OnlyShowText))
         {
             if (GetComponent<BuildingData>().IsThisBuilt)
             {
@@ -175,7 +176,7 @@ public class InteractionBuildingController : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && PossiblityPutEInThisBuilding)
+        if (other.gameObject.CompareTag("Player") && (PossiblityPutEInThisBuilding || OnlyShowText))
         {
             CanPutE = false;
             Texthint.SetActive(false);

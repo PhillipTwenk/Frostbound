@@ -165,9 +165,10 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             Level.text = $"Уровень: {Convert.ToString(buildingData.Level)}";
 
             //Формирование строки о текущей прочности здания
-            Durability.text = $"Прочность: {Convert.ToString(buildingData.Durability)} / {buildingSO.Durability(buildingData.Level)}";
+            Durability.text = $"Состояние: {Convert.ToString(buildingData.Durability)} / {buildingSO.Durability(buildingData.Level)}";
 
-            if (buildingSO.Production(buildingData.Level).resources.Count != 0)
+            // Формирование строки о производстве здания 
+            if (buildingData.Production.Count > 0)
             {
                 //Формирование строки после "Производит:" на панели
                 string productionTextOutput = "Производит:";
@@ -178,11 +179,11 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                 {
                     if (iP >= 1)
                     {
-                        productionTextOutput += $"+ {resource}   <sprite={listIndexSAProduction[iP]}>";
+                        productionTextOutput += $"+ {resource} <sprite={listIndexSAProduction[iP]}>";
                     }
                     else
                     {
-                        productionTextOutput += $" {resource}   <sprite={listIndexSAProduction[iP]}>";
+                        productionTextOutput += $" {resource} <sprite={listIndexSAProduction[iP]}>";
                     }
                     iP++;
                 }
@@ -196,22 +197,23 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             //Формирование строки о трате энергомеда
             HoneyConsumption.text = $"Тратит: {Convert.ToString(buildingSO.EnergyHoneyConsumpiton(buildingData.Level))} <sprite=0>";
 
-            if (buildingSO.StorageLimit(buildingData.Level).resources.Count != 0)
+            if (buildingData.Storage.Count > 0)
             {
                 //Формирование строки после "Количество ресурсов:" на панели
-                string storageTextOutput = "Лимиты ресурсов:";
+                string storageTextOutput = "Локальное хранилище:";
                 int iS = 0;
                 List<int> listIndexSAStorage = buildingSO.StorageLimit(buildingData.Level).SpriteAssetsUsingIndex;
-                List<int> resourcesValuesStorage = buildingSO.StorageLimit(buildingData.Level).resources;
+                List<int> resourcesValuesStorage = buildingData.Storage;
+                List<int> limitsStorage = buildingSO.StorageLimit(buildingData.Level).resources;
                 foreach (var resource in resourcesValuesStorage)
                 {
                     if (iS >= 1)
                     {
-                        storageTextOutput += $" + {resource}   <sprite={listIndexSAStorage[iS]}>";
+                        storageTextOutput += $" + {resource}/{limitsStorage[iS]} <sprite={listIndexSAStorage[iS]}>";
                     }
                     else
                     {
-                        storageTextOutput += $" {resource}   <sprite={listIndexSAStorage[iS]}>"; 
+                        storageTextOutput += $" {resource}/{limitsStorage[iS]} <sprite={listIndexSAStorage[iS]}>"; 
                     }
                     iS++;
                 }

@@ -1,79 +1,101 @@
-using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Типы добытчиков в зависимости от типа месторождения 
+/// </summary>
+[System.Serializable]
+public enum MinerType
+{
+    IronMiner,
+    CryoCrystalMiner
+}
+/// <summary>
+/// Отвечает за контроль добычи ресурсов 
+/// </summary>
 public class ResourceMiner : MonoBehaviour
 {
-    [SerializeField] private int ThisSOIDOB; //6
-    public string MinerType;
-    [SerializeField] private string IronMinerType;
-    [SerializeField] private string CCMinerType;
-
+    [Header("Building Info")]
+    private BuildingData _buildingData;
+    
+    [Header("Miner Function")]
+    [Tooltip("Интервал добычи")] [SerializeField] private int TimeProduction;
+    private MinerType _minerType;
+    private ResourceData resourcesLimits;
+    
+    
     [Header("GameEvents")]
     [SerializeField] private GameEvent ResourceIronLimitEvent;
     [SerializeField] private GameEvent ResourceCCLimitEvent;
     [SerializeField] private GameEvent UpdateResourcesEvent;
     [SerializeField] private GameEvent EnergySubZero;
 
+    [Header("Flags")]
     private bool IsWorkStop;
     private bool OneCycle;
-    private bool CanSendMessageToHint;
 
-    [SerializeField] private int TimeProduction;
-
+    [Header("Animations")]
+    [Tooltip("Название параметра для остановки анимации добычи")] [SerializeField] private string stopMineAnimationKey;
     private Animator _animator;
+
+    [Header("Miner Info Texts")]
+    [Tooltip("Текст, выводящийся над зданием при остановке работы")] [TextArea] [SerializeField] private string stopTextWorking;
+    [Tooltip("Текст, выводящийся над зданием при возобновлении работы")] [TextArea] [SerializeField] private string resumeTextWorking;
+    [Tooltip("Время, через которое текст должен удалится")] [SerializeField] private int showTextTime;
 
 
     private void Awake()
     {
+        _buildingData = GetComponent<BuildingData>();
         _animator = GetComponent<Animator>();
-        _animator.SetBool("StopMining",true);
+        _animator.SetBool(stopMineAnimationKey,true);
+        resourcesLimits = _buildingData.buildingTypeSO.StorageLimit(BaseUpgradeConditionManager.CurrentBaseLevel);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // Добытчик на месторождении металла
         if (other.gameObject.CompareTag("IronMinerPlace"))
         {
-            Debug.Log("Добытчик добывает металл");
-            MinerType = IronMinerType;
+            _minerType = MinerType.IronMiner;
             IsWorkStop = false;
-            BuildingData buildingData = GetComponent<BuildingData>();
-            if (buildingData.IsThisBuilt)
+            
+            if (_buildingData.IsThisBuilt)
             {
                 OnStartMining();
             }
-        }else if (other.gameObject.CompareTag("CCminerPlace"))
+        }
+        // Добытчик на месторождении криокристаллов
+        else if (other.gameObject.CompareTag("CCminerPlace"))
         {
-            Debug.Log("Добытчик добывает кристалл");
-            MinerType = CCMinerType;
+            _minerType = MinerType.CryoCrystalMiner;
             IsWorkStop = false;
-            BuildingData buildingData = GetComponent<BuildingData>();
-            if (buildingData.IsThisBuilt)
+            
+            if (_buildingData.IsThisBuilt)
             {
-                Debug.Log(0912);
                 OnStartMining();
             }
         }
         
     }
 
+    /// <summary>
+    /// Запускает корутины для добычи определенного ресурса
+    /// </summary>
     public async void OnStartMining()
     {
         if (!IsWorkStop && !OneCycle)
         {
             OneCycle = true;
 
-            BuildingData buildingData = GetComponent<BuildingData>();
-        
-            PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
-
-            if (MinerType == IronMinerType)
+            if (_minerType == MinerType.IronMiner)
             {
-                await MinerIronAsync(CurrentPlayersDataControl.WhichPlayerCreate, playerSaveData, buildingData);
-            } else if (MinerType == CCMinerType)
+                await MinerIronAsync(_buildingData);
+            } 
+            else if (_minerType == MinerType.CryoCrystalMiner)
             {
-                 await MinerCCAsync(CurrentPlayersDataControl.WhichPlayerCreate, playerSaveData, buildingData);
+                 await MinerCCAsync( _buildingData);
             }
         }
     }
@@ -81,193 +103,145 @@ public class ResourceMiner : MonoBehaviour
     /// <summary>
     /// Корутина, запускающая процесс добычи железа, пока не превысит лимит по ресурсам
     /// </summary>
-    /// <param name="playerName"></param>
-    /// <param name="playerResources"></param>
-    /// <param name="IronLimit"></param>
     /// <param name="buildingData"></param>
-    /// <returns></returns>
-    private async Task MinerIronAsync(EntityID playerID, PlayerSaveData playerSaveData, BuildingData buildingData)
+    private async Task MinerIronAsync(BuildingData buildingData)
     {
+        // Инициализация текущего лимита по ресурсу
+        int resourceLimit = resourcesLimits.resources[0];
+            
+        
         bool isRunning = true;
+        
         while (gameObject.activeSelf && isRunning)
         {
-            BuildingSaveData MobileBaseBD = playerSaveData.BuildingDatas[0];
-
-            int StorageAdd = 0;
-            foreach (var building in playerSaveData.playerBuildings)
+            // Если после добычи ресурса он не привысит лимит по ресурсу
+            if ((buildingData.Storage[0] + buildingData.Production[0]) <= resourceLimit)
             {
-                if (building.transform.GetChild(0).GetComponent<BuildingData>().buildingTypeSO.IDoB == ThisSOIDOB)
-                {
-                    StorageAdd += building.transform.GetChild(0).GetComponent<BuildingData>().Storage[0];
-                }
-            }
-            int IronLimit = MobileBaseBD.Storage[0] + StorageAdd;
-
-            Debug.Log($"Лимит по металлу: {IronLimit}");
-
-            PlayerResources playerResources = await GetResources(playerID);
-            if ((playerResources.Iron + buildingData.Production[0]) <= IronLimit && playerResources.Energy >= 0)
-            {
-                _animator.SetBool("StopMining",false);
-                CanSendMessageToHint = true;
-                Debug.Log($"Старое количество металла: {playerResources.Iron}");
-                int OldIronValue = playerResources.Iron;
-                playerResources.Iron += buildingData.Production[0];
-                Debug.Log($"Новое количество металла: {playerResources.Iron}");
-                LogSender(playerID.entityName, OldIronValue, playerResources.Iron, IronMinerType);
-                await UpdateResources(playerResources, playerID);
+                _animator.SetBool(stopMineAnimationKey, false);
+                
+                buildingData.Storage[0] += buildingData.Production[0];
+                
                 await Task.Delay(TimeProduction);
-            } else if ((playerResources.Iron + buildingData.Production[0]) > IronLimit)
+            } 
+            
+            // Если превысит, добираем недостающее количество ресурса до лимита
+            else if ((buildingData.Storage[0] + buildingData.Production[0]) > resourceLimit)
             {
-                // Добрать недостающее количество металла до лимита
-                CanSendMessageToHint = true;
-                Debug.Log($"Старое количество металла: {playerResources.Iron}");
-                int OldIronValue = playerResources.Iron;
-                int DifferenceIron = (playerResources.Iron + buildingData.Production[0]) - IronLimit; // Разница между лимитом металла и значением текущего металла + производство
-                playerResources.Iron += buildingData.Production[0] - DifferenceIron;
-                Debug.Log($"Новое количество металла: {playerResources.Iron}");
-                LogSender(playerID.entityName, OldIronValue, playerResources.Iron, IronMinerType);
-                await UpdateResources(playerResources, playerID);
-                await Task.Delay(TimeProduction);
+                
+                int differenceIron = (buildingData.Storage[0] + buildingData.Production[0]) - resourceLimit; // Разница между лимитом ресурса и значением текущего металла + производство
+                buildingData.Storage[0] += buildingData.Production[0] - differenceIron;
                 
                 // Остановка работы
                 IsWorkStop = true;
                 OneCycle = false;
-                _animator.SetBool("StopMining",true);
-                if (CanSendMessageToHint)
-                {
-                    ResourceIronLimitEvent.TriggerEvent();
-                    CanSendMessageToHint = false;
-                }
-                isRunning = false;
-            }else if (playerResources.Energy < 0)
-            {
-                IsWorkStop = true;
-                OneCycle = false;
-                _animator.SetBool("StopMining",true);
-                if (CanSendMessageToHint)
-                {
-                    EnergySubZero.TriggerEvent();
-                    CanSendMessageToHint = false;
-                }
+                _animator.SetBool(stopMineAnimationKey, true);
+
+                ShowTextMinerStatus(stopTextWorking);
+                
                 isRunning = false;
             }
+
+            if (isRunning)
+            {
+                TextMinerChanger();
+            }
+            
+            JSONSerializeManager.Instance.JSONSave();
+            
         }
-        
-        JSONSerializeManager.Instance.JSONSave();
     }
 
     
     /// <summary>
     /// Корутина, запускающая процесс добычи КриоКристаллов, пока не превысит лимит по ресурсам
     /// </summary>
-    /// <param name="playerName"></param>
-    /// <param name="playerResources"></param>
-    /// <param name="CCLimit"></param>
     /// <param name="buildingData"></param>
-    /// <returns></returns>
-    private async Task MinerCCAsync(EntityID playerID, PlayerSaveData playerSaveData, BuildingData buildingData)
+    private async Task MinerCCAsync(BuildingData buildingData)
     {
+        // Инициализация текущего лимита по ресурсу
+        int resourceLimit = resourcesLimits.resources[1];
+            
+        
         bool isRunning = true;
+        
         while (gameObject.activeSelf && isRunning)
         {
-            BuildingSaveData MobileBaseBD = playerSaveData.BuildingDatas[0];
-
-            int StorageAdd = 0;
-            foreach (var building in playerSaveData.playerBuildings)
+            // Если после добычи ресурса он не привысит лимит по ресурсу
+            if ((buildingData.Storage[1] + buildingData.Production[1]) <= resourceLimit)
             {
-                if (building.transform.GetChild(0).GetComponent<BuildingData>().buildingTypeSO.IDoB == ThisSOIDOB)
-                {
-                    StorageAdd += building.transform.GetChild(0).GetComponent<BuildingData>().Storage[1];
-                }
-            }
-            int CCLimit = MobileBaseBD.Storage[1] + StorageAdd;
-
-            Debug.Log($"Лимит по КриоКристаллам: {CCLimit}");
-
-            PlayerResources playerResources = await GetResources(playerID);
-            if ((playerResources.CryoCrystal + buildingData.Production[1]) <= CCLimit && playerResources.Energy >= 0)
-            {
-                _animator.SetBool("StopMining",false);
-                Debug.Log($"Старое количество КриоКристаллов: {playerResources.CryoCrystal}");
-                int OldCCValue = playerResources.CryoCrystal;
-                playerResources.CryoCrystal += buildingData.Production[1];
-                Debug.Log($"Новое количество КриоКристаллов: {playerResources.CryoCrystal}");
-                LogSender(playerID.entityName, OldCCValue, playerResources.CryoCrystal, CCMinerType);
-                await UpdateResources(playerResources, playerID);
+                _animator.SetBool(stopMineAnimationKey, false);
+                
+                buildingData.Storage[1] += buildingData.Production[1];
+                
                 await Task.Delay(TimeProduction);
-            } else if ((playerResources.CryoCrystal + buildingData.Production[1]) > CCLimit)
+            } 
+            
+            // Если превысит, добираем недостающее количество ресурса до лимита
+            else if ((buildingData.Storage[1] + buildingData.Production[1]) > resourceLimit)
             {
-                // Добрать значение криоКристалла до лимита
-                Debug.Log($"Старое количество КриоКристаллов: {playerResources.CryoCrystal}");
-                int OldCCValue = playerResources.CryoCrystal;
-                int DifferenceCC = (playerResources.CryoCrystal + buildingData.Production[1]) - CCLimit;
-                playerResources.CryoCrystal += buildingData.Production[1] - DifferenceCC;
-                Debug.Log($"Новое количество КриоКристаллов: {playerResources.CryoCrystal}");
-                LogSender(playerID.entityName, OldCCValue, playerResources.CryoCrystal, CCMinerType);
-                await UpdateResources(playerResources, playerID);
-                await Task.Delay(TimeProduction);
+                
+                int differenceIron = (buildingData.Storage[1] + buildingData.Production[1]) - resourceLimit; // Разница между лимитом ресурса и значением текущего металла + производство
+                buildingData.Storage[1] += buildingData.Production[1] - differenceIron;
                 
                 // Остановка работы
                 IsWorkStop = true;
                 OneCycle = false;
-                _animator.SetBool("StopMining",true);
-                if (CanSendMessageToHint)
-                {
-                    ResourceCCLimitEvent.TriggerEvent();
-                    CanSendMessageToHint = false;
-                }
-                isRunning = false;
-            }else if (playerResources.Energy <= 0)
-            {
-                IsWorkStop = true;
-                OneCycle = false;
-                _animator.SetBool("StopMining",true);
-                if (CanSendMessageToHint)
-                {
-                    EnergySubZero.TriggerEvent();
-                    CanSendMessageToHint = false;
-                }
+                _animator.SetBool(stopMineAnimationKey, true);
+
+                ShowTextMinerStatus(stopTextWorking);
+                
                 isRunning = false;
             }
+            
+            if (isRunning)
+            {
+                TextMinerChanger();
+            }
+            
+            JSONSerializeManager.Instance.JSONSave();
+            
         }
+    }
+    
+    /// <summary>
+    /// Показывает нужный текст над зданием на определенное количество времени
+    /// </summary>
+    private void ShowTextMinerStatus(string text)
+    {
         
-        JSONSerializeManager.Instance.JSONSave();
+        bool wasTextActive = _buildingData.AwaitBuildingThisTMPro.gameObject.activeSelf;
+        string oldText = _buildingData.AwaitBuildingThisTMPro.text;
+        
+        _buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(true);
+
+        _buildingData.AwaitBuildingThisTMPro.text = text;
+        
+        Utility.Invoke(this, () =>
+        {
+            if (wasTextActive)
+            {
+                _buildingData.AwaitBuildingThisTMPro.text = oldText;
+            }
+            else
+            {
+                _buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(false);
+            }
+        }, showTextTime);
     }
 
-    private async Task UpdateResources(PlayerResources playerResources, EntityID playerID)
+    /// <summary>
+    /// Показывает текущее количество ресурсов в локальном хранилище у добытчика
+    /// </summary>
+    /// <param name="text"></param>
+    public void TextMinerChanger()
     {
-        await SyncManager.Enqueue(async () =>
+        if (_minerType == MinerType.IronMiner)
         {
-            await APIManager.Instance.PutPlayerResources(playerID, playerResources.Iron, playerResources.Energy,
-                playerResources.Food, playerResources.CryoCrystal);
-            UpdateResourcesEvent.TriggerEvent();
-        });
-    }
-
-    private async Task<PlayerResources> GetResources(EntityID playerID)
-    {
-        PlayerResources playerResources = null;
-        await SyncManager.Enqueue(async () =>
+            _buildingData.AwaitBuildingThisTMPro.text = $"Локальные ресурсы: {_buildingData.Storage[0]}/{resourcesLimits.resources[0]}";
+        }
+        else if (_minerType == MinerType.CryoCrystalMiner)
         {
-           playerResources = await APIManager.Instance.GetPlayerResources(playerID);
-           Debug.Log(010101010);
-        });
-        Debug.Log(2020202020);
-        return playerResources;
-    }
-
-    private void LogSender(string playerName, int OldValue, int NewValue, string Type)
-    {
-        Dictionary<string,string> playerDictionary = new Dictionary<string, string>();
-        if (Type == IronMinerType)
-        {
-            playerDictionary.Add("IronValueUpdate", $"{NewValue - OldValue}");
-            APIManager.Instance.CreatePlayerLog("Добытчик добыл новую партию железа, ресурсы персонажа обновлены",playerName, playerDictionary);
-        }else if (Type == CCMinerType)
-        {
-            playerDictionary.Add("CryoCrystalValueUpdate", $"{NewValue - OldValue}");
-            APIManager.Instance.CreatePlayerLog("Добытчик добыл новую партию Криокристаллов, ресурсы персонажа обновлены",playerName, playerDictionary);
+            _buildingData.AwaitBuildingThisTMPro.text = $"Локальные ресурсы: {_buildingData.Storage[1]}/{resourcesLimits.resources[1]}";
         }
     }
     public void WorkNotStop() => IsWorkStop = false; 

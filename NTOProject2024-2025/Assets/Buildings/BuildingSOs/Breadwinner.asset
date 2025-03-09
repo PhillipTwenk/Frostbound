@@ -18,11 +18,11 @@ MonoBehaviour:
   durabilityListLevel: 64000000
   energyHoneyConsumptionListLevel: 0a000000
   resourceProductionListLevel:
-  - resources: 2800000001000000
+  - resources: 0a00000001000000
     SpriteAssetsUsingIndex: 0200000003000000
   storageListLevel:
-  - resources: 
-    SpriteAssetsUsingIndex: 
+  - resources: 6400000003000000
+    SpriteAssetsUsingIndex: 0200000003000000
   priceBuilding: 50
   priceUpgrade: 0
   MBLevelForUpgradethisIron: 0

@@ -1666,9 +1666,9 @@ MonoBehaviour:
   Title: "\u0418\u043D\u0436\u0435\u043D\u0435\u0440\u043D\u044B\u0439 \u043C\u043E\u0434\u0443\u043B\u044C"
   Level: 1
   Durability: 100
-  Storage: dc0500000a000000
-  Production: 00000000
-  HoneyConsumption: 0
+  Storage: 
+  Production: 
+  HoneyConsumption: 10
   SaveListIndex: 0
   IsThisBuilt: 0
   AwaitBuildingThisTMPro: {fileID: 6714352858663713054}
@@ -1690,6 +1690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
   PossiblityPutEInThisBuilding: 0
+  OnlyShowText: 0
+  nameOfFunction: 
   InteractionEvent:
     m_PersistentCalls:
       m_Calls: []
