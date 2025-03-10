@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
-public enum WorkersType
+public enum UnitType
 {
+    Player,
     Beekeeper,
     Constructor,
     MainDrone
@@ -11,7 +13,7 @@ public enum WorkersType
 [System.Serializable]
 public class WorkerData : MonoBehaviour
 {
-    public WorkersType workerType;
+    public UnitType unitType;
     public bool IsWorkerAtWork;
     public int SaveListIndex;
 

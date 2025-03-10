@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Сохранения данных о зданиях 
@@ -150,15 +151,15 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                     ThisBuildingWorkersControl thisBuildingWorkersControl = componentContainingBuilding.GetComponent<ThisBuildingWorkersControl>();
                     thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding = BuildingWorkersInformationList[index].CurrentNumberOfWorkersInThisBuilding;
                     thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding = BuildingWorkersInformationList[index].MaxValueOfWorkersInThisBuilding;
-                    thisBuildingWorkersControl.suitableWorkerDataForThisBuilding =
-                        BuildingWorkersInformationList[index].suitableWorkerDataForThisBuilding;
+                    thisBuildingWorkersControl.suitableUnitDataForThisBuilding =
+                        BuildingWorkersInformationList[index].suitableUnitDataForThisBuilding;
 
                     // if (thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding > 0 && thisBuildingWorkersControl.CurrentWorkerDataInThisBuilding != null)
                     // {
                     //     int SLI = 0;
                     //     foreach (var workerData in workerDatas)
                     //     {
-                    //         if (workerData.IsWorkerAtWork && workerData.workerType == thisBuildingWorkersControl.suitableWorkerDataForThisBuilding && !usedWorkerdata.Contains(workerData.SaveListIndex) )
+                    //         if (workerData.IsWorkerAtWork && workerData.unitType == thisBuildingWorkersControl.suitableUnitDataForThisBuilding && !usedWorkerdata.Contains(workerData.SaveListIndex) )
                     //         {
                     //             usedWorkerdata.Add(workerData.SaveListIndex);
                     //             SLI = workerData.SaveListIndex;
@@ -219,7 +220,7 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 WorkerData workerData = newWorkerСomponentsContainingObject.GetComponent<WorkerData>();
                 workerData.IsWorkerAtWork = workerDatas[i].IsWorkerAtWork;
                 workerData.SaveListIndex = workerDatas[i].SaveListIndex;
-                workerData.workerType = workerDatas[i].workerType;
+                workerData.unitType = workerDatas[i].unitType;
 
                 workerData.gameObject.GetComponent<WorkerMovementController>().MainCamera =
                     WorkersInterBuildingControl.MainCamera;
@@ -343,13 +344,13 @@ public class WorkersControlSaveData
 {
     public int CurrentNumberOfWorkersInThisBuilding;
     public int MaxValueOfWorkersInThisBuilding;
-    public WorkersType suitableWorkerDataForThisBuilding;
+    [FormerlySerializedAs("suitableWorkerDataForThisBuilding")] public UnitType suitableUnitDataForThisBuilding;
 
     public WorkersControlSaveData(ThisBuildingWorkersControl buildingWorkersControl)
     {
         CurrentNumberOfWorkersInThisBuilding = buildingWorkersControl.CurrentNumberWorkersInThisBuilding;
         MaxValueOfWorkersInThisBuilding = buildingWorkersControl.MaxValueOfWorkersInThisBuilding;
-        suitableWorkerDataForThisBuilding = buildingWorkersControl.suitableWorkerDataForThisBuilding;
+        suitableUnitDataForThisBuilding = buildingWorkersControl.suitableUnitDataForThisBuilding;
     }
 }
 
@@ -358,13 +359,13 @@ public class WorkersDataSaveData
 {
     public bool IsWorkerAtWork;
     public int SaveListIndex;
-    public WorkersType workerType;
+    [FormerlySerializedAs("workerType")] public UnitType unitType;
 
     public WorkersDataSaveData(WorkerData workerData)
     {
         IsWorkerAtWork = workerData.IsWorkerAtWork;
         SaveListIndex = workerData.SaveListIndex;
-        workerType = workerData.workerType;
+        unitType = workerData.unitType;
     }
 }
 

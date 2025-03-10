@@ -23,20 +23,14 @@ public class WorkersInterBuildingControl : MonoBehaviour
     public int NumberOfFreeWorkers; // количество рабочих, участвующий на данный момент в постройке здания или на работе в пасеке
     
     [Header("Selected entity")]
-    // public static WorkerMovementController SelectedWorker;
-    // public static PlayerMovementController SelectedPlayer;
-    // private WorkerMovementController thisWorker;
-    // private PlayerMovementController thisPlayer;
     public static IUnitMovement SelectedUnit;
     private IUnitMovement SelectingUnit;
-
     
     [Header("Flags")]
     private bool IsWorkersHere;
     private bool firstMouseEnterOutlineIndicator; // Если нажали на рабочего/игрока для снятия с него выделения, то выделение при наведении будет работать только при повторном выделении
     public static bool possiilityControlEntities;
     
-
     [Header("Control building")]
     public List<ThisBuildingWorkersControl> listOfActiveBuildingWithWorkers;
     public static BuildingData CurrentBuilding;
@@ -47,9 +41,14 @@ public class WorkersInterBuildingControl : MonoBehaviour
     
     [Header("Layer masks")]
     [SerializeField] private LayerMask workerLayerMask;
+
+    [Header("Drone")] 
+    [SerializeField] private List<UnitType> DroneTypes;
     
     public event Action IsWorkerHereEvent; // Игрок прибыл
 
+
+    #region Инициализация
 
     private void Awake()
     {
@@ -62,6 +61,10 @@ public class WorkersInterBuildingControl : MonoBehaviour
         SelectedUnit = null;
         SelectingUnit = null;
     }
+
+    #endregion
+
+    #region Методы общего контроля движения юнитов
 
     private void Update()
     {
@@ -99,6 +102,15 @@ public class WorkersInterBuildingControl : MonoBehaviour
                 SelectedUnit = selectedUnit;
                 SelectedUnit.isSelected = true;
                 SelectedUnit.OutlineRotate.SetActive(true);
+
+                if (DroneTypes.Contains(SelectedUnit.ThisUnitType))
+                {
+                    DroneMovementController droneMovementController = SelectedUnit as DroneMovementController;
+                    if (droneMovementController != null)
+                    {
+                        droneMovementController.StartTakeoff(); // Начало подъема дрона 
+                    }
+                }
 
                 UIManager.CancelLastOpenPanelEvent += ResetSelectedUnit;
                 return;
@@ -142,6 +154,14 @@ public class WorkersInterBuildingControl : MonoBehaviour
     {
         if (SelectedUnit != null)
         {
+            if (DroneTypes.Contains(SelectedUnit.ThisUnitType))
+            {
+                DroneMovementController droneMovementController = SelectedUnit as DroneMovementController;
+                if (droneMovementController != null)
+                {
+                    droneMovementController.StartLanding(); // Начало подъема дрона 
+                }
+            }
             Debug.Log($"<color=yellow> Снято выделение с выбранного юнита </color>");
             SelectedUnit.isSelected = false;
             SelectedUnit.isSelecting = false;
@@ -151,6 +171,9 @@ public class WorkersInterBuildingControl : MonoBehaviour
         }
     }
 
+    #endregion
+    
+    #region Методы учета жителей в здании
 
     /// <summary>
     /// Обновление общего количество рабочих при постройке нового здания
@@ -188,6 +211,10 @@ public class WorkersInterBuildingControl : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Методы основного игрового цикла постройки
+
     ///<summary> 
     /// Отправляет рабочих на строительство / возвращает их обратно
     ///</summary>
@@ -205,13 +232,9 @@ public class WorkersInterBuildingControl : MonoBehaviour
             //Ожидаем прибытия рабочего
             await WaitForWorkerArrival();
             
-        }else if(!IsSend) // Отправка рабочего обратно на базу
+        }else // Отправка рабочего обратно на базу
         {
             CurrentBuilding = null;
-        }else
-        {
-            //ShowHint(HintTextNotEnoughtWorkers);
-            Debug.Log("Нет рабочих");
         }
     }
 
@@ -275,37 +298,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
 
         await taskCompletionSource.Task;
     }
-
-
-    /// <summary>
-    /// Находит свободного рабочего к постройке здания
-    /// </summary>
-    public void SendWorkerToBuildingAnimationControl(Transform building)
-    {
-        foreach (var buildingControl in listOfActiveBuildingWithWorkers)
-        {
-            if (buildingControl != null)
-            {
-                if (buildingControl.CurrentNumberWorkersInThisBuilding > 0)
-                {
-                    //buildingControl.NumberOfActiveWorkersInThisBuilding += 1;
-                    buildingControl.CurrentNumberWorkersInThisBuilding -= 1;
-                    
-                    Transform buildingSpawnWorkerPointTransform = buildingControl.buildingSpawnWorkerPointTransform;
-
-                    GameObject newWorker = Instantiate(buildingControl.WorkerPrefab);
-                    newWorker.transform.position = buildingSpawnWorkerPointTransform.position;
-               
-                    WorkerMovementController workerMovementController =
-                        newWorker.GetComponent<WorkerMovementController>();
-                    Animator animator = newWorker.GetComponent<Animator>();
-                    buildingControl.StartMovementWorkerToBuilding(false, building, workerMovementController, animator);
-
-                    return;
-                }
-            }
-        }
-    }
+    
 
     /// <summary>
     /// Начинает анимацию строительства
@@ -342,32 +335,5 @@ public class WorkersInterBuildingControl : MonoBehaviour
         return;
     }
 
-    /// <summary>
-    /// Снятие выделения с рабочего/Игрока и отписка от ивента ESC
-    /// </summary>
-    // public void ResetSelectedWorker()
-    // {
-    //     if (SelectedWorker != null)
-    //     {
-    //         Debug.Log($"<color=yellow> Снято выделение с выбранного рабочего </color>");
-    //         firstMouseEnterOutlineIndicator = false;
-    //         SelectedWorker.OutlineRotate.SetActive(false);
-    //         SelectedWorker.isSelected = false;
-    //         SelectedWorker = null;
-    //         UIManager.CancelLastOpenPanelEvent -= ResetSelectedWorker;
-    //     }
-    // }
-    // public void ResetSelectedPlayer()
-    // {
-    //     if (SelectedPlayer != null)
-    //     {
-    //         Debug.Log($"<color=yellow> Снято выделение с игрока </color>");
-    //         firstMouseEnterOutlineIndicator = false;
-    //         SelectedPlayer.OutlineRotate.SetActive(false);
-    //         SelectedPlayer.isSelected = false;
-    //         SelectedPlayer = null;
-    //         UIManager.CancelLastOpenPanelEvent -= ResetSelectedPlayer;
-    //     }
-    // }
-
+    #endregion
 }

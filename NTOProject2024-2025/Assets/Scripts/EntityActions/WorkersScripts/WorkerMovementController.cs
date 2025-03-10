@@ -10,6 +10,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
     public bool isSelected { get; set; }
     public GameObject OutlineRotate { get { return outlineRotate; } }
     public bool isSelecting { get; set; } // Мышь наведена на персонажа
+    public UnitType ThisUnitType { get { return unitType; } }
     
     
     [Header("Flags")]
@@ -33,6 +34,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
     [SerializeField] private Transform currentWalkingPoint;
     private Rigidbody _rb;
     private WorkerData _thisWorkerData;
+    private UnitType unitType;
     
     [Header("LayerMasks")]
     [SerializeField] private LayerMask placementLayerMask;
@@ -55,6 +57,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
         _thisWorkerData = GetComponent<WorkerData>();
         OutlinePOD.SetActive(false);
         OutlineRotate.SetActive(false);
+        unitType = _thisWorkerData.unitType;
     }
 
     private void FixedUpdate()
@@ -87,7 +90,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
                     // Если выбранное здание в процессе строительства и рабочий свободен, он идет его строить
                     if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt)
                     {
-                        if (_thisWorkerData.workerType == WorkersType.Constructor)
+                        if (_thisWorkerData.unitType == UnitType.Constructor)
                         {
                             if (ReadyForWork)
                             {
@@ -109,7 +112,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
                             return;
                         }
                         // Чувак, я пасечник а не работяга ! 
-                        else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.workerType != SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().suitableWorkerDataForThisBuilding)
+                        else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.unitType != SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().suitableUnitDataForThisBuilding)
                         {
                             HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNotNeededWorkerType, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не подходи по роли для данного здания </color>",  0);
                             return;
@@ -165,12 +168,12 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
             if (hit.collider.CompareTag("ClickOnBuilding"))
             {
                 SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject; // Выбранное здание
-                Debug.Log($"текущее здание для пострйоки{SelectedBuilding}");
+                Debug.Log($"Текущее здание этого юнита {SelectedBuilding.GetComponent<BuildingData>().Title}");
                 IsClickOnOtherEntity = false;
             }
             else if (hit.collider.CompareTag("ClickOnWorker") || hit.collider.CompareTag("Player"))
             {
-                Debug.Log("Кликнуи на игрока или другого рабочего");
+                Debug.Log("Кликнули на игрока или другого рабочего");
                 IsClickOnOtherEntity = true;
                 SelectedBuilding = null;
             }

@@ -15,8 +15,7 @@ namespace EntityActions.Movement_Control
         public Vector3 GetSelectedMapPosition();
 
     
-    
-    
+        
         /// <summary>
         /// Задать направление пути юниту
         /// </summary>
@@ -25,9 +24,7 @@ namespace EntityActions.Movement_Control
         public void SetUnitDestination(Transform point, bool isAutomatic);
 
     
-    
-    
-    
+        
         /// <summary>
         /// Управление движением юнита
         /// </summary>
@@ -40,5 +37,6 @@ namespace EntityActions.Movement_Control
         bool isSelected { get; set; }
         GameObject OutlineRotate { get; }
         bool isSelecting { get; set; }
+        UnitType ThisUnitType { get; }
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7677151734583726598}
   - component: {fileID: 7672509693687719277}
   - component: {fileID: 159971489023715869}
+  - component: {fileID: 3196240846166734865}
   m_Layer: 0
   m_Name: crystal_3_low
   m_TagString: Untagged
@@ -108,3 +109,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.08520957, y: 0.089973085, z: 0.2318908}
   m_Center: {x: 0.0053306255, y: 0.0045430013, z: 0.11373763}
+--- !u!114 &3196240846166734865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630077159715405482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: a98c17ec

@@ -183,7 +183,7 @@ GameObject:
   m_Layer: 7
   m_Name: home
   m_TagString: Building
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2278,6 +2278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
   PossiblityPutEInThisBuilding: 0
+  OnlyShowText: 0
+  nameOfFunction: 
   InteractionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2336,6 +2338,7 @@ MonoBehaviour:
   CurrentNumberWorkersInThisBuilding: 0
   MaxValueOfWorkersInThisBuilding: 2
   WorkerPrefab: {fileID: 845355837700331742, guid: 31fe78fb1a4b70148a0cff384810ff37, type: 3}
+  suitableUnitDataForThisBuilding: 0
   buildingSpawnWorkerPointTransform: {fileID: 1551578056173623974}
 --- !u!65 &8277959642194642565
 BoxCollider:

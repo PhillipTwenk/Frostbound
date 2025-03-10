@@ -2553,6 +2553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
   PossiblityPutEInThisBuilding: 1
+  OnlyShowText: 0
   nameOfFunction: "\u0412\u044B\u0437\u0432\u0430\u0442\u044C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E"
   InteractionEvent:
     m_PersistentCalls:
@@ -2637,7 +2638,7 @@ MonoBehaviour:
   CurrentNumberWorkersInThisBuilding: 0
   MaxValueOfWorkersInThisBuilding: 1
   WorkerPrefab: {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
-  suitableWorkerDataForThisBuilding: 1
+  suitableUnitDataForThisBuilding: 1
   buildingSpawnWorkerPointTransform: {fileID: 4311764023263790760}
 --- !u!1 &7734645520033639005
 GameObject:
@@ -3009,7 +3010,7 @@ GameObject:
   m_Layer: 7
   m_Name: Pier
   m_TagString: Building
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

@@ -10,9 +10,7 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
     
     public bool isSelecting { get; set; } // Мышь наведена на персонажа
     
-    [Header("Tutorial")]
-    [SerializeField] private TutorialObjective WASDTutorial;
-    private bool IsPlayerMove;
+    public UnitType ThisUnitType { get { return unitType; } }
     
     [Header("LayerMasks")]
     [SerializeField] private LayerMask placementLayerMask;
@@ -33,6 +31,7 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
     private NavMeshAgent agent;
     public Camera MainCamera;
     private Rigidbody _rb;
+    private UnitType unitType;
     
     [Header("Visual")]
     public GameObject outlineRotate;
@@ -50,6 +49,8 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
         _rb = GetComponent<Rigidbody>(); 
         OutlinePOD.SetActive(false);
         OutlineRotate.SetActive(false);
+
+        unitType = UnitType.Player;
     }
     
     public void InitializePlayer()
@@ -128,7 +129,7 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
             if (hit.collider.CompareTag("ClickOnBuilding"))
             {
                 SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject; // Выбранное здание
-                Debug.Log($"текущее здание для постройки {SelectedBuilding.GetComponent<BuildingData>().Title}");
+                Debug.Log($"Текущее здание этого юнита: {SelectedBuilding.GetComponent<BuildingData>().Title}");
                 IsClickOnOtherEntity = false;
             }
             else if (hit.collider.CompareTag("ClickOnWorker"))

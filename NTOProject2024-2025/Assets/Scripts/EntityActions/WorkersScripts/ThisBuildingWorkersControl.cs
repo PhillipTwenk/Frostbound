@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 
 public class ThisBuildingWorkersControl : MonoBehaviour
@@ -17,8 +18,8 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     [NonSerialized] public WorkerMovementController currentWorkerInThisBuilding;
     [NonSerialized] public WorkerData CurrentWorkerDataInThisBuilding;
 
-    [Header("Units")]
-    public WorkersType suitableWorkerDataForThisBuilding;
+    [FormerlySerializedAs("suitableWorkerDataForThisBuilding")] [Header("Units")]
+    public UnitType suitableUnitDataForThisBuilding;
     
     private void Start()
     {
@@ -74,7 +75,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
             PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
             foreach (var workerData in playerSaveData.workerDatas)
             {
-                if (workerData.IsWorkerAtWork && workerData.workerType == suitableWorkerDataForThisBuilding)
+                if (workerData.IsWorkerAtWork && workerData.unitType == suitableUnitDataForThisBuilding)
                 {
                     WorkersInterBuildingControl.Instance.NumberOfFreeWorkers += 1;
                     
@@ -98,7 +99,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
                     GameObject newWorkerСomponentsContainingObject = newWorker.transform.GetChild(0).gameObject;
                     WorkerData workerDataNewWorker = newWorkerСomponentsContainingObject.GetComponent<WorkerData>();
                     workerDataNewWorker.SaveListIndex = workerData.SaveListIndex;
-                    workerDataNewWorker.workerType = workerData.workerType;
+                    workerDataNewWorker.unitType = workerData.unitType;
 
                     newWorkerСomponentsContainingObject.GetComponent<WorkerMovementController>().MainCamera =
                         WorkersInterBuildingControl.MainCamera;
