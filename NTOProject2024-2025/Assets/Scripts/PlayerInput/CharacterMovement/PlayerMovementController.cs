@@ -1,8 +1,15 @@
+using EntityActions.Movement_Control;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour, IUnitMovement
 {
+    [Header("Properties")]
+    public bool isSelected { get; set; }
+    public GameObject OutlineRotate { get { return outlineRotate; } }
+    
+    public bool isSelecting { get; set; } // Мышь наведена на персонажа
+    
     [Header("Tutorial")]
     [SerializeField] private TutorialObjective WASDTutorial;
     private bool IsPlayerMove;
@@ -12,8 +19,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private LayerMask playerLayerMask;
 
     [Header("Flags")]
-    public bool isSelected;
-    public bool isSelecting; // Мышь наведена на персонажа
+    // public bool isSelected;
     public bool possibilityClickOnPlayer;
     private bool IsClickOnOtherEntity; // Кликнуи на рабочего
     
@@ -29,7 +35,7 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody _rb;
     
     [Header("Visual")]
-    public GameObject OutlineRotate;
+    public GameObject outlineRotate;
     public GameObject OutlinePOD;
     private Animator anim;
     void Start()
@@ -57,14 +63,17 @@ public class PlayerMovementController : MonoBehaviour
     {
         _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0); // Обнуляем горизонтальную скорость
     }
-
-    /// <summary>
-    /// Управление движением
-    /// </summary>
+    
     void Update()
     {
-        
-        
+        MovementHandler();
+    }
+
+    /// <summary>
+    /// Управление движением юнита
+    /// </summary>
+    public void MovementHandler()
+    {
         if(isSelected && WorkersInterBuildingControl.possiilityControlEntities){
             
             if (Input.GetMouseButtonDown(0) && !isSelecting)
@@ -75,15 +84,10 @@ public class PlayerMovementController : MonoBehaviour
                 // Если клинкули не на здание и не на рабочего
                 if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
-                    // if (!IsPlayerMove)
-                    // {
-                    //     IsPlayerMove = true;
-                    //     Utility.Invoke(this, () => WASDTutorial.CheckAndUpdateTutorialState(), 2f);
-                    // }
                 } else {
                     currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
                 }
-                SetWorkerDestination(currentWalkingPoint.transform, false);
+                SetUnitDestination(currentWalkingPoint.transform, false);
             }
         }
         
@@ -150,7 +154,7 @@ public class PlayerMovementController : MonoBehaviour
     /// </summary>
     /// <param name="point"></param>
     /// <param name="isAutomatic"></param>
-    public void SetWorkerDestination(Transform point, bool isAutomatic){
+    public void SetUnitDestination(Transform point, bool isAutomatic){
         if(isAutomatic && SelectedBuilding != null){
             currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
             PlayerPointOfDestination = currentWalkingPoint.transform;
@@ -158,14 +162,6 @@ public class PlayerMovementController : MonoBehaviour
         } else {
             PlayerPointOfDestination = point;
             //Debug.Log($"Setting destination to: {point.position}");
-        }
-    }
-    
-    private void OnDisable()
-    {
-        if (isSelected)
-        {
-            WorkersInterBuildingControl.SelectedWorker = null;
         }
     }
     
@@ -181,5 +177,15 @@ public class PlayerMovementController : MonoBehaviour
             anim.SetBool("Running", false);
             anim.SetBool("Idle", true);
         } 
+    }
+    
+    
+    private void OnDisable()
+    {
+        if (isSelected)
+        {
+            WorkersInterBuildingControl.SelectedUnit = null;
+            UIManager.CancelLastOpenPanelEvent -= WorkersInterBuildingControl.Instance.ResetSelectedUnit;
+        }
     }
 }

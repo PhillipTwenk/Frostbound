@@ -286,7 +286,6 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  isSelected: 0
   isSelecting: 0
   possibilityClickOnPlayer: 0
   PlayerPointOfDestination: {fileID: 0}
@@ -294,7 +293,7 @@ MonoBehaviour:
   SelectedBuilding: {fileID: 0}
   currentWalkingPoint: {fileID: 0}
   MainCamera: {fileID: 0}
-  OutlineRotate: {fileID: 3870108787180326406}
+  outlineRotate: {fileID: 3870108787180326406}
   OutlinePOD: {fileID: 0}
 --- !u!54 &8693612429980189927
 Rigidbody:

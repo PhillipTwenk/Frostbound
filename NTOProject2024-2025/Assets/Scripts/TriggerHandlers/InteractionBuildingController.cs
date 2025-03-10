@@ -59,7 +59,7 @@ public class InteractionBuildingController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask))
         {
-            if (hit.collider.CompareTag("ClickOnBuilding") && hit.collider.transform.parent.gameObject == this.gameObject && Input.GetMouseButtonDown(0) && WorkersInterBuildingControl.SelectedWorker == null)
+            if (hit.collider.CompareTag("ClickOnBuilding") && hit.collider.transform.parent.gameObject == this.gameObject && Input.GetMouseButtonDown(0) && WorkersInterBuildingControl.SelectedUnit == null)
             {
                 OnMouseDownBuilding();
             }
@@ -130,7 +130,7 @@ public class InteractionBuildingController : MonoBehaviour
                         {
                             EnergyProduction energyProduction = GetComponent<EnergyProduction>();
                             energyProduction.OnAddEnergy();
-                            string newText = $"{_buildingData.Title} запущена ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
+                            string newText = $"{_buildingData.Title} запущен ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
                             if (!text.gameObject.activeSelf)
                             {
                                 text.gameObject.SetActive(true);

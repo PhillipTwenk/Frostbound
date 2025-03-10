@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using TMPro;
 using System.Threading.Tasks;
+using EntityActions.Movement_Control;
 
 public class WorkersInterBuildingControl : MonoBehaviour
 {
@@ -23,10 +23,13 @@ public class WorkersInterBuildingControl : MonoBehaviour
     public int NumberOfFreeWorkers; // количество рабочих, участвующий на данный момент в постройке здания или на работе в пасеке
     
     [Header("Selected entity")]
-    public static WorkerMovementController SelectedWorker;
-    public static PlayerMovementController SelectedPlayer;
-    private WorkerMovementController thisWorker;
-    private PlayerMovementController thisPlayer;
+    // public static WorkerMovementController SelectedWorker;
+    // public static PlayerMovementController SelectedPlayer;
+    // private WorkerMovementController thisWorker;
+    // private PlayerMovementController thisPlayer;
+    public static IUnitMovement SelectedUnit;
+    private IUnitMovement SelectingUnit;
+
     
     [Header("Flags")]
     private bool IsWorkersHere;
@@ -50,13 +53,14 @@ public class WorkersInterBuildingControl : MonoBehaviour
 
     private void Awake()
     {
-        
         Instance = this;
         possiilityControlEntities = true;
         MainCamera = mainCamera;
         CurrentBuilding = null;
-        thisWorker = null;
+        // thisWorker = null;
         firstMouseEnterOutlineIndicator = true;
+        SelectedUnit = null;
+        SelectingUnit = null;
     }
 
     private void Update()
@@ -65,146 +69,85 @@ public class WorkersInterBuildingControl : MonoBehaviour
         // иначе просто обновляем наведение (OnClick == false)
         if (!Input.GetMouseButtonDown(0))
         {
-            MouseDownOnWorker(false); // Наведение
+            MouseHoverOnUnit(); // Наведение
         }
         else
         {
-            MouseDownOnWorker(true); // Клик
+            MouseClickOnUnit(); // Клик
         }
     }
 
-    public void MouseDownOnWorker(bool OnClick)
+    public void MouseClickOnUnit()
     {
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask) && Time.timeScale > 0f && possiilityControlEntities)
         {
-            // Если попали в рабочего
-            if (hit.collider.CompareTag("ClickOnWorker"))
+            if (hit.collider.CompareTag("ClickOnWorker") || hit.collider.CompareTag("Player"))
             {
-                thisWorker = hit.collider.GetComponent<WorkerMovementController>();
-                thisPlayer = null; // Сбрасываем игрока
+                IUnitMovement selectedUnit = hit.collider.GetComponent<IUnitMovement>();
+                if (selectedUnit == SelectedUnit)
+                {
+                    ResetSelectedUnit();
+                    return;
+                }
+                ResetSelectedUnit();
+                
+                Debug.Log($"<color=purple> Выделен юнит: {hit.collider.tag} </color>");
 
-                if (OnClick)
-                {
-                    // Если до этого был выбран игрок, сбрасываем его выбор
-                    if (SelectedPlayer != null)
-                    {
-                        SelectedPlayer.isSelected = false;
-                        SelectedPlayer.isSelecting = false;
-                        SelectedPlayer.OutlineRotate.SetActive(false);
-                        SelectedPlayer = null;
-                    }
-                    
-                    // Можно убрать проверку isSelecting, если клик уже гарантирует попадание
-                    if (possiilityControlEntities)
-                    {
-                        Debug.Log("Нажали на рабочего");
-                        if (!thisWorker.isSelected)
-                        {
-                            // Если был выбран другой рабочий, сбрасываем его выбор
-                            if (SelectedWorker != null)
-                            {
-                                SelectedWorker.isSelected = false;
-                                SelectedWorker.isSelecting = false;
-                                SelectedWorker.OutlineRotate.SetActive(false);
-                            }
-                            thisWorker.OutlineRotate.SetActive(true);
-                            thisWorker.isSelected = true;
-                            SelectedWorker = thisWorker;
-                            UIManager.CancelLastOpenPanelEvent += ResetSelectedWorker;
-                        }
-                        else
-                        {
-                            ResetSelectedWorker();
-                        }
-                    }
-                }
-                else // Наведение без клика
-                {
-                    thisWorker.isSelecting = true;
-                    if (!thisWorker.isSelected && possiilityControlEntities && firstMouseEnterOutlineIndicator)
-                    {
-                        thisWorker.OutlineRotate.SetActive(true);
-                    }
-                }
-                return; // Если попали в рабочего – выходим
-            }
-            // Если попали в игрока
-            else if (hit.collider.CompareTag("Player"))
-            {
-                thisPlayer = hit.collider.GetComponent<PlayerMovementController>();
-                thisWorker = null; // Сбрасываем рабочего
+                SelectedUnit = selectedUnit;
+                SelectedUnit.isSelected = true;
+                SelectedUnit.OutlineRotate.SetActive(true);
 
-                if (OnClick)
-                {
-                    // Сбрасываем выбор рабочего, если он был выбран
-                    if (SelectedWorker != null)
-                    {
-                        SelectedWorker.isSelected = false;
-                        SelectedWorker.isSelecting = false;
-                        SelectedWorker.OutlineRotate.SetActive(false);
-                        SelectedWorker = null;
-                    }
-
-                    
-                    if (possiilityControlEntities)
-                    {
-                        Debug.Log("Нажали на игрока");
-                        if (!thisPlayer.isSelected)
-                        {
-                            // Если уже выбран другой игрок, сбрасываем его
-                            if (SelectedPlayer != null)
-                            {
-                                SelectedPlayer.isSelected = false;
-                                SelectedPlayer.isSelecting = false;
-                                SelectedPlayer.OutlineRotate.SetActive(false);
-                            }
-                            thisPlayer.OutlineRotate.SetActive(true);
-                            thisPlayer.isSelected = true;
-                            SelectedPlayer = thisPlayer;
-                            UIManager.CancelLastOpenPanelEvent += ResetSelectedPlayer;
-                        }
-                        else
-                        {
-                            ResetSelectedPlayer();
-                        }
-                    }
-                }
-                else // Наведение без клика
-                {
-                    thisPlayer.isSelecting = true;
-                    if (!thisPlayer.isSelected && possiilityControlEntities && firstMouseEnterOutlineIndicator)
-                    {
-                        thisPlayer.OutlineRotate.SetActive(true);
-                    }
-                }
-                return; // Выходим, если попали в игрока
+                UIManager.CancelLastOpenPanelEvent += ResetSelectedUnit;
+                return;
             }
         }
+    }
 
-        // Если луч не попал ни в одного из объектов,
-        // сбрасываем состояния для обоих (рабочего и игрока), чтобы убрать выделение при уходе курсора.
-        if (thisWorker != null)
+    
+    public void MouseHoverOnUnit()
+    {
+        Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 10000f, workerLayerMask) && Time.timeScale > 0f && possiilityControlEntities)
         {
-            thisWorker.isSelecting = false;
-            if (!thisWorker.isSelected && thisWorker.possibilityClickOnWorker)
+            IUnitMovement hoveredUnit = hit.collider.GetComponent<IUnitMovement>();
+            if (hoveredUnit != null && hoveredUnit != SelectedUnit)
             {
-                firstMouseEnterOutlineIndicator = true;
-                thisWorker.OutlineRotate.SetActive(false);
+                Debug.Log($"<color=purple> навели курсор на юнита: {hit.collider.tag} </color>");
+                hoveredUnit.OutlineRotate.SetActive(true);
+                hoveredUnit.isSelecting = true;
+                SelectingUnit = hoveredUnit;
             }
-            thisWorker = null;
         }
-        if (thisPlayer != null)
+        else
         {
-            firstMouseEnterOutlineIndicator = true;
-            thisPlayer.isSelecting = false;
-            if (!thisPlayer.isSelected && thisPlayer.possibilityClickOnPlayer)
+            if (SelectingUnit != null)
             {
-                thisPlayer.OutlineRotate.SetActive(false);
+                Debug.Log($"<color=purple> убрали курсор с юнита </color>");
+                if (SelectedUnit != SelectingUnit)
+                {
+                    SelectingUnit.OutlineRotate.SetActive(false);
+                }
+                SelectingUnit.isSelecting = false;
+                SelectingUnit = null;
             }
-            thisPlayer = null;
+        }
+    }
+
+    public void ResetSelectedUnit()
+    {
+        if (SelectedUnit != null)
+        {
+            Debug.Log($"<color=yellow> Снято выделение с выбранного юнита </color>");
+            SelectedUnit.isSelected = false;
+            SelectedUnit.isSelecting = false;
+            SelectedUnit.OutlineRotate.SetActive(false);
+            SelectedUnit = null;
+            UIManager.CancelLastOpenPanelEvent -= ResetSelectedUnit;
         }
     }
 
@@ -257,16 +200,13 @@ public class WorkersInterBuildingControl : MonoBehaviour
             Debug.Log("Рабочий отправился строить здание, ожидаем его прибытия");
 
             buildingData.TextPanelBuildingControl(true, HintAwaitArriveWorker);
-
-            // SendWorkerToBuildingAnimationControl(buildingTransform);
+            
             
             //Ожидаем прибытия рабочего
             await WaitForWorkerArrival();
             
         }else if(!IsSend) // Отправка рабочего обратно на базу
         {
-            //NumberOfFreeWorkers -= 1;
-            //CurrentValueOfWorkers += 1;
             CurrentBuilding = null;
         }else
         {
@@ -405,29 +345,29 @@ public class WorkersInterBuildingControl : MonoBehaviour
     /// <summary>
     /// Снятие выделения с рабочего/Игрока и отписка от ивента ESC
     /// </summary>
-    public void ResetSelectedWorker()
-    {
-        if (SelectedWorker != null)
-        {
-            Debug.Log($"<color=yellow> Снято выделение с выбранного рабочего </color>");
-            firstMouseEnterOutlineIndicator = false;
-            SelectedWorker.OutlineRotate.SetActive(false);
-            SelectedWorker.isSelected = false;
-            SelectedWorker = null;
-            UIManager.CancelLastOpenPanelEvent -= ResetSelectedWorker;
-        }
-    }
-    public void ResetSelectedPlayer()
-    {
-        if (SelectedPlayer != null)
-        {
-            Debug.Log($"<color=yellow> Снято выделение с игрока </color>");
-            firstMouseEnterOutlineIndicator = false;
-            SelectedPlayer.OutlineRotate.SetActive(false);
-            SelectedPlayer.isSelected = false;
-            SelectedPlayer = null;
-            UIManager.CancelLastOpenPanelEvent -= ResetSelectedPlayer;
-        }
-    }
+    // public void ResetSelectedWorker()
+    // {
+    //     if (SelectedWorker != null)
+    //     {
+    //         Debug.Log($"<color=yellow> Снято выделение с выбранного рабочего </color>");
+    //         firstMouseEnterOutlineIndicator = false;
+    //         SelectedWorker.OutlineRotate.SetActive(false);
+    //         SelectedWorker.isSelected = false;
+    //         SelectedWorker = null;
+    //         UIManager.CancelLastOpenPanelEvent -= ResetSelectedWorker;
+    //     }
+    // }
+    // public void ResetSelectedPlayer()
+    // {
+    //     if (SelectedPlayer != null)
+    //     {
+    //         Debug.Log($"<color=yellow> Снято выделение с игрока </color>");
+    //         firstMouseEnterOutlineIndicator = false;
+    //         SelectedPlayer.OutlineRotate.SetActive(false);
+    //         SelectedPlayer.isSelected = false;
+    //         SelectedPlayer = null;
+    //         UIManager.CancelLastOpenPanelEvent -= ResetSelectedPlayer;
+    //     }
+    // }
 
 }

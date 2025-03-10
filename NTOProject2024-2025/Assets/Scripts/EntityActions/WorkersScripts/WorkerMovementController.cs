@@ -1,26 +1,26 @@
 using System;
+using EntityActions.Movement_Control;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 
-public class WorkerMovementController : MonoBehaviour
+public class WorkerMovementController : MonoBehaviour, IUnitMovement
 {
-    // [Header("Tutorial")]
-    // [SerializeField] private TutorialObjective MovementWorkerTutorial;
-    // [SerializeField] private TutorialObjective WorkerStartMovementToApiaryTutorial;
-    // private bool IsWorkerMove;
-    // private bool IsWorkerMovetoApiary;
+    [Header("Properties")]
+    public bool isSelected { get; set; }
+    public GameObject OutlineRotate { get { return outlineRotate; } }
+    public bool isSelecting { get; set; } // Мышь наведена на персонажа
+    
     
     [Header("Flags")]
     public bool ReadyForWork;
-    private bool IsClickOnOtherEntity; // Кликнули на игрока
+    private bool IsClickOnOtherEntity; // Кликнули на другой тип сущности
     public bool ArriveForBuildBuidling;
-    public bool isSelected;
-    public bool isSelecting; // Мышь наведена на персонажа
+    // public bool isSelected;
     public bool possibilityClickOnWorker;
     
     [Header("Visual")]
-    public GameObject OutlineRotate;
+    public GameObject outlineRotate;
     public GameObject OutlinePOD;
     private Animator anim;
     
@@ -64,6 +64,14 @@ public class WorkerMovementController : MonoBehaviour
 
     void Update()
     {
+        MovementHandler();
+    }
+
+    /// <summary>
+    /// Управление движением юнита
+    /// </summary>
+    public void MovementHandler()
+    {
         if(isSelected && WorkersInterBuildingControl.possiilityControlEntities){
             
             if (Input.GetMouseButtonDown(0) && !isSelecting)
@@ -75,12 +83,6 @@ public class WorkerMovementController : MonoBehaviour
                 if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
                     ArriveForBuildBuidling = false;
-                    // if (!IsWorkerMove)
-                    // {
-                    //     //MovementWorkerTutorial.CheckAndUpdateTutorialState();
-                    //     IsWorkerMove = true;
-                    //     Debug.Log("Рабочий начал движение");
-                    // }
                 } else if (SelectedBuilding != null){
                     // Если выбранное здание в процессе строительства и рабочий свободен, он идет его строить
                     if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt)
@@ -100,12 +102,6 @@ public class WorkerMovementController : MonoBehaviour
                     }
                     else 
                     {
-                        // Если выбранное здание уже построено, проверяем есть ли у него возможность содержать рабочих
-                        // Если нет, рабочий не двинется
-                        // if (!SelectedBuilding.GetComponent<ThisBuildingWorkersControl>())
-                        // {
-                        //     return;
-                        // }
                         // Рабочий не побежит к зданию с возможностью содержать рабочих, если там не осталось места
                         if (SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding)
                         {
@@ -126,7 +122,7 @@ public class WorkerMovementController : MonoBehaviour
                     //     IsWorkerMovetoApiary = true;
                     // }
                 }
-                SetWorkerDestination(currentWalkingPoint.transform, false);
+                SetUnitDestination(currentWalkingPoint.transform, false);
             }
         }
 
@@ -195,7 +191,7 @@ public class WorkerMovementController : MonoBehaviour
     /// </summary>
     /// <param name="point"></param>
     /// <param name="isAutomatic"></param>
-    public void SetWorkerDestination(Transform point, bool isAutomatic){
+    public void SetUnitDestination(Transform point, bool isAutomatic){
         if(isAutomatic && SelectedBuilding != null){
             currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
             WorkerPointOfDestination = currentWalkingPoint.transform;
@@ -203,14 +199,6 @@ public class WorkerMovementController : MonoBehaviour
         } else {
             WorkerPointOfDestination = point;
             //Debug.Log($"Setting destination to: {point.position}");
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (isSelected)
-        {
-            WorkersInterBuildingControl.SelectedWorker = null;
         }
     }
     
@@ -260,5 +248,13 @@ public class WorkerMovementController : MonoBehaviour
             }, 4f);
         }
     }
-    
+
+    private void OnDisable()
+    {
+        if (isSelected)
+        {
+            WorkersInterBuildingControl.SelectedUnit = null;
+            UIManager.CancelLastOpenPanelEvent -= WorkersInterBuildingControl.Instance.ResetSelectedUnit;
+        }
+    }
 }

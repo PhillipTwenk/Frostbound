@@ -70,7 +70,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     public void EventODP()
     {
         if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
-            WorkersInterBuildingControl.SelectedWorker == null && WorkersInterBuildingControl.SelectedPlayer == null)
+            WorkersInterBuildingControl.SelectedUnit == null)
         {
             UIManager.CancelLastOpenPanelEvent += HideDescriptionPanel;
             currentIBC = buildingData.gameObject.GetComponent<InteractionBuildingController>();
@@ -91,7 +91,8 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     /// </summary>
     public void ShowDescriptionPanel()
     {
-        if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive && WorkersInterBuildingControl.SelectedWorker == null && WorkersInterBuildingControl.SelectedPlayer == null)
+        if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
+            WorkersInterBuildingControl.SelectedUnit == null)
         {
             IsPanelActive = true;
         

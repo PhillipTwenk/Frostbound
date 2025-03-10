@@ -153,14 +153,14 @@ public class ThisBuildingWorkersControl : MonoBehaviour
             
             // Установка цели у NavMeshAgent 
             movementController.gameObject.GetComponent<NavMeshAgent>().CompleteOffMeshLink();
-            movementController.SetWorkerDestination(pointForBuild, true);
+            movementController.SetUnitDestination(pointForBuild, true);
         }
         else
         {
             // Рабочий идёт обратно
             
             movementController.gameObject.GetComponent<NavMeshAgent>().CompleteOffMeshLink();
-            movementController.SetWorkerDestination(buildingTransform, true);
+            movementController.SetUnitDestination(buildingTransform, true);
         }
 
         // Установка анимации бега 
