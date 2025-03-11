@@ -76,7 +76,7 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
 
         unitType = _thisWorkerData.unitType;
 
-        agent.enabled = false; 
+        agent.enabled = true; 
         _rb.useGravity = false;
     }
 
@@ -170,7 +170,6 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
         else 
         {
             agent.isStopped = true;
-            OutlinePOD.SetActive(false);
         }
     }
 
@@ -178,23 +177,26 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
     {
         if (!isTakingOff && !isFlyNow)
         {
+            Debug.Log("Дрон взлетает");
             isTakingOff = true;
             isFlyNow = true;
             isPlaceNow = false;
+            isLanding = false;
             StartCoroutine(TakeoffCoroutine());
         }
     }
 
     private IEnumerator TakeoffCoroutine()
     {
-        agent.enabled = false;
-        _rb.useGravity = false;
+        Debug.Log("Начата корутина взлета");
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = new Vector3(startPosition.x, droneFlyHeight, startPosition.z);
 
-        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        while (Vector3.Distance(transform.position, targetPosition) > 0.1f && transform.position.y < droneFlyHeight)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, upSpeed * Time.deltaTime);
+            // transform.position = Vector3.Lerp(transform.position, targetPosition, upSpeed * Time.deltaTime);
+            agent.baseOffset += upSpeed * Time.deltaTime;
+            Debug.Log("Взлет");
             yield return null;
         }
 
@@ -207,23 +209,22 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
         if (!isLanding && isFlyNow)
         {
             targetLandingPosition = FindLandingSpot();
-            if (targetLandingPosition != Vector3.zero)
-            {
-                isLanding = true;
-                isFlyNow = false;
-                StartCoroutine(LandingCoroutine());
-            }
+            Debug.Log("Дрон садится");
+            isLanding = true;
+            isFlyNow = false;
+            StartCoroutine(LandingCoroutine());
         }
     }
 
     private IEnumerator LandingCoroutine()
     {
-        agent.enabled = false;
-        _rb.useGravity = true;
+        Debug.Log("Начата корутина посадки");
 
-        while (Vector3.Distance(transform.position, targetLandingPosition) > 0.1f)
+        while (Vector3.Distance(transform.position, targetLandingPosition) > 0.1f && transform.position.y > 2)
         {
-            transform.position = Vector3.Lerp(transform.position, targetLandingPosition, downSpeed * Time.deltaTime);
+            Debug.Log("Посадка");
+            //transform.position = Vector3.Lerp(transform.position, targetLandingPosition, downSpeed * Time.deltaTime);
+            agent.baseOffset -= upSpeed * Time.deltaTime;
             yield return null;
         }
 
@@ -234,13 +235,15 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
     private Vector3 FindLandingSpot()
     {
         RaycastHit hit;
-        Vector3 rayStart = transform.position + Vector3.up * 2;
+        Vector3 rayStart = transform.position;
 
-        if (Physics.BoxCast(rayStart, landingBoxSize / 2, Vector3.down, out hit, Quaternion.identity, 10f, placementAfterFlyLayerMask))
+        if (Physics.BoxCast(rayStart, landingBoxSize / 2, Vector3.down, out hit, Quaternion.identity, placementAfterFlyLayerMask))
         {
+            Debug.Log("Найдено место посадки");
             return hit.point;
         }
 
+        Debug.Log("не Найдено место посадки");
         return Vector3.zero;
     }
 

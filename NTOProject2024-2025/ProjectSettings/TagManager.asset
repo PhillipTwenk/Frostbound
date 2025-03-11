@@ -18,6 +18,7 @@ TagManager:
   - ClickOnWorker
   - Laser
   - Drone
+  - ClickOnDrone
   layers:
   - Default
   - TransparentFX
