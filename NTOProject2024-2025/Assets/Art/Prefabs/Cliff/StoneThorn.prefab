@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8856183545215861432}
   - component: {fileID: 6702353823829112434}
   - component: {fileID: 886375332653617339}
+  - component: {fileID: 8109839946857836004}
   m_Layer: 0
   m_Name: StoneThorn
   m_TagString: Untagged
@@ -108,3 +109,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.023472229, y: 0.022670198, z: 0.08841281}
   m_Center: {x: 0.00025940506, y: -0.0022903257, z: 0.043532286}
+--- !u!114 &8109839946857836004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5045007102787917735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: a98c17ecf46d2d58

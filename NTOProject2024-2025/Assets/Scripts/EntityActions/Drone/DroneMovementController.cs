@@ -92,6 +92,7 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
     {
         Vector3 lastPosition = Vector3.zero;
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition); 
+        Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.red, 5f);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask, QueryTriggerInteraction.Ignore))
         {
@@ -156,7 +157,7 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
                             }
                         }
                     }
-                    currentWalkingPoint.transform.position = new Vector3(SelectedBuilding.transform.position.x, droneFlyHeight, SelectedBuilding.transform.position.z);
+                    currentWalkingPoint.transform.position = new Vector3(SelectedBuilding.transform.position.x, SelectedBuilding.transform.position.y + droneFlyHeight, SelectedBuilding.transform.position.z);
                 }
                 SetUnitDestination(currentWalkingPoint.transform, false);
             }
@@ -175,7 +176,7 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
 
     public void StartTakeoff()
     {
-        if (!isTakingOff && !isFlyNow)
+        if (!isTakingOff && !isFlyNow && !isLanding)
         {
             Debug.Log("Дрон взлетает");
             isTakingOff = true;
@@ -192,11 +193,14 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = new Vector3(startPosition.x, droneFlyHeight, startPosition.z);
 
-        while (Vector3.Distance(transform.position, targetPosition) > 0.1f && transform.position.y < droneFlyHeight)
+        float j = 0;
+        float k = 0.77f;
+        while (Vector3.Distance(transform.position, targetPosition) > 0.5f && transform.position.y < droneFlyHeight)
         {
             // transform.position = Vector3.Lerp(transform.position, targetPosition, upSpeed * Time.deltaTime);
-            agent.baseOffset += upSpeed * Time.deltaTime;
+            agent.baseOffset += (upSpeed - (j+k)) * Time.deltaTime;
             Debug.Log("Взлет");
+            j = j + k;
             yield return null;
         }
 
@@ -206,7 +210,7 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
 
     public void StartLanding()
     {
-        if (!isLanding && isFlyNow)
+        if (!isLanding && isFlyNow && !isTakingOff)
         {
             targetLandingPosition = FindLandingSpot();
             Debug.Log("Дрон садится");
@@ -220,11 +224,14 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
     {
         Debug.Log("Начата корутина посадки");
 
-        while (Vector3.Distance(transform.position, targetLandingPosition) > 0.1f && transform.position.y > 2)
+        float j = 0;
+        float k = 0.77f;
+        while (Vector3.Distance(transform.position, targetLandingPosition) > 0.5f && transform.position.y > 2 && agent.baseOffset <= 1)
         {
             Debug.Log("Посадка");
             //transform.position = Vector3.Lerp(transform.position, targetLandingPosition, downSpeed * Time.deltaTime);
-            agent.baseOffset -= upSpeed * Time.deltaTime;
+            agent.baseOffset -= (upSpeed - (j+k)) * Time.deltaTime;
+            j = j + k;
             yield return null;
         }
 
