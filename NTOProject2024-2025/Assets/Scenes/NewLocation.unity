@@ -955,10 +955,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1641701228}
     m_Modifications:
-    - target: {fileID: 3137653117593009629, guid: b9be2af6794d3304ab7cc8f161c18f9f, type: 3}
-      propertyPath: m_AffectedAgents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4691223083885439712, guid: b9be2af6794d3304ab7cc8f161c18f9f, type: 3}
       propertyPath: m_Name
       value: StoneThorn2 (99)
@@ -4433,6 +4429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4443,6 +4443,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 184068873}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 184068874}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &184068869 stripped
 Transform:
@@ -4496,6 +4499,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &184068874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184068870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1001 &186603074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4564,6 +4587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4574,6 +4601,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 186603079}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 186603080}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &186603075 stripped
 Transform:
@@ -4627,6 +4657,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &186603080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186603076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!4 &189174778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7908995120665410494, guid: 763a72c6effafde449fb3d8a19a43830, type: 3}
@@ -4650,7 +4700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &196086441
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6175,6 +6225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6185,6 +6239,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 269212559}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 269212560}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &269212555 stripped
 Transform:
@@ -6238,6 +6295,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &269212560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269212556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1001 &269489065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6306,6 +6383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6316,6 +6397,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 269489070}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 269489071}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &269489066 stripped
 Transform:
@@ -6369,6 +6453,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &269489071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269489067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1 &274790012
 GameObject:
   m_ObjectHideFlags: 0
@@ -7331,10 +7435,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1641701228}
     m_Modifications:
-    - target: {fileID: 3137653117593009629, guid: b9be2af6794d3304ab7cc8f161c18f9f, type: 3}
-      propertyPath: m_AffectedAgents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4691223083885439712, guid: b9be2af6794d3304ab7cc8f161c18f9f, type: 3}
       propertyPath: m_Name
       value: StoneThorn2 (85)
@@ -7468,6 +7568,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9f8b1abeeaf409a40bcd2f365e69ea77, type: 3}
       propertyPath: m_Name
       value: rock_5 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f8b1abeeaf409a40bcd2f365e69ea77, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8029,6 +8133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8039,6 +8147,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 318260474}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 318260475}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &318260470 stripped
 Transform:
@@ -8092,6 +8203,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &318260475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318260471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1 &331284420
 GameObject:
   m_ObjectHideFlags: 0
@@ -9473,10 +9604,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1641701228}
     m_Modifications:
-    - target: {fileID: 580670334186602710, guid: abed37aff1f8ec347a304f168396283a, type: 3}
-      propertyPath: m_AffectedAgents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3151466213004821400, guid: abed37aff1f8ec347a304f168396283a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -9484,6 +9611,10 @@ PrefabInstance:
     - target: {fileID: 3511890316773024333, guid: abed37aff1f8ec347a304f168396283a, type: 3}
       propertyPath: m_Name
       value: StoneArc2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511890316773024333, guid: abed37aff1f8ec347a304f168396283a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4321042276526831863, guid: abed37aff1f8ec347a304f168396283a, type: 3}
       propertyPath: m_LocalScale.x
@@ -11320,6 +11451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11330,6 +11465,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 453153749}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 453153750}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &453153745 stripped
 Transform:
@@ -11383,6 +11521,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &453153750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453153746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1 &465510564
 GameObject:
   m_ObjectHideFlags: 0
@@ -13206,6 +13364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13216,6 +13378,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 529476334}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 529476335}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &529476330 stripped
 Transform:
@@ -13269,6 +13434,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &529476335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529476331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1 &535782795
 GameObject:
   m_ObjectHideFlags: 0
@@ -15204,6 +15389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15214,6 +15403,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 570785092}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 570785093}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &570785088 stripped
 Transform:
@@ -15267,6 +15459,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &570785093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570785089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1 &575675820
 GameObject:
   m_ObjectHideFlags: 0
@@ -17715,7 +17927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &677500039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17747,16 +17959,16 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 6144
   m_UseGeometry: 1
-  m_DefaultArea: 0
+  m_DefaultArea: 3
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 1
   m_TileSize: 128
   m_OverrideVoxelSize: 1
-  m_VoxelSize: 8
+  m_VoxelSize: 2
   m_MinRegionArea: 1
   m_NavMeshData: {fileID: 23800000, guid: 31c2f7a281e73744fb3380d9b090003b, type: 2}
   m_BuildHeightMesh: 0
@@ -20161,6 +20373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM Head
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6cf765e8e4d96d43a9d9e02c7445705, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22418,7 +22634,7 @@ GameObject:
   - component: {fileID: 810980855}
   - component: {fileID: 810980854}
   - component: {fileID: 810980857}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(1856.00, 0.00, 2766.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22519,7 +22735,7 @@ MonoBehaviour:
   m_GenerateLinks: 0
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
-  m_AffectedAgents: a98c17ecf46d2d58
+  m_AffectedAgents: a98c17ec
 --- !u!43 &810984490
 Mesh:
   m_ObjectHideFlags: 0
@@ -29226,6 +29442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29236,6 +29456,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 878178806}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 878178807}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &878178802 stripped
 Transform:
@@ -29289,6 +29512,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &878178807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878178803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1001 &880561857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30278,7 +30521,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 4289
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -32832,71 +33075,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &1023345254
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4160612270241140356, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_Name
-      value: MobileBase
-      objectReference: {fileID: 0}
-    - target: {fileID: 4160612270241140356, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4383359309745517332, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_AffectedAgents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3354
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 292
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894361588510789822, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
 --- !u!1 &1026752342
 GameObject:
   m_ObjectHideFlags: 0
@@ -33851,41 +34029,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2330313813712580647, guid: b81bc8dfacb9edf42b4c01408436d0d4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1084720932}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81bc8dfacb9edf42b4c01408436d0d4, type: 3}
 --- !u!4 &1084720930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3106675317083105949, guid: b81bc8dfacb9edf42b4c01408436d0d4, type: 3}
   m_PrefabInstance: {fileID: 1084720929}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1084720931 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2330313813712580647, guid: b81bc8dfacb9edf42b4c01408436d0d4, type: 3}
-  m_PrefabInstance: {fileID: 1084720929}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1084720932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084720931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_OverrideArea: 1
-  m_Area: 0
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 0
-  m_ApplyToChildren: 1
-  m_AffectedAgents: a98c17ec
 --- !u!4 &1089019626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 530688920037384504, guid: 4fa7efdb6c72c734988967f566439e54, type: 3}
@@ -36153,6 +36303,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -36163,6 +36317,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 543450652561299512}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 543450652561299513}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!1 &1147387871 stripped
 GameObject:
@@ -38136,10 +38293,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1641701228}
     m_Modifications:
-    - target: {fileID: 580670334186602710, guid: abed37aff1f8ec347a304f168396283a, type: 3}
-      propertyPath: m_AffectedAgents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3511890316773024333, guid: abed37aff1f8ec347a304f168396283a, type: 3}
       propertyPath: m_Name
       value: StoneArc2 (1)
@@ -46023,6 +46176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46033,6 +46190,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1416690740}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1416690741}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &1416690736 stripped
 Transform:
@@ -46086,6 +46246,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &1416690741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416690737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!4 &1418207477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 530688920037384504, guid: 4fa7efdb6c72c734988967f566439e54, type: 3}
@@ -46560,6 +46740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46570,6 +46754,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1442452554}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1442452555}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &1442452550 stripped
 Transform:
@@ -46623,6 +46810,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &1442452555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442452551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1001 &1447770122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53542,6 +53749,136 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5355134166112071770, guid: b9be2af6794d3304ab7cc8f161c18f9f, type: 3}
   m_PrefabInstance: {fileID: 1514727970}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1515042702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1515042706}
+  - component: {fileID: 1515042705}
+  - component: {fileID: 1515042704}
+  - component: {fileID: 1515042703}
+  - component: {fileID: 1515042707}
+  m_Layer: 11
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &1515042703
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515042702}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1515042704
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515042702}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1515042705
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515042702}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1515042706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515042702}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1186, y: 200, z: 3311}
+  m_LocalScale: {x: 1216.9689, y: 1, z: 1340.2714}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1515042707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515042702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1 &1516775231
 GameObject:
   m_ObjectHideFlags: 0
@@ -53655,7 +53992,7 @@ MonoBehaviour:
   m_GenerateLinks: 0
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
-  m_AffectedAgents: a98c17ecf46d2d58
+  m_AffectedAgents: a98c17ec
 --- !u!1 &1522669802
 GameObject:
   m_ObjectHideFlags: 0
@@ -54456,7 +54793,7 @@ GameObject:
   - component: {fileID: 1535818020}
   - component: {fileID: 1535818019}
   - component: {fileID: 1535818022}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-344.00, 0.00, -34.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54557,7 +54894,7 @@ MonoBehaviour:
   m_GenerateLinks: 0
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
-  m_AffectedAgents: a98c17ecf46d2d58
+  m_AffectedAgents: a98c17ec
 --- !u!1001 &1536358356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55166,6 +55503,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9f8b1abeeaf409a40bcd2f365e69ea77, type: 3}
       propertyPath: m_Name
       value: rock_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f8b1abeeaf409a40bcd2f365e69ea77, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58743,6 +59084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58753,6 +59098,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1675795812}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1675795813}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &1675795808 stripped
 Transform:
@@ -58806,6 +59154,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &1675795813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675795809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1001 &1694518369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64020,6 +64388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -64030,6 +64402,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1882923276}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1882923277}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &1882923272 stripped
 Transform:
@@ -64083,6 +64458,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &1882923277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882923273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!43 &1883758897
 Mesh:
   m_ObjectHideFlags: 0
@@ -73261,10 +73656,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1641701228}
     m_Modifications:
-    - target: {fileID: 3420634255448236558, guid: a3a3b166e8dbe3442b6a252380a8d326, type: 3}
-      propertyPath: m_AffectedAgents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7283338200462129895, guid: a3a3b166e8dbe3442b6a252380a8d326, type: 3}
       propertyPath: m_LocalScale.x
       value: 3588.434
@@ -73516,7 +73907,6 @@ GameObject:
   - component: {fileID: 2052253395}
   - component: {fileID: 2052253394}
   - component: {fileID: 2052253400}
-  - component: {fileID: 2052253399}
   - component: {fileID: 2052253401}
   - component: {fileID: 2052253397}
   - component: {fileID: 2052253402}
@@ -73647,7 +74037,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052253389}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 88e784fef17fa48499d0a36e66bc03c8, type: 3}
   m_Controller: {fileID: 9100000, guid: 8fa84c7f830795d4e9a238e5a52e9e99, type: 2}
   m_CullingMode: 0
@@ -73673,24 +74063,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00537b9207bcca249bcd1aba4dfb5e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReadyForWork: 0
-  ArriveForBuildBuidling: 0
-  possibilityClickOnWorker: 0
   isFlyNow: 0
   isPlaceNow: 0
   isTakingOff: 0
   isLanding: 0
   outlineRotate: {fileID: 5346688096648117430}
-  OutlinePOD: {fileID: 8971247867599432629}
+  outlinePOD: {fileID: 8971247867599432629}
   droneFly_AK: 
   NameOfTTS: TechTriggerScripts
-  DronePointOfDestination: {fileID: 0}
-  SelectedBuilding: {fileID: 0}
+  unitPointOfDestination: {fileID: 0}
+  selectedBuilding: {fileID: 0}
   currentWalkingPoint: {fileID: 8971247867599432628}
   MainCamera: {fileID: 800638970}
   placementLayerMask:
     serializedVersion: 2
-    m_Bits: 1856
+    m_Bits: 3904
   workedLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -73699,24 +74086,10 @@ MonoBehaviour:
     m_Bits: 64
   awaitBeforeFly: 3
   awaitBeforePlace: 0
-  upSpeed: 50
-  downSpeed: 50
-  droneFlyHeight: 100
+  upSpeed: 2
+  downSpeed: 2
+  droneFlyHeight: 200
   landingBoxSize: {x: 745.4, y: 751.5, z: 579.3}
---- !u!114 &2052253399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052253389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f7e513837b65c94896f55061b06d741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 4843211275184143861}
-  footstepSounds: {fileID: 8300000, guid: 90e292e34972c904bbb238b0f3d0d0b2, type: 3}
 --- !u!54 &2052253400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73742,7 +74115,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &2052253401
 MonoBehaviour:
@@ -73769,7 +74142,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.16
-  m_Speed: 90
+  m_Speed: 120
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 500
@@ -73779,7 +74152,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1.51
   m_BaseOffset: 1
-  m_WalkableMask: 1
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &2058286759
 PrefabInstance:
@@ -74175,7 +74548,7 @@ GameObject:
   - component: {fileID: 2076911079}
   - component: {fileID: 2076911078}
   - component: {fileID: 2076911081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain_(-344.00, 0.00, 2766.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74276,7 +74649,7 @@ MonoBehaviour:
   m_GenerateLinks: 0
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
-  m_AffectedAgents: a98c17ecf46d2d58
+  m_AffectedAgents: a98c17ec
 --- !u!1001 &2084097489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75024,6 +75397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cliffs HP (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75034,6 +75411,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2101460119}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2101460120}
   m_SourcePrefab: {fileID: 100100000, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
 --- !u!4 &2101460115 stripped
 Transform:
@@ -75087,6 +75467,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &2101460120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101460116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!1 &2112203743
 GameObject:
   m_ObjectHideFlags: 0
@@ -75917,6 +76317,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6775766600367976451, guid: 5ea6273d782730c498d28492f45f382e, type: 3}
+--- !u!114 &543450652561299513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147387871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58
 --- !u!33 &583900826770350983
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -75950,7 +76370,7 @@ GameObject:
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2688501507433279627
 Transform:
   m_ObjectHideFlags: 0
@@ -76063,7 +76483,7 @@ Transform:
   m_GameObject: {fileID: 2521149612484949284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3710, y: 0, z: 569}
+  m_LocalPosition: {x: 3662, y: 0, z: 252}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76584,6 +77004,7 @@ SceneRoots:
   - {fileID: 677500041}
   - {fileID: 629261849}
   - {fileID: 535782796}
+  - {fileID: 1515042706}
   - {fileID: 1869213790}
   - {fileID: 300197260}
   - {fileID: 1641701228}
@@ -76594,5 +77015,4 @@ SceneRoots:
   - {fileID: 331284421}
   - {fileID: 1675040625}
   - {fileID: 1580395162}
-  - {fileID: 1023345254}
   - {fileID: 4444787289073116542}

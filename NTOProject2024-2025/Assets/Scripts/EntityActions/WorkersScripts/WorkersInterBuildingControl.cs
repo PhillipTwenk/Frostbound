@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using EntityActions.Movement_Control;
+using EntityActions.WorkersScripts;
 
 public class WorkersInterBuildingControl : MonoBehaviour
 {
@@ -303,7 +304,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
     /// <summary>
     /// Начинает анимацию строительства
     /// </summary>
-    public async void StartAnimationBuilding(WorkerMovementController movementController, BuildingData buildingData, Transform spawnWorkerPosition)
+    public async void StartAnimationBuilding(IWorkerUnit movementController, BuildingData buildingData, Transform spawnWorkerPosition, WorkerData workerData)
     {
         movementController.ReadyForWork = false;
         
@@ -314,21 +315,21 @@ public class WorkersInterBuildingControl : MonoBehaviour
         
         buildingData.StartBuildingFunctionEvent?.Invoke();
 
-        EndWorkingAnimationControl(movementController, spawnWorkerPosition);
+        EndWorkingAnimationControl(movementController, spawnWorkerPosition, workerData);
     }
 
-    public void EndWorkingAnimationControl(WorkerMovementController movementController, Transform spawnWorkerPosition)
+    public void EndWorkingAnimationControl(IWorkerUnit movementController, Transform spawnWorkerPosition, WorkerData workerData)
     {
-        movementController.transform.position = spawnWorkerPosition.position;
+        workerData.transform.position = spawnWorkerPosition.position;
         movementController.ReadyForWork = true;
         movementController.SelectedBuilding = null;
         movementController.ArriveForBuildBuidling = false;
         movementController.isSelected = false;
         movementController.isSelecting = false;
-        movementController.possibilityClickOnWorker = true;
+        movementController.PossibilityClickOnUnit = true;
         movementController.OutlineRotate.SetActive(false);
         movementController.OutlinePOD.SetActive(false);
-        movementController.gameObject.SetActive(true);
+        workerData.gameObject.SetActive(true);
         
         NumberOfFreeWorkers += 1;
         Debug.Log($"<color=green>Свободные рабочие + 1: {NumberOfFreeWorkers}</color>");

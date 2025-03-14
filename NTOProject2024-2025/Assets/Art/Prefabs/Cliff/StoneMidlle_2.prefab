@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5961717060317541698}
   - component: {fileID: 8455703315618726280}
   - component: {fileID: 3420634255448236558}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: StoneMidlle_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

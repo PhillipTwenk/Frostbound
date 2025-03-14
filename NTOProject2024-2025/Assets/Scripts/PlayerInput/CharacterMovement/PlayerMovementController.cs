@@ -1,6 +1,7 @@
 using EntityActions.Movement_Control;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class PlayerMovementController : MonoBehaviour, IUnitMovement
 {
@@ -11,22 +12,48 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
     public bool isSelecting { get; set; } // Мышь наведена на персонажа
     
     public UnitType ThisUnitType { get { return unitType; } }
+
+    public GameObject SelectedBuilding
+    {
+        get
+        {
+            return selectedBuilding;
+        }
+        set
+        {
+            selectedBuilding = value;
+        }
+    }
     
+    public bool PossibilityClickOnUnit { get; set; }
+    
+    public GameObject OutlinePOD {get{ return outlinePOD;}}
+    
+    public Transform UnitPointOfDestination
+    {
+        get
+        {
+            return unitPointOfDestination;
+        }
+        set
+        {
+            unitPointOfDestination = value;
+        }
+    }
+
     [Header("LayerMasks")]
     [SerializeField] private LayerMask placementLayerMask;
     [SerializeField] private LayerMask playerLayerMask;
 
     [Header("Flags")]
-    // public bool isSelected;
-    public bool possibilityClickOnPlayer;
     private bool IsClickOnOtherEntity; // Кликнуи на рабочего
     
     [Header("System")]
-    public Transform PlayerPointOfDestination;
+    public Transform unitPointOfDestination;
     private EntityID playerID;
     private bool IsSceneLoaded;
     [SerializeField] private string NameOfTTS;
-    public GameObject SelectedBuilding; // techTriggerScripts
+    public GameObject selectedBuilding;  // techTriggerScripts
     [SerializeField] private Transform currentWalkingPoint;
     private NavMeshAgent agent;
     public Camera MainCamera;
@@ -35,11 +62,11 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
     
     [Header("Visual")]
     public GameObject outlineRotate;
-    public GameObject OutlinePOD;
+    public GameObject outlinePOD;
     private Animator anim;
     void Start()
     {
-        possibilityClickOnPlayer = true;
+        PossibilityClickOnUnit = true;
         IsClickOnOtherEntity = false;
         currentWalkingPoint.gameObject.SetActive(false);
         agent = GetComponent<NavMeshAgent>();
@@ -92,14 +119,14 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
             }
         }
         
-        if (PlayerPointOfDestination) 
+        if (unitPointOfDestination) 
         {
             
             // Игрок идет до точки назначения
             anim.SetBool("Idle", false);
             anim.SetBool("Running", true);
             agent.isStopped = false;
-            agent.destination = new Vector3(PlayerPointOfDestination.position.x, PlayerPointOfDestination.position.y, PlayerPointOfDestination.position.z);
+            agent.destination = new Vector3(unitPointOfDestination.position.x, unitPointOfDestination.position.y, unitPointOfDestination.position.z);
             
         } 
         else 
@@ -158,10 +185,10 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
     public void SetUnitDestination(Transform point, bool isAutomatic){
         if(isAutomatic && SelectedBuilding != null){
             currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
-            PlayerPointOfDestination = currentWalkingPoint.transform;
+            unitPointOfDestination = currentWalkingPoint.transform;
             //Debug.Log($"Setting destination to: {currentWalkingPoint.transform.position}");
         } else {
-            PlayerPointOfDestination = point;
+            unitPointOfDestination = point;
             //Debug.Log($"Setting destination to: {point.position}");
         }
     }
@@ -174,7 +201,7 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
         if(other.tag == "WalkingPoint"){
             Debug.Log("Рабочий дошел до точки назначения");
             currentWalkingPoint.gameObject.SetActive(false);
-            PlayerPointOfDestination = null;
+            unitPointOfDestination = null;
             anim.SetBool("Running", false);
             anim.SetBool("Idle", true);
         } 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6702353823829112434}
   - component: {fileID: 886375332653617339}
   - component: {fileID: 8109839946857836004}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: StoneThorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

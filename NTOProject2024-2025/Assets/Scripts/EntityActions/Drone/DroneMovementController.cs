@@ -2,8 +2,10 @@ using EntityActions.Movement_Control;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using EntityActions.WorkersScripts;
+using UnityEngine.Serialization;
 
-public class DroneMovementController : MonoBehaviour, IUnitMovement
+public class DroneMovementController : MonoBehaviour, IUnitMovement, IWorkerUnit
 {
     [Header("Properties")]
     public bool isSelected { get; set; }
@@ -12,11 +14,41 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
     
     public UnitType ThisUnitType { get { return unitType; } }
     
+    public GameObject SelectedBuilding
+    {
+        get
+        {
+            return selectedBuilding;
+        }
+        set
+        {
+            selectedBuilding = value;
+        }
+    }
+    
+    public bool PossibilityClickOnUnit { get; set; }
+    
+    public bool ReadyForWork { get; set; }
+    
+    public bool ArriveForBuildBuidling {get; set;}
+    
+    public GameObject OutlinePOD {get{ return outlinePOD;}}
+
+    public Transform UnitPointOfDestination
+    {
+        get
+        {
+            return unitPointOfDestination;
+        }
+        set
+        {
+            unitPointOfDestination = value;
+        }
+    }
+    
+    
     [Header("Flags")]
-    public bool ReadyForWork;
     private bool IsClickOnOtherEntity;
-    public bool ArriveForBuildBuidling;
-    public bool possibilityClickOnWorker;
     public bool isFlyNow;
     public bool isPlaceNow;
     public bool isTakingOff; 
@@ -24,7 +56,7 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
     
     [Header("Visual")]
     public GameObject outlineRotate;
-    public GameObject OutlinePOD;
+    public GameObject outlinePOD;
 
     [Header("Animations")]
     [SerializeField] private string droneFly_AK;
@@ -32,10 +64,10 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
     
     [Header("Core")]
     [SerializeField] private string NameOfTTS;
-    public Transform DronePointOfDestination;
-    public GameObject SelectedBuilding;
+
+    public Transform unitPointOfDestination;
+    public GameObject selectedBuilding;
     [SerializeField] private Transform currentWalkingPoint;
-    private Vector3 targetLandingPosition = Vector3.zero;
     private UnitType unitType;
     
     [Header("Components")]
@@ -68,7 +100,7 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
         isSelected = false;
         isSelecting = false;
         IsClickOnOtherEntity = false;
-        possibilityClickOnWorker = true;
+        PossibilityClickOnUnit = true;
         
         currentWalkingPoint.gameObject.SetActive(false);
         OutlinePOD.SetActive(false);
@@ -123,17 +155,17 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
         if(isAutomatic && SelectedBuilding != null)
         {
             currentWalkingPoint.transform.position = new Vector3(SelectedBuilding.transform.position.x, SelectedBuilding.transform.position.y + droneFlyHeight, SelectedBuilding.transform.position.z);
-            DronePointOfDestination = currentWalkingPoint.transform;
+            UnitPointOfDestination = currentWalkingPoint.transform;
         } 
         else 
         {
-            DronePointOfDestination = point;
+            UnitPointOfDestination = point;
         }
     }
 
     public void MovementHandler()
     {
-        if (isSelected && WorkersInterBuildingControl.possiilityControlEntities)
+        if (isSelected && WorkersInterBuildingControl.possiilityControlEntities && isFlyNow)
         {
             if (Input.GetMouseButtonDown(0) && !isSelecting)
             {
@@ -163,14 +195,25 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
             }
         }
 
-        if (DronePointOfDestination)
+        if (UnitPointOfDestination != null)
         {
-            agent.isStopped = false;
-            agent.destination = DronePointOfDestination.position;
-        } 
-        else 
+            // Проверяем, активен ли агент и на NavMesh
+            if (agent.isActiveAndEnabled && agent.isOnNavMesh)
+            {
+                agent.isStopped = false;
+                agent.SetDestination(UnitPointOfDestination.position);
+            }
+            else
+            {
+                Debug.LogWarning("Агент неактивен или не на NavMesh!");
+            }
+        }
+        else
         {
-            agent.isStopped = true;
+            if (agent.isActiveAndEnabled && agent.isOnNavMesh)
+            {
+                agent.isStopped = true;
+            }
         }
     }
 
@@ -189,30 +232,36 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
 
     private IEnumerator TakeoffCoroutine()
     {
-        Debug.Log("Начата корутина взлета");
+        agent.enabled = false;
+        
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = new Vector3(startPosition.x, droneFlyHeight, startPosition.z);
-
-        float j = 0;
-        float k = 0.77f;
-        while (Vector3.Distance(transform.position, targetPosition) > 0.5f && transform.position.y < droneFlyHeight)
+        
+        while (Vector3.Distance(transform.position, targetPosition) >= 0.1f)
         {
-            // transform.position = Vector3.Lerp(transform.position, targetPosition, upSpeed * Time.deltaTime);
-            agent.baseOffset += (upSpeed - (j+k)) * Time.deltaTime;
-            Debug.Log("Взлет");
-            j = j + k;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * upSpeed);
+            Debug.Log(".");
             yield return null;
         }
-
-        isTakingOff = false;
+        
         agent.enabled = true;
+        agent.Warp(targetPosition);
+        
+        yield return new WaitUntil(() => agent.isOnNavMesh);
+
+        
+        if (UnitPointOfDestination != null && agent.isActiveAndEnabled)
+        {
+            agent.SetDestination(UnitPointOfDestination.position);
+        }
+        
+        isTakingOff = false;
     }
 
     public void StartLanding()
     {
         if (!isLanding && isFlyNow && !isTakingOff)
         {
-            targetLandingPosition = FindLandingSpot();
             Debug.Log("Дрон садится");
             isLanding = true;
             isFlyNow = false;
@@ -222,36 +271,39 @@ public class DroneMovementController : MonoBehaviour, IUnitMovement
 
     private IEnumerator LandingCoroutine()
     {
-        Debug.Log("Начата корутина посадки");
+        agent.enabled = false;
+        Vector3 groundPosition = FindGroundPosition();
 
-        float j = 0;
-        float k = 0.77f;
-        while (Vector3.Distance(transform.position, targetLandingPosition) > 0.5f && transform.position.y > 2 && agent.baseOffset <= 1)
+        // Плавное опускание
+        while (Vector3.Distance(transform.position, groundPosition) >= 0.1f)
         {
-            Debug.Log("Посадка");
-            //transform.position = Vector3.Lerp(transform.position, targetLandingPosition, downSpeed * Time.deltaTime);
-            agent.baseOffset -= (upSpeed - (j+k)) * Time.deltaTime;
-            j = j + k;
+            transform.position = Vector3.Lerp(transform.position, groundPosition, Time.deltaTime * downSpeed);
+            Debug.Log(".");
             yield return null;
         }
+
+        // Включаем агент и синхронизируем с NavMesh
+        agent.enabled = true;
+        agent.Warp(groundPosition);
 
         isLanding = false;
         isPlaceNow = true;
     }
 
-    private Vector3 FindLandingSpot()
+    private Vector3 FindGroundPosition()
     {
-        RaycastHit hit;
-        Vector3 rayStart = transform.position;
-
-        if (Physics.BoxCast(rayStart, landingBoxSize / 2, Vector3.down, out hit, Quaternion.identity, placementAfterFlyLayerMask))
+        int groundAreaMask = 1 << NavMesh.GetAreaFromName("Walkable");
+        
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 1000f, groundAreaMask))
         {
-            Debug.Log("Найдено место посадки");
-            return hit.point;
+            Debug.Log($"Найдена точка посадки: {hit.position}");
+            return hit.position;
         }
-
-        Debug.Log("не Найдено место посадки");
-        return Vector3.zero;
+        else
+        {
+            Debug.LogError("Не удалось найти точку на NavMesh для посадки!");
+            return transform.position; // Возвращаем текущую позицию как fallback
+        }
     }
 
     private void OnDrawGizmos()

@@ -31,8 +31,8 @@ TagManager:
   - LayerClickOnBuilding
   - LayerClickOnWorker
   - LayerClickOnPlayer
-  - 
-  - 
+  - AirLayer
+  - Env
   - 
   - 
   - 

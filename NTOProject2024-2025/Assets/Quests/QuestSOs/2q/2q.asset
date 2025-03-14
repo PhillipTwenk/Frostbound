@@ -20,4 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be4cf4bc34a462542bf80dd3718e76ea, type: 2}
   - {fileID: 11400000, guid: 02a7afe6cfb1282498bc346aa85a84ae, type: 2}
   currentObjective: {fileID: 0}
-  UIItemOnQuestPanel: {fileID: 7955306229360465755, guid: ffe002b1d8b528142b5e78967632f98e, type: 3}
+  UIItemOnQuestPanel: {fileID: 0}

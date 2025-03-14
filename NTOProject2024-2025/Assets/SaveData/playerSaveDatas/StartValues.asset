@@ -30,9 +30,7 @@ MonoBehaviour:
   BuildingWorkersInformationList:
   - CurrentNumberOfWorkersInThisBuilding: 1
     MaxValueOfWorkersInThisBuilding: 1
-    currentWorkerDataInThisBuilding: {fileID: 0}
-    workerMovementController: {fileID: 0}
-    suitableWorkerDataForThisBuilding: 0
+    suitableUnitDataForThisBuilding: 0
   workers:
   - {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
   - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
@@ -50,13 +48,13 @@ MonoBehaviour:
   workerDatas:
   - IsWorkerAtWork: 0
     SaveListIndex: 0
-    workerType: 0
+    unitType: 1
   - IsWorkerAtWork: 0
     SaveListIndex: 1
-    workerType: 1
+    unitType: 2
   - IsWorkerAtWork: 0
     SaveListIndex: 2
-    workerType: 1
+    unitType: 2
   player: {fileID: 5840928571377694232, guid: 4f02f1be8d4c7c74a88ddc9404ac2b57, type: 3}
   transformPlayer:
     position: {x: 3478, y: 0, z: 573}

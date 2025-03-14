@@ -24,7 +24,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Ground/Terrain Data/New Terrain 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Ground/Terrain Data/New Terrain 2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Buildings/Drone/SM_Copter.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Buildings/Drone/SM_Copter.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Bones/Bone_4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Bones/Bone_4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Ground.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Ground_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Ground_2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Stone Arc.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/Stone Arc.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneArc.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneArc.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneArc2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneArc2.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneHead.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneHead.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneMiddle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Cliff/StoneMiddle.prefab" afterDir="false" />
@@ -34,13 +40,26 @@
       <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_1_low.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_1_low.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_2_low.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_2_low.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_3_low.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/Crystal/crystal_3_low.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/2q/2q.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/2q/2q.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/SkibidiQuest/SkibidiQuest.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/SkibidiQuest/SkibidiQuest.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/PlayerSet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/PlayerSet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Beekeeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Beekeeper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Constructor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Constructor.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Drone.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Drone.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Unit.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Unit.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Unit.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Unit.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +118,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/EnemiesScripts/EnemyMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/NavMeshScripts/NavMeshUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/IWorkerUnit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" root0="FORCE_HIGHLIGHTING" />
@@ -127,6 +147,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/VolumeSlider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unitilities/LogController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Unitilities/Utility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation/Runtime/NavMeshSurface.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -349,6 +370,7 @@
       <workItem from="1741614044735" duration="25493000" />
       <workItem from="1741708252700" duration="17143000" />
       <workItem from="1741890511308" duration="5420000" />
+      <workItem from="1741968113645" duration="21065000" />
     </task>
     <servers />
   </component>

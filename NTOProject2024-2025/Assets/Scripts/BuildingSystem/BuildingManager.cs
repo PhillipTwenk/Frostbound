@@ -3,6 +3,8 @@ using RTS_Cam;
 using UnityEngine;
 using TMPro;
 using Unity.AI.Navigation;
+using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -43,7 +45,8 @@ public class BuildingManager : MonoBehaviour
 
     [SerializeField] private GameEvent UpdateResourcesEvent;
 
-    public NavMeshSurface _navMeshSurface;
+    public NavMeshSurface _navMeshSurfaceUnit;
+    public NavMeshSurface _navMeshSurfaceDrone;
 
     public void StartPlacingBuild()
     {
@@ -164,7 +167,8 @@ public class BuildingManager : MonoBehaviour
 
                             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
                             
-                            await _navMeshSurface.UpdateNavMesh(_navMeshSurface.navMeshData);
+                            await _navMeshSurfaceUnit.UpdateNavMesh(_navMeshSurfaceUnit.navMeshData);
+                            await _navMeshSurfaceDrone.UpdateNavMesh(_navMeshSurfaceDrone.navMeshData);
                             Debug.Log("NavMesh updated");
 
                             //TutorialPLacementBuildingsCheck(buildingData);

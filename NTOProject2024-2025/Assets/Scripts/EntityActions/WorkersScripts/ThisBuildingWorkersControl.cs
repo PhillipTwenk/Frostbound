@@ -60,7 +60,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
                 currentWorkerInThisBuilding.ArriveForBuildBuidling = false;
                 currentWorkerInThisBuilding.isSelected = false;
                 currentWorkerInThisBuilding.isSelecting = false;
-                currentWorkerInThisBuilding.possibilityClickOnWorker = true;
+                currentWorkerInThisBuilding.PossibilityClickOnUnit = true;
                 currentWorkerInThisBuilding.OutlineRotate.SetActive(false);
                 currentWorkerInThisBuilding.OutlinePOD.SetActive(false);
                 currentWorkerInThisBuilding.gameObject.GetComponent<WorkerData>().IsWorkerAtWork = false;

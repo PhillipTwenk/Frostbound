@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using EntityActions.Movement_Control;
+using EntityActions.WorkersScripts;
 using RTS_Cam;
 using TMPro;
 using UnityEngine;
@@ -80,20 +82,20 @@ public class InteractionBuildingController : MonoBehaviour
         }
         
         // Если рабочий около здания
-        if(other.gameObject.CompareTag("ClickOnWorker") && other.gameObject.GetComponent<WorkerMovementController>().SelectedBuilding != null)
+        if(other.gameObject.CompareTag("ClickOnWorker") && other.gameObject.GetComponent<IWorkerUnit>().SelectedBuilding != null)
         {
-            WorkerMovementController workerMovementController =
-                other.gameObject.GetComponent<WorkerMovementController>();
+            IWorkerUnit unitMovementController =
+                 other.gameObject.GetComponent<IWorkerUnit>();
             
             
             Debug.Log("Рабочий около здания");
             
             // Если данное здание не построено, прибежавший рабочий занят постройкой, и это здание является для него выделенным
-            if (!_buildingData.IsThisBuilt && workerMovementController.ArriveForBuildBuidling && workerMovementController.SelectedBuilding.GetComponent<BuildingData>().buildingTypeSO.IDoB == GetComponent<BuildingData>().buildingTypeSO.IDoB)
+            if (!_buildingData.IsThisBuilt && unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>().buildingTypeSO.IDoB == GetComponent<BuildingData>().buildingTypeSO.IDoB)
             {
                 // у рабочего пропадает цель следования
-                WorkerMovementController movementController = other.gameObject.GetComponent<WorkerMovementController>();
-                movementController.WorkerPointOfDestination = null;
+                IWorkerUnit movementController = other.gameObject.GetComponent<IWorkerUnit>();
+                movementController.UnitPointOfDestination = null;
                     
                 other.transform.LookAt(WorkersInterBuildingControl.CurrentBuilding.transform);
                     
@@ -109,13 +111,13 @@ public class InteractionBuildingController : MonoBehaviour
                 WorkersInterBuildingControl.Instance.NotifyWorkerArrival();
 
                 GameObject worker = other.gameObject;
-                WorkersInterBuildingControl.Instance.StartAnimationBuilding(worker.GetComponent<WorkerMovementController>(), GetComponent<BuildingData>(), spawnWorker);
+                WorkersInterBuildingControl.Instance.StartAnimationBuilding(worker.GetComponent<IWorkerUnit>(), GetComponent<BuildingData>(), spawnWorker, worker.GetComponent<WorkerData>());
                 
                 worker.SetActive(false);
                 return;
             }
             // Рабочий прибыл не для строительства
-            else if (_buildingData.IsThisBuilt && !workerMovementController.ArriveForBuildBuidling && workerMovementController.SelectedBuilding.GetComponent<BuildingData>().buildingTypeSO.IDoB == GetComponent<BuildingData>().buildingTypeSO.IDoB)
+            else if (_buildingData.IsThisBuilt && !unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>().buildingTypeSO.IDoB == GetComponent<BuildingData>().buildingTypeSO.IDoB)
             {
                 if (GetComponent<ThisBuildingWorkersControl>())
                 {

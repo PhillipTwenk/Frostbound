@@ -310,6 +310,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7293217062398181583}
     - target: {fileID: 7576778298243855478, guid: 297b5f44613c4ae4f89f1c0f3dfc9856, type: 3}
+      propertyPath: outlinePOD
+      value: 
+      objectReference: {fileID: 7293217062398181583}
+    - target: {fileID: 7576778298243855478, guid: 297b5f44613c4ae4f89f1c0f3dfc9856, type: 3}
       propertyPath: currentWalkingPoint
       value: 
       objectReference: {fileID: 7939539234796696956}

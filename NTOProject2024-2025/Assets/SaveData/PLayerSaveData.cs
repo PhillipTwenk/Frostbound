@@ -254,7 +254,8 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
         
         #endregion
         
-        await BuildingManager.Instance._navMeshSurface.UpdateNavMesh(BuildingManager.Instance._navMeshSurface.navMeshData);
+        await BuildingManager.Instance._navMeshSurfaceUnit.UpdateNavMesh(BuildingManager.Instance._navMeshSurfaceUnit.navMeshData);
+        await BuildingManager.Instance._navMeshSurfaceDrone.UpdateNavMesh(BuildingManager.Instance._navMeshSurfaceDrone.navMeshData);
     }
 
     /// <summary>

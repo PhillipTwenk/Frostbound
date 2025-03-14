@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4564158466165613780}
   - component: {fileID: 3124969604187359027}
   - component: {fileID: 7176597400033532161}
-  m_Layer: 0
+  - component: {fileID: 146827905976913146}
+  m_Layer: 12
   m_Name: Stone Arc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,3 +131,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4592828291306753814, guid: a3e593b44d4e6ed41858d42fe7282b19, type: 3}
+--- !u!114 &146827905976913146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8784819549425446590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 3
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: f46d2d58

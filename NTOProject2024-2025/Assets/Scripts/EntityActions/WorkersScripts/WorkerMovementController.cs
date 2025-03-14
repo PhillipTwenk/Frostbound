@@ -1,10 +1,9 @@
-using System;
 using EntityActions.Movement_Control;
+using EntityActions.WorkersScripts;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
-public class WorkerMovementController : MonoBehaviour, IUnitMovement
+public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUnit
 {
     [Header("Properties")]
     public bool isSelected { get; set; }
@@ -12,24 +11,52 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
     public bool isSelecting { get; set; } // Мышь наведена на персонажа
     public UnitType ThisUnitType { get { return unitType; } }
     
+    public GameObject SelectedBuilding
+    {
+        get
+        {
+            return selectedBuilding;
+        }
+        set
+        {
+            selectedBuilding = value;
+        }
+    }
+    
+    public bool PossibilityClickOnUnit { get; set; }
+    
+    public bool ReadyForWork { get; set; }
+    
+    public bool ArriveForBuildBuidling {get; set;}
+    
+    public GameObject OutlinePOD {get{ return outlinePOD;}}
+    
+    public Transform UnitPointOfDestination
+    {
+        get
+        {
+            return unitPointOfDestination;
+        }
+        set
+        {
+            unitPointOfDestination = value;
+        }
+    }
+    
     
     [Header("Flags")]
-    public bool ReadyForWork;
     private bool IsClickOnOtherEntity; // Кликнули на другой тип сущности
-    public bool ArriveForBuildBuidling;
-    // public bool isSelected;
-    public bool possibilityClickOnWorker;
     
     [Header("Visual")]
     public GameObject outlineRotate;
-    public GameObject OutlinePOD;
+    public GameObject outlinePOD;
     private Animator anim;
     
     [Header("System")]
     [SerializeField] private string NameOfTTS;
-    public Transform WorkerPointOfDestination;
+    public Transform unitPointOfDestination;
     private NavMeshAgent agent;
-    public GameObject SelectedBuilding; // techTriggerScripts
+    public GameObject selectedBuilding; // techTriggerScripts
     public Camera MainCamera;
     [SerializeField] private Transform currentWalkingPoint;
     private Rigidbody _rb;
@@ -45,7 +72,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
     void Start()
     {
         IsClickOnOtherEntity = false;
-        possibilityClickOnWorker = true;
+        PossibilityClickOnUnit = true;
         currentWalkingPoint.gameObject.SetActive(false);
         ReadyForWork = true;
         agent = GetComponent<NavMeshAgent>();
@@ -130,14 +157,14 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
         }
 
         
-        if (WorkerPointOfDestination) 
+        if (unitPointOfDestination) 
         {
             
             // Рабочий идет до точки назначения
             anim.SetBool("Idle", false);
             anim.SetBool("Running", true);
             agent.isStopped = false;
-            agent.destination = new Vector3(WorkerPointOfDestination.position.x, WorkerPointOfDestination.position.y, WorkerPointOfDestination.position.z);
+            agent.destination = new Vector3(unitPointOfDestination.position.x, unitPointOfDestination.position.y, unitPointOfDestination.position.z);
             
         } 
         else 
@@ -197,10 +224,10 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
     public void SetUnitDestination(Transform point, bool isAutomatic){
         if(isAutomatic && SelectedBuilding != null){
             currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
-            WorkerPointOfDestination = currentWalkingPoint.transform;
+            unitPointOfDestination = currentWalkingPoint.transform;
             //Debug.Log($"Setting destination to: {currentWalkingPoint.transform.position}");
         } else {
-            WorkerPointOfDestination = point;
+            unitPointOfDestination = point;
             //Debug.Log($"Setting destination to: {point.position}");
         }
     }
@@ -209,7 +236,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement
         if(other.tag == "WalkingPoint"){
             Debug.Log("Рабочий дошел до точки назначения");
             currentWalkingPoint.gameObject.SetActive(false);
-            WorkerPointOfDestination = null;
+            unitPointOfDestination = null;
             anim.SetBool("Running", false);
             anim.SetBool("Idle", true);
         } 

@@ -35,8 +35,12 @@ namespace EntityActions.Movement_Control
         /// Свойства контроля выделения
         /// </summary>
         bool isSelected { get; set; }
-        GameObject OutlineRotate { get; }
         bool isSelecting { get; set; }
+        GameObject OutlineRotate { get; }
         UnitType ThisUnitType { get; }
+        GameObject SelectedBuilding { get; set; }
+        bool PossibilityClickOnUnit { get; set; }
+        GameObject OutlinePOD { get; }
+        Transform UnitPointOfDestination { get; set; }
     }
 }
