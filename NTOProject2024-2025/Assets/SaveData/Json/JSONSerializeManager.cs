@@ -60,6 +60,10 @@ public class JSONSerializeManager : MonoBehaviour
     {
         lock (_lock)
         {
+            playerPrefsSaveMethods?.Invoke();
+            streamingDataSaveEvent?.Invoke();
+            
+            
             foreach (EntityID so in entitiesScriptableObjects)
             {
                 JSONSaveFunctional(so);
@@ -76,10 +80,6 @@ public class JSONSerializeManager : MonoBehaviour
             {
                 JSONSaveFunctional(so);
             }
-            
-            
-            playerPrefsSaveMethods?.Invoke();
-            streamingDataSaveEvent?.Invoke();
         }
     }
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pier
   m_EditorClassIdentifier: 
   IDoB: 4
+  buildingType: 4
   levelListLevel: 01000000
   MaxLevelThisBuilding: 1
   durabilityListLevel: 41000000

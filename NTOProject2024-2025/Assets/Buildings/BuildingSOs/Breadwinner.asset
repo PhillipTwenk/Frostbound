@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Breadwinner
   m_EditorClassIdentifier: 
   IDoB: 1
+  buildingType: 1
   levelListLevel: 01000000
   MaxLevelThisBuilding: 1
   durabilityListLevel: 64000000

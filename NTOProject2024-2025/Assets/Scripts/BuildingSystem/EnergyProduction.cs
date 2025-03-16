@@ -8,8 +8,6 @@ using UnityEngine;
 
 public class EnergyProduction : MonoBehaviour
 {
-    // [Header("Tutorial")]
-    // [SerializeField] private TutorialObjective WorkerStartWorkingOnApiaryTutorial;
     
     private BuildingData _buildingData;
     
@@ -47,7 +45,6 @@ public class EnergyProduction : MonoBehaviour
                 await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
                     playerResources.Food, playerResources.CryoCrystal);
                 ResourceUpdateEvent.TriggerEvent();
-                //WorkerStartWorkingOnApiaryTutorial.CheckAndUpdateTutorialState();
             });
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
         }
@@ -63,18 +60,9 @@ public class EnergyProduction : MonoBehaviour
         
             int honeyProduction = _buildingData.Production[0];
             int foodProduction = _buildingData.Production[1];
-
-            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
-            int OldEnergyValue = playerResources.Energy;
-            int OldFoodValue = playerResources.Food;
+            
             playerResources.Energy -= honeyProduction;
             playerResources.Food -= foodProduction;
-            LogSender(playerName, "Пасека прекратила производство энергии и мёда", playerResources.Energy - OldEnergyValue, playerResources.Food - OldFoodValue );
-            // await SyncManager.Enqueue(async () =>
-            // {
-            //     await APIManager.Instance.PutPlayerResources(playerName, playerResources.Iron, playerResources.Energy,
-            //         playerResources.Food, playerResources.CryoCrystal);
-            // });
             ResourceUpdateEvent.TriggerEvent();
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
             return playerResources;
@@ -91,8 +79,6 @@ public class EnergyProduction : MonoBehaviour
         {
             _buildingData = GetComponent<BuildingData>();
             
-            // GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding -= 1;
-            // _buildingData = GetComponent<BuildingData>();
         
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);    
         
@@ -113,10 +99,6 @@ public class EnergyProduction : MonoBehaviour
                     playerResources.Food, playerResources.CryoCrystal);
             });
             ResourceUpdateEvent.TriggerEvent();
-            // GameObject newWorker = Instantiate(GetComponent<ThisBuildingWorkersControl>().WorkerPrefab, null);
-            // newWorker.transform.position = GetComponent<ThisBuildingWorkersControl>().buildingSpawnWorkerPointTransform.position;
-            // newWorker.transform.rotation = GetComponent<ThisBuildingWorkersControl>().buildingSpawnWorkerPointTransform.rotation;
-            // newWorker.transform.GetChild(0).GetComponent<WorkerMovementController>().MainCamera = WorkersInterBuildingControl.MainCamera;
 
             TextChangerEnergy(text);
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);

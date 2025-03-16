@@ -98,7 +98,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
                 }
                 ResetSelectedUnit();
                 
-                Debug.Log($"<color=purple> Выделен юнит: {hit.collider.tag} </color>");
+                //Debug.Log($"<color=purple> Выделен юнит: {hit.collider.tag} </color>");
 
                 SelectedUnit = selectedUnit;
                 SelectedUnit.isSelected = true;
@@ -130,7 +130,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
             IUnitMovement hoveredUnit = hit.collider.GetComponent<IUnitMovement>();
             if (hoveredUnit != null && hoveredUnit != SelectedUnit)
             {
-                Debug.Log($"<color=purple> навели курсор на юнита: {hit.collider.tag} </color>");
+                //Debug.Log($"<color=purple> навели курсор на юнита: {hit.collider.tag} </color>");
                 hoveredUnit.OutlineRotate.SetActive(true);
                 hoveredUnit.isSelecting = true;
                 SelectingUnit = hoveredUnit;
@@ -140,7 +140,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
         {
             if (SelectingUnit != null)
             {
-                Debug.Log($"<color=purple> убрали курсор с юнита </color>");
+                //Debug.Log($"<color=purple> убрали курсор с юнита </color>");
                 if (SelectedUnit != SelectingUnit)
                 {
                     SelectingUnit.OutlineRotate.SetActive(false);
@@ -163,7 +163,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
                     droneMovementController.StartLanding(); // Начало подъема дрона 
                 }
             }
-            Debug.Log($"<color=yellow> Снято выделение с выбранного юнита </color>");
+            //Debug.Log($"<color=yellow> Снято выделение с выбранного юнита </color>");
             SelectedUnit.isSelected = false;
             SelectedUnit.isSelecting = false;
             SelectedUnit.OutlineRotate.SetActive(false);
@@ -274,7 +274,7 @@ public class WorkersInterBuildingControl : MonoBehaviour
     ///</summary>
     public async Task WorkerEndWork(BuildingData buildingData)
     {
-        //buildingData.TextPanelBuildingControl(true, HintAwaitBuilding);
+        //buildingDataLogistics.TextPanelBuildingControl(true, HintAwaitBuilding);
 
         await AwaitEndWorking(buildingData);
 

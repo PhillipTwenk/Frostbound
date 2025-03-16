@@ -5,6 +5,8 @@ using UnityEngine;
 public class Building : ScriptableObject
 {
     public int IDoB;
+
+    public BuildingsTypes buildingType;
     
     [SerializeField] private List<int> levelListLevel;
 

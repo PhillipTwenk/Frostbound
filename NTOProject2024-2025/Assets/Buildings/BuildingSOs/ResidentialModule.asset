@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ResidentialModule
   m_EditorClassIdentifier: 
   IDoB: 5
+  buildingType: 5
   levelListLevel: 01000000
   MaxLevelThisBuilding: 1
   durabilityListLevel: 96000000

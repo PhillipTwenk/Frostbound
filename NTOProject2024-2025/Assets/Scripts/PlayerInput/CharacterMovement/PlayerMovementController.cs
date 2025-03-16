@@ -40,6 +40,18 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
             unitPointOfDestination = value;
         }
     }
+    
+    public Camera MainCamera
+    {
+        get
+        {
+            return camera;
+        }
+        set
+        {
+            camera = value;
+        }
+    }
 
     [Header("LayerMasks")]
     [SerializeField] private LayerMask placementLayerMask;
@@ -56,7 +68,7 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
     public GameObject selectedBuilding;  // techTriggerScripts
     [SerializeField] private Transform currentWalkingPoint;
     private NavMeshAgent agent;
-    public Camera MainCamera;
+    public Camera camera;
     private Rigidbody _rb;
     private UnitType unitType;
     

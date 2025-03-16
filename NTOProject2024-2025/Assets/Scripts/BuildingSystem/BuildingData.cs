@@ -6,6 +6,17 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.VFX;
 
+public enum BuildingsTypes
+{
+    Apiary = 0,
+    Breadwinner = 1,
+    HoneyGun = 2,
+    MobileBase = 3,
+    Pier = 4,
+    Home = 5,
+    Storage = 6
+    
+}
 public class BuildingData : MonoBehaviour
 {
     [Header("Building type source")] [Tooltip("Ссылка на SO здания")]

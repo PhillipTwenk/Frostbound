@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
 using RTS_Cam;
@@ -21,6 +22,8 @@ public class InteractionBuildingController : MonoBehaviour
     [Tooltip("Позволяет ли данное здание подключиться к магазину")] [SerializeField] private bool IsThereBarterHere;
     public GameEvent OpenBarterMenuEvent;
     public GameEvent CloseBarterMenuEvent;
+    [Tooltip("Участвует ли данное здание в системе логистики")] [SerializeField] private bool IsThisLogisticsIncluded;
+    [Tooltip("Сколько ждать около зданий ( для асинхрона )")] [SerializeField] private int awaitDroneLogistics;
     
     [Header("Flags")]
     [NonSerialized]public bool CanPutE;
@@ -68,7 +71,7 @@ public class InteractionBuildingController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private async void OnTriggerEnter(Collider other)
     {
         // Если игрок около здания, вызываем подсказку о нажатии на Е и позволяем использование функционала
         if (other.gameObject.CompareTag("Player") && (PossiblityPutEInThisBuilding || OnlyShowText))
@@ -99,12 +102,6 @@ public class InteractionBuildingController : MonoBehaviour
                     
                 other.transform.LookAt(WorkersInterBuildingControl.CurrentBuilding.transform);
                     
-                // Установка анимаций
-                //Animator animator = other.gameObject.GetComponent<Animator>();
-                //animator.SetBool("Running", false);
-                //animator.SetBool("Building", true);
-                //animator.SetBool("Idle", false);
-                    
                 Debug.Log(WorkersInterBuildingControl.CurrentBuilding.Title);
                     
                 Debug.Log("Рабочий добрался, начинает строить здание");
@@ -119,6 +116,7 @@ public class InteractionBuildingController : MonoBehaviour
             // Рабочий прибыл не для строительства
             else if (_buildingData.IsThisBuilt && !unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>().buildingTypeSO.IDoB == GetComponent<BuildingData>().buildingTypeSO.IDoB)
             {
+                // Здание может содержать рабочих
                 if (GetComponent<ThisBuildingWorkersControl>())
                 {
                     WorkersInterBuildingControl.Instance.NumberOfFreeWorkers -= 1;
@@ -170,6 +168,99 @@ public class InteractionBuildingController : MonoBehaviour
                         
                         JSONSerializeManager.Instance.JSONSave();
                         return;
+                    }
+                } 
+                // Здание добывает ресурсы
+                else if (IsThisLogisticsIncluded && unitMovementController is IUnitLogistics)
+                {
+                    Debug.Log($"<color=yellow> К зданию {_buildingData.Title} подлетел дрон");
+                    DroneMovementController droneMovementController = unitMovementController as DroneMovementController;
+                    
+                    if (GetComponent<ResourceMiner>())
+                    {
+                        ResourceMiner resourceMiner = GetComponent<ResourceMiner>();
+                        BuildingData buildingDataMB = BaseUpgradeConditionManager.buildingDataMB;
+                        int resourceIndex = (int)resourceMiner._minerType;
+                        int limitsResource = droneMovementController.MaximumLogisticsStorage[resourceIndex];
+                    
+                        // Если в здании есть хотя бы какие то ресурсы
+                        if (_buildingData.Storage[resourceIndex] > 0)
+                        {
+                            Debug.Log($"<color=yellow> У здания есть ресурсы");
+                            if (droneMovementController.LogisticsStorage < limitsResource)
+                            {
+                                Debug.Log($"<color=yellow> У дрона есть место для ресурсов");
+                                await Task.Delay(awaitDroneLogistics);
+                            
+                                if (!droneMovementController.IsLogisticsCycleActive && droneMovementController.buildingDataLogistics == null)
+                                {
+                                    Debug.Log($"<color=yellow> Дрон не был задействован в логистике, ЗАПУСК");
+                                    droneMovementController.IsLogisticsCycleActive = true;
+                                    droneMovementController.buildingDataLogistics = _buildingData;
+                                    droneMovementController.isSelected = false;
+                                }
+
+                                if (droneMovementController.LogisticsStorage <  _buildingData.Storage[resourceIndex])
+                                {
+                                    droneMovementController.LogisticsStorage += limitsResource;
+                                    _buildingData.Storage[resourceIndex] -= limitsResource;
+                                }
+                                else
+                                {
+                                    droneMovementController.LogisticsStorage += _buildingData.Storage[resourceIndex];
+                                    _buildingData.Storage[resourceIndex] = 0;
+                                }
+                                
+                                droneMovementController.SelectedBuilding = buildingDataMB.gameObject;
+                                Debug.Log($"<color=yellow>Ресурсы дрона: {droneMovementController.LogisticsStorage}, здание назначения: {droneMovementController.SelectedBuilding.GetComponent<BuildingData>().Title}, {droneMovementController.IsLogisticsCycleActive}");
+                            }
+                        }
+                    }
+                    else if (_buildingData.buildingTypeSO.buildingType == BuildingsTypes.MobileBase)
+                    {
+                        Debug.Log($"<color=yellow> Дрон у базы, его характеристики: хранилище - {droneMovementController.LogisticsStorage}");
+                        if (droneMovementController.LogisticsStorage > 0  &&  droneMovementController.SelectedBuilding == this.gameObject && droneMovementController.buildingDataLogistics != null && droneMovementController.buildingDataLogistics.GetComponent<ResourceMiner>())
+                        {
+                            await Task.Delay(awaitDroneLogistics);
+                            
+                            if (!droneMovementController.IsLogisticsCycleActive)
+                            {
+                                Debug.Log($"<color=yellow> Дрон не был задействован в логистике, ЗАПУСК");
+                                droneMovementController.IsLogisticsCycleActive = true;
+                                droneMovementController.isSelected = false;
+                            }
+
+                            EntityID currentPlayer = CurrentPlayersDataControl.WhichPlayerCreate;
+                            PlayerResources playerResources = await APIManager.Instance.GetPlayerResources(currentPlayer);
+                            ResourceMiner resourceMiner =
+                                droneMovementController.buildingDataLogistics.GetComponent<ResourceMiner>();
+                            int resourceIndex = (int)resourceMiner._minerType;
+                            
+                            if (resourceIndex == 0)
+                            {
+                                playerResources.Iron += droneMovementController.LogisticsStorage;
+                                Debug.Log($"<color=yellow> Выгружаем металл: {playerResources.Iron}");
+                            }
+                            else
+                            {
+                                playerResources.CryoCrystal += droneMovementController.LogisticsStorage;
+                                Debug.Log($"<color=yellow> Выгружаем кристаллы: {playerResources.CryoCrystal}");
+                            }
+
+                            droneMovementController.LogisticsStorage = 0;
+
+                            await SyncManager.Enqueue(async () =>
+                            {
+                                await APIManager.Instance.PutPlayerResources(currentPlayer, playerResources.Iron, playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
+                            });
+                            
+                            droneMovementController.UpdateResourcesEvent.TriggerEvent();
+
+                            Debug.Log($"<color=yellow> Летим обратно к добытчику, {droneMovementController.IsLogisticsCycleActive}");
+                            droneMovementController.SelectedBuilding =
+                                droneMovementController.buildingDataLogistics.gameObject;
+
+                        }
                     }
                 }
             }

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using EntityActions.Movement_Control;
+using EntityActions.WorkersScripts;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -154,25 +156,6 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                     thisBuildingWorkersControl.suitableUnitDataForThisBuilding =
                         BuildingWorkersInformationList[index].suitableUnitDataForThisBuilding;
 
-                    // if (thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding > 0 && thisBuildingWorkersControl.CurrentWorkerDataInThisBuilding != null)
-                    // {
-                    //     int SLI = 0;
-                    //     foreach (var workerData in workerDatas)
-                    //     {
-                    //         if (workerData.IsWorkerAtWork && workerData.unitType == thisBuildingWorkersControl.suitableUnitDataForThisBuilding && !usedWorkerdata.Contains(workerData.SaveListIndex) )
-                    //         {
-                    //             usedWorkerdata.Add(workerData.SaveListIndex);
-                    //             SLI = workerData.SaveListIndex;
-                    //         }
-                    //     }
-                    //
-                    //     GameObject newWorkerInBuilding = CreateWorker(SLI);
-                    //     WorkerMovementController workerMovementController = newWorkerInBuilding.transform.GetChild(0)
-                    //         .gameObject.GetComponent<WorkerMovementController>();
-                    //
-                    //     thisBuildingWorkersControl.currentWorkerInThisBuilding = workerMovementController;
-                    // }
-
                     WorkersInterBuildingControl.Instance.AddNewBuilding(thisBuildingWorkersControl);
                 }
                 else
@@ -222,7 +205,7 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 workerData.SaveListIndex = workerDatas[i].SaveListIndex;
                 workerData.unitType = workerDatas[i].unitType;
 
-                workerData.gameObject.GetComponent<WorkerMovementController>().MainCamera =
+                workerData.gameObject.GetComponent<IWorkerUnit>().MainCamera =
                     WorkersInterBuildingControl.MainCamera;
 
                 WorkersInterBuildingControl.Instance.CurrentValueOfWorkers += 1;

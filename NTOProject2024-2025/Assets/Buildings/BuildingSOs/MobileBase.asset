@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MobileBase
   m_EditorClassIdentifier: 
   IDoB: 3
+  buildingType: 3
   levelListLevel: 010000000200000003000000
   MaxLevelThisBuilding: 4
   durabilityListLevel: af000000c8000000fa0000002c010000

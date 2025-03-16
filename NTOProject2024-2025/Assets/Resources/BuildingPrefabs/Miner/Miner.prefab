@@ -389,8 +389,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 43.16126, y: 45.71981, z: 59.982014}
-  m_Center: {x: 1.7398415, y: 21.809875, z: 0.5493412}
+  m_Size: {x: 43.16126, y: 138.37193, z: 59.982018}
+  m_Center: {x: 1.7398419, y: 68.13586, z: 0.54933965}
 --- !u!114 &1775729156111199710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +466,8 @@ MonoBehaviour:
   IsThereBarterHere: 0
   OpenBarterMenuEvent: {fileID: 0}
   CloseBarterMenuEvent: {fileID: 0}
+  IsThisLogisticsIncluded: 1
+  awaitDroneLogistics: 3000
   PointsOfBuildings:
   - {fileID: 3848195277624563470}
   - {fileID: 1960861704675936411}

@@ -2920,8 +2920,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 73.96484, y: 33.58368, z: 68.52748}
-  m_Center: {x: -0.9644394, y: 16.29184, z: 0.5671997}
+  m_Size: {x: 73.96484, y: 124.08262, z: 68.52748}
+  m_Center: {x: -0.96443844, y: 61.541325, z: 0.56719905}
 --- !u!114 &7397327128136730623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2997,6 +2997,8 @@ MonoBehaviour:
   IsThereBarterHere: 1
   OpenBarterMenuEvent: {fileID: 11400000, guid: 4921662764b76d143bb3b89a8e370e58, type: 2}
   CloseBarterMenuEvent: {fileID: 11400000, guid: a6af6a147a616a34c801f8a2bd09b3b2, type: 2}
+  IsThisLogisticsIncluded: 1
+  awaitDroneLogistics: 3000
   PointsOfBuildings:
   - {fileID: 5303162940219184309}
   - {fileID: 7433930302779310458}

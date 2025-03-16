@@ -42,5 +42,6 @@ namespace EntityActions.Movement_Control
         bool PossibilityClickOnUnit { get; set; }
         GameObject OutlinePOD { get; }
         Transform UnitPointOfDestination { get; set; }
+        Camera MainCamera { get; set; }
     }
 }

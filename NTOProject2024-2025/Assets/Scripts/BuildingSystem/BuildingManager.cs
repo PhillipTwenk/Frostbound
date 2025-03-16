@@ -171,7 +171,7 @@ public class BuildingManager : MonoBehaviour
                             await _navMeshSurfaceDrone.UpdateNavMesh(_navMeshSurfaceDrone.navMeshData);
                             Debug.Log("NavMesh updated");
 
-                            //TutorialPLacementBuildingsCheck(buildingData);
+                            //TutorialPLacementBuildingsCheck(buildingDataLogistics);
                             
                             //Ожидаем прибытия рабочего 
                             await WorkersInterBuildingControl.Instance.SendWorkerToBuilding(true, buildingData);
@@ -179,7 +179,7 @@ public class BuildingManager : MonoBehaviour
                             //Ожидаем завершения его строительства
                             await WorkersInterBuildingControl.Instance.WorkerEndWork(buildingData);
 
-                            //TutorialWaitWorkersCheck(buildingData);
+                            //TutorialWaitWorkersCheck(buildingDataLogistics);
                             await SyncManager.Enqueue(async () =>
                             {
                                 await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceBuilding,
@@ -270,9 +270,9 @@ public class BuildingManager : MonoBehaviour
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }
 
-    // private void TutorialPLacementBuildingsCheck(BuildingData buildingData)
+    // private void TutorialPLacementBuildingsCheck(BuildingData buildingDataLogistics)
     // {
-    //     string BuildingName = buildingData.Title;
+    //     string BuildingName = buildingDataLogistics.Title;
     //     switch (BuildingName)
     //     {
     //         case "Пасека":
@@ -287,9 +287,9 @@ public class BuildingManager : MonoBehaviour
     //     }
     // }
     
-    // private void TutorialWaitWorkersCheck(BuildingData buildingData)
+    // private void TutorialWaitWorkersCheck(BuildingData buildingDataLogistics)
     // {
-    //     string BuildingName = buildingData.Title;
+    //     string BuildingName = buildingDataLogistics.Title;
     //     switch (BuildingName)
     //     {
     //         case "Пасека":

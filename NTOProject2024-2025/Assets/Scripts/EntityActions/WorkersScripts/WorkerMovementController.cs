@@ -43,6 +43,18 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
         }
     }
     
+    public Camera MainCamera
+    {
+        get
+        {
+            return camera;
+        }
+        set
+        {
+            camera = value;
+        }
+    }
+    
     
     [Header("Flags")]
     private bool IsClickOnOtherEntity; // Кликнули на другой тип сущности
@@ -57,7 +69,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
     public Transform unitPointOfDestination;
     private NavMeshAgent agent;
     public GameObject selectedBuilding; // techTriggerScripts
-    public Camera MainCamera;
+    public Camera camera;
     [SerializeField] private Transform currentWalkingPoint;
     private Rigidbody _rb;
     private WorkerData _thisWorkerData;

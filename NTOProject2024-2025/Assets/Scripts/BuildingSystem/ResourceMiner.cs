@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -8,8 +9,8 @@ using UnityEngine;
 [System.Serializable]
 public enum MinerType
 {
-    IronMiner,
-    CryoCrystalMiner
+    IronMiner = 0,
+    CryoCrystalMiner = 1
 }
 /// <summary>
 /// Отвечает за контроль добычи ресурсов 
@@ -21,7 +22,7 @@ public class ResourceMiner : MonoBehaviour
     
     [Header("Miner Function")]
     [Tooltip("Интервал добычи")] [SerializeField] private int TimeProduction;
-    private MinerType _minerType;
+    [NonSerialized]public MinerType _minerType;
     private ResourceData resourcesLimits;
     
     

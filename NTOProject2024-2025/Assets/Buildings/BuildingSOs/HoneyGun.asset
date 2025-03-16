@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HoneyGun
   m_EditorClassIdentifier: 
   IDoB: 2
+  buildingType: 2
   levelListLevel: 0100000002000000
   MaxLevelThisBuilding: 2
   durabilityListLevel: 4b00000096000000

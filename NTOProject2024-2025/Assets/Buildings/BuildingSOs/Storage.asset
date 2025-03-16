@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Storage
   m_EditorClassIdentifier: 
   IDoB: 6
+  buildingType: 6
   levelListLevel: 0100000002000000
   MaxLevelThisBuilding: 1
   durabilityListLevel: 6400000096000000
