@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CurrentPlayersDataControl : MonoBehaviour
@@ -14,6 +15,8 @@ public class CurrentPlayersDataControl : MonoBehaviour
     [SerializeField] private EntityID player1;
     [SerializeField] private EntityID player2;
     [SerializeField] private EntityID player3;
+
+    public static List<BuildingData> currentBuildingsDatas = new List<BuildingData>();
 
     private void Awake()
     {

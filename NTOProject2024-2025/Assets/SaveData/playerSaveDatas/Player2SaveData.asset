@@ -23,45 +23,102 @@ MonoBehaviour:
   BuildingDatas:
   - Level: 1
     Durability: 175
-    Storage: dc0500000a000000
+    Storage: 
     SaveListIndex: 0
     HoneyConsumption: 0
     Production: 
-  BuildingWorkersInformationList:
-  - CurrentNumberOfWorkersInThisBuilding: 1
-    MaxValueOfWorkersInThisBuilding: 1
-    suitableUnitDataForThisBuilding: 0
+  BuildingWorkersInformationList: []
   workers:
   - {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
   - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
   - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
   - {fileID: 84898860335556800, guid: 0bee92f4828365f429c01d42b18ed83f, type: 3}
   workersTransform:
-  - position: {x: 3321.5852, y: 0, z: 548.3433}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
+  - position: {x: 3321.5852, y: 0, z: 548.34326}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
     scale: {x: 3, y: 3, z: 3}
-  - position: {x: 3463, y: 0, z: 687}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
+  - position: {x: 3463.0002, y: 0, z: 687}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
     scale: {x: 3, y: 3, z: 3}
-  - position: {x: 3501, y: 0, z: 697}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
+  - position: {x: 3501.0002, y: 0, z: 697}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
     scale: {x: 3, y: 3, z: 3}
-  - position: {x: 3953, y: 0, z: 728}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 6.7964, y: 6.7964, z: 6.7964}
+  - position: {x: 4020.924, y: 0, z: 183.77954}
+    rotation: {x: 0, y: 0.99900967, z: 0, w: 0.044493675}
+    scale: {x: 4, y: 4, z: 4}
   workerDatas:
   - IsWorkerAtWork: 0
     SaveListIndex: 0
     unitType: 1
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 0
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
   - IsWorkerAtWork: 0
     SaveListIndex: 1
     unitType: 2
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 0
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
   - IsWorkerAtWork: 0
     SaveListIndex: 2
     unitType: 2
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 0
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
   - IsWorkerAtWork: 0
     SaveListIndex: 3
     unitType: 3
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 1
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
   player: {fileID: 5840928571377694232, guid: 4f02f1be8d4c7c74a88ddc9404ac2b57, type: 3}
   transformPlayer:
     position: {x: 3478, y: 0, z: 573}

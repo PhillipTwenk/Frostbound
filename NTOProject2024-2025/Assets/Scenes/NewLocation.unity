@@ -4694,7 +4694,7 @@ GameObject:
   - component: {fileID: 196086443}
   - component: {fileID: 196086442}
   - component: {fileID: 196086441}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13776,17 +13776,25 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7604b955a53ee7e43bef22c9842a9b67, type: 2}
+    - target: {fileID: -8785399055349121128, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.19
+      objectReference: {fileID: 0}
+    - target: {fileID: -8785399055349121128, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.98
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.7182
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 9.7182
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
       propertyPath: m_LocalScale.z
-      value: 9.7182
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13794,7 +13802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 160.5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13848,6 +13856,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7604b955a53ee7e43bef22c9842a9b67, type: 2}
+    - target: {fileID: -3025167575022409863, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.93
+      objectReference: {fileID: 0}
+    - target: {fileID: -3025167575022409863, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.98
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 153e90dbdaf9dd84a9f9590884bd68ce, type: 3}
       propertyPath: m_Name
       value: Shuttle

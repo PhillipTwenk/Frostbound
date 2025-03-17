@@ -290,7 +290,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
         
         UpdateResourcesEvent.TriggerEvent();
 
-        JSONSerializeManager.Instance.JSONSave();
+        await JSONSerializeManager.Instance.JSONSave();
         
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }
@@ -367,7 +367,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
         }
         else
         {
-            List<string> ImprovementReport = BaseUpgradeConditionManager.Instance.CanUpgradeMobileBase(playerResources);
+            List<string> ImprovementReport = await BaseUpgradeConditionManager.Instance.CanUpgradeMobileBase(playerResources);
             if (ImprovementReport[0] == BaseUpgradeConditionManager.Instance.SuccesUpgradeText || ImprovementReport[0] == BaseUpgradeConditionManager.Instance.ENDGAME)
             {
                 Dictionary<string, string> playerDictionary = new Dictionary<string, string>();
@@ -406,7 +406,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             }
         }
         
-        JSONSerializeManager.Instance?.JSONSave();
+        await JSONSerializeManager.Instance.JSONSave();
         
         UpdateResourcesEvent?.TriggerEvent();
         

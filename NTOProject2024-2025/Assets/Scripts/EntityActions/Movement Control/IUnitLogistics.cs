@@ -8,7 +8,7 @@ public interface IUnitLogistics
 {
     BuildingData buildingDataLogistics { get; set; }
     bool IsLogisticsCycleActive { get; set; }
-    void LogisticsCycleToggle(bool ToTheBase, BuildingData buildingTransform);
+    void LogisticsCycleMovementHandler();
     int LogisticsStorage { get; set; }
     List<int> MaximumLogisticsStorage { get; }
 }

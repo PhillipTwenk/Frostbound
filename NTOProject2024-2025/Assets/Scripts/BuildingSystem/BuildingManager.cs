@@ -226,7 +226,7 @@ public class BuildingManager : MonoBehaviour
                             
                             buildingData.BuildingVE.Stop();
                             
-                            JSONSerializeManager.Instance.JSONSave();
+                            await JSONSerializeManager.Instance.JSONSave();
                         }
                         else
                         {

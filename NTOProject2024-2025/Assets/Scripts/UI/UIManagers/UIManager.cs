@@ -138,17 +138,6 @@ public class UIManager : MonoBehaviour
         SelectedItemObjectiveIdicator?.SetActive(false);
         SelectedItemObjectiveIdicator = newIdicator;
         SelectedItemObjectiveIdicator?.SetActive(true);
-        
-
-        // if (newIdicator == null)
-        // {
-        //     // Убрать выделение квеста на панели квестов при нажатии 
-        //     CancelLastOpenPanelEvent += () =>
-        //     {
-        //         SelectedItemObjectiveIdicator?.SetActive(false);
-        //         SelectedItemObjectiveIdicator = null;
-        //     };
-        // }
     }
 
     /// <summary>
@@ -230,12 +219,6 @@ public class UIManager : MonoBehaviour
     private static void UnsubscribeAllCancelLastOpenPanelEvent()
     {
         if (CancelLastOpenPanelEvent == null) return;
-
-        // foreach (Delegate d in CancelLastOpenPanelEvent.GetInvocationList())
-        // {
-        //     Debug.Log($"Отменено действие под номером {}");
-        //     CancelLastOpenPanelEvent -= (Action)d; 
-        // }
         
         for (int i = 0; i < CancelLastOpenPanelEvent?.GetInvocationList().Length; i++)
         {
@@ -308,7 +291,7 @@ public class UIManager : MonoBehaviour
     {
         var lastPanel = CancelLastOpenPanelEvent?.GetInvocationList().Last() as Action;
         lastPanel?.Invoke();
-        CancelLastOpenPanelEvent -= lastPanel;
+        //CancelLastOpenPanelEvent -= lastPanel;
     }
     private void Update()
     {

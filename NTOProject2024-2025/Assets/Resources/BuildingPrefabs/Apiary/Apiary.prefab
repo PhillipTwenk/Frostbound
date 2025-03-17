@@ -1908,6 +1908,8 @@ MonoBehaviour:
   IsThereBarterHere: 0
   OpenBarterMenuEvent: {fileID: 0}
   CloseBarterMenuEvent: {fileID: 0}
+  IsThisLogisticsIncluded: 0
+  awaitDroneLogistics: 0
   PointsOfBuildings:
   - {fileID: 7476785406658098950}
   - {fileID: 2723910873337516857}
@@ -1967,7 +1969,7 @@ MonoBehaviour:
   CurrentNumberWorkersInThisBuilding: 0
   MaxValueOfWorkersInThisBuilding: 1
   WorkerPrefab: {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
-  suitableUnitDataForThisBuilding: 0
+  suitableUnitDataForThisBuilding: 1
   buildingSpawnWorkerPointTransform: {fileID: 6218351955974572490}
 --- !u!1 &6461373108980604029
 GameObject:
