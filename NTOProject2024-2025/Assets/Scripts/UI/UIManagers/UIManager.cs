@@ -333,11 +333,11 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("SHEEEEESH");
             timer += Time.deltaTime;
-            if (timer >= 120f){
-                timer = 120f;
+            if (timer >= 12f){
+                timer = 0;
             } else {
                 tempColor = extremeCondImage.GetComponent<Image>().color;
-                tempColor.a = timer/120f;
+                tempColor.a = timer/12f;
                 extremeCondImage.GetComponent<Image>().color = new Color(tempColor.r, tempColor.g, tempColor.b, tempColor.a);
             }
         } else {
