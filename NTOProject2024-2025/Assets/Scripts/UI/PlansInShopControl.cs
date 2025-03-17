@@ -72,9 +72,7 @@ public class PlansInShopControl : MonoBehaviour
             // Словарь: уровень базы → товары, доступные на этом уровне
             Dictionary<int, List<PriceShopProduct>> baseLevelProducts = new Dictionary<int, List<PriceShopProduct>>
             {
-                { 1, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier } },
-                { 2, new List<PriceShopProduct> { shopResources.Storage } },
-                // { 3, new List<PriceShopProduct> { shopResources.Pier } }
+                { 1, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } }
             };
 
             // Словарь: товар → его купленный UI + кнопка

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,10 +10,10 @@ public class JSONSerializeManager : MonoBehaviour
     public static JSONSerializeManager Instance { get; set; }
     
     [Header("Scriptable Objects")]
-    [Tooltip("Информация об игроках")]public List<EntityID> entitiesScriptableObjects;
-    [Tooltip("Информация о сохраненных игровых данных игроков")]public List<PlayerSaveData> psdScriptableObjects;
-    [Tooltip("Информация о квестах")]public List<Quest> questsScriptableObjects;
-    [Tooltip("Информация о целях квестов")]public List<Objective> objectivesScriptableObjects;
+    [Tooltip("Информация об игроках")] public List<EntityID> entitiesScriptableObjects;
+    [Tooltip("Информация о сохраненных игровых данных игроков")] public List<PlayerSaveData> psdScriptableObjects;
+    [Tooltip("Информация о квестах")] public List<Quest> questsScriptableObjects;
+    [Tooltip("Информация о целях квестов")] public List<Objective> objectivesScriptableObjects;
     private string savePath;
     private static readonly object _lock = new object();
 
@@ -51,38 +52,40 @@ public class JSONSerializeManager : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    private async void OnApplicationQuit()
     {
-        JSONSave();
+        await JSONSave();
     }
 
-    public void JSONSave()
+    public async Task JSONSave()
     {
         lock (_lock)
         {
             playerPrefsSaveMethods?.Invoke();
             streamingDataSaveEvent?.Invoke();
-            
-            
-            foreach (EntityID so in entitiesScriptableObjects)
-            {
-                JSONSaveFunctional(so);
-            }
-            foreach (PlayerSaveData so in psdScriptableObjects)
-            {
-                JSONSaveFunctional(so);
-            }
-            foreach (Quest so in questsScriptableObjects)
-            {
-                JSONSaveFunctional(so);
-            }
-            foreach (Objective so in objectivesScriptableObjects)
-            {
-                JSONSaveFunctional(so);
-            }
         }
-    }
 
+        List<Task> saveTasks = new List<Task>();
+
+        foreach (EntityID so in entitiesScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+        foreach (PlayerSaveData so in psdScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+        foreach (Quest so in questsScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+        foreach (Objective so in objectivesScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+
+        await Task.WhenAll(saveTasks);
+    }
 
     /// <summary>
     /// Реализация функционала для первичной загрузки JSON файлов
@@ -126,12 +129,11 @@ public class JSONSerializeManager : MonoBehaviour
         }
     }
 
-
     /// <summary>
-    /// Реализация функционала для сохранения JSON файлов
+    /// Реализация функционала для асинхронного сохранения JSON файлов
     /// </summary>
     /// <param name="so"></param>
-    private void JSONSaveFunctional(ScriptableObject so)
+    private async Task JSONSaveFunctionalAsync(ScriptableObject so)
     {
         if (so is ISerializableSO serializableSO)
         {
@@ -139,7 +141,7 @@ public class JSONSerializeManager : MonoBehaviour
             {
                 string json = serializableSO.SerializeToJson();
                 string filePath = Path.Combine(savePath, $"{so.name}.json");
-                File.WriteAllText(filePath, json);
+                await File.WriteAllTextAsync(filePath, json);
                 Debug.Log($"Сохранено {so.name}");
             }
             catch (Exception ex)

@@ -25,7 +25,7 @@ public class DeletePlayer : MonoBehaviour
         
         gameObject.SetActive(false);
         
-        JSONSerializeManager.Instance.JSONSave();
+        await JSONSerializeManager.Instance.JSONSave();
         
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }

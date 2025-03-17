@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -62,7 +63,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
         // }
     }
 
-    public List<string> CanUpgradeMobileBase(PlayerResources playerResources)
+    public async Task<List<string>> CanUpgradeMobileBase(PlayerResources playerResources)
     {
         int WorkersCount = WorkersInterBuildingControl.Instance.MaxValueOfWorkers;
         string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
@@ -282,7 +283,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 break;
         }
 
-        JSONSerializeManager.Instance.JSONSave();
+        await JSONSerializeManager.Instance.JSONSave();
         
         return null;
     }

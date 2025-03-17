@@ -59,7 +59,6 @@ public class WorkersInterBuildingControl : MonoBehaviour
         CurrentBuilding = null;
         // thisWorker = null;
         firstMouseEnterOutlineIndicator = true;
-        SelectedUnit = null;
         SelectingUnit = null;
     }
 
@@ -158,17 +157,26 @@ public class WorkersInterBuildingControl : MonoBehaviour
             if (DroneTypes.Contains(SelectedUnit.ThisUnitType))
             {
                 DroneMovementController droneMovementController = SelectedUnit as DroneMovementController;
-                if (droneMovementController != null)
+                if (droneMovementController != null && !droneMovementController.CheckForNonGroundObjects())
                 {
-                    droneMovementController.StartLanding(); // Начало подъема дрона 
+                    droneMovementController.StartLanding(); // Начало посадки дрона 
+                    //Debug.Log($"<color=yellow> Снято выделение с выбранного юнита </color>");
+                    SelectedUnit.isSelected = false;
+                    SelectedUnit.isSelecting = false;
+                    SelectedUnit.OutlineRotate.SetActive(false);
+                    SelectedUnit = null;
+                    UIManager.CancelLastOpenPanelEvent -= ResetSelectedUnit;
                 }
             }
-            //Debug.Log($"<color=yellow> Снято выделение с выбранного юнита </color>");
-            SelectedUnit.isSelected = false;
-            SelectedUnit.isSelecting = false;
-            SelectedUnit.OutlineRotate.SetActive(false);
-            SelectedUnit = null;
-            UIManager.CancelLastOpenPanelEvent -= ResetSelectedUnit;
+            else
+            {
+                //Debug.Log($"<color=yellow> Снято выделение с выбранного юнита </color>");
+                SelectedUnit.isSelected = false;
+                SelectedUnit.isSelecting = false;
+                SelectedUnit.OutlineRotate.SetActive(false);
+                SelectedUnit = null;
+                UIManager.CancelLastOpenPanelEvent -= ResetSelectedUnit;
+            }
         }
     }
 

@@ -1101,8 +1101,8 @@ Transform:
   m_GameObject: {fileID: 3453498794941356753}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.698358, z: -0, w: 0.7157487}
-  m_LocalPosition: {x: -37.825397, y: 3.655159, z: -67.91023}
-  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8538514924523355512}
@@ -1113,6 +1113,7 @@ Transform:
   - {fileID: 3123533105030421494}
   - {fileID: 2270504719492220186}
   - {fileID: 4046305015241928933}
+  - {fileID: 6524837196708358095}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -88.591, z: 0}
 --- !u!1 &4560764129011724311
@@ -1409,7 +1410,7 @@ Transform:
   m_GameObject: {fileID: 5194798073295020699}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.9995907, z: -0, w: -0.028609635}
-  m_LocalPosition: {x: -2.5, y: 0.104871035, z: 22.9}
+  m_LocalPosition: {x: -2.3, y: 0.104871035, z: 19.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1518,10 +1519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u0435\u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C
-    \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0433\u043E \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E
-    \u043D\u0430 \u044D\u0442\u043E \u0437\u0434\u0430\u043D\u0438\u0435:\n\u0420\u0430\u0431\u043E\u0447\u0438\u0439
-    \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u043F\u0430\u0441\u0435\u0447\u043D\u0438\u043A\u043E\u043C"
+  m_text: ssssssss
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
   m_sharedMaterial: {fileID: 8713269978437595444, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
@@ -1548,12 +1546,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5.81
+  m_fontSize: 6.85
   m_fontSizeBase: 5.81
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5.6
+  m_fontSizeMax: 64.5
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
@@ -1607,6 +1605,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d132e4bab5d843bb13b940b9004b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5360217393968671589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6524837196708358095}
+  - component: {fileID: 8050061903243696758}
+  - component: {fileID: 5049142820614121338}
+  - component: {fileID: 5531950446062748454}
+  m_Layer: 7
+  m_Name: CheckDroneTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6524837196708358095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360217393968671589}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.8, y: 0, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1302777760609511827}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8050061903243696758
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360217393968671589}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &5049142820614121338
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360217393968671589}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14.661766, y: 1, z: 21.440811}
+  m_Center: {x: -6.8308773, y: 0, z: 1.2462667}
+--- !u!114 &5531950446062748454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360217393968671589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb489890685dfee41baed338e9dd1cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engineeringModule: {fileID: 2870848199763027112}
 --- !u!1 &5734931254427546662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,6 +1693,7 @@ GameObject:
   - component: {fileID: 4824720742931322056}
   - component: {fileID: 517443707910621167}
   - component: {fileID: 8437871356377438773}
+  - component: {fileID: 2870848199763027112}
   m_Layer: 7
   m_Name: TechTriggerScripts
   m_TagString: ClickOnBuilding
@@ -1666,7 +1741,7 @@ MonoBehaviour:
   Title: "\u0418\u043D\u0436\u0435\u043D\u0435\u0440\u043D\u044B\u0439 \u043C\u043E\u0434\u0443\u043B\u044C"
   Level: 1
   Durability: 100
-  Storage: 
+  Storage: 00000000
   Production: 
   HoneyConsumption: 10
   SaveListIndex: 0
@@ -1689,18 +1764,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OpenDescriptionPanel: {fileID: 11400000, guid: 0d9b22dcf1857b944bdeffd19b8f09ee, type: 2}
-  PossiblityPutEInThisBuilding: 0
+  PossiblityPutEInThisBuilding: 1
   OnlyShowText: 0
-  nameOfFunction: 
+  nameOfFunction: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0434\u0440\u043E\u043D"
   InteractionEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2870848199763027112}
+        m_TargetAssemblyTypeName: EngineeringModule, Assembly-CSharp
+        m_MethodName: CreateDrone
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6714352858663713054}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   TextOnEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2870848199763027112}
+        m_TargetAssemblyTypeName: EngineeringModule, Assembly-CSharp
+        m_MethodName: TextOn
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6714352858663713054}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   IsThereBarterHere: 0
   OpenBarterMenuEvent: {fileID: 0}
   CloseBarterMenuEvent: {fileID: 0}
+  IsThisLogisticsIncluded: 0
+  awaitDroneLogistics: 0
   PointsOfBuildings:
   - {fileID: 427550019803902708}
   - {fileID: 2777084632413483549}
@@ -1710,7 +1811,7 @@ MonoBehaviour:
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  Texthint: {fileID: 0}
+  Texthint: {fileID: 5244382425499383236}
 --- !u!65 &8437871356377438773
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1730,8 +1831,39 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 32.285217, y: 21.657228, z: 30.321785}
+  m_Size: {x: 40.4, y: 21.657228, z: 37}
   m_Center: {x: -1.0102034, y: 10.328614, z: 1.8269634}
+--- !u!114 &2870848199763027112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734931254427546662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eca405b7f298f44ea2318c45284d0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productionRate: 5000
+  droneBuildingPrice: 40
+  textOnTime: 5
+  dronePrefab: {fileID: 84898860335556800, guid: 0bee92f4828365f429c01d42b18ed83f, type: 3}
+  mainDroneProductionText: "\u0414\u043B\u044F \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F
+    \u0434\u0440\u043E\u043D\u0430 \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043A\u043B\u0430\u0432\u0438\u0448\u0443
+    \u0415"
+  maximumSlotsDroneProductionText: "\u0412\u0441\u0435 \u0441\u043B\u043E\u0442\u044B
+    \u0437\u0430\u043D\u044F\u0442\u044B"
+  maximumSlotsDroneProductionText2: "\u0414\u043B\u044F \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u044F
+    \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0430 \u0441\u043B\u043E\u0442\u043E\u0432
+    \u043F\u043E\u0432\u044B\u0448\u0430\u0439\u0442\u0435 \u0443\u0440\u043E\u0432\u0435\u043D\u044C
+    \u0437\u0434\u0430\u043D\u0438\u044F"
+  droneLeaveHint: "\u0420\u0430\u0441\u0447\u0438\u0441\u0442\u0438\u0442\u0435 \u043F\u043B\u043E\u0449\u0430\u0434\u043A\u0443
+    \u0434\u043B\u044F \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F \u0434\u0440\u043E\u043D\u0430"
+  notEnoughIron: "\u041D\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432
+    \u0434\u043B\u044F \u043F\u043E\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0434\u0440\u043E\u043D\u0430"
+  isSpawnPointFree: 0
+  spawnPoint: {fileID: 4046305015241928933}
 --- !u!1 &7534475591212607999
 GameObject:
   m_ObjectHideFlags: 0

@@ -98,6 +98,8 @@ public class ResourceMiner : MonoBehaviour
             {
                  await MinerCCAsync( _buildingData);
             }
+            
+            await JSONSerializeManager.Instance.JSONSave();
         }
     }
 
@@ -120,9 +122,10 @@ public class ResourceMiner : MonoBehaviour
             {
                 _animator.SetBool(stopMineAnimationKey, false);
                 
+                await Task.Delay(TimeProduction);
+                
                 buildingData.Storage[0] += buildingData.Production[0];
                 
-                await Task.Delay(TimeProduction);
             } 
             
             // Если превысит, добираем недостающее количество ресурса до лимита
@@ -142,12 +145,22 @@ public class ResourceMiner : MonoBehaviour
                 isRunning = false;
             }
 
+            await JSONSerializeManager.Instance.JSONSave();
+            
+            InteractionBuildingController interactionBuildingController = GetComponent<InteractionBuildingController>();
+            
+            foreach (var obj in interactionBuildingController.objectsInTrigger)
+            {
+                if (obj.GetComponent<DroneMovementController>())
+                {
+                    interactionBuildingController.DroneArriveToMiner(obj.GetComponent<DroneMovementController>());
+                }
+            }
+
             if (isRunning)
             {
                 TextMinerChanger();
             }
-            
-            JSONSerializeManager.Instance.JSONSave();
             
         }
     }
@@ -172,9 +185,11 @@ public class ResourceMiner : MonoBehaviour
             {
                 _animator.SetBool(stopMineAnimationKey, false);
                 
+                await Task.Delay(TimeProduction);
+                
                 buildingData.Storage[1] += buildingData.Production[1];
                 
-                await Task.Delay(TimeProduction);
+                
             } 
             
             // Если превысит, добираем недостающее количество ресурса до лимита
@@ -194,12 +209,23 @@ public class ResourceMiner : MonoBehaviour
                 isRunning = false;
             }
             
+            await JSONSerializeManager.Instance.JSONSave();
+            
+            InteractionBuildingController interactionBuildingController = GetComponent<InteractionBuildingController>();
+            
+            foreach (var obj in interactionBuildingController.objectsInTrigger)
+            {
+                if (obj.GetComponent<DroneMovementController>())
+                {
+                    interactionBuildingController.DroneArriveToMiner(obj.GetComponent<DroneMovementController>());
+                }
+            }
+            
             if (isRunning)
             {
                 TextMinerChanger();
             }
             
-            JSONSerializeManager.Instance.JSONSave();
             
         }
     }

@@ -19,6 +19,7 @@ public class PauseUIManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         PauseOnEvent.TriggerEvent();
+        WorkersInterBuildingControl.possiilityControlEntities = false;
         UIManager.CancelLastOpenPanelEvent += PauseOff;
     }
 
@@ -27,6 +28,7 @@ public class PauseUIManager : MonoBehaviour
         Debug.Log($"<color=yellow> Вернулись в игру из паузы </color>");
         Time.timeScale = 1f;
         PauseOffEvent.TriggerEvent();
+        WorkersInterBuildingControl.possiilityControlEntities = true;
         UIManager.CancelLastOpenPanelEvent -= PauseOff;
     }
 
@@ -96,9 +98,9 @@ public class PauseUIManager : MonoBehaviour
     }
     
     
-    public void QuitGame()
+    public async void QuitGame()
     {
-        JSONSerializeManager.Instance.JSONSave();
+        await JSONSerializeManager.Instance.JSONSave();
         Application.Quit();
         Debug.Log("Quit");
     }

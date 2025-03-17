@@ -567,6 +567,21 @@ MonoBehaviour:
   unitType: 3
   IsWorkerAtWork: 0
   SaveListIndex: 0
+  droneSaveData:
+    LogisticsStorage: 0
+    buildingDataLogistics:
+      Level: 0
+      Durability: 0
+      Storage: 
+      SaveListIndex: 0
+      HoneyConsumption: 0
+      Production: 
+    IsLogisticsCycleActive: 0
+    isFlyNow: 0
+    isPlaceNow: 0
+    isTakingOff: 0
+    isLanding: 0
+    isMovingToLandingSpot: 0
 --- !u!114 &4943624194290128509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,7 +621,7 @@ MonoBehaviour:
   upSpeed: 1
   downSpeed: 2
   droneFlyHeight: 200
-  landingBoxSize: {x: 745.4, y: 751.5, z: 579.3}
+  landingBoxSize: {x: 55.2, y: 495.8, z: 65.5}
   takeoffCurve:
     serializedVersion: 2
     m_Curve:

@@ -162,6 +162,8 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 {
                     WorkersInterBuildingControl.Instance.AddNewBuilding(null);
                 }
+                
+                CurrentPlayersDataControl.currentBuildingsDatas.Add(buildingData);
                 index++;
             }
         }
@@ -204,6 +206,8 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 workerData.IsWorkerAtWork = workerDatas[i].IsWorkerAtWork;
                 workerData.SaveListIndex = workerDatas[i].SaveListIndex;
                 workerData.unitType = workerDatas[i].unitType;
+                workerData.droneSaveData = workerDatas[i].droneSaveData;
+                workerData.InitializeLogisticsStorage();
 
                 workerData.gameObject.GetComponent<IWorkerUnit>().MainCamera =
                     WorkersInterBuildingControl.MainCamera;
@@ -339,17 +343,52 @@ public class WorkersControlSaveData
 }
 
 [System.Serializable]
+public class DroneSaveData
+{
+    public int LogisticsStorage;
+    public BuildingSaveData buildingDataLogistics;
+    public bool IsLogisticsCycleActive;
+    public bool isFlyNow;
+    public bool isPlaceNow;
+    public bool isTakingOff; 
+    public bool isLanding;
+    public bool isMovingToLandingSpot;
+
+    public DroneSaveData(DroneMovementController droneMovementController)
+    {
+        LogisticsStorage = droneMovementController.LogisticsStorage;
+        Debug.Log($"LogisticsStorage = {LogisticsStorage}");
+        if (droneMovementController.buildingDataLogistics != null)
+        {
+            BuildingSaveData buildingSaveData = new BuildingSaveData(droneMovementController.buildingDataLogistics);
+            buildingDataLogistics = buildingSaveData;
+        }
+        else
+        {
+            buildingDataLogistics = null;
+        }
+        IsLogisticsCycleActive = droneMovementController.IsLogisticsCycleActive;
+        isFlyNow = droneMovementController.isFlyNow;
+        isPlaceNow = droneMovementController.isPlaceNow;
+        isTakingOff = droneMovementController.isTakingOff;
+        isMovingToLandingSpot = droneMovementController.isMovingToLandingSpot;
+    }
+}
+
+[System.Serializable]
 public class WorkersDataSaveData
 {
     public bool IsWorkerAtWork;
     public int SaveListIndex;
-    [FormerlySerializedAs("workerType")] public UnitType unitType;
+    public UnitType unitType;
+    public DroneSaveData droneSaveData;
 
     public WorkersDataSaveData(WorkerData workerData)
     {
         IsWorkerAtWork = workerData.IsWorkerAtWork;
         SaveListIndex = workerData.SaveListIndex;
         unitType = workerData.unitType;
+        droneSaveData = workerData.droneSaveData;
     }
 }
 

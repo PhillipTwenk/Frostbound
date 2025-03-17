@@ -45,7 +45,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     /// Спавн рабочего около здания 
     /// </summary>
     /// <param name="text"></param>
-    public void SpawnWorkersInThisBuilding(TextMeshPro text)
+    public async void SpawnWorkersInThisBuilding(TextMeshPro text)
     {
         if (CurrentNumberWorkersInThisBuilding > 0 && CurrentWorkerDataInThisBuilding != null)
         {
@@ -68,7 +68,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
             
             TextChanger(text);
             
-            JSONSerializeManager.Instance.JSONSave();
+            await JSONSerializeManager.Instance.JSONSave();
         }
         else if (CurrentWorkerDataInThisBuilding == null && CurrentNumberWorkersInThisBuilding > 0)
         {

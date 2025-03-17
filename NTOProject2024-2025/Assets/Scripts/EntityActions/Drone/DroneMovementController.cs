@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
@@ -89,7 +90,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
     #region Переменные
 
     [Header("Flags")]
-    private bool IsClickOnOtherEntity;
+    public bool IsClickOnOtherEntity;
     public bool isFlyNow;
     public bool isPlaceNow;
     public bool isTakingOff; 
@@ -101,8 +102,8 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
     public GameObject outlinePOD;
 
     [Header("Animations")]
-    [SerializeField] private string droneFly_AK;
-    private Animator anim;
+    public string droneFly_AK;
+    [NonSerialized] public Animator anim;
     
     [Header("Core")]
     [SerializeField] private string NameOfTTS;
@@ -148,20 +149,15 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         _thisWorkerData = GetComponent<WorkerData>(); 
         
         ReadyForWork = true;
-        isSelected = false;
         isSelecting = false;
         IsClickOnOtherEntity = false;
         PossibilityClickOnUnit = true;
-        isPlaceNow = true;
-        IsLogisticsCycleActive = false;
         
         currentWalkingPoint.gameObject.SetActive(false);
         OutlinePOD.SetActive(false);
-        OutlineRotate.SetActive(false);
 
         unitType = _thisWorkerData.unitType;
-
-        agent.enabled = false; 
+        
         _rb.useGravity = false;
     }
 
@@ -171,7 +167,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
 
     void Update()
     {
-        if (isFlyNow && (isSelected || IsLogisticsCycleActive))
+        if (isFlyNow)
         {
             MovementHandler();
         }
@@ -183,7 +179,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition); 
         Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.red, 5f);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask, QueryTriggerInteraction.Ignore) && isSelected)
+        if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask, QueryTriggerInteraction.Ignore))
         {
             lastPosition = hit.point;
 
@@ -195,12 +191,14 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
             else if (hit.collider.CompareTag("ClickOnWorker") || hit.collider.CompareTag("Player")) 
             {
                 IsClickOnOtherEntity = true;
+                isSelected = false;
                 SelectedBuilding = null;
             }
             else
             {
                 IsClickOnOtherEntity = false;
                 IsLogisticsCycleActive = false;
+                Debug.Log($"IsLogisticsCycleActive={IsLogisticsCycleActive}");
                 SelectedBuilding = null;
                 OutlinePOD.SetActive(true);
             }
@@ -226,9 +224,9 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         if (isMovingToLandingSpot || isLanding) return;
         
         
-        if ((isSelected || IsLogisticsCycleActive) && WorkersInterBuildingControl.possiilityControlEntities && isFlyNow)
+        if (isSelected && WorkersInterBuildingControl.possiilityControlEntities && isFlyNow)
         {
-            if ((Input.GetMouseButtonDown(0) && !isSelecting) || IsLogisticsCycleActive)
+            if (Input.GetMouseButtonDown(0) && !isSelecting)
             {
                 Vector3 point = GetSelectedMapPosition();
                 currentWalkingPoint.gameObject.SetActive(true);
@@ -332,6 +330,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
     public void StartLanding()
     {
         Debug.Log($"Состояние дрона: isFlyNow={isFlyNow}, isLanding={isLanding}, isPlaceNow={isPlaceNow}, isTakingOff={isTakingOff}");
+        
         if (!isLanding && isFlyNow && !isTakingOff && !IsLogisticsCycleActive)
         {
             
@@ -350,16 +349,8 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
                 landingPos.y,
                 transform.position.z
             );
-
-            if (Vector3.Distance(projectedPos, landingPos) > 1f)
-            {
-                StartCoroutine(MoveToLandingSpot(landingPos));
-            }
-            else
-            {
-                // Если точка под дроном, садимся сразу
-                StartCoroutine(LandingCoroutine(landingPos));
-            }
+            
+            StartCoroutine(LandingCoroutine(landingPos));
         }
     }
 
@@ -408,33 +399,28 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         }
         return transform.position;
     }
-
-    private IEnumerator MoveToLandingSpot(Vector3 targetGroundPosition)
+    
+    public bool CheckForNonGroundObjects()
     {
-        Debug.Log($"Процесс полета к нужной точке перед посадкой");
-        // Вычисляем позицию над точкой посадки (на высоте полета)
-        Vector3 targetAirPosition = new Vector3(
-            targetGroundPosition.x,
-            droneFlyHeight,
-            targetGroundPosition.z
-        );
+        // Создаём маску для слоёв, которые нужно проверять
+        int forbiddenLayers = LayerMask.GetMask("Env", "Building", "LayerClickOnBuilding", "LayerClickOnPlayer", "LayerClickOnWorker");
 
-        // Включаем режим перемещения к точке
-        isMovingToLandingSpot = true;
+        // Получаем все коллайдеры в области landingBoxSize на указанных слоях
+        Collider[] colliders = Physics.OverlapBox(transform.position, landingBoxSize / 2, Quaternion.identity, forbiddenLayers);
 
-        // Летим к позиции над целью
-        agent.enabled = true;
-        agent.SetDestination(targetAirPosition);
-
-        // Ждем, пока дрон долетит
-        while (Vector3.Distance(transform.position, targetAirPosition) > 0.5f)
+        // Исключаем из проверки сам объект и его дочерние объекты
+        foreach (var collider in colliders)
         {
-            yield return null;
+            // Проверяем, что коллайдер не принадлежит текущему объекту или его дочерним объектам
+            if (!collider.transform.IsChildOf(transform))
+            {
+                // Если найден объект на запрещённом слое, возвращаем true
+                return true;
+            }
         }
 
-        // Начинаем посадку
-        isMovingToLandingSpot = false;
-        StartCoroutine(LandingCoroutine(targetGroundPosition));
+        // Если запрещённых объектов не найдено, возвращаем false
+        return false;
     }
     
     private void OnDrawGizmos()
@@ -452,9 +438,17 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
     /// 
     /// </summary>
     /// <param name="ToTheBase"></param>
-    public void LogisticsCycleToggle(bool ToTheBase, BuildingData buildingTransform)
+    public void LogisticsCycleMovementHandler()
     {
-       
+        if (IsLogisticsCycleActive && SelectedBuilding != null)
+        {
+            currentWalkingPoint.transform.position 
+                = new Vector3(SelectedBuilding.transform.position.x, 
+                    SelectedBuilding.transform.position.y + droneFlyHeight, 
+                    SelectedBuilding.transform.position.z);
+            
+            SetUnitDestination(currentWalkingPoint.transform, false);
+        }
     }
 
     #endregion
