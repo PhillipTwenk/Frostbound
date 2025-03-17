@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
 using RTS_Cam;
 using TMPro;
+using Unitilities;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,22 +34,32 @@ public class InteractionBuildingController : MonoBehaviour
     public List<Transform> PointsOfBuildings;
     public Transform spawnWorker;
     private BuildingData _buildingData;
+    private CompletionOfConstructionController _completionOfConstructionController;
 
     [Header("Layer masks")]
     [SerializeField] private LayerMask placementLayerMask; // Для клика по зданию
     
     [Header("Hint")]
     public GameObject Texthint;
+    public float textOnTime;
+    
 
     private void Start()
     {
         _buildingData = GetComponent<BuildingData>();
+        _completionOfConstructionController = GetComponent<CompletionOfConstructionController>();
         CanPutE = false;
         IsTextStartWorkingActive = false;
-        // if (_buildingData.buildingTypeSO.IDoB == 3)
-        // {
-        //     Texthint.SetActive(false);
-        // }
+
+        PlayerNearBuilding((() =>
+        {
+            CanPutE = true;
+            if (_buildingData.IsThisBuilt)
+            {
+                TextOnEvent?.Invoke();
+                Texthint.SetActive(true);
+            }
+        }));
     }
 
     private void Update()
@@ -61,11 +71,11 @@ public class InteractionBuildingController : MonoBehaviour
         }
         
         // Нажатие на здание 
-        Ray ray = WorkersInterBuildingControl.MainCamera.ScreenPointToRay(Input.mousePosition); 
+        Ray ray = GeneralWorkersControl.MainCamera.ScreenPointToRay(Input.mousePosition); 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000f, placementLayerMask))
         {
-            if (hit.collider.CompareTag("ClickOnBuilding") && hit.collider.transform.parent.gameObject == this.gameObject && Input.GetMouseButtonDown(0) && WorkersInterBuildingControl.SelectedUnit == null)
+            if (hit.collider.CompareTag("ClickOnBuilding") && hit.collider.transform.parent.gameObject == this.gameObject && Input.GetMouseButtonDown(0) && GeneralWorkersControl.SelectedUnit == null)
             {
                 OnMouseDownBuilding();
             }
@@ -100,81 +110,31 @@ public class InteractionBuildingController : MonoBehaviour
             Debug.Log("Рабочий около здания");
             
             // Если данное здание не построено, прибежавший рабочий занят постройкой, и это здание является для него выделенным
-            if (!_buildingData.IsThisBuilt && unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>().buildingTypeSO.IDoB == GetComponent<BuildingData>().buildingTypeSO.IDoB)
+            if (!_buildingData.IsThisBuilt && unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>() == GetComponent<BuildingData>())
             {
                 // у рабочего пропадает цель следования
                 IWorkerUnit movementController = other.gameObject.GetComponent<IWorkerUnit>();
+                GameObject worker = other.gameObject;
+                WorkerData workerData = worker.GetComponent<WorkerData>();
                 movementController.UnitPointOfDestination = null;
-                    
-                other.transform.LookAt(WorkersInterBuildingControl.CurrentBuilding.transform);
-                    
-                Debug.Log(WorkersInterBuildingControl.CurrentBuilding.Title);
+                movementController.PossibilityClickOnUnit = false;
+                other.transform.LookAt(_buildingData.transform);
                     
                 Debug.Log("Рабочий добрался, начинает строить здание");
-                WorkersInterBuildingControl.Instance.NotifyWorkerArrival();
+                _completionOfConstructionController.NotifyWorkerArrival(workerData);
 
-                GameObject worker = other.gameObject;
-                WorkersInterBuildingControl.Instance.StartAnimationBuilding(worker.GetComponent<IWorkerUnit>(), GetComponent<BuildingData>(), spawnWorker, worker.GetComponent<WorkerData>());
-                
-                worker.SetActive(false);
-                return;
+                if (workerData.unitType != UnitType.MainDrone)
+                {
+                    worker.SetActive(false);
+                }
             }
             // Рабочий прибыл не для строительства
-            else if (_buildingData.IsThisBuilt && !unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>().buildingTypeSO.IDoB == GetComponent<BuildingData>().buildingTypeSO.IDoB)
+            else if (_buildingData.IsThisBuilt && !unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>() == GetComponent<BuildingData>())
             {
                 // Здание может содержать рабочих
                 if (GetComponent<ThisBuildingWorkersControl>())
                 {
-                    WorkersInterBuildingControl.Instance.NumberOfFreeWorkers -= 1;
-                    Debug.Log($"<color=green>Свободные рабочие - 1: {WorkersInterBuildingControl.Instance.NumberOfFreeWorkers}</color>");
-                    ThisBuildingWorkersControl thisBuildingWorkersControl = GetComponent<ThisBuildingWorkersControl>();
-                    TextMeshPro text = Texthint.GetComponent<TextMeshPro>();
-                    if (thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding < thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding)
-                    {
-                        thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding += 1;
-                        if (GetComponent<EnergyProduction>())
-                        {
-                            EnergyProduction energyProduction = GetComponent<EnergyProduction>();
-                            energyProduction.OnAddEnergy();
-                            string newText = $"{_buildingData.Title} запущен ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
-                            if (!text.gameObject.activeSelf)
-                            {
-                                text.gameObject.SetActive(true);
-                                IsTextStartWorkingActive = true;
-                                Utility.Invoke(this, () =>
-                                {
-                                    if (text.text == newText)
-                                    {
-                                        IsTextStartWorkingActive = false;
-                                        text.gameObject.SetActive(false);
-                                    }
-                                }, 4f);
-                            }
-
-                            text.text = newText;
-                        }
-                        else
-                        {
-                            text.text = $"Нажмите E чтобы выгрузить одного рабочего ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
-                        }
-
-                        other.gameObject.GetComponent<WorkerData>().IsWorkerAtWork = true;
-                        
-                        GetComponent<ThisBuildingWorkersControl>().currentWorkerInThisBuilding =
-                            other.gameObject.GetComponent<WorkerMovementController>();
-                        GetComponent<ThisBuildingWorkersControl>().CurrentWorkerDataInThisBuilding =
-                            other.gameObject.GetComponent<WorkerData>();
-                        other.gameObject.transform.parent.gameObject.SetActive(false);
-                        
-                        
-                        PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
-                        playerSaveData.BuildingWorkersInformationList[_buildingData.SaveListIndex]
-                                .CurrentNumberOfWorkersInThisBuilding =
-                            GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding;
-                        
-                        await JSONSerializeManager.Instance.JSONSave();
-                        return;
-                    }
+                    WorkerComeToBuilding(other);
                 } 
                 // Здание добывает ресурсы
                 else if (IsThisLogisticsIncluded && unitMovementController is IUnitLogistics)
@@ -199,6 +159,10 @@ public class InteractionBuildingController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Юнит, участвующий в системе логистики подошел к зданию
+    /// </summary>
+    /// <param name="unitMovementController"></param>
     public async void DroneArriveToMiner(IWorkerUnit unitMovementController)
     {
         Debug.Log($"<color=yellow> К зданию {_buildingData.Title} подлетел дрон");
@@ -219,29 +183,34 @@ public class InteractionBuildingController : MonoBehaviour
                 {
                     Debug.Log($"<color=yellow> У дрона есть место для ресурсов");
                     await Task.Delay(awaitDroneLogistics);
-                
-                    if (!droneMovementController.IsLogisticsCycleActive)
-                    {
-                        Debug.Log($"<color=yellow> Дрон не был задействован в логистике, ЗАПУСК");
-                        droneMovementController.IsLogisticsCycleActive = true;
-                        droneMovementController.buildingDataLogistics = _buildingData;
-                        WorkersInterBuildingControl.Instance.ResetSelectedUnit();
-                    }
 
-                    if (droneMovementController.LogisticsStorage <  _buildingData.Storage[resourceIndex])
+                    if (CheckDroneIsHereAfterWaiting(droneMovementController))
                     {
-                        droneMovementController.LogisticsStorage += limitsResource;
-                        _buildingData.Storage[resourceIndex] -= limitsResource;
-                    }
-                    else
-                    {
-                        droneMovementController.LogisticsStorage += _buildingData.Storage[resourceIndex];
-                        _buildingData.Storage[resourceIndex] = 0;
+                        Debug.Log($"<color=yellow> Дрон готов принять ресурсы");
+                        if (!droneMovementController.IsLogisticsCycleActive)
+                        {
+                            Debug.Log($"<color=yellow> Дрон не был задействован в логистике, ЗАПУСК");
+                            droneMovementController.IsLogisticsCycleActive = true;
+                            droneMovementController.buildingDataLogistics = _buildingData;
+                            GeneralWorkersControl.Instance.ResetSelectedUnit();
+                        }
+
+                        if (droneMovementController.LogisticsStorage <  _buildingData.Storage[resourceIndex])
+                        {
+                            droneMovementController.LogisticsStorage += limitsResource;
+                            _buildingData.Storage[resourceIndex] -= limitsResource;
+                        }
+                        else
+                        {
+                            droneMovementController.LogisticsStorage += _buildingData.Storage[resourceIndex];
+                            _buildingData.Storage[resourceIndex] = 0;
+                        }
+                    
+                        droneMovementController.SelectedBuilding = buildingDataMB.gameObject;
+                        droneMovementController.LogisticsCycleMovementHandler();
+                        Debug.Log($"<color=yellow>Ресурсы дрона: {droneMovementController.LogisticsStorage}, здание назначения: {droneMovementController.SelectedBuilding.GetComponent<BuildingData>().Title}, {droneMovementController.IsLogisticsCycleActive}");
                     }
                     
-                    droneMovementController.SelectedBuilding = buildingDataMB.gameObject;
-                    droneMovementController.LogisticsCycleMovementHandler();
-                    Debug.Log($"<color=yellow>Ресурсы дрона: {droneMovementController.LogisticsStorage}, здание назначения: {droneMovementController.SelectedBuilding.GetComponent<BuildingData>().Title}, {droneMovementController.IsLogisticsCycleActive}");
                 }
             }
         }
@@ -251,47 +220,117 @@ public class InteractionBuildingController : MonoBehaviour
             if (droneMovementController.LogisticsStorage > 0  &&  droneMovementController.SelectedBuilding == this.gameObject && droneMovementController.buildingDataLogistics != null && droneMovementController.buildingDataLogistics.GetComponent<ResourceMiner>())
             {
                 await Task.Delay(awaitDroneLogistics);
-                
-                if (!droneMovementController.IsLogisticsCycleActive)
+
+                if (CheckDroneIsHereAfterWaiting(droneMovementController))
                 {
-                    Debug.Log($"<color=yellow> Дрон не был задействован в логистике, ЗАПУСК");
-                    droneMovementController.IsLogisticsCycleActive = true;
-                    WorkersInterBuildingControl.Instance.ResetSelectedUnit();
+                    Debug.Log($"<color=yellow> Дрон готов отдать ресурсы");
+                    if (!droneMovementController.IsLogisticsCycleActive)
+                    {
+                        Debug.Log($"<color=yellow> Дрон не был задействован в логистике, ЗАПУСК");
+                        droneMovementController.IsLogisticsCycleActive = true;
+                        GeneralWorkersControl.Instance.ResetSelectedUnit();
+                    }
+
+                    EntityID currentPlayer = CurrentPlayersDataControl.WhichPlayerCreate;
+                    PlayerResources playerResources = await APIManager.Instance.GetPlayerResources(currentPlayer);
+                    ResourceMiner resourceMiner =
+                        droneMovementController.buildingDataLogistics.GetComponent<ResourceMiner>();
+                    int resourceIndex = (int)resourceMiner._minerType;
+                    
+                    if (resourceIndex == 0)
+                    {
+                        playerResources.Iron += droneMovementController.LogisticsStorage;
+                        Debug.Log($"<color=yellow> Выгружаем металл: {playerResources.Iron}");
+                    }
+                    else
+                    {
+                        playerResources.CryoCrystal += droneMovementController.LogisticsStorage;
+                        Debug.Log($"<color=yellow> Выгружаем кристаллы: {playerResources.CryoCrystal}");
+                    }
+
+                    droneMovementController.LogisticsStorage = 0;
+
+                    await SyncManager.Enqueue(async () =>
+                    {
+                        await APIManager.Instance.PutPlayerResources(currentPlayer, playerResources.Iron, playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
+                    });
+                    
+                    droneMovementController.UpdateResourcesEvent.TriggerEvent();
+
+                    Debug.Log($"<color=yellow> Летим обратно к добытчику, {droneMovementController.IsLogisticsCycleActive}");
+                    droneMovementController.SelectedBuilding =
+                        droneMovementController.buildingDataLogistics.gameObject;
+                    droneMovementController.LogisticsCycleMovementHandler();
                 }
-
-                EntityID currentPlayer = CurrentPlayersDataControl.WhichPlayerCreate;
-                PlayerResources playerResources = await APIManager.Instance.GetPlayerResources(currentPlayer);
-                ResourceMiner resourceMiner =
-                    droneMovementController.buildingDataLogistics.GetComponent<ResourceMiner>();
-                int resourceIndex = (int)resourceMiner._minerType;
-                
-                if (resourceIndex == 0)
-                {
-                    playerResources.Iron += droneMovementController.LogisticsStorage;
-                    Debug.Log($"<color=yellow> Выгружаем металл: {playerResources.Iron}");
-                }
-                else
-                {
-                    playerResources.CryoCrystal += droneMovementController.LogisticsStorage;
-                    Debug.Log($"<color=yellow> Выгружаем кристаллы: {playerResources.CryoCrystal}");
-                }
-
-                droneMovementController.LogisticsStorage = 0;
-
-                await SyncManager.Enqueue(async () =>
-                {
-                    await APIManager.Instance.PutPlayerResources(currentPlayer, playerResources.Iron, playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                });
-                
-                droneMovementController.UpdateResourcesEvent.TriggerEvent();
-
-                Debug.Log($"<color=yellow> Летим обратно к добытчику, {droneMovementController.IsLogisticsCycleActive}");
-                droneMovementController.SelectedBuilding =
-                    droneMovementController.buildingDataLogistics.gameObject;
-                droneMovementController.LogisticsCycleMovementHandler();
 
             }
         }
+    }
+
+    /// <summary>
+    /// Рабочий пришел в здание, которое может содержать рабочих
+    /// </summary>
+    /// <param name="other"></param>
+    public async void WorkerComeToBuilding(Collider other)
+    {
+         GeneralWorkersControl.Instance.NumberOfFreeWorkers -= 1;
+        Debug.Log($"<color=green>Свободные рабочие - 1: {GeneralWorkersControl.Instance.NumberOfFreeWorkers}</color>");
+        ThisBuildingWorkersControl thisBuildingWorkersControl = GetComponent<ThisBuildingWorkersControl>();
+        TextMeshPro text = Texthint.GetComponent<TextMeshPro>();
+        if (thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding < thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding)
+        {
+            thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding += 1;
+            if (GetComponent<EnergyProduction>())
+            {
+                EnergyProduction energyProduction = GetComponent<EnergyProduction>();
+                energyProduction.OnAddEnergy();
+                string newText = $"{_buildingData.Title} запущен ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
+                TemporaryText(text, newText);
+            }
+            else
+            {
+                text.text = $"Нажмите E чтобы выгрузить одного рабочего ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
+            }
+
+            other.gameObject.GetComponent<WorkerData>().IsWorkerAtWork = true;
+            
+            GetComponent<ThisBuildingWorkersControl>().currentWorkerInThisBuilding =
+                other.gameObject.GetComponent<WorkerMovementController>();
+            GetComponent<ThisBuildingWorkersControl>().CurrentWorkerDataInThisBuilding =
+                other.gameObject.GetComponent<WorkerData>();
+            other.gameObject.transform.parent.gameObject.SetActive(false);
+            
+            
+            PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
+            playerSaveData.BuildingWorkersInformationList[_buildingData.SaveListIndex]
+                    .CurrentNumberOfWorkersInThisBuilding =
+                GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding;
+            
+            await JSONSerializeManager.Instance.JSONSave();
+        }
+    }
+    
+    /// <summary>
+    /// Показ текста, который пропадет через определенное время 
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="whichText"></param>
+    private void TemporaryText(TextMeshPro text, string whichText)
+    {
+        text.gameObject.SetActive(true);
+        text.text = whichText;
+        Utility.Invoke(this, () =>
+        {
+            foreach (var obj in objectsInTrigger)
+            {
+                if (obj.gameObject.CompareTag("Player"))
+                {
+                    TextOnEvent?.Invoke();
+                    return;
+                }
+            }
+            text.gameObject.SetActive(false);
+        }, textOnTime);
     }
 
     /// <summary>
@@ -324,5 +363,58 @@ public class InteractionBuildingController : MonoBehaviour
     public void CloseBarterMenu()
     {
         CloseBarterMenuEvent.TriggerEvent();
+    }
+
+    /// <summary>
+    /// Проверяет, находится ли после ожидания данный участник системы логистики в триггере
+    /// Если нет, то передачи ресурсов не произойдет
+    /// </summary>
+    /// <param name="unitLogistics"></param>
+    /// <returns></returns>
+    private bool CheckDroneIsHereAfterWaiting(IUnitLogistics unitLogistics)
+    {
+        foreach (var obj in objectsInTrigger)
+        {
+            var unitLogisticsObj = obj.GetComponent<IUnitLogistics>();
+            if (unitLogisticsObj != null && unitLogisticsObj == unitLogistics)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Перебор коллайдеров рядом со зданием, если серди них есть игрок, выполняем логику
+    /// </summary>
+    /// <param name="f"></param>
+    public void PlayerNearBuilding(Action f)
+    {
+        foreach (var obj in objectsInTrigger)
+        {
+            if (obj.gameObject.CompareTag("Player"))
+            {
+                f?.Invoke();
+                return;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Вызывается при размещении и при постройке здания, на случай если игрок в этот момент окажется около него
+    /// Добавляется в Unityevent CompletionOfConstructionController.StartBuildingFunctionEvent
+    /// </summary>
+    public void PlayerNearBuildingAfterConstructBuilding()
+    {
+        PlayerNearBuilding((() =>
+        {
+            CanPutE = true;
+            if (_buildingData.IsThisBuilt)
+            {
+                TextOnEvent?.Invoke();
+                Texthint.SetActive(true);
+            }
+        }));
     }
 }

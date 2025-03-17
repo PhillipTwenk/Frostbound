@@ -1,5 +1,7 @@
 using System;
+using EntityActions.WorkersScripts;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class PauseUIManager : MonoBehaviour
@@ -19,7 +21,7 @@ public class PauseUIManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         PauseOnEvent.TriggerEvent();
-        WorkersInterBuildingControl.possiilityControlEntities = false;
+        GeneralWorkersControl.possiilityControlEntities = false;
         UIManager.CancelLastOpenPanelEvent += PauseOff;
     }
 
@@ -28,7 +30,7 @@ public class PauseUIManager : MonoBehaviour
         Debug.Log($"<color=yellow> Вернулись в игру из паузы </color>");
         Time.timeScale = 1f;
         PauseOffEvent.TriggerEvent();
-        WorkersInterBuildingControl.possiilityControlEntities = true;
+        GeneralWorkersControl.possiilityControlEntities = true;
         UIManager.CancelLastOpenPanelEvent -= PauseOff;
     }
 
@@ -101,7 +103,12 @@ public class PauseUIManager : MonoBehaviour
     public async void QuitGame()
     {
         await JSONSerializeManager.Instance.JSONSave();
-        Application.Quit();
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        #endif
+        #if !UNITY_EDITOR
+            Application.Quit();
+        #endif
         Debug.Log("Quit");
     }
 }

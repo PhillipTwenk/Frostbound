@@ -11,8 +11,6 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(menuName = "SaveData/PlayerSaveData")]
 public class PlayerSaveData : ScriptableObject, ISerializableSO
 {
-    [SerializeField] private GameEvent TabletInitializationEvent;
-    [SerializeField] private GameEvent ShieldInitializationEvent;
 
     #region Реализация ISerializableSO 
 
@@ -84,8 +82,6 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
     #endregion  
     
     
-    
-    
     [Header("Building Save Data")]
     [Tooltip("Игровые объекты построенных зданий")] public List<GameObject> playerBuildings;
     [Tooltip("Расположения построенных зданий")] public List<TransformData> buildingsTransform;
@@ -142,8 +138,6 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 {
                     BaseUpgradeConditionManager.buildingDataMB = buildingData;
                     BaseUpgradeConditionManager.CurrentBaseLevel = buildingData.Level;
-                    TabletInitializationEvent.TriggerEvent();
-                    ShieldInitializationEvent.TriggerEvent();
                 }
 
                 // Если здание может содержать рабочих
@@ -156,11 +150,11 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                     thisBuildingWorkersControl.suitableUnitDataForThisBuilding =
                         BuildingWorkersInformationList[index].suitableUnitDataForThisBuilding;
 
-                    WorkersInterBuildingControl.Instance.AddNewBuilding(thisBuildingWorkersControl);
+                    GeneralWorkersControl.Instance.AddNewBuilding(thisBuildingWorkersControl);
                 }
                 else
                 {
-                    WorkersInterBuildingControl.Instance.AddNewBuilding(null);
+                    GeneralWorkersControl.Instance.AddNewBuilding(null);
                 }
                 
                 CurrentPlayersDataControl.currentBuildingsDatas.Add(buildingData);
@@ -210,10 +204,10 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 workerData.InitializeLogisticsStorage();
 
                 workerData.gameObject.GetComponent<IWorkerUnit>().MainCamera =
-                    WorkersInterBuildingControl.MainCamera;
+                    GeneralWorkersControl.MainCamera;
 
-                WorkersInterBuildingControl.Instance.CurrentValueOfWorkers += 1;
-                WorkersInterBuildingControl.Instance.NumberOfFreeWorkers += 1;
+                GeneralWorkersControl.Instance.CurrentValueOfWorkers += 1;
+                GeneralWorkersControl.Instance.NumberOfFreeWorkers += 1;
             }
         }
 
@@ -237,7 +231,7 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
 
         agentPlayer.enabled = true;
         newPlayer.gameObject.transform.GetChild(0).gameObject.GetComponent<PlayerMovementController>().MainCamera =
-            WorkersInterBuildingControl.MainCamera;
+            GeneralWorkersControl.MainCamera;
         
         #endregion
         
@@ -276,7 +270,7 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
 
             if (buildingData.gameObject.GetComponent<ThisBuildingWorkersControl>())
             {
-                WorkersInterBuildingControl.Instance.RemoveNewBuilding(buildingData.gameObject.GetComponent<ThisBuildingWorkersControl>());
+                GeneralWorkersControl.Instance.RemoveNewBuilding(buildingData.gameObject.GetComponent<ThisBuildingWorkersControl>());
             }
 
             foreach (var buildingDataCycle in BuildingDatas)

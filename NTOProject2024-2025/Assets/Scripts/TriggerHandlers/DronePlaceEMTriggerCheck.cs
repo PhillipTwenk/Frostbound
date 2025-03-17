@@ -5,6 +5,11 @@ public class DronePlaceEMTriggerCheck : MonoBehaviour
 {
     public EngineeringModule engineeringModule;
 
+    private void Start()
+    {
+        engineeringModule.isSpawnPointFree = true;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("ClickOnWorker") || other.CompareTag("Worker"))

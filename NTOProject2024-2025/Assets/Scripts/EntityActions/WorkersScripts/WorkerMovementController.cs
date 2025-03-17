@@ -1,5 +1,7 @@
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
+using TMPro;
+using Unitilities;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -114,7 +116,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
     /// </summary>
     public void MovementHandler()
     {
-        if(isSelected && WorkersInterBuildingControl.possiilityControlEntities){
+        if(isSelected && GeneralWorkersControl.possiilityControlEntities){
             
             if (Input.GetMouseButtonDown(0) && !isSelecting)
             {
@@ -138,7 +140,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
                         }
                         else
                         {
-                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNoBeAbleToBuildWorker, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не является конструктором, он не может потроить это здание </color>", 0);
+                            HintBuildingUpdate(GeneralWorkersControl.Instance.HintNoBeAbleToBuildWorker, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не является конструктором, он не может потроить это здание </color>", 0);
                             return;
                         }
                     }
@@ -147,13 +149,13 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
                         // Рабочий не побежит к зданию с возможностью содержать рабочих, если там не осталось места
                         if (SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding)
                         {
-                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.FullWorkerInThisBuilding, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не пролезет в здании нет места </color>", 1);
+                            HintBuildingUpdate(GeneralWorkersControl.Instance.FullWorkerInThisBuilding, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не пролезет в здании нет места </color>", 1);
                             return;
                         }
                         // Чувак, я пасечник а не работяга ! 
                         else if (SelectedBuilding.GetComponent<EnergyProduction>() && _thisWorkerData.unitType != SelectedBuilding.GetComponent<ThisBuildingWorkersControl>().suitableUnitDataForThisBuilding)
                         {
-                            HintBuildingUpdate(WorkersInterBuildingControl.Instance.HintNotNeededWorkerType, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не подходи по роли для данного здания </color>",  0);
+                            HintBuildingUpdate(GeneralWorkersControl.Instance.HintNotNeededWorkerType, SelectedBuilding.gameObject.GetComponent<BuildingData>(), "<color=blue> Данный рабочий не подходи по роли для данного здания </color>",  0);
                             return;
                         }
                     }
@@ -264,30 +266,21 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
 
         if (buildingData.AwaitBuildingThisTMPro.text != $"{WhichTypeActionText}:\n{notNeededWorkerAttention} " && !buildingData.gameObject.GetComponent<InteractionBuildingController>().IsTextStartWorkingActive)
         {
-            string oldText = buildingData.AwaitBuildingThisTMPro.text;
-            bool oldTMPStateBool = buildingData.AwaitBuildingThisTMPro.gameObject.activeSelf;
-            
-            buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(true);
+            InteractionBuildingController interactionBuildingController = buildingData.gameObject.GetComponent<InteractionBuildingController>();
+            TextMeshPro text = buildingData.AwaitBuildingThisTMPro;
+            string newText = " ";
             switch (mode)
             {
                 case 0:
-                    buildingData.AwaitBuildingThisTMPro.text 
+                    newText 
                         = $"{WhichTypeActionText}:\n{notNeededWorkerAttention} ";
                     break;
                 case 1:
-                    buildingData.AwaitBuildingThisTMPro.text 
+                    newText 
                         = $"{WhichTypeActionText}";
                     break;
             }
-            Utility.Invoke(this, () =>
-            {
-                buildingData.AwaitBuildingThisTMPro.text = oldText;
-                Debug.Log($"Прошлое состояние текста над зданием {buildingData.Title}: {oldTMPStateBool}");
-                if (!oldTMPStateBool)
-                {
-                    buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(false);
-                }
-            }, 4f);
+            TemporaryText(interactionBuildingController, text, newText);
         }
     }
 
@@ -295,8 +288,31 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
     {
         if (isSelected)
         {
-            WorkersInterBuildingControl.SelectedUnit = null;
-            UIManager.CancelLastOpenPanelEvent -= WorkersInterBuildingControl.Instance.ResetSelectedUnit;
+            GeneralWorkersControl.SelectedUnit = null;
+            UIManager.CancelLastOpenPanelEvent -= GeneralWorkersControl.Instance.ResetSelectedUnit;
         }
+    }
+    
+    /// <summary>
+    /// Показ текста, который пропадет через определенное время 
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="whichText"></param>
+    private void TemporaryText(InteractionBuildingController interactionBuildingController, TextMeshPro text, string whichText)
+    {
+        text.gameObject.SetActive(true);
+        text.text = whichText;
+        Utility.Invoke(this, () =>
+        {
+            foreach (var obj in interactionBuildingController.objectsInTrigger)
+            {
+                if (obj.gameObject.CompareTag("Player"))
+                {
+                    interactionBuildingController.TextOnEvent?.Invoke();
+                    return;
+                }
+            }
+            text.gameObject.SetActive(false);
+        }, interactionBuildingController.textOnTime);
     }
 }

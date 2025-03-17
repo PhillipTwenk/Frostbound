@@ -1,4 +1,5 @@
 using EntityActions.Movement_Control;
+using EntityActions.WorkersScripts;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -114,7 +115,7 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
     /// </summary>
     public void MovementHandler()
     {
-        if(isSelected && WorkersInterBuildingControl.possiilityControlEntities){
+        if(isSelected && GeneralWorkersControl.possiilityControlEntities){
             
             if (Input.GetMouseButtonDown(0) && !isSelecting)
             {
@@ -224,8 +225,8 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
     {
         if (isSelected)
         {
-            WorkersInterBuildingControl.SelectedUnit = null;
-            UIManager.CancelLastOpenPanelEvent -= WorkersInterBuildingControl.Instance.ResetSelectedUnit;
+            GeneralWorkersControl.SelectedUnit = null;
+            UIManager.CancelLastOpenPanelEvent -= GeneralWorkersControl.Instance.ResetSelectedUnit;
         }
     }
 }

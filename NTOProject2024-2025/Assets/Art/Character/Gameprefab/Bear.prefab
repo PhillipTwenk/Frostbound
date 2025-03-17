@@ -279,22 +279,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9376db924419b341896a84fb179fffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WASDTutorial: {fileID: 11400000, guid: 732632575245b9d4ca0baa884ad02397, type: 2}
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 832
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  isSelecting: 0
-  possibilityClickOnPlayer: 0
-  PlayerPointOfDestination: {fileID: 0}
+  unitPointOfDestination: {fileID: 0}
   NameOfTTS: TechTriggerScripts
-  SelectedBuilding: {fileID: 0}
+  selectedBuilding: {fileID: 0}
   currentWalkingPoint: {fileID: 0}
-  MainCamera: {fileID: 0}
+  camera: {fileID: 0}
   outlineRotate: {fileID: 3870108787180326406}
-  OutlinePOD: {fileID: 0}
+  outlinePOD: {fileID: 0}
 --- !u!54 &8693612429980189927
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -450,14 +447,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402273569723118443}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfc2168adb8246b499bae255d9363b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsSafe: 1
-  StartExtremeConditionsEvent: {fileID: 11400000, guid: 749b08babdb198149a0fd0c16a2c95f7, type: 2}
+  UnitsInDanger: []
+  UnitsInDangerValues: []
   EndExtremeConditionsEvent: {fileID: 11400000, guid: ea6e5005ba9706541b3c0c20f6b4ebf4, type: 2}
+  StartExtremeConditionsEvent: {fileID: 11400000, guid: 749b08babdb198149a0fd0c16a2c95f7, type: 2}
+  DeathAudioSource: {fileID: 0}
+  DeathMusic: {fileID: 0}
+  DeathSound: {fileID: 0}
 --- !u!114 &5438400462259696095
 MonoBehaviour:
   m_ObjectHideFlags: 0

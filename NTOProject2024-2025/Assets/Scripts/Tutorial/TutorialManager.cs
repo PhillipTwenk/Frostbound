@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EntityActions.WorkersScripts;
 using TMPro;
 using UnityEngine;
 
@@ -130,14 +131,14 @@ public class TutorialManager : MonoBehaviour
 
         if (currentTutorialObjective.IsTimeStopOnThisStep)
         {
-            WorkersInterBuildingControl.possiilityControlEntities = false;
+            GeneralWorkersControl.possiilityControlEntities = false;
             FadeFone.SetActive(true);
             Time.timeScale = 0f;
             IsTutorialTimeStop = true;
         }
         else
         {
-            WorkersInterBuildingControl.possiilityControlEntities = true;
+            GeneralWorkersControl.possiilityControlEntities = true;
             FadeFone.SetActive(false);
             Time.timeScale = 1f;
             IsTutorialTimeStop = false;

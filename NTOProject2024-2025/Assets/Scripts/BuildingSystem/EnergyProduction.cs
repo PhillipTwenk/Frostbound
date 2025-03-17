@@ -10,14 +10,20 @@ public class EnergyProduction : MonoBehaviour
 {
     
     private BuildingData _buildingData;
+    private ThisBuildingWorkersControl _thisBuildingWorkersControl;
     
     [Header("Events")]
     [SerializeField] private GameEvent ResourceUpdateEvent;
-    
+
+    private void Start()
+    {
+        _thisBuildingWorkersControl = GetComponent<ThisBuildingWorkersControl>();
+        _buildingData = GetComponent<BuildingData>();
+    }
+
     public async void OnAddEnergy()
     {
-        _buildingData = GetComponent<BuildingData>();
-        if (GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= 1)
+        if (_thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding >= 1)
         {
 
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
@@ -26,19 +32,15 @@ public class EnergyProduction : MonoBehaviour
             int foodProduction = _buildingData.Production[1];
         
             Debug.Log($"Производство меда: {honeyProduction}");
-
-            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
+            
             PlayerResources playerResources = null;
             await SyncManager.Enqueue(async () =>
             {
                 playerResources =
                     await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
             });
-            int OldEnergyValue = playerResources.Energy;
-            int OldFoodValue = playerResources.Food;
             playerResources.Energy += honeyProduction;
             playerResources.Food += foodProduction;
-            LogSender(playerName, "Пасека начала производство энергии и мёда", playerResources.Energy - OldEnergyValue, playerResources.Food - OldFoodValue);
 
             await SyncManager.Enqueue(async () =>
             {
@@ -52,10 +54,8 @@ public class EnergyProduction : MonoBehaviour
 
     public PlayerResources OnDestroyThis(PlayerResources playerResources)
     {
-        if (GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= 1)
+        if (_thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding >= 1)
         {
-            _buildingData = GetComponent<BuildingData>();
-        
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);    
         
             int honeyProduction = _buildingData.Production[0];
@@ -75,24 +75,17 @@ public class EnergyProduction : MonoBehaviour
 
     public async void OnWorkerLeave(TextMeshPro text)
     {
-        if (GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding >= 1)
+        if (_thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding >= 1)
         {
-            _buildingData = GetComponent<BuildingData>();
-            
-        
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);    
         
             int honeyProduction = _buildingData.Production[0];
             int foodProduction = _buildingData.Production[1];
-
-            string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
+            
             PlayerResources playerResources =
                 await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
-            int OldEnergyValue = playerResources.Energy;
-            int OldFoodValue = playerResources.Food;
             playerResources.Energy -= honeyProduction;
             playerResources.Food -= foodProduction;
-            LogSender(playerName, $"{_buildingData.Title} прекратила производство энергии и мёда", playerResources.Energy - OldEnergyValue, playerResources.Food - OldFoodValue );
             await SyncManager.Enqueue(async () =>
             {
                 await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
@@ -108,12 +101,11 @@ public class EnergyProduction : MonoBehaviour
 
     public void TextChangerEnergy(TextMeshPro text)
     {
-        _buildingData = GetComponent<BuildingData>();
-        if (GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding == 0)
+        if (_thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding == 0)
         {
-            text.text = $"{_buildingData.Title} прекратила работу ({GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding}/1)";
+            text.text = $"{_buildingData.Title} прекратила работу ({_thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{_thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
         }
-        else
+        else if (_thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding == _thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding)
         {
             text.text =  $"{_buildingData.Title} работает ({GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding}/{GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding}) \n Нажмите E чтобы выгрузить рабочего";
         }

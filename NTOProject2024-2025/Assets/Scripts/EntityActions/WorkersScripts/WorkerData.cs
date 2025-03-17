@@ -100,9 +100,9 @@ public class WorkerData : MonoBehaviour
                 }
                 if (!droneMovementController.IsLogisticsCycleActive)
                 {
-                    WorkersInterBuildingControl.SelectedUnit = droneMovementController;
-                    WorkersInterBuildingControl.SelectedUnit.isSelected = true;
-                    WorkersInterBuildingControl.SelectedUnit.OutlineRotate.SetActive(true);
+                    GeneralWorkersControl.SelectedUnit = droneMovementController;
+                    GeneralWorkersControl.SelectedUnit.isSelected = true;
+                    GeneralWorkersControl.SelectedUnit.OutlineRotate.SetActive(true);
                 }
                 else if (droneMovementController.buildingDataLogistics != null)
                 {

@@ -388,10 +388,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2669340577913799230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.3857, y: 44.9}
-  m_SizeDelta: {x: 107.7296, y: 14.908}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -15.9}
+  m_SizeDelta: {x: 107.7296, y: 14.907997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &999931641860738119
 CanvasRenderer:
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 3952047634658591917}
   - component: {fileID: 7658571048178436077}
   - component: {fileID: 8960675788310402197}
+  - component: {fileID: 2186671833411195337}
   m_Layer: 7
   m_Name: TechTriggerScripts
   m_TagString: ClickOnBuilding
@@ -414,21 +415,6 @@ MonoBehaviour:
   IsThisBuilt: 0
   AwaitBuildingThisTMPro: {fileID: 1066252068129457369}
   BuildingVE: {fileID: 3605468693236232073}
-  StartBuildingFunctionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3952047634658591917}
-        m_TargetAssemblyTypeName: ResourceMiner, Assembly-CSharp
-        m_MethodName: OnStartMining
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &3683477478396116158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +464,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   Texthint: {fileID: 8835007082003636047}
+  textOnTime: 4
 --- !u!95 &1164435565411162428
 Animator:
   serializedVersion: 7
@@ -592,6 +579,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &2186671833411195337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401689744584005675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28148d6b4a96a849903a30bba8545c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
+  HintAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u0435\u043C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E
+    . . ."
+  HintAwaitBuilding: "\u0421\u0442\u0440\u043E\u0438\u043C . . . "
+  HintAwaitTimeWorker: "\u0441\u0435\u043A \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C"
+  StartBuildingFunctionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3952047634658591917}
+        m_TargetAssemblyTypeName: ResourceMiner, Assembly-CSharp
+        m_MethodName: OnStartMining
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3683477478396116158}
+        m_TargetAssemblyTypeName: InteractionBuildingController, Assembly-CSharp
+        m_MethodName: PlayerNearBuildingAfterConstructBuilding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3509057801853138337
 GameObject:
   m_ObjectHideFlags: 0

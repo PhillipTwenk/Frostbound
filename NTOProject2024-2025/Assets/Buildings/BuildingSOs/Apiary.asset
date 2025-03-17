@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Apiary
   m_EditorClassIdentifier: 
   IDoB: 0
+  buildingType: 0
   levelListLevel: 0100000002000000
   MaxLevelThisBuilding: 2
   durabilityListLevel: 320000004b000000
@@ -23,10 +24,10 @@ MonoBehaviour:
   - resources: 000000003c000000
     SpriteAssetsUsingIndex: 0000000001000000
   storageListLevel:
-  - resources: 01000000
-    SpriteAssetsUsingIndex: 05000000
-  - resources: 01000000
-    SpriteAssetsUsingIndex: 05000000
+  - resources: 
+    SpriteAssetsUsingIndex: 
+  - resources: 
+    SpriteAssetsUsingIndex: 
   priceBuilding: 50
   priceUpgrade: 30
   MBLevelForUpgradethisIron: 1

@@ -1,12 +1,13 @@
 using System;
 using System.Threading.Tasks;
 using TMPro;
+using Unitilities;
 using UnityEngine;
 
 /// <summary>
 /// Типы добытчиков в зависимости от типа месторождения 
 /// </summary>
-[System.Serializable]
+[Serializable]
 public enum MinerType
 {
     IronMiner = 0,
@@ -46,7 +47,7 @@ public class ResourceMiner : MonoBehaviour
     [Tooltip("Время, через которое текст должен удалится")] [SerializeField] private int showTextTime;
 
 
-    private void Awake()
+    private void Start()
     {
         _buildingData = GetComponent<BuildingData>();
         _animator = GetComponent<Animator>();
@@ -64,6 +65,7 @@ public class ResourceMiner : MonoBehaviour
             
             if (_buildingData.IsThisBuilt)
             {
+                Debug.Log(12122222222222222);
                 OnStartMining();
             }
         }
@@ -86,17 +88,17 @@ public class ResourceMiner : MonoBehaviour
     /// </summary>
     public async void OnStartMining()
     {
-        if (!IsWorkStop && !OneCycle)
+        if (!IsWorkStop && !OneCycle && _buildingData.IsThisBuilt)
         {
             OneCycle = true;
 
             if (_minerType == MinerType.IronMiner)
             {
-                await MinerIronAsync(_buildingData);
+                 MinerIronAsync(_buildingData);
             } 
             else if (_minerType == MinerType.CryoCrystalMiner)
             {
-                 await MinerCCAsync( _buildingData);
+                 MinerCCAsync( _buildingData);
             }
             
             await JSONSerializeManager.Instance.JSONSave();
@@ -111,8 +113,6 @@ public class ResourceMiner : MonoBehaviour
     {
         // Инициализация текущего лимита по ресурсу
         int resourceLimit = resourcesLimits.resources[0];
-            
-        
         bool isRunning = true;
         
         while (gameObject.activeSelf && isRunning)

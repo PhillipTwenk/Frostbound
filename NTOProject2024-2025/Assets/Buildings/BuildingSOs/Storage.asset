@@ -15,7 +15,7 @@ MonoBehaviour:
   IDoB: 6
   buildingType: 6
   levelListLevel: 0100000002000000
-  MaxLevelThisBuilding: 1
+  MaxLevelThisBuilding: 2
   durabilityListLevel: 6400000096000000
   energyHoneyConsumptionListLevel: 0a0000000a000000
   resourceProductionListLevel:

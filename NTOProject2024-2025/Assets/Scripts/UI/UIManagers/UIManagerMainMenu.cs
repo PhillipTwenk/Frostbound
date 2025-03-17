@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -109,7 +110,12 @@ public class UIManagerMainMenu : MonoBehaviour
     public async void QuitGame()
     {
         await JSONSerializeManager.Instance.JSONSave();
-        Application.Quit();
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        #endif
+        #if !UNITY_EDITOR
+            Application.Quit();
+        #endif
     }
     
     /// <summary>

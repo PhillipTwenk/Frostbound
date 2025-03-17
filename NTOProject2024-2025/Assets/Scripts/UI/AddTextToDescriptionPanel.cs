@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EntityActions.WorkersScripts;
 using TMPro;
+using Unitilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -70,7 +72,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     public void EventODP()
     {
         if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
-            WorkersInterBuildingControl.SelectedUnit == null)
+            GeneralWorkersControl.SelectedUnit == null)
         {
             UIManager.CancelLastOpenPanelEvent += HideDescriptionPanel;
             currentIBC = buildingData.gameObject.GetComponent<InteractionBuildingController>();
@@ -92,7 +94,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     public void ShowDescriptionPanel()
     {
         if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
-            WorkersInterBuildingControl.SelectedUnit == null)
+            GeneralWorkersControl.SelectedUnit == null)
         {
             IsPanelActive = true;
         
@@ -250,7 +252,6 @@ public class AddTextToDescriptionPanel : MonoBehaviour
 
         HideDescriptionPanel();
         
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         PlayerResources playerResources = await GetResourcesPLayer(CurrentPlayersDataControl.WhichPlayerCreate);
         
         GameObject building = buildingTransform.gameObject;
@@ -258,24 +259,18 @@ public class AddTextToDescriptionPanel : MonoBehaviour
         Building buildingSO = buildingData.buildingTypeSO;
 
         int NewIron = buildingSO.priceBuilding / 2;
-        int OldEnergyValue = playerResources.Energy;
-        int OldFoodValue = playerResources.Food;
         playerResources.Energy += buildingData.HoneyConsumption;
         if (building.GetComponent<ThisBuildingWorkersControl>())
         {
-            playerResources.Food += building.GetComponent<ThisBuildingWorkersControl>()
-                .CurrentNumberWorkersInThisBuilding * 20;
+            InteractionBuildingController interactionBuildingController =
+                building.GetComponent<InteractionBuildingController>();
+            interactionBuildingController.InteractionEvent?.Invoke();
         }
 
         if (building.GetComponent<EnergyProduction>())
         {
             playerResources = building.GetComponent<EnergyProduction>().OnDestroyThis(playerResources);
         }
-        Dictionary<string,string> buildingDictionary = new Dictionary<string, string>();
-        buildingDictionary.Add("EnergyValueUpdate", $"{playerResources.Energy - OldEnergyValue}");
-        buildingDictionary.Add("FoodValueUpdate", $"{playerResources.Food - OldFoodValue}");
-        buildingDictionary.Add("IronValueUpdate", $"{(playerResources.Iron + NewIron) - playerResources.Iron}");
-        APIManager.Instance.CreatePlayerLog("Здание продано, игрок получает энергию, металл и еду ( если здание обладает рабочими) ", playerName, buildingDictionary);
 
         await SyncManager.Enqueue(async () =>
         {
@@ -313,7 +308,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
             ButtonUpgrade.SetActive(false); 
         }
 
-        if (buildingData.buildingTypeSO.IDoB != 3)
+        if (buildingData.buildingTypeSO.buildingType != BuildingsTypes.MobileBase)
         {
             if (playerResources.Iron >= priceUpgrade)
             {
@@ -328,7 +323,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                     buildingData.Durability = buildingSO.Durability(buildingData.Level);
                     buildingData.HoneyConsumption = buildingSO.EnergyHoneyConsumpiton(buildingData.Level);
                     buildingData.Production = buildingSO.Production(buildingData.Level).resources;
-                    buildingData.Storage = buildingSO.StorageLimit(buildingData.Level).resources;
+                    //buildingData.Storage = buildingSO.StorageLimit(buildingData.Level).resources;
 
                     if (buildingData.Production.Count > 0)
                     {

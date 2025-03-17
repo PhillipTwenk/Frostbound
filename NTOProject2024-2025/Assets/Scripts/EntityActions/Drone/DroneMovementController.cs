@@ -224,7 +224,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         if (isMovingToLandingSpot || isLanding) return;
         
         
-        if (isSelected && WorkersInterBuildingControl.possiilityControlEntities && isFlyNow)
+        if (isSelected && GeneralWorkersControl.possiilityControlEntities && isFlyNow)
         {
             if (Input.GetMouseButtonDown(0) && !isSelecting)
             {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EntityActions.WorkersScripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -49,8 +50,8 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     {
         if (CurrentNumberWorkersInThisBuilding > 0 && CurrentWorkerDataInThisBuilding != null)
         {
-            WorkersInterBuildingControl.Instance.NumberOfFreeWorkers += 1;
-            Debug.Log($"<color=green>Свободные рабочие + 1: {WorkersInterBuildingControl.Instance.NumberOfFreeWorkers}</color>");
+            GeneralWorkersControl.Instance.NumberOfFreeWorkers += 1;
+            Debug.Log($"<color=green>Свободные рабочие + 1: {GeneralWorkersControl.Instance.NumberOfFreeWorkers}</color>");
             CurrentNumberWorkersInThisBuilding -= 1;
             if (currentWorkerInThisBuilding != null)
             {
@@ -77,7 +78,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
             {
                 if (workerData.IsWorkerAtWork && workerData.unitType == suitableUnitDataForThisBuilding)
                 {
-                    WorkersInterBuildingControl.Instance.NumberOfFreeWorkers += 1;
+                    GeneralWorkersControl.Instance.NumberOfFreeWorkers += 1;
                     
                     workerData.IsWorkerAtWork = false;
 
@@ -102,7 +103,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
                     workerDataNewWorker.unitType = workerData.unitType;
 
                     newWorkerСomponentsContainingObject.GetComponent<WorkerMovementController>().MainCamera =
-                        WorkersInterBuildingControl.MainCamera;
+                        GeneralWorkersControl.MainCamera;
                     
                     
                     
@@ -112,62 +113,6 @@ public class ThisBuildingWorkersControl : MonoBehaviour
                 }
             }
         }
-    }
-
-    /// <summary>
-    /// Рабочий начал движение к строению
-    /// </summary>
-    /// <param name="End"></param>
-    /// <param name="buildingTransform"></param>
-    /// <param name="movementController"></param>
-    /// <param name="animator"></param>
-    public void StartMovementWorkerToBuilding(bool End, Transform buildingTransform, WorkerMovementController movementController, Animator animator)
-    {
-        if (!End)
-        {
-            // Рабочий идет строить
-            
-            Transform workerTransform = movementController.transform;
-            
-            // Выбор ближайшей точки около здания, к которой надо бежать
-            List<Transform> pointsOfBuildings = buildingTransform.gameObject.transform.GetChild(0).GetComponent<InteractionBuildingController>()
-                .PointsOfBuildings;
-            Transform pointForBuild = null;
-            float distanceToPoint = 0;
-            int i = 0;
-            foreach (var point in pointsOfBuildings)
-            {
-                if (i == 0)
-                {
-                    pointForBuild = point;
-                    distanceToPoint = Vector3.Distance(workerTransform.position, point.position);
-                    i++;
-                    continue;
-                }
-                if (Vector3.Distance(workerTransform.position, point.position) < distanceToPoint)
-                {
-                    pointForBuild = point;
-                    distanceToPoint = Vector3.Distance(workerTransform.position, point.position);
-                    i++;
-                }
-            }
-            
-            // Установка цели у NavMeshAgent 
-            movementController.gameObject.GetComponent<NavMeshAgent>().CompleteOffMeshLink();
-            movementController.SetUnitDestination(pointForBuild, true);
-        }
-        else
-        {
-            // Рабочий идёт обратно
-            
-            movementController.gameObject.GetComponent<NavMeshAgent>().CompleteOffMeshLink();
-            movementController.SetUnitDestination(buildingTransform, true);
-        }
-
-        // Установка анимации бега 
-        animator.SetBool("Running", true);
-        animator.SetBool("Building", false);
-        animator.SetBool("Idle", false);
     }
 
 }

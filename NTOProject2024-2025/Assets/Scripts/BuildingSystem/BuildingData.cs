@@ -8,13 +8,13 @@ using UnityEngine.VFX;
 
 public enum BuildingsTypes
 {
-    Apiary = 0,
-    Breadwinner = 1,
+    FoodModule = 0,
+    Miner = 1,
     HoneyGun = 2,
     MobileBase = 3,
-    Pier = 4,
+    HydroelectricModule = 4,
     Home = 5,
-    Storage = 6
+    EngineeringModule = 6
     
 }
 public class BuildingData : MonoBehaviour
@@ -36,33 +36,11 @@ public class BuildingData : MonoBehaviour
     public TextMeshPro AwaitBuildingThisTMPro;
     public VisualEffect BuildingVE;
 
-    [Header("Function of this building")] 
-    [Tooltip("Функционал взаимодействия данного здания")] public UnityEvent StartBuildingFunctionEvent;
-
     private void Start()
     {
         if (IsThisBuilt)
         {
             BuildingVE.Stop();
-        }
-    }
-
-    /// <summary>
-    /// Контроль текста над зданием
-    /// </summary>
-    /// <param name="IsOpen"> Появление/сокрытие текста </param>
-    /// <param name="WhichAction"> Какой текст</param>
-    public void TextPanelBuildingControl(bool IsOpen, string WhichText)
-    {
-        if (IsOpen)
-        {
-            AwaitBuildingThisTMPro.gameObject.SetActive(true);
-
-            AwaitBuildingThisTMPro.text = WhichText;
-        }
-        else
-        {
-            AwaitBuildingThisTMPro.gameObject.SetActive(false);
         }
     }
 }

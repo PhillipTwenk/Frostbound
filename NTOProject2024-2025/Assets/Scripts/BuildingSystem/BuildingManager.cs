@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using EntityActions.WorkersScripts;
 using RTS_Cam;
 using UnityEngine;
 using TMPro;
+using Unitilities;
 using Unity.AI.Navigation;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -114,8 +116,7 @@ public class BuildingManager : MonoBehaviour
         
         Building buildingPrefabSO = CurrentBuilding.gameObject.transform.GetChild(0).GetComponent<BuildingData>().buildingTypeSO;
         int priceBuilding = buildingPrefabSO.priceBuilding;
-
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
+        
         PlayerResources playerResources =
             await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
 
@@ -128,26 +129,17 @@ public class BuildingManager : MonoBehaviour
         {
             if(BaseUpgradeConditionManager.CurrentBaseLevel >= buildingPrefabSO.MBLevelForBuidlingthisIron)
             {
-                int CNoW = WorkersInterBuildingControl.Instance.CurrentValueOfWorkers;
-                int MVoW = WorkersInterBuildingControl.Instance.MaxValueOfWorkers;
-                int AW = WorkersInterBuildingControl.Instance.NumberOfFreeWorkers;
-                if(CNoW <= MVoW && AW > 0)
+                int CNoW = GeneralWorkersControl.Instance.CurrentValueOfWorkers;
+                int MVoW = GeneralWorkersControl.Instance.MaxValueOfWorkers;
+                int AW = GeneralWorkersControl.Instance.NumberOfFreeWorkers;
+                if(AW > 0)
                 {
                     if ((playerResources.Energy - HoneyConsumptionBuilding) >= 0)
                     {
                         if ((playerResources.Food - FoodConsumptionBuilding * 20) >= 0)
                         {
-                            // int OldEnergyValue = playerResources.Energy;
-                            // int OldFoodValue = playerResources.Food;
                             playerResources.Energy -= HoneyConsumptionBuilding;
                             playerResources.Food -= FoodConsumptionBuilding * 20; 
-                            
-                            // Dictionary<string,string> buildingDictionary = new Dictionary<string, string>();
-                            // buildingDictionary.Add("EnergyValueUpdate", $"{playerResources.Energy - OldEnergyValue}");
-                            // buildingDictionary.Add("FoodValueUpdate", $"{playerResources.Food - OldFoodValue}");
-                            // buildingDictionary.Add("IronValueUpdate", $"{(playerResources.Iron - priceBuilding) - playerResources.Iron}");
-                            // APIManager.Instance.CreatePlayerLog("Начата стройка нового здания, потрачен металл, энергия, и еда, если здание обладает рабочими", playerName, buildingDictionary);
-                            
                             
                             //Создаем новое здание, устанавливаем его позицию и удаляем триггер для строительства
                             MouseIndicator.transform.position = new Vector3(mousePosition.x, YplaceVector, mousePosition.z);
@@ -162,6 +154,7 @@ public class BuildingManager : MonoBehaviour
                             //Получение некорых данных о здании
                             GameObject ComponentContainingBuilding = newBuildingObject.transform.GetChild(0).gameObject;
                             BuildingData buildingData = ComponentContainingBuilding.GetComponent<BuildingData>();
+                            CompletionOfConstructionController componentContainingBuilding = ComponentContainingBuilding.GetComponent<CompletionOfConstructionController>();
 
                             buildingData.IsThisBuilt = false;
 
@@ -171,75 +164,19 @@ public class BuildingManager : MonoBehaviour
                             await _navMeshSurfaceDrone.UpdateNavMesh(_navMeshSurfaceDrone.navMeshData);
                             Debug.Log("NavMesh updated");
 
+                            componentContainingBuilding.StartCompletionOfConstruction(playerResources);
+                            
+                            
                             //TutorialPLacementBuildingsCheck(buildingDataLogistics);
-                            
-                            //Ожидаем прибытия рабочего 
-                            await WorkersInterBuildingControl.Instance.SendWorkerToBuilding(true, buildingData);
-                            
-                            //Ожидаем завершения его строительства
-                            await WorkersInterBuildingControl.Instance.WorkerEndWork(buildingData);
-
-                            //TutorialWaitWorkersCheck(buildingDataLogistics);
-                            await SyncManager.Enqueue(async () =>
-                            {
-                                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceBuilding,
-                                    playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                            });
-                            UpdateResourcesEvent.TriggerEvent();
-                            
-                            LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
-                            
-                            //Сохранение данных здания в SO сохранения
-                            PlayerSaveData pLayerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
-                            pLayerSaveData.playerBuildings.Add(buildingData.buildingTypeSO.PrefabBuilding);
-                
-                            TransformData transformData = new TransformData(newBuildingObject.transform);
-                            pLayerSaveData.buildingsTransform.Add(transformData);
-                            
-                            Debug.Log("=========================================================================");
-                            Debug.Log(transformData);
-                            
-                            BuildingSaveData buildingSaveData = new BuildingSaveData(buildingData);
-                            pLayerSaveData.BuildingDatas.Add(buildingSaveData);
-                            buildingData.SaveListIndex = pLayerSaveData.BuildingDatas.IndexOf(buildingSaveData);
-                            pLayerSaveData.BuildingDatas[buildingData.SaveListIndex].SaveListIndex = buildingData.SaveListIndex;
-                            Debug.Log(buildingSaveData);
-                            Debug.Log("=========================================================================");
-
-                            if (ComponentContainingBuilding.GetComponent<ThisBuildingWorkersControl>())
-                            {
-                                ThisBuildingWorkersControl thisBuildingWorkersControl = ComponentContainingBuilding.GetComponent<ThisBuildingWorkersControl>();
-                                WorkersControlSaveData worlersSaveData = new WorkersControlSaveData(thisBuildingWorkersControl);
-                                pLayerSaveData.BuildingWorkersInformationList.Add(worlersSaveData);
-
-                                WorkersInterBuildingControl.Instance.AddNewBuilding(thisBuildingWorkersControl);
-                            }
-                            else
-                            {
-                                ThisBuildingWorkersControl thisBuildingWorkersControl = null;
-                                
-                                pLayerSaveData.BuildingWorkersInformationList.Add(null);
-                                WorkersInterBuildingControl.Instance.AddNewBuilding(thisBuildingWorkersControl); 
-                            }
-                            
-                            buildingData.IsThisBuilt = true;
-                            
-                            buildingData.BuildingVE.Stop();
-                            
-                            await JSONSerializeManager.Instance.JSONSave();
                         }
                         else
                         {
-                            TextNotEnoughResource.SetActive(true);
-                            Utility.Invoke(this, () => TextNotEnoughResource.SetActive(false), TimeHint);
-                            TextHintTMPRoUGUI.text = HintNoFoodText;
+                            UpdateTextWhileBuild(HintNoFoodText);
                         }
                     }
                     else
                     {
-                        TextNotEnoughResource.SetActive(true);
-                        Utility.Invoke(this, () => TextNotEnoughResource.SetActive(false), TimeHint);
-                        TextHintTMPRoUGUI.text = HintNoEnergyText;
+                        UpdateTextWhileBuild(HintNoEnergyText);
                     }
                 }
                 else
@@ -247,29 +184,33 @@ public class BuildingManager : MonoBehaviour
                     Debug.Log($"Количество свободных рабочих: <color=blue>{AW}</color>");
                     Debug.Log($"Всего рабочих: <color=blue>{CNoW}</color>");
                     Debug.Log($"Максимальное количество рабочих: <color=blue>{MVoW}</color>");
-                    TextNotEnoughResource.SetActive(true);
-                    Utility.Invoke(this, () => TextNotEnoughResource.SetActive(false), TimeHint);
-                    TextHintTMPRoUGUI.text = HintNotFreeWorkersText;
+                    UpdateTextWhileBuild(HintNotFreeWorkersText);
                 }
             }
             else
             {
-                TextNotEnoughResource.SetActive(true);
-                Utility.Invoke(this, () => TextNotEnoughResource.SetActive(false), TimeHint);
-                TextHintTMPRoUGUI.text = HintNotEnoughtLevelBaseText;
+                UpdateTextWhileBuild(HintNotEnoughtLevelBaseText);
             }
         }
         else
         {
-            TextNotEnoughResource.SetActive(true);
-            Utility.Invoke(this, () => TextNotEnoughResource.SetActive(false), TimeHint);
-            TextHintTMPRoUGUI.text = HintNotEnoughtResourcesText;
+            UpdateTextWhileBuild(HintNotEnoughtResourcesText);
         }
         
         UpdateResourcesEvent.TriggerEvent();
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
     }
 
+
+    /// <summary>
+    /// Показывает сообщение, выводящее информацию о том почему мы не можем построить здание
+    /// </summary>
+    private void UpdateTextWhileBuild(string text)
+    {
+        TextNotEnoughResource.SetActive(true);
+        Utility.Invoke(this, () => TextNotEnoughResource.SetActive(false), TimeHint);
+        TextHintTMPRoUGUI.text = text;
+    }
     // private void TutorialPLacementBuildingsCheck(BuildingData buildingDataLogistics)
     // {
     //     string BuildingName = buildingDataLogistics.Title;

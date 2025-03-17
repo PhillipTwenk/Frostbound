@@ -2436,6 +2436,7 @@ GameObject:
   - component: {fileID: 8885446454007561972}
   - component: {fileID: 2561157871024344192}
   - component: {fileID: 7208875820102810698}
+  - component: {fileID: 665378061409853643}
   m_Layer: 7
   m_Name: TechTriggerScripts
   m_TagString: ClickOnBuilding
@@ -2503,21 +2504,6 @@ MonoBehaviour:
   IsThisBuilt: 0
   AwaitBuildingThisTMPro: {fileID: 6991439779238511762}
   BuildingVE: {fileID: 5332231911640870583}
-  StartBuildingFunctionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2561157871024344192}
-        m_TargetAssemblyTypeName: EnergyProduction, Assembly-CSharp
-        m_MethodName: OnAddEnergy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &5335672928293937611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2537,8 +2523,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 53.04114, y: 26.374012, z: 46.080437}
-  m_Center: {x: 1.0315151, y: 1.6120052, z: 7.247425}
+  m_Size: {x: 53.04114, y: 97.94167, z: 46.080437}
+  m_Center: {x: 1.0315157, y: 37.39585, z: 7.2474265}
 --- !u!114 &8885446454007561972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2612,6 +2598,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   Texthint: {fileID: 2773185484447825567}
+  textOnTime: 4
 --- !u!114 &2561157871024344192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2642,6 +2629,50 @@ MonoBehaviour:
   WorkerPrefab: {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
   suitableUnitDataForThisBuilding: 2
   buildingSpawnWorkerPointTransform: {fileID: 4311764023263790760}
+--- !u!114 &665378061409853643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7694980666677584612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28148d6b4a96a849903a30bba8545c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
+  HintAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u0435\u043C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E
+    . . ."
+  HintAwaitBuilding: "\u0421\u0442\u0440\u043E\u0438\u043C . . . "
+  HintAwaitTimeWorker: "\u0441\u0435\u043A \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C"
+  StartBuildingFunctionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2561157871024344192}
+        m_TargetAssemblyTypeName: EnergyProduction, Assembly-CSharp
+        m_MethodName: OnAddEnergy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8885446454007561972}
+        m_TargetAssemblyTypeName: InteractionBuildingController, Assembly-CSharp
+        m_MethodName: PlayerNearBuildingAfterConstructBuilding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7734645520033639005
 GameObject:
   m_ObjectHideFlags: 0

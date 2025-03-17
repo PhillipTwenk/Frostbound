@@ -2199,6 +2199,7 @@ GameObject:
   - component: {fileID: 2468893000708977087}
   - component: {fileID: 1293258829956571046}
   - component: {fileID: 8277959642194642565}
+  - component: {fileID: 6023625852007033232}
   m_Layer: 7
   m_Name: TechTriggerScripts
   m_TagString: Building
@@ -2261,9 +2262,6 @@ MonoBehaviour:
   IsThisBuilt: 0
   AwaitBuildingThisTMPro: {fileID: 4279403885778298507}
   BuildingVE: {fileID: 6155389542320789682}
-  StartBuildingFunctionEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2468893000708977087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,6 +2311,8 @@ MonoBehaviour:
   IsThereBarterHere: 0
   OpenBarterMenuEvent: {fileID: 0}
   CloseBarterMenuEvent: {fileID: 0}
+  IsThisLogisticsIncluded: 0
+  awaitDroneLogistics: 0
   PointsOfBuildings:
   - {fileID: 5839593067991148040}
   - {fileID: 1541845875943574117}
@@ -2323,6 +2323,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   Texthint: {fileID: 3584302635231486536}
+  textOnTime: 4
 --- !u!114 &1293258829956571046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2359,8 +2360,40 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 73.388626, y: 25.961103, z: 60.093105}
-  m_Center: {x: 0.01203786, y: 12.480553, z: 2.8664722}
+  m_Size: {x: 73.388626, y: 161.78638, z: 60.093105}
+  m_Center: {x: 0.01203786, y: 80.3932, z: 2.8664722}
+--- !u!114 &6023625852007033232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7288959899136831248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28148d6b4a96a849903a30bba8545c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
+  HintAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u0435\u043C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E
+    . . ."
+  HintAwaitBuilding: "\u0421\u0442\u0440\u043E\u0438\u043C . . . "
+  HintAwaitTimeWorker: "\u0441\u0435\u043A \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C"
+  StartBuildingFunctionEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2468893000708977087}
+        m_TargetAssemblyTypeName: InteractionBuildingController, Assembly-CSharp
+        m_MethodName: PlayerNearBuildingAfterConstructBuilding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7370915442489044503
 GameObject:
   m_ObjectHideFlags: 0

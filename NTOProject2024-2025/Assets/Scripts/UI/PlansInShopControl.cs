@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EntityActions.WorkersScripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,7 +73,9 @@ public class PlansInShopControl : MonoBehaviour
             // Словарь: уровень базы → товары, доступные на этом уровне
             Dictionary<int, List<PriceShopProduct>> baseLevelProducts = new Dictionary<int, List<PriceShopProduct>>
             {
-                { 1, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } }
+                { 1, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } },
+                { 2, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } },
+                { 3, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } }
             };
 
             // Словарь: товар → его купленный UI + кнопка
@@ -115,7 +118,7 @@ public class PlansInShopControl : MonoBehaviour
 
         }
         
-        WorkersInterBuildingControl.possiilityControlEntities = false;
+        GeneralWorkersControl.possiilityControlEntities = false;
         
         
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
@@ -123,7 +126,7 @@ public class PlansInShopControl : MonoBehaviour
 
     private void OnDisable()
     {
-        WorkersInterBuildingControl.possiilityControlEntities = true;
+        GeneralWorkersControl.possiilityControlEntities = true;
         
         //CloseShopTutorialTutorial.CheckAndUpdateTutorialState();
     }

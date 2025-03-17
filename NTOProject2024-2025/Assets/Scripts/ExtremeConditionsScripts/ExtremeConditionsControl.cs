@@ -31,7 +31,7 @@ public class ExtremeConditionsControl : MonoBehaviour
                         unit.transform.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 20f;
                     }
 
-                    if(!DeathAudioSource.transform.GetChild(0).gameObject.GetComponent<AudioSource>().isPlaying && (UnitsInDangerValues[UnitsInDanger.IndexOf(unit)] < 12f){
+                    if(!DeathAudioSource.transform.GetChild(0).gameObject.GetComponent<AudioSource>().isPlaying && UnitsInDangerValues[UnitsInDanger.IndexOf(unit)] < 12f){
                         DeathAudioSource.transform.GetChild(0).gameObject.GetComponent<AudioSource>().Play();
                     } else if (UnitsInDangerValues[UnitsInDanger.IndexOf(unit)] >= 12f){
                         DeathAudioSource.transform.GetChild(0).gameObject.GetComponent<AudioSource>().Stop();

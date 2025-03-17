@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EntityActions.WorkersScripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -40,19 +41,18 @@ public class BaseUpgradeConditionManager : MonoBehaviour
 
     public void Initialization()
     {
-        WorkersInterBuildingControl.Instance.MaxValueOfWorkers =
+        GeneralWorkersControl.Instance.MaxValueOfWorkers =
             NumberOfWorkersForDifferentLevels[CurrentBaseLevel - 1];
     }
 
     private void Update()
     {
         //чит
-        // if (Input.GetKeyDown(KeyCode.Z))
-        // {
-        //     CurrentBaseLevel += 1; 
-        //     ResourceMinerRestored.TriggerEvent();
-        //     Debug.Log(CurrentBaseLevel);
-        // }
+         if (Input.GetKeyDown(KeyCode.Z))
+         {
+             CurrentBaseLevel += 1; 
+             Debug.Log(CurrentBaseLevel);
+         }
         //
         // if (Input.GetKeyDown(KeyCode.P))
         // {
@@ -65,9 +65,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
 
     public async Task<List<string>> CanUpgradeMobileBase(PlayerResources playerResources)
     {
-        int WorkersCount = WorkersInterBuildingControl.Instance.MaxValueOfWorkers;
-        string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
-        int IronCountPlayer = playerResources.Iron;
+        int WorkersCount = GeneralWorkersControl.Instance.MaxValueOfWorkers;
         List<GameObject> CurrentBuidlings = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.playerBuildings;
         List<BuildingSaveData> buildingSDs = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.BuildingDatas;
 
@@ -93,25 +91,25 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevel1;
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 0, 1))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.FoodModule, 1))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoApiaryBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 5, 1))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.Home, 1))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoHomeBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 4, 1))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.HydroelectricModule, 1))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoPierBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 1, 1))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.Miner, 1))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoMinerBuidlingText}: {currentNumberNeededBuildingLevel1} / {1}";
@@ -158,31 +156,31 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 }
 
                 int currentNumberNeededBuildingLevel2;
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel2, CurrentBuidlings, 6, 1))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel2, CurrentBuidlings, BuildingsTypes.EngineeringModule, 1))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoStorageBuidlingText}: {currentNumberNeededBuildingLevel2} / {1}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 0, 2))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.FoodModule, 2))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoApiaryBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 5, 2))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.Home, 2))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoHomeBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 1, 2))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.Miner, 2))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoMinerBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 4, 2))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.HydroelectricModule, 2))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoPierBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
@@ -226,31 +224,31 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevel3;
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel3, CurrentBuidlings, 6, 2))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel3, CurrentBuidlings, BuildingsTypes.EngineeringModule, 2))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoStorageBuidlingText}: {currentNumberNeededBuildingLevel3} / {2}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 0, 3))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.FoodModule, 3))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoApiaryBuidlingText}: {currentNumberNeededBuildingLevel1} / {3}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 1, 2))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.Miner, 2))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoMinerBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 4, 4))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.HydroelectricModule, 4))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoPierBuidlingText}: {currentNumberNeededBuildingLevel1} / {4}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, 5, 3))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.Home, 3))
                 {
                     IsThisReportUnsuccess = true;
                     string report = $"{NoHomeBuidlingText}: {currentNumberNeededBuildingLevel1} / {3}";
@@ -288,12 +286,12 @@ public class BaseUpgradeConditionManager : MonoBehaviour
         return null;
     }
 
-    public bool BuildingNeededNumberCheck(out int currentNumberNeededBuilding, List<GameObject> currentBuildings, int IDoB, int number)
+    public bool BuildingNeededNumberCheck(out int currentNumberNeededBuilding, List<GameObject> currentBuildings, BuildingsTypes buildingsType, int number)
     {
         currentNumberNeededBuilding = 0;
         foreach (var building in currentBuildings)
         {
-            if (building.transform.GetChild(0).GetComponent<BuildingData>().buildingTypeSO.IDoB == IDoB)
+            if (building.transform.GetChild(0).GetComponent<BuildingData>().buildingTypeSO.IDoB == (int)buildingsType)
             {
                 currentNumberNeededBuilding += 1;
             }

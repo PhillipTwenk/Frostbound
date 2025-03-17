@@ -1,4 +1,5 @@
 using System;
+using EntityActions.WorkersScripts;
 using UnityEngine;
 
 public class HintsLookAtCamera : MonoBehaviour
@@ -7,7 +8,7 @@ public class HintsLookAtCamera : MonoBehaviour
 
     private void Start()
     {
-        cameraTransform = WorkersInterBuildingControl.MainCamera.transform;
+        cameraTransform = GeneralWorkersControl.MainCamera.transform;
     }
 
     private void Update()
