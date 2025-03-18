@@ -2197,7 +2197,6 @@ GameObject:
   - component: {fileID: 492737070837660271}
   - component: {fileID: 233258707751369303}
   - component: {fileID: 2468893000708977087}
-  - component: {fileID: 1293258829956571046}
   - component: {fileID: 8277959642194642565}
   - component: {fileID: 6023625852007033232}
   m_Layer: 7
@@ -2280,34 +2279,10 @@ MonoBehaviour:
   nameOfFunction: 
   InteractionEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1293258829956571046}
-        m_TargetAssemblyTypeName: ThisBuildingWorkersControl, Assembly-CSharp
-        m_MethodName: SpawnWorkersInThisBuilding
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8607050489695775672}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   TextOnEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1293258829956571046}
-        m_TargetAssemblyTypeName: ThisBuildingWorkersControl, Assembly-CSharp
-        m_MethodName: TextChanger
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8607050489695775672}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshPro, Unity.TextMeshPro
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   IsThereBarterHere: 0
   OpenBarterMenuEvent: {fileID: 0}
   CloseBarterMenuEvent: {fileID: 0}
@@ -2324,23 +2299,6 @@ MonoBehaviour:
     m_Bits: 256
   Texthint: {fileID: 3584302635231486536}
   textOnTime: 4
---- !u!114 &1293258829956571046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7288959899136831248}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33815807fd64a419d874f207d3b6f3b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentNumberWorkersInThisBuilding: 0
-  MaxValueOfWorkersInThisBuilding: 2
-  WorkerPrefab: {fileID: 845355837700331742, guid: 31fe78fb1a4b70148a0cff384810ff37, type: 3}
-  suitableUnitDataForThisBuilding: 0
-  buildingSpawnWorkerPointTransform: {fileID: 1551578056173623974}
 --- !u!65 &8277959642194642565
 BoxCollider:
   m_ObjectHideFlags: 0

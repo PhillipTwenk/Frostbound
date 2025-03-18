@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -46,6 +47,12 @@ public class UIManagerMainMenu : MonoBehaviour
     private string newPLayerName;
     [SerializeField] [TextArea] private string textFullScreen;
     [SerializeField] [TextArea] private string textWindowScreen;
+
+    [Header("PlayerNameControl")] 
+    [SerializeField] private List<GameObject> InputNewNamePlayers;
+    [SerializeField] private List<GameObject> StartGameButtons;
+    [SerializeField] private List<GameObject> StartNewGameTexts;
+    [SerializeField] private List<EntityID> PlayerIds;
 
 
     private void Start()
@@ -221,5 +228,61 @@ public class UIManagerMainMenu : MonoBehaviour
      public void ChangeActiveChoicePlayer(EntityID player)
      {
          WhichPlayerCreate = player;
+     }
+
+     /// <summary>
+     /// Изменение имени персонажа на панели
+     /// </summary>
+     /// <param name="player"></param>
+     public void NewPlayerChange(EntityID player)
+     {
+         InputNewNamePlayers[player.thisPlayerID - 1].SetActive(true);
+         StartGameButtons[player.thisPlayerID - 1].SetActive(true);
+         StartNewGameTexts[player.thisPlayerID - 1].SetActive(false);
+
+         foreach (var playerID in PlayerIds)
+         {
+             if (player.thisPlayerID == playerID.thisPlayerID)
+             {
+                 continue;
+             }
+             else
+             {
+                 if (playerID.entityName == playerID.DefaultName)
+                 {
+                     foreach (var innp in InputNewNamePlayers)
+                     {
+                         if (InputNewNamePlayers[player.thisPlayerID - 1] != innp)
+                         {
+                             if (innp.activeSelf)
+                             {
+                                 innp.SetActive(false);
+                             }
+                         }
+                     }
+                     foreach (var sgb in StartGameButtons)
+                     {
+                         if (StartGameButtons[player.thisPlayerID - 1] != sgb)
+                         {
+                             if (sgb.activeSelf)
+                             {
+                                 sgb.SetActive(false);
+                             }
+                         }
+                     }
+
+                     int i = 0;
+                     foreach (var sngt in StartNewGameTexts)
+                     {
+                         if (PlayerIds[i].entityName == PlayerIds[i].DefaultName && StartNewGameTexts[player.thisPlayerID - 1] != sngt)
+                         {
+                             sngt.SetActive(true);
+                         }
+
+                         i++;
+                     }
+                 }
+             }
+         }
      }
 }

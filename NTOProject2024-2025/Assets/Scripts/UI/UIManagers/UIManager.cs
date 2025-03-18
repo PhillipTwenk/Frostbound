@@ -10,6 +10,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
+    
+    #region Переменные / Свойства
+
     [Header("Tutorial")]
     [SerializeField] private TutorialObjective PlansPanelOpenTutorial;
     [SerializeField] private TutorialObjective ApiaryStartBuildingTutorial;
@@ -22,10 +26,10 @@ public class UIManager : MonoBehaviour
     public GameEvent EndPlacingBuildEvent;
     public GameEvent OpenBarterMenuEvent;
     public GameEvent CloseBarterMenuEvent;
-    // public GameEvent ClosePauseMenu;
-    // public GameEvent CloseSettingsMenu;
     public GameEvent OpenQuestPanelEvent;
     public GameEvent CloseQuestPanelEvent;
+    public GameEvent OpenCallingWorkerPanelEvent;
+    public GameEvent CloseCallingWorkerPanelEvent;
     
     /// <summary>
     /// Если какая-либо панель открывается, она подписывается на этот делегат при нажатии кнопки esc ( Добавление метода, реализующего закрытие себя же )
@@ -83,8 +87,10 @@ public class UIManager : MonoBehaviour
             return RTS_Camera.possibilityZoomCamera;
         }
     }
-    
-    public static UIManager Instance { get; set; }
+
+    #endregion
+
+    #region Инициализация / Окончание
 
     private void InitializeData()
     {
@@ -95,6 +101,105 @@ public class UIManager : MonoBehaviour
 
         QuestController.OnInitializationQuests += InitializationQuestPanel;
     }
+    
+    private void OnEnable()
+    {
+        HTTPRequests.FailedRequestLimitExceededEvent += FailedRequestLimitExceededUI;
+        QuestController.OnStartNewQuest += AddNewQuestItemInQuestPanel;
+    }
+
+    private void OnDisable()
+    {
+        HTTPRequests.FailedRequestLimitExceededEvent -= FailedRequestLimitExceededUI;
+        QuestController.OnStartNewQuest -= AddNewQuestItemInQuestPanel;
+        QuestController.OnInitializationQuests -= InitializationQuestPanel;
+        UnsubscribeAllCancelLastOpenPanelEvent();
+    }
+
+    public void Awake()
+    {
+        Instance = this;
+        _currentsUIQuestPanels = new List<GameObject>();
+    }
+    private void Start()
+    {
+        SelectedItemObjectiveIdicator = null;
+        IsOpenBuildingPanel = true;
+        InitializeData();
+    }
+
+    #endregion
+
+    #region Контроль нажатых клавиш
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            ESCCloseLastOpenUIPanel();
+        }
+        
+        if (Input.GetButtonDown("OpenBuildingPanel") && Mathf.Approximately(Time.timeScale, 1f))
+        {
+            if (IsOpenBuildingPanel)
+            {
+                OpenBuildingPanel();
+            }
+            else
+            {
+                CloseBuildingPanel();
+            }
+            return;
+        }
+        if (isExtremeActivated) 
+        {
+            Debug.Log("SHEEEEESH");
+            timer += Time.deltaTime;
+            if (timer >= 12f){
+                timer = 0;
+            } else {
+                tempColor = extremeCondImage.GetComponent<Image>().color;
+                tempColor.a = timer/12f;
+                extremeCondImage.GetComponent<Image>().color = new Color(tempColor.r, tempColor.g, tempColor.b, tempColor.a);
+            }
+        } else {
+            timer = 0f;
+            tempColor = extremeCondImage.GetComponent<Image>().color;
+            tempColor.a = 0f;
+            extremeCondImage.GetComponent<Image>().color = tempColor;
+        }
+    }
+
+    #endregion
+    
+    #region Контроль отмены последнего действия
+
+    /// <summary>
+    /// Отписка всех методов от делегата CancelLastOpenPanelEvent при окончании игры 
+    /// </summary>
+    private static void UnsubscribeAllCancelLastOpenPanelEvent()
+    {
+        if (CancelLastOpenPanelEvent == null) return;
+        
+        for (int i = 0; i < CancelLastOpenPanelEvent?.GetInvocationList().Length; i++)
+        {
+            Debug.Log($"Отменено действие под номером {i}");
+            CancelLastOpenPanelEvent -= (Action)CancelLastOpenPanelEvent?.GetInvocationList()[i];
+        }
+    }
+    
+    /// <summary>
+    /// Получает информацию о том, какую панель закрыть при нажатии ESC
+    /// </summary>
+    private void ESCCloseLastOpenUIPanel()
+    {
+        var lastPanel = CancelLastOpenPanelEvent?.GetInvocationList().Last() as Action;
+        lastPanel?.Invoke();
+        //CancelLastOpenPanelEvent -= lastPanel;
+    }
+    #endregion
+
+    #region Панель с квестами
 
     /// <summary>
     /// При старте нового квеста он отображается на панели квестов
@@ -102,8 +207,6 @@ public class UIManager : MonoBehaviour
     /// <param name="quest"> Ссылка на SO квеста </param>
     public void AddNewQuestItemInQuestPanel(Quest quest)
     {
-        //GameObject newQuestItemGameObject = Instantiate(quest.UIItemOnQuestPanel, uiListForQuestTransform);
-        
         foreach (var uiQuestPanel in AllUIQuestPanels)
         {
             if (uiQuestPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text == quest.Name)
@@ -188,52 +291,11 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    private void OnEnable()
-    {
-        HTTPRequests.FailedRequestLimitExceededEvent += FailedRequestLimitExceededUI;
-        QuestController.OnStartNewQuest += AddNewQuestItemInQuestPanel;
-    }
-
-    private void OnDisable()
-    {
-        HTTPRequests.FailedRequestLimitExceededEvent -= FailedRequestLimitExceededUI;
-        QuestController.OnStartNewQuest -= AddNewQuestItemInQuestPanel;
-        QuestController.OnInitializationQuests -= InitializationQuestPanel;
-        UnsubscribeAllCancelLastOpenPanelEvent();
-    }
-
-    public void Awake()
-    {
-        Instance = this;
-        _currentsUIQuestPanels = new List<GameObject>();
-    }
-    private void Start()
-    {
-        SelectedItemObjectiveIdicator = null;
-        IsOpenBuildingPanel = true;
-        InitializeData();
-    }
-
-    /// <summary>
-    /// Отписка всех методов от делегата CancelLastOpenPanelEvent при окончании игры 
-    /// </summary>
-    private static void UnsubscribeAllCancelLastOpenPanelEvent()
-    {
-        if (CancelLastOpenPanelEvent == null) return;
-        
-        for (int i = 0; i < CancelLastOpenPanelEvent?.GetInvocationList().Length; i++)
-        {
-            Debug.Log($"Отменено действие под номером {i}");
-            CancelLastOpenPanelEvent -= (Action)CancelLastOpenPanelEvent?.GetInvocationList()[i];
-        }
-    }
-
     /// <summary>
     /// Добавление / удаления метода по закрытию панели квестов в делегат
     /// </summary>
     public void OpenQuestPanel()
     {
-        
         OpenQuestPanelEvent.TriggerEvent();
         if (selectedObjective != null)
         {
@@ -247,20 +309,10 @@ public class UIManager : MonoBehaviour
         CloseQuestPanelEvent.TriggerEvent();
         CancelLastOpenPanelEvent -= CloseQuestPanel;
     }
-    
-    
-    /// <summary>
-    /// Вызов панели ошибки запросов и перевода в оффлайн режим
-    /// </summary>
-    public void FailedRequestLimitExceededUI()
-    {
-        failedRequestLimitExceededUITMP_Text.transform.parent.gameObject.SetActive(true);
-        failedRequestLimitExceededUITMP_Text.text = failedRequestLimitExceededUIText;
+    #endregion
 
-        Utility.Invoke(this, () => failedRequestLimitExceededUITMP_Text.transform.parent.gameObject.SetActive(false),
-            8f);
-    }
-    
+    #region Панель строительства
+
     /// <summary>
     /// Контроль панели строительства
     /// </summary>
@@ -284,81 +336,7 @@ public class UIManager : MonoBehaviour
         IsOpenBuildingPanel = true;
         CancelLastOpenPanelEvent -= CloseBuildingPanel;
     }
-
-    /// <summary>
-    /// Получает информацию о том, какую панель закрыть при нажатии ESC
-    /// </summary>
-    private void ESCCloseLastOpenUIPanel()
-    {
-        var lastPanel = CancelLastOpenPanelEvent?.GetInvocationList().Last() as Action;
-        lastPanel?.Invoke();
-        //CancelLastOpenPanelEvent -= lastPanel;
-    }
-    private void Update()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            ESCCloseLastOpenUIPanel();
-        }
-        
-        if (Input.GetButtonDown("OpenBuildingPanel") && Mathf.Approximately(Time.timeScale, 1f))
-        {
-            if (IsOpenBuildingPanel)
-            {
-                OpenBuildingPanel();
-            }
-            else
-            {
-                CloseBuildingPanel();
-            }
-            return;
-        }
-        if (isExtremeActivated) 
-        {
-            Debug.Log("SHEEEEESH");
-            timer += Time.deltaTime;
-            if (timer >= 12f){
-                timer = 0;
-            } else {
-                tempColor = extremeCondImage.GetComponent<Image>().color;
-                tempColor.a = timer/12f;
-                extremeCondImage.GetComponent<Image>().color = new Color(tempColor.r, tempColor.g, tempColor.b, tempColor.a);
-            }
-        } else {
-            timer = 0f;
-            tempColor = extremeCondImage.GetComponent<Image>().color;
-            tempColor.a = 0f;
-            extremeCondImage.GetComponent<Image>().color = tempColor;
-        }
-    }
-
-    /// <summary>
-    /// Добавляет возможность строить новое здание после покупки нового чертежа
-    /// </summary>
-    public void AddNewPlanInPanel(Plan plan)
-    {
-        GameObject newPlanGameObject = Instantiate(plan.PlanPrefab, NewPlanPosition);
-
-        newPlanGameObject.transform.SetParent(ContentPanel);
-        
-        TextMeshProUGUI titleTMPro = newPlanGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI descriptionTMPro = newPlanGameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        Image sprite = newPlanGameObject.transform.GetChild(2).GetComponent<Image>();
-        TextMeshProUGUI durabilityTMPro = newPlanGameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI energyHoneyConsumptionTMPro = newPlanGameObject.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI resourceProductionTMPro = newPlanGameObject.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
-
-        titleTMPro.text = plan.Title;
-        descriptionTMPro.text = plan.Description;
-        sprite.sprite = plan.planSprite;
-        durabilityTMPro.text = $"- Прочность: {plan.durability}";
-        energyHoneyConsumptionTMPro.text = $"- Потребляет: {plan.energyHoneyConsumption}";
-        resourceProductionTMPro.text = $"- Производит: {plan.resourceProduction}";
-
-        Button ButtonComponent = newPlanGameObject.GetComponent<Button>();
-        ButtonComponent.onClick.AddListener(() => StartPlacingNewBuilding(plan));
-    }
-
+    
     /// <summary>
     /// Инициализация панели строительства
     /// </summary>
@@ -399,22 +377,36 @@ public class UIManager : MonoBehaviour
         BuildingManager.Instance.MouseIndicator = PlaceNewBuildingTrigger;
         BuildingManager.Instance.CurrentBuilding = plan.buildingSO.PrefabBuilding;
         StartPlacingBuildEvent.TriggerEvent();
-        // if (plan.buildingSO.PrefabBuilding.transform.GetChild(0).GetComponent<BuildingData>().Title == "Пасека")
-        // {
-        //     ApiaryStartBuildingTutorial.CheckAndUpdateTutorialState();
-        // }
-        // if (plan.buildingSO.PrefabBuilding.transform.GetChild(0).GetComponent<BuildingData>().Title == "Жилой модуль")
-        // {
-        //     HomeStartBuildingTutorial.CheckAndUpdateTutorialState();
-        // }
     }
+    #endregion
+
+    #region Бартер
 
     /// <summary>
-    /// Октрытие меню бартера
+    /// Добавляет возможность строить новое здание после покупки нового чертежа
     /// </summary>
-    public void OpenBarterMenu()
+    public void AddNewPlanInPanel(Plan plan)
     {
-        OpenBarterMenuEvent.TriggerEvent();
+        GameObject newPlanGameObject = Instantiate(plan.PlanPrefab, NewPlanPosition);
+
+        newPlanGameObject.transform.SetParent(ContentPanel);
+        
+        TextMeshProUGUI titleTMPro = newPlanGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI descriptionTMPro = newPlanGameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        Image sprite = newPlanGameObject.transform.GetChild(2).GetComponent<Image>();
+        TextMeshProUGUI durabilityTMPro = newPlanGameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI energyHoneyConsumptionTMPro = newPlanGameObject.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI resourceProductionTMPro = newPlanGameObject.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+
+        titleTMPro.text = plan.Title;
+        descriptionTMPro.text = plan.Description;
+        sprite.sprite = plan.planSprite;
+        durabilityTMPro.text = $"- Прочность: {plan.durability}";
+        energyHoneyConsumptionTMPro.text = $"- Потребляет: {plan.energyHoneyConsumption}";
+        resourceProductionTMPro.text = $"- Производит: {plan.resourceProduction}";
+
+        Button ButtonComponent = newPlanGameObject.GetComponent<Button>();
+        ButtonComponent.onClick.AddListener(() => StartPlacingNewBuilding(plan));
     }
     
     /// <summary>
@@ -427,12 +419,75 @@ public class UIManager : MonoBehaviour
         RTS_Camera.possibilityZoomCamera = true;
         CancelLastOpenPanelEvent -= CloseBarterMenu;
     }
+
+    #endregion
+
+    #region Панель космопорта
+
+    /// <summary>
+    /// Открытие панели космопорта
+    /// </summary>
+    public void OpenCallingWorkersPanel()
+    {
+        OpenCallingWorkerPanelEvent.TriggerEvent();
+        CancelLastOpenPanelEvent += CloseCallingWorkersPanel;
+    }
+
+    /// <summary>
+    /// Закрытие панели коспоморта
+    /// </summary>
+    public void CloseCallingWorkersPanel()
+    {
+        CloseCallingWorkerPanelEvent.TriggerEvent();
+        CancelLastOpenPanelEvent -= CloseCallingWorkersPanel;
+    }
+
+    #endregion
     
-    public void FunctionStartExtremeConditions(){
+    #region Экстремальные условия
+
+     public void FunctionStartExtremeConditions(){
         isExtremeActivated = true;
     }
 
     public void FunctionEndExtremeConditions(){
         isExtremeActivated = false;
     }
+
+    #endregion
+    
+    #region Панель ошибок
+
+    /// <summary>
+    /// Вызов панели ошибки запросов и перевода в оффлайн режим
+    /// </summary>
+    public void FailedRequestLimitExceededUI()
+    {
+        failedRequestLimitExceededUITMP_Text.transform.parent.gameObject.SetActive(true);
+        failedRequestLimitExceededUITMP_Text.text = failedRequestLimitExceededUIText;
+
+        Utility.Invoke(this, () => failedRequestLimitExceededUITMP_Text.transform.parent.gameObject.SetActive(false),
+            8f);
+    }
+
+    #endregion
+    
+    
+    
+
+   
+
+   
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+   
 }
