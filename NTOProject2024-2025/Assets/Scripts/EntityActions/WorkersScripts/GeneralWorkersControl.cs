@@ -42,8 +42,6 @@ namespace EntityActions.WorkersScripts
 
         [Header("Drone")] 
         [SerializeField] private List<UnitType> DroneTypes;
-    
-        public event Action IsWorkerHereEvent; // Игрок прибыл
 
 
         #region Инициализация

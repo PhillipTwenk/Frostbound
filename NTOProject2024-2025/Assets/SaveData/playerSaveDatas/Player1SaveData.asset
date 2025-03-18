@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b1747875eeec945aaf7034e37a0e2d, type: 3}
   m_Name: Player1SaveData
   m_EditorClassIdentifier: 
-  TabletInitializationEvent: {fileID: 11400000, guid: 0a5d37ead4429114b80c5d4ea08ef114, type: 2}
-  ShieldInitializationEvent: {fileID: 11400000, guid: c7d42b4d8b9d521448b9533eeb0a3645, type: 2}
+  endOfInitializationDataEvent: {fileID: 11400000, guid: 82ac92dba34305540a67455e960c8cc9, type: 2}
   playerBuildings:
   - {fileID: 4160612270241140356, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
   buildingsTransform:
@@ -30,6 +29,7 @@ MonoBehaviour:
   BuildingWorkersInformationList:
   - CurrentNumberOfWorkersInThisBuilding: 1
     MaxValueOfWorkersInThisBuilding: 1
+    suitableUnitDataForThisBuilding: 0
   workers:
   - {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
   - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
@@ -47,10 +47,58 @@ MonoBehaviour:
   workerDatas:
   - IsWorkerAtWork: 0
     SaveListIndex: 0
+    unitType: 0
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 0
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
   - IsWorkerAtWork: 0
     SaveListIndex: 1
+    unitType: 0
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 0
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
   - IsWorkerAtWork: 0
     SaveListIndex: 2
+    unitType: 0
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 0
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
   player: {fileID: 5840928571377694232, guid: 4f02f1be8d4c7c74a88ddc9404ac2b57, type: 3}
   transformPlayer:
     position: {x: 3478, y: 28.9, z: 573}

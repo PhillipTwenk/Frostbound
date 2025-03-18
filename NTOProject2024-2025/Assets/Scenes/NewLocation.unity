@@ -34233,7 +34233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095738374}
   - component: {fileID: 1095738376}
-  - component: {fileID: 1095738375}
+  - component: {fileID: 1095738377}
   m_Layer: 0
   m_Name: BaseUpgradeConditionManager
   m_TagString: Untagged
@@ -34256,34 +34256,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 722851218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1095738375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095738373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: c7d42b4d8b9d521448b9533eeb0a3645, type: 2}
-  onEventTriggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1095738376}
-        m_TargetAssemblyTypeName: BaseUpgradeConditionManager, Assembly-CSharp
-        m_MethodName: Initialization
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1095738376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34325,6 +34297,34 @@ MonoBehaviour:
   ResourceMinerRestored: {fileID: 11400000, guid: 087353e1388894a39938d4c0540c6d48, type: 2}
   ShieldColor: {fileID: 2100000, guid: 9dce96cbc63290e43ba8cf6963628685, type: 2}
   ShieldRenderer: {fileID: 0}
+--- !u!114 &1095738377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095738373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 82ac92dba34305540a67455e960c8cc9, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1095738376}
+        m_TargetAssemblyTypeName: BaseUpgradeConditionManager, Assembly-CSharp
+        m_MethodName: Initialization
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!43 &1095957230
 Mesh:
   m_ObjectHideFlags: 0

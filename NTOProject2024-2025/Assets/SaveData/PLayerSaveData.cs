@@ -12,6 +12,8 @@ using UnityEngine.Serialization;
 public class PlayerSaveData : ScriptableObject, ISerializableSO
 {
 
+    public GameEvent endOfInitializationDataEvent;
+
     #region Реализация ISerializableSO 
 
     public string SerializeToJson()
@@ -237,6 +239,8 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
         
         await BuildingManager.Instance._navMeshSurfaceUnit.UpdateNavMesh(BuildingManager.Instance._navMeshSurfaceUnit.navMeshData);
         await BuildingManager.Instance._navMeshSurfaceDrone.UpdateNavMesh(BuildingManager.Instance._navMeshSurfaceDrone.navMeshData);
+        
+        endOfInitializationDataEvent.TriggerEvent();
     }
 
     /// <summary>

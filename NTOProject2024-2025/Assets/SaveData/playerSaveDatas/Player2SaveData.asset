@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b1747875eeec945aaf7034e37a0e2d, type: 3}
   m_Name: Player2SaveData
   m_EditorClassIdentifier: 
-  TabletInitializationEvent: {fileID: 11400000, guid: 0a5d37ead4429114b80c5d4ea08ef114, type: 2}
-  ShieldInitializationEvent: {fileID: 11400000, guid: c7d42b4d8b9d521448b9533eeb0a3645, type: 2}
+  endOfInitializationDataEvent: {fileID: 11400000, guid: 82ac92dba34305540a67455e960c8cc9, type: 2}
   playerBuildings:
   - {fileID: 4160612270241140356, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
   buildingsTransform:
