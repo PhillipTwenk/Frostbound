@@ -9930,9 +9930,21 @@ MonoBehaviour:
     \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E "
   FullWorkerInThisBuilding: "\u0414\u0430\u043D\u043D\u043E\u0435 \u0437\u0434\u0430\u043D\u0438\u0435
     \u0437\u0430\u043D\u044F\u0442\u043E"
-  LimitUnitsErrorCallingWorkerText: 
-  LimitWorkersErrorCallingWorkerText: 
-  LimitFoodErrorCallingWorkerText: 
+  LimitUnitsErrorCallingWorkerText: "\u041D\u0435\u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E
+    \u0432\u044B\u0437\u0432\u0430\u0442\u044C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E:
+    \u0440\u0438\u0441\u043A \u043F\u0440\u0435\u0432\u044B\u0448\u0435\u043D\u0438\u044F
+    \u043B\u0438\u043C\u0438\u0442\u0430 \u043F\u043E \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0443
+    \u044E\u043D\u0438\u0442\u043E\u0432"
+  LimitWorkersErrorCallingWorkerText: "\u041D\u0435\u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E
+    \u0432\u044B\u0437\u0432\u0430\u0442\u044C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E:
+    \u0440\u0438\u0441\u043A \u043F\u0440\u0435\u0432\u044B\u0448\u0435\u043D\u0438\u044F
+    \u043B\u0438\u043C\u0438\u0442\u0430 \u043F\u043E \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0443
+    \u0440\u0430\u0431\u043E\u0447\u0438\u0445"
+  LimitFoodErrorCallingWorkerText: "\u041D\u0435\u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E
+    \u0432\u044B\u0437\u0432\u0430\u0442\u044C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E:
+    \u0440\u0438\u0441\u043A \u043F\u0440\u0435\u0432\u044B\u0448\u0435\u043D\u0438\u044F
+    \u0434\u043E\u043F\u0443\u0441\u0438\u043C\u043E\u0433\u043E \u043F\u043E\u0442\u0440\u0435\u0431\u043B\u0435\u043D\u0438\u044F
+    \u043F\u0438\u0449\u0438 "
   CurrentValueOfUnits: 0
   MaxValueOfUnits: 0
   NumberOfFreeUnits: 0
@@ -22057,7 +22069,7 @@ MonoBehaviour:
   followingSpeed: 5
   rotationSped: 3
   panningSpeed: 10
-  mouseRotationSpeed: 50
+  mouseRotationSpeed: 100
   autoHeight: 0
   groundMask:
     serializedVersion: 2
@@ -22071,9 +22083,9 @@ MonoBehaviour:
   maxSizeZoomValue: 30
   minSizeZoomValue: 60
   limitMap: 1
-  limitX: 2477
-  limitY: 3207
-  center: {x: 1745, y: 0, z: 2894}
+  limitX: 2935
+  limitY: 3213
+  center: {x: 1981, y: 0, z: 2894}
   targetFollow: {fileID: 0}
   targetOffset: {x: 0, y: 0, z: 0}
   useScreenEdgeInput: 1
@@ -33764,6 +33776,7 @@ MonoBehaviour:
   FindNote: 000000
   MaximumNumberOfUnitsForDifferentLevels: 04000000080000000c000000
   DefaultNumberOfWorkersForDifferentLevels: 03000000060000000a000000
+  HomesLimitsUp: 0
   NotEnoughtResourcesTextError: "\u041D\u0435\u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E
     \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432"
   NotEnoughtWorkers: "\u041D\u0435\u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E
@@ -76076,7 +76089,8 @@ GameObject:
   - component: {fileID: 4725670837725494217}
   - component: {fileID: 8750264964004502150}
   - component: {fileID: 8020200204403463119}
-  m_Layer: 0
+  - component: {fileID: 8750264964004502151}
+  m_Layer: 6
   m_Name: Terrain_(4297.00, -100.00, -316.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76881,6 +76895,26 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+--- !u!114 &8750264964004502151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4948128560164949282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: a98c17ecf46d2d58
 --- !u!218 &8772501827245308308
 Terrain:
   m_ObjectHideFlags: 0

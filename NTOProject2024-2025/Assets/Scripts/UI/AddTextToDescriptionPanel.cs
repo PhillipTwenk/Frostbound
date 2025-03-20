@@ -380,6 +380,8 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                 buildingData.HoneyConsumption = buildingSO.EnergyHoneyConsumpiton(BaseLevel);
 
                 BaseUpgradeConditionManager.CurrentBaseLevel = buildingData.Level;
+                
+                BaseUpgradeConditionManager.Instance.Initialization();
 
                 PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                     

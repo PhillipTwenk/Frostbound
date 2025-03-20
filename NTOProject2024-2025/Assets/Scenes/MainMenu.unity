@@ -913,7 +913,7 @@ MonoBehaviour:
   StartTutorialEvent: {fileID: 11400000, guid: 8e421e349be70094c9bd4b8cb43da81c, type: 2}
   StartValueIron: 400
   StartValueEnergy: 10
-  StartValueFood: 60
+  StartValueFood: 20
   StartValueCrioCrystal: 10
   StartValueApiaryShop:
     IronPrice: 50

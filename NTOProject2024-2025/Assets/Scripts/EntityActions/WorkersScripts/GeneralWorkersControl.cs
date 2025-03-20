@@ -51,6 +51,8 @@ namespace EntityActions.WorkersScripts
         [Header("Drone")] 
         [SerializeField] private List<UnitType> DroneTypes;
 
+        [Header("Food")] public static int CurrentFoodConsumptionByWorkers = 20;
+
 
         #region Инициализация
 
@@ -59,7 +61,6 @@ namespace EntityActions.WorkersScripts
             Instance = this;
             possiilityControlEntities = true;
             MainCamera = mainCamera;
-            // thisWorker = null;
             firstMouseEnterOutlineIndicator = true;
             SelectingUnit = null;
         }
@@ -224,11 +225,11 @@ namespace EntityActions.WorkersScripts
             EntityID entityID = CurrentPlayersDataControl.WhichPlayerCreate;
             PlayerResources playerResources = await APIManager.Instance.GetPlayerResources(entityID);
             
-            if (CurrentValueOfUnits + numberOfNewWorkers <= MaxValueOfUnits)
+            if ((CurrentValueOfUnits + numberOfNewWorkers) <= MaxValueOfUnits)
             {
                 if (CurrentValueOfWorkers + numberOfNewWorkers <= MaxValueOfWorkers)
                 {
-                    if (numberOfNewWorkers * 20 <= playerResources.Food)
+                    if (playerResources.Food - (numberOfNewWorkers * CurrentFoodConsumptionByWorkers) >= 0)
                     {
                         return String.Empty;
                     }
@@ -246,6 +247,24 @@ namespace EntityActions.WorkersScripts
             {
                 return LimitUnitsErrorCallingWorkerText;
             }
+        }
+
+        #endregion
+
+        #region Методы учета потребления еды
+
+        /// <summary>
+        /// Устанавливает потребление рабочих
+        /// Вызывается если количество еды гарантированно не опустится ниже 0
+        /// </summary>
+        /// <param name="numberOfWorkers"> Количество рабочих </param>
+        public async Task IncreasedFoodIntake(int numberOfWorkers)
+        {
+            EntityID entityID = CurrentPlayersDataControl.WhichPlayerCreate;
+            PlayerResources playerResources = await APIManager.Instance.GetPlayerResources(entityID);
+            int CurrentConsumptionFood = numberOfWorkers * CurrentFoodConsumptionByWorkers;
+            playerResources.Food -= CurrentConsumptionFood;
+            await APIManager.Instance.PutPlayerResources(entityID, playerResources.Iron, playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
         }
 
         #endregion

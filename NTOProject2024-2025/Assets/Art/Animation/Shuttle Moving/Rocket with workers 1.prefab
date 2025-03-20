@@ -376,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 815978863518170688}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.046761002, z: -0, w: 0.99890614}
-  m_LocalPosition: {x: 8, y: 2.8, z: 5}
+  m_LocalPosition: {x: 0.5, y: 0.7, z: 1.2}
   m_LocalScale: {x: 13.415364, y: 13.415364, z: 13.415364}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1071,6 +1071,7 @@ Transform:
   - {fileID: 1692283575844563792}
   - {fileID: 5048581114146410014}
   - {fileID: 5708400419786097068}
+  - {fileID: 6792272665541800232}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7475445315224386617
@@ -1111,6 +1112,11 @@ MonoBehaviour:
   StartFlyRocketGameEvent: {fileID: 11400000, guid: a321470a0017fa74194f4d2b59c13a2e, type: 2}
   EndSpacewalkRocketAwaitStartEvent: {fileID: 11400000, guid: 7b8bbcdccdf4230489dfb27ea6f29985, type: 2}
   animator: {fileID: 7475445315224386617}
+  WorkersPrefab:
+  - {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
+  - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
+  SpawnWorker: {fileID: 6792272665541800232}
+  currentWorkerType: 0
 --- !u!1 &2068790226459008304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1533,37 @@ Transform:
   - {fileID: 4114529119075419076}
   m_Father: {fileID: 4757317035679404945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2653917546170073161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6792272665541800232}
+  m_Layer: 0
+  m_Name: Spawn Worker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6792272665541800232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653917546170073161}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.2, y: 0, z: -217.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8139577595114040418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2783441631460222168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9055895901830033730
 Transform:
   m_ObjectHideFlags: 0
@@ -3488,6 +3525,18 @@ MonoBehaviour:
           m_StringArgument: Default
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6480075302598807308}
+        m_TargetAssemblyTypeName: RocketFlightControl, Assembly-CSharp
+        m_MethodName: SpawnWorkerStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Default
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7021580346391024605
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,7 +4249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7100693902650150849
 Transform:
   m_ObjectHideFlags: 0

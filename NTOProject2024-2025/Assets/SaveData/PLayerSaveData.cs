@@ -13,6 +13,7 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
 {
 
     public GameEvent endOfInitializationDataEvent;
+    public GameEvent UpdateResourcesEvent;
 
     #region Реализация ISerializableSO 
 
@@ -158,6 +159,11 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 {
                     GeneralWorkersControl.Instance.AddNewBuilding(null);
                 }
+
+                if (componentContainingBuilding.GetComponent<BuildingUpdateLimitService>())
+                {
+                    BaseUpgradeConditionManager.CurrentNumberOfHome++;
+                }
                 
                 CurrentPlayersDataControl.currentBuildingsDatas.Add(buildingData);
                 index++;
@@ -167,7 +173,7 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
         #endregion
 
         #region Инициализация рабочих
-
+        
         if (workers is not null)
         {
             for (int i = 0; i < workers.Count; i++)
@@ -210,7 +216,10 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
 
                 GeneralWorkersControl.Instance.CurrentValueOfUnits += 1;
                 GeneralWorkersControl.Instance.NumberOfFreeUnits += 1;
+                GeneralWorkersControl.Instance.CurrentValueOfWorkers += 1;
             }
+            
+            UpdateResourcesEvent.TriggerEvent();
         }
 
         #endregion

@@ -2199,6 +2199,7 @@ GameObject:
   - component: {fileID: 2468893000708977087}
   - component: {fileID: 8277959642194642565}
   - component: {fileID: 6023625852007033232}
+  - component: {fileID: 186643725845830718}
   m_Layer: 7
   m_Name: TechTriggerScripts
   m_TagString: Building
@@ -2352,6 +2353,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 186643725845830718}
+        m_TargetAssemblyTypeName: BuildingUpdateLimitService, Assembly-CSharp
+        m_MethodName: PlacementBuilding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &186643725845830718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7288959899136831248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e6a99926f06064687ab56226802924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LimitUpUnit: 1
+  LimitUpWorkers: 1
 --- !u!1 &7370915442489044503
 GameObject:
   m_ObjectHideFlags: 0

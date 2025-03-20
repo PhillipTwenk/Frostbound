@@ -1970,7 +1970,7 @@ MonoBehaviour:
   _volumeSliderMusic: {fileID: 677624526}
   _volumeSliderEffects: {fileID: 677624525}
   _screenResolutionControl: {fileID: 462131446}
-  CurrentConstNumberOfNewWorkersAfterCalling: 0
+  CurrentConstNumberOfNewWorkersAfterCalling: 1
   CallingWorkerText: {fileID: 5982111176469237004}
 --- !u!114 &462131445
 MonoBehaviour:

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Player3SaveData
   m_EditorClassIdentifier: 
   endOfInitializationDataEvent: {fileID: 11400000, guid: 82ac92dba34305540a67455e960c8cc9, type: 2}
+  UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
   playerBuildings:
   - {fileID: 4160612270241140356, guid: e0cefe3937c31a643b0e3960e02b8f5b, type: 3}
   buildingsTransform:
@@ -22,19 +23,63 @@ MonoBehaviour:
   BuildingDatas:
   - Level: 1
     Durability: 175
-    Storage: dc0500000a000000
+    Storage: 
     SaveListIndex: 0
     HoneyConsumption: 0
     Production: 
   BuildingWorkersInformationList:
-  - CurrentNumberOfWorkersInThisBuilding: 1
-    MaxValueOfWorkersInThisBuilding: 1
+  - CurrentNumberOfWorkersInThisBuilding: 0
+    MaxValueOfWorkersInThisBuilding: 0
     suitableUnitDataForThisBuilding: 0
-  workers: []
-  workersTransform: []
-  workerDatas: []
-  player: {fileID: 0}
+  workers:
+  - {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
+  - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
+  workersTransform:
+  - position: {x: 3321.5852, y: 0, z: 548.34326}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 3, y: 3, z: 3}
+  - position: {x: 3463.0002, y: 0, z: 687}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 3, y: 3, z: 3}
+  workerDatas:
+  - IsWorkerAtWork: 0
+    SaveListIndex: 0
+    unitType: 1
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 0
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
+  - IsWorkerAtWork: 0
+    SaveListIndex: 1
+    unitType: 2
+    droneSaveData:
+      LogisticsStorage: 0
+      buildingDataLogistics:
+        Level: 0
+        Durability: 0
+        Storage: 
+        SaveListIndex: 0
+        HoneyConsumption: 0
+        Production: 
+      IsLogisticsCycleActive: 0
+      isFlyNow: 0
+      isPlaceNow: 0
+      isTakingOff: 0
+      isLanding: 0
+      isMovingToLandingSpot: 0
+  player: {fileID: 5840928571377694232, guid: 4f02f1be8d4c7c74a88ddc9404ac2b57, type: 3}
   transformPlayer:
-    position: {x: 0, y: 0, z: 0}
+    position: {x: 3478, y: 0, z: 573}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 0, y: 0, z: 0}
+    scale: {x: 3, y: 3, z: 3}

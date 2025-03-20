@@ -14,8 +14,11 @@ public class BaseUpgradeConditionManager : MonoBehaviour
 
     public List<bool> FindNote;
     
+    [Header("Limits Control")]
     public List<int> MaximumNumberOfUnitsForDifferentLevels;
     public List<int> DefaultNumberOfWorkersForDifferentLevels;
+    public static int CurrentNumberOfHome;
+    public int HomesLimitsUp;
     
     [TextArea] public string NotEnoughtResourcesTextError;  
     [TextArea] public string NotEnoughtWorkers;
@@ -43,19 +46,19 @@ public class BaseUpgradeConditionManager : MonoBehaviour
     public void Initialization()
     {
         GeneralWorkersControl.Instance.MaxValueOfUnits =
-            MaximumNumberOfUnitsForDifferentLevels[CurrentBaseLevel - 1];
+            MaximumNumberOfUnitsForDifferentLevels[CurrentBaseLevel - 1] + CurrentNumberOfHome*HomesLimitsUp;
         GeneralWorkersControl.Instance.MaxValueOfWorkers 
-            = DefaultNumberOfWorkersForDifferentLevels[CurrentBaseLevel - 1];
+            = DefaultNumberOfWorkersForDifferentLevels[CurrentBaseLevel - 1] + CurrentNumberOfHome*HomesLimitsUp;
     }
 
     private void Update()
     {
         //чит
-         if (Input.GetKeyDown(KeyCode.Z))
-         {
-             CurrentBaseLevel += 1; 
-             Debug.Log(CurrentBaseLevel);
-         }
+         // if (Input.GetKeyDown(KeyCode.Z))
+         // {
+         //     CurrentBaseLevel += 1; 
+         //     Debug.Log(CurrentBaseLevel);
+         // }
         //
         // if (Input.GetKeyDown(KeyCode.P))
         // {
@@ -68,7 +71,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
 
     public async Task<List<string>> CanUpgradeMobileBase(PlayerResources playerResources)
     {
-        int WorkersCount = GeneralWorkersControl.Instance.MaxValueOfUnits;
+        int WorkersCount = GeneralWorkersControl.Instance.CurrentValueOfWorkers;
         List<GameObject> CurrentBuidlings = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.playerBuildings;
         List<BuildingSaveData> buildingSDs = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.BuildingDatas;
 
