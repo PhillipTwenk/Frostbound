@@ -66,8 +66,8 @@ Material:
     - _ZTestGBuffer: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 2, g: 2, b: 2, a: 1}
-    - _Fresnel_Color: {r: 43.51989, g: 115.3239, b: 166.24599, a: 0}
+    - _Color: {r: 2.6082377, g: 2.6082377, b: 2.6082377, a: 1}
+    - _Fresnel_Color: {r: 200.7843, g: 532.06085, b: 766.9961, a: 0}
     - _VertexDirection: {r: 0.3, g: 0.3, b: 0.3, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
