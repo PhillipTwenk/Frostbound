@@ -129,9 +129,9 @@ public class BuildingManager : MonoBehaviour
         {
             if(BaseUpgradeConditionManager.CurrentBaseLevel >= buildingPrefabSO.MBLevelForBuidlingthisIron)
             {
-                int CNoW = GeneralWorkersControl.Instance.CurrentValueOfWorkers;
-                int MVoW = GeneralWorkersControl.Instance.MaxValueOfWorkers;
-                int AW = GeneralWorkersControl.Instance.NumberOfFreeWorkers;
+                int CNoW = GeneralWorkersControl.Instance.CurrentValueOfUnits;
+                int MVoW = GeneralWorkersControl.Instance.MaxValueOfUnits;
+                int AW = GeneralWorkersControl.Instance.NumberOfFreeUnits;
                 if(AW > 0)
                 {
                     if ((playerResources.Energy - HoneyConsumptionBuilding) >= 0)

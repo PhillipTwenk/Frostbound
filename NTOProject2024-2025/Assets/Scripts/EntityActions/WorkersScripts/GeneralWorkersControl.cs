@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EntityActions.Movement_Control;
 using Unitilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace EntityActions.WorkersScripts
 {
@@ -15,11 +16,18 @@ namespace EntityActions.WorkersScripts
         [TextArea] public string HintNotNeededWorkerType; 
         [TextArea] public string HintNoBeAbleToBuildWorker;
         [TextArea] public string FullWorkerInThisBuilding;
+
+        [Header("Texts calling worker")]
+        [TextArea] public string LimitUnitsErrorCallingWorkerText;
+        [TextArea] public string LimitWorkersErrorCallingWorkerText;
+        [TextArea] public string LimitFoodErrorCallingWorkerText;
  
         [Header("Control workers & players")]
-        public int CurrentValueOfWorkers; // Общее текущее количество рабочих
-        public int MaxValueOfWorkers; // Максимальное количество рабочих при параметрах потребления еды
-        public int NumberOfFreeWorkers; // количество рабочих, участвующий на данный момент в постройке здания или на работе в пасеке
+        public int CurrentValueOfUnits; // Общее текущее количество рабочих
+        public int MaxValueOfUnits; // Максимальное количество рабочих при параметрах потребления еды
+        public int NumberOfFreeUnits; // количество рабочих, участвующий на данный момент в постройке здания или на работе в пасеке
+        public int MaxValueOfWorkers;
+        public int CurrentValueOfWorkers;
     
         [Header("Selected entity")]
         public static IUnitMovement SelectedUnit;
@@ -179,8 +187,8 @@ namespace EntityActions.WorkersScripts
             if (newBuilding != null) 
             {
                 listOfActiveBuildingWithWorkers.Add(newBuilding);
-                // MaxValueOfWorkers += newBuilding.MaxValueOfWorkersInThisBuilding;
-                CurrentValueOfWorkers += newBuilding.CurrentNumberWorkersInThisBuilding;
+                // MaxValueOfUnits += newBuilding.MaxValueOfWorkersInThisBuilding;
+                CurrentValueOfUnits += newBuilding.CurrentNumberWorkersInThisBuilding;
             }
             else
             {
@@ -197,12 +205,46 @@ namespace EntityActions.WorkersScripts
             if (newBuilding != null)
             {
                 listOfActiveBuildingWithWorkers.Remove(newBuilding);
-                MaxValueOfWorkers -= newBuilding.MaxValueOfWorkersInThisBuilding;
-                CurrentValueOfWorkers -= newBuilding.CurrentNumberWorkersInThisBuilding;
+                MaxValueOfUnits -= newBuilding.MaxValueOfWorkersInThisBuilding;
+                CurrentValueOfUnits -= newBuilding.CurrentNumberWorkersInThisBuilding;
             }
             else
             {
                 listOfActiveBuildingWithWorkers.Remove(newBuilding);
+            }
+        }
+
+        /// <summary>
+        /// Проверяет, можно ли добавить указанное количество новых рабочих на базу
+        /// </summary>
+        /// <param name="numberOfNewWorkers"></param>
+        /// <returns></returns>
+        public async Task<string> CheckValidNumberOfWorkers(int numberOfNewWorkers)
+        {
+            EntityID entityID = CurrentPlayersDataControl.WhichPlayerCreate;
+            PlayerResources playerResources = await APIManager.Instance.GetPlayerResources(entityID);
+            
+            if (CurrentValueOfUnits + numberOfNewWorkers <= MaxValueOfUnits)
+            {
+                if (CurrentValueOfWorkers + numberOfNewWorkers <= MaxValueOfWorkers)
+                {
+                    if (numberOfNewWorkers * 20 <= playerResources.Food)
+                    {
+                        return String.Empty;
+                    }
+                    else
+                    {
+                        return LimitFoodErrorCallingWorkerText;
+                    }
+                }
+                else
+                {
+                    return LimitWorkersErrorCallingWorkerText;
+                }
+            }
+            else
+            {
+                return LimitUnitsErrorCallingWorkerText;
             }
         }
 

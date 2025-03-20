@@ -50,8 +50,8 @@ public class ThisBuildingWorkersControl : MonoBehaviour
     {
         if (CurrentNumberWorkersInThisBuilding > 0 && CurrentWorkerDataInThisBuilding != null)
         {
-            GeneralWorkersControl.Instance.NumberOfFreeWorkers += 1;
-            Debug.Log($"<color=green>Свободные рабочие + 1: {GeneralWorkersControl.Instance.NumberOfFreeWorkers}</color>");
+            GeneralWorkersControl.Instance.NumberOfFreeUnits += 1;
+            Debug.Log($"<color=green>Свободные рабочие + 1: {GeneralWorkersControl.Instance.NumberOfFreeUnits}</color>");
             CurrentNumberWorkersInThisBuilding -= 1;
             if (currentWorkerInThisBuilding != null)
             {
@@ -78,7 +78,7 @@ public class ThisBuildingWorkersControl : MonoBehaviour
             {
                 if (workerData.IsWorkerAtWork && workerData.unitType == suitableUnitDataForThisBuilding)
                 {
-                    GeneralWorkersControl.Instance.NumberOfFreeWorkers += 1;
+                    GeneralWorkersControl.Instance.NumberOfFreeUnits += 1;
                     
                     workerData.IsWorkerAtWork = false;
 

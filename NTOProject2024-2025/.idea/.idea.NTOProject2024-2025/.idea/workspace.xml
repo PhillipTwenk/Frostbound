@@ -24,10 +24,24 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/Rocket with workers 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/Rocket with workers 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/Rocket with workers.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/Rocket with workers.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art_VFX/Thruster/Shuttle.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_VFX/Thruster/Shuttle.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingBeekeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingBeekeper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingConstructor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingConstructor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingWorkersPanel .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingWorkersPanel .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/CompletionOfConstructionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/CompletionOfConstructionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EngineeringModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EngineeringModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerMainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerMainMenu.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +59,14 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/78b844062308434eaec2b2471060336334600/3b/42ae3ca5/StateMachineBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/78b844062308434eaec2b2471060336334600/3c/6aaeee62/AnimatorStateInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/20/d3a9a157/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/c2/cd46938b/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/c8/6afdba52/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/e2/1131c79f/Behaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/StateMachineBehaviour Scripts/DownStateMachineControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/StateMachineBehaviour Scripts/UpStateMachineControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Buildings/Building.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Buildings/Other/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Buildings/Plan.cs" root0="FORCE_HIGHLIGHTING" />
@@ -88,10 +110,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitLogistics.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/NavMeshScripts/NavMeshUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/CallingWorkers/RocketFlightControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/IWorkerUnit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/ThisBuildingWorkersControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkersInterBuildingControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryPointMainMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Optimization/VisualEffectCulling.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -348,6 +370,10 @@
       <workItem from="1742218575857" duration="27006000" />
       <workItem from="1742293194871" duration="1481000" />
       <workItem from="1742312076921" duration="12316000" />
+      <workItem from="1742392476403" duration="3747000" />
+      <workItem from="1742400779818" duration="6631000" />
+      <workItem from="1742469172328" duration="6450000" />
+      <workItem from="1742487800532" duration="93000" />
     </task>
     <servers />
   </component>

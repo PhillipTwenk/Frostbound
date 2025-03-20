@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using EntityActions.WorkersScripts;
 using RTS_Cam;
 using TMPro;
 using Unitilities;
@@ -11,6 +12,21 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+
+    #region Делегаты 
+
+    /// <summary>
+    /// Если какая-либо панель открывается, она подписывается на этот делегат при нажатии кнопки esc ( Добавление метода, реализующего закрытие себя же )
+    /// Если закрывается - отписывается
+    /// </summary>
+    public static event Action CancelLastOpenPanelEvent;
+
+    /// <summary>
+    /// Вызывается при подтвержднном вызове нового рабочего из космопорта
+    /// </summary>
+    public static event Action<int> CallingNewWorkerEvent;
+
+    #endregion
     
     #region Переменные / Свойства
 
@@ -31,11 +47,6 @@ public class UIManager : MonoBehaviour
     public GameEvent OpenCallingWorkerPanelEvent;
     public GameEvent CloseCallingWorkerPanelEvent;
     
-    /// <summary>
-    /// Если какая-либо панель открывается, она подписывается на этот делегат при нажатии кнопки esc ( Добавление метода, реализующего закрытие себя же )
-    /// Если закрывается - отписывается
-    /// </summary>
-    public static event Action CancelLastOpenPanelEvent; 
     
     
     [Header("UI Objects")]
@@ -74,6 +85,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Flags")]
     private bool IsOpenBuildingPanel;
+
+    [Header("Calling Worker Panel")] 
+    public int CurrentConstNumberOfNewWorkersAfterCalling;
+    public TextMeshProUGUI CallingWorkerText;
 
 
     public bool PossibilityZoomCamera
@@ -430,6 +445,7 @@ public class UIManager : MonoBehaviour
     public void OpenCallingWorkersPanel()
     {
         OpenCallingWorkerPanelEvent.TriggerEvent();
+        RTS_Camera.possibilityZoomCamera = false;
         CancelLastOpenPanelEvent += CloseCallingWorkersPanel;
     }
 
@@ -439,9 +455,32 @@ public class UIManager : MonoBehaviour
     public void CloseCallingWorkersPanel()
     {
         CloseCallingWorkerPanelEvent.TriggerEvent();
+        RTS_Camera.possibilityZoomCamera = true;
         CancelLastOpenPanelEvent -= CloseCallingWorkersPanel;
     }
 
+    /// <summary>
+    /// Нажали на кнопку вызова рабочего
+    /// </summary>
+    public async void ClickButtonCallingWorker(int workerType)
+    {
+        string newText = await GeneralWorkersControl.Instance.CheckValidNumberOfWorkers(CurrentConstNumberOfNewWorkersAfterCalling);
+        UpdateTextNearCallingWorkerPanel(newText);
+
+        if (newText == String.Empty)
+        {
+            CallingNewWorkerEvent?.Invoke(workerType);
+        }
+        
+    }
+
+    /// <summary>
+    /// Обновляет текст около панели вызова рабочих, если какое либо из условий не выполнилось
+    /// </summary>
+    /// <param name="text"></param>
+    public void UpdateTextNearCallingWorkerPanel(string text) => CallingWorkerText.text = text;
+    
+    
     #endregion
     
     #region Экстремальные условия

@@ -80,7 +80,7 @@ public class EngineeringModule : MonoBehaviour
         int MaximumSlots = resourceData.resources[0];
         int currentSlot = buildingData.Storage[0];
         PlayerResources playerResources = await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
-        if ((GeneralWorkersControl.Instance.CurrentValueOfWorkers + 1) <= GeneralWorkersControl.Instance.MaxValueOfWorkers)
+        if ((GeneralWorkersControl.Instance.CurrentValueOfUnits + 1) <= GeneralWorkersControl.Instance.MaxValueOfUnits)
         {
             if (currentSlot < MaximumSlots)
             {
@@ -90,8 +90,8 @@ public class EngineeringModule : MonoBehaviour
                     {
                         SpawnNewDrone();
                     
-                        GeneralWorkersControl.Instance.CurrentValueOfWorkers += 1;
-                        GeneralWorkersControl.Instance.NumberOfFreeWorkers += 1;
+                        GeneralWorkersControl.Instance.CurrentValueOfUnits += 1;
+                        GeneralWorkersControl.Instance.NumberOfFreeUnits += 1;
 
                         buildingData.Storage[0] += 1;
                     

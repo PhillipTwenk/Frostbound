@@ -77,7 +77,7 @@ public class CompletionOfConstructionController : MonoBehaviour
       IsWorkersHere = true;
       IWorkerUnit movementController = currentWorker.gameObject.GetComponent<IWorkerUnit>();
       movementController.ReadyForWork = false;
-      GeneralWorkersControl.Instance.NumberOfFreeWorkers -= 1;
+      GeneralWorkersControl.Instance.NumberOfFreeUnits -= 1;
       
       IsWorkerHereEvent?.Invoke();
    }
@@ -152,8 +152,8 @@ public class CompletionOfConstructionController : MonoBehaviour
       movementController.ArriveForBuildBuidling = false;
       movementController.PossibilityClickOnUnit = true;
         
-      GeneralWorkersControl.Instance.NumberOfFreeWorkers += 1;
-      Debug.Log($"<color=green>Свободные рабочие + 1: {GeneralWorkersControl.Instance.NumberOfFreeWorkers}</color>");
+      GeneralWorkersControl.Instance.NumberOfFreeUnits += 1;
+      Debug.Log($"<color=green>Свободные рабочие + 1: {GeneralWorkersControl.Instance.NumberOfFreeUnits}</color>");
 
       currentWorker = null;
    }

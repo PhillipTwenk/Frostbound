@@ -375,15 +375,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815978863518170688}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7209005, z: -0, w: 0.6930386}
-  m_LocalPosition: {x: 7.400146, y: 2.8, z: -5.400024}
+  m_LocalRotation: {x: -0, y: 0.046761002, z: -0, w: 0.99890614}
+  m_LocalPosition: {x: 8, y: 2.8, z: 5}
   m_LocalScale: {x: 13.415364, y: 13.415364, z: 13.415364}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1060678902968322235}
   - {fileID: 4697119576435156243}
   m_Father: {fileID: 8139577595114040418}
-  m_LocalEulerAnglesHint: {x: 0, y: -92.258, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 5.36, z: 0}
 --- !u!1 &824400513245632498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8139577595114040418}
   - component: {fileID: 7475445315224386617}
+  - component: {fileID: 6480075302598807308}
   m_Layer: 0
   m_Name: Rocket with workers 1
   m_TagString: Untagged
@@ -1069,6 +1070,7 @@ Transform:
   m_Children:
   - {fileID: 1692283575844563792}
   - {fileID: 5048581114146410014}
+  - {fileID: 5708400419786097068}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7475445315224386617
@@ -1093,6 +1095,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6480075302598807308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057647680647767387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185c15d7aa675fe48b81c8e61009ccb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlightBetweetAnimationsTime: 5
+  StartFlyRocketGameEvent: {fileID: 11400000, guid: a321470a0017fa74194f4d2b59c13a2e, type: 2}
+  EndSpacewalkRocketAwaitStartEvent: {fileID: 11400000, guid: 7b8bbcdccdf4230489dfb27ea6f29985, type: 2}
+  animator: {fileID: 7475445315224386617}
 --- !u!1 &2068790226459008304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,7 +2328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4105402162407790501}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7068882, z: -0, w: 0.70732534}
+  m_LocalRotation: {x: -0, y: -0.05149449, z: -0, w: 0.9986733}
   m_LocalPosition: {x: 5.6000977, y: -0.000038146973, z: -1.7000122}
   m_LocalScale: {x: 14.289261, y: 14.289255, z: 14.289261}
   m_ConstrainProportionsScale: 0
@@ -2319,7 +2337,7 @@ Transform:
   - {fileID: 3984095576130694746}
   - {fileID: 1550077820599209201}
   m_Father: {fileID: 8139577595114040418}
-  m_LocalEulerAnglesHint: {x: 0, y: -89.965, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -5.903, z: 0}
 --- !u!1 &4343316087659461410
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,6 +3317,177 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.002984058, y: 0.025859687, z: -0.00013989396}
     m_Extent: {x: 0.027505241, y: 0.023094494, z: 0.022299485}
   m_DirtyAABB: 0
+--- !u!1 &6748892751838402417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5708400419786097068}
+  - component: {fileID: 7076335144741135152}
+  - component: {fileID: 469157266541864817}
+  - component: {fileID: 8513892563551477605}
+  - component: {fileID: 4008759433552141667}
+  m_Layer: 0
+  m_Name: AnimatorStateController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5708400419786097068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748892751838402417}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8139577595114040418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7076335144741135152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748892751838402417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a321470a0017fa74194f4d2b59c13a2e, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7475445315224386617}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Up
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &469157266541864817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748892751838402417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d38bd2a8618198d49a4c6dcefbb301da, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6480075302598807308}
+        m_TargetAssemblyTypeName: RocketFlightControl, Assembly-CSharp
+        m_MethodName: StartSpacewalkAwait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 815978863518170688}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8513892563551477605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748892751838402417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 7b8bbcdccdf4230489dfb27ea6f29985, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7475445315224386617}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Down
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 815978863518170688}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Down
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &4008759433552141667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748892751838402417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c1bbe4b91eafc474fa3aa481ef635607, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7475445315224386617}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Default
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7021580346391024605
 GameObject:
   m_ObjectHideFlags: 0

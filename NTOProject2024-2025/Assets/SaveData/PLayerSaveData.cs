@@ -208,8 +208,8 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
                 workerData.gameObject.GetComponent<IWorkerUnit>().MainCamera =
                     GeneralWorkersControl.MainCamera;
 
-                GeneralWorkersControl.Instance.CurrentValueOfWorkers += 1;
-                GeneralWorkersControl.Instance.NumberOfFreeWorkers += 1;
+                GeneralWorkersControl.Instance.CurrentValueOfUnits += 1;
+                GeneralWorkersControl.Instance.NumberOfFreeUnits += 1;
             }
         }
 

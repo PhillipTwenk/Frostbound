@@ -14,7 +14,8 @@ public class BaseUpgradeConditionManager : MonoBehaviour
 
     public List<bool> FindNote;
     
-    public List<int> NumberOfWorkersForDifferentLevels;
+    public List<int> MaximumNumberOfUnitsForDifferentLevels;
+    public List<int> DefaultNumberOfWorkersForDifferentLevels;
     
     [TextArea] public string NotEnoughtResourcesTextError;  
     [TextArea] public string NotEnoughtWorkers;
@@ -41,8 +42,10 @@ public class BaseUpgradeConditionManager : MonoBehaviour
 
     public void Initialization()
     {
-        GeneralWorkersControl.Instance.MaxValueOfWorkers =
-            NumberOfWorkersForDifferentLevels[CurrentBaseLevel - 1];
+        GeneralWorkersControl.Instance.MaxValueOfUnits =
+            MaximumNumberOfUnitsForDifferentLevels[CurrentBaseLevel - 1];
+        GeneralWorkersControl.Instance.MaxValueOfWorkers 
+            = DefaultNumberOfWorkersForDifferentLevels[CurrentBaseLevel - 1];
     }
 
     private void Update()
@@ -65,7 +68,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
 
     public async Task<List<string>> CanUpgradeMobileBase(PlayerResources playerResources)
     {
-        int WorkersCount = GeneralWorkersControl.Instance.MaxValueOfWorkers;
+        int WorkersCount = GeneralWorkersControl.Instance.MaxValueOfUnits;
         List<GameObject> CurrentBuidlings = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.playerBuildings;
         List<BuildingSaveData> buildingSDs = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.BuildingDatas;
 
@@ -84,10 +87,10 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                     string report = $"{NotEnoughtResourcesTextError}: {playerResources.Iron} / {buildingDataMB.buildingTypeSO.priceUpgrade}";
                     resultReport.Add(report);
                 }
-                if (WorkersCount < NumberOfWorkersForDifferentLevels[0])
+                if (WorkersCount < MaximumNumberOfUnitsForDifferentLevels[0])
                 {
                     IsThisReportUnsuccess = true;
-                    string report = $"{NotEnoughtWorkers}: {WorkersCount} / {NumberOfWorkersForDifferentLevels[0]}";
+                    string report = $"{NotEnoughtWorkers}: {WorkersCount} / {MaximumNumberOfUnitsForDifferentLevels[0]}";
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevel1;
@@ -148,10 +151,10 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                     string report = $"{NotEnoughtResourcesTextError}: {playerResources.Iron} / {buildingDataMB.buildingTypeSO.priceUpgrade}";
                     resultReport.Add(report);
                 }
-                if (WorkersCount < NumberOfWorkersForDifferentLevels[1])
+                if (WorkersCount < MaximumNumberOfUnitsForDifferentLevels[1])
                 {
                     IsThisReportUnsuccess = true;
-                    string report = $"{NotEnoughtWorkers}: {WorkersCount} / {NumberOfWorkersForDifferentLevels[1]}";
+                    string report = $"{NotEnoughtWorkers}: {WorkersCount} / {MaximumNumberOfUnitsForDifferentLevels[1]}";
                     resultReport.Add(report);
                 }
 
@@ -217,10 +220,10 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                     string report = $"{NotEnoughtResourcesTextError}: {playerResources.Iron} / {buildingDataMB.buildingTypeSO.priceUpgrade}";
                     resultReport.Add(report);
                 }
-                if (WorkersCount < NumberOfWorkersForDifferentLevels[2])
+                if (WorkersCount < MaximumNumberOfUnitsForDifferentLevels[2])
                 {
                     IsThisReportUnsuccess = true;
-                    string report = $"{NotEnoughtWorkers}: {WorkersCount} / {NumberOfWorkersForDifferentLevels[2]}";
+                    string report = $"{NotEnoughtWorkers}: {WorkersCount} / {MaximumNumberOfUnitsForDifferentLevels[2]}";
                     resultReport.Add(report);
                 }
                 int currentNumberNeededBuildingLevel3;

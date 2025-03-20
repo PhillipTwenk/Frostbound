@@ -273,8 +273,8 @@ public class InteractionBuildingController : MonoBehaviour
     /// <param name="other"></param>
     public async void WorkerComeToBuilding(Collider other)
     {
-         GeneralWorkersControl.Instance.NumberOfFreeWorkers -= 1;
-        Debug.Log($"<color=green>Свободные рабочие - 1: {GeneralWorkersControl.Instance.NumberOfFreeWorkers}</color>");
+         GeneralWorkersControl.Instance.NumberOfFreeUnits -= 1;
+        Debug.Log($"<color=green>Свободные рабочие - 1: {GeneralWorkersControl.Instance.NumberOfFreeUnits}</color>");
         ThisBuildingWorkersControl thisBuildingWorkersControl = GetComponent<ThisBuildingWorkersControl>();
         TextMeshPro text = Texthint.GetComponent<TextMeshPro>();
         if (thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding < thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding)
