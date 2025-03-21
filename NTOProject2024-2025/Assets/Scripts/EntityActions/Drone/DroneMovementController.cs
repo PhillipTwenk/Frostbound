@@ -188,7 +188,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
                 SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject;
                 IsClickOnOtherEntity = false;
             }
-            else if (hit.collider.CompareTag("ClickOnWorker") || hit.collider.CompareTag("Player")) 
+            else if ((hit.collider.CompareTag("ClickOnWorker") || hit.collider.CompareTag("Player")) && !CheckForNonGroundObjects()) 
             {
                 IsClickOnOtherEntity = true;
                 isSelected = false;

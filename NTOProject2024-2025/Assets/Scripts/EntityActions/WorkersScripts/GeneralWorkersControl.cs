@@ -100,12 +100,23 @@ namespace EntityActions.WorkersScripts
                             DroneMovementController droneMovementController = SelectedUnit as DroneMovementController;
                             if (droneMovementController != null && !droneMovementController.CheckForNonGroundObjects())
                             {
-                                droneMovementController.StartLanding(); // Начало посадки дрона 
+                                Debug.Log(1);
+                                droneMovementController.StartLanding(); // Начало посадки дрона
                                 ResetSelectedUnit();
+                                return;
+                            }
+                            
+                            if(droneMovementController != null && droneMovementController.CheckForNonGroundObjects())
+                            {
+                                Debug.Log(2);
+                                return;
                             }
                         }
+                        Debug.Log(3);
+                        ResetSelectedUnit();
                         return;
                     }
+                    Debug.Log(4);
                     ResetSelectedUnit();
                 
                     //Debug.Log($"<color=purple> Выделен юнит: {hit.collider.tag} </color>");
