@@ -615,6 +615,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &210821146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,6 +1950,7 @@ MonoBehaviour:
   CloseQuestPanelEvent: {fileID: 11400000, guid: 54fa40fad0f0fc24bb84590300bcef73, type: 2}
   OpenCallingWorkerPanelEvent: {fileID: 11400000, guid: 713e335bbd8c83643a35ea08805c06e6, type: 2}
   CloseCallingWorkerPanelEvent: {fileID: 11400000, guid: c7185726af4ab2947aab98699686f129, type: 2}
+  UIAudioEffectEvent: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
   Resources_Icons: {fileID: 36106226}
   uiListForQuestTransform: {fileID: 1156989810859222030}
   AllUIQuestPanels:
@@ -2137,6 +2150,18 @@ MonoBehaviour:
       - m_Target: {fileID: 462131444}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: CloseBuildingPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2738,6 +2763,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &914306529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3309,6 +3346,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1066883705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3649,6 +3698,18 @@ MonoBehaviour:
       - m_Target: {fileID: 462131444}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OpenCallingWorkersPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4483,6 +4544,18 @@ MonoBehaviour:
       - m_Target: {fileID: 462131444}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OpenBuildingPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6337,6 +6410,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2077709827
 GameObject:
   m_ObjectHideFlags: 0
@@ -7395,18 +7480,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 462131444}
     - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+    - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
@@ -7414,8 +7511,16 @@ PrefabInstance:
       value: ClickButtonCallingWorker
       objectReference: {fileID: 0}
     - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameEvent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -7423,6 +7528,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093546976527051984, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1153729905735985058, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
@@ -7551,18 +7660,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 462131444}
     - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+    - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
@@ -7570,8 +7691,16 @@ PrefabInstance:
       value: ClickButtonCallingWorker
       objectReference: {fileID: 0}
     - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameEvent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -7579,6 +7708,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154177164607612504, guid: 0531061bda280524aba93c6458d0de4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6663975883597773587, guid: 0531061bda280524aba93c6458d0de4e, type: 3}

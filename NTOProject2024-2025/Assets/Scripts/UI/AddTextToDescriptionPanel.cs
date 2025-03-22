@@ -47,6 +47,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     [SerializeField] private Transform pointInPanelAngle4;
 
     [SerializeField] private GameEvent UpdateResourcesEvent;
+    public GameEvent UpgradeAudioEvent;
     private bool IsPanelActive;
 
     private void Start()
@@ -260,24 +261,18 @@ public class AddTextToDescriptionPanel : MonoBehaviour
 
         int NewIron = buildingSO.priceBuilding / 2;
         playerResources.Energy += buildingData.HoneyConsumption;
-        if (building.GetComponent<ThisBuildingWorkersControl>())
-        {
-            InteractionBuildingController interactionBuildingController =
-                building.GetComponent<InteractionBuildingController>();
-            interactionBuildingController.InteractionEvent?.Invoke();
-        }
 
-        if (building.GetComponent<EnergyProduction>())
-        {
-            playerResources = building.GetComponent<EnergyProduction>().OnDestroyThis(playerResources);
-        }
-
+        CompletionOfConstructionController completionOfConstructionController =
+            buildingData.gameObject.GetComponent<CompletionOfConstructionController>();
+        UnityEvent OnDestroyThisBuildingEvent = completionOfConstructionController?.OnDestroyBuilding;
+        OnDestroyThisBuildingEvent?.Invoke();
+        
+        
         await SyncManager.Enqueue(async () =>
         {
             await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron + NewIron, playerResources.Energy, playerResources.Food,
                 playerResources.CryoCrystal);
         });
-       
         
         PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
         
@@ -348,6 +343,8 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                     BuildingSaveData buildingSaveData = new BuildingSaveData(buildingData);
                     playerSaveData.BuildingDatas[buildingData.SaveListIndex] = buildingSaveData;
                     
+                    UpgradeAudioEvent.TriggerEvent();
+                    
                     OnHintPanel(UpgradeLevelBuildingInformation);
                 }
                 else
@@ -388,7 +385,8 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                 BuildingSaveData buildingSaveData = new BuildingSaveData(buildingData);
                 playerSaveData.BuildingDatas[buildingData.SaveListIndex] = buildingSaveData;
 
-
+                UpgradeAudioEvent.TriggerEvent();
+                
                 OnHintPanel(ImprovementReport[0]);
             }
             else

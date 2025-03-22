@@ -3,7 +3,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EntityActions.WorkersScripts;
+using TMPro;
+using Unitilities;
 using Unity.VisualScripting;
 
 public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistics
@@ -219,7 +222,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         }
     }
 
-    public void MovementHandler()
+    public async void MovementHandler()
     {
         if (isMovingToLandingSpot || isLanding) return;
         
@@ -237,13 +240,23 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
                 }
                 else if (SelectedBuilding != null)
                 {
-                    if (!SelectedBuilding.GetComponent<BuildingData>().IsThisBuilt)
+                    BuildingData buildingData = SelectedBuilding.gameObject.GetComponent<BuildingData>();
+                    if (!buildingData.IsThisBuilt)
                     {
                         if (_thisWorkerData.unitType == UnitType.MainDrone)
                         {
                             if (ReadyForWork)
                             {
-                                ArriveForBuildBuidling = true;
+                                bool IsWorkerCanBuildBuilding = await CheckEnergyConsumptionBeforeBuilding(buildingData);
+                                if (IsWorkerCanBuildBuilding)
+                                {
+                                    ArriveForBuildBuidling = true;
+                                }
+                                else
+                                {
+                                    HintBuildingUpdate(GeneralWorkersControl.Instance.LimitRiskBeforeBuildingHint, buildingData, "<color=blue> Строительство здания будет чревато понижением энергии ниже 0 </color>");
+                                    return;
+                                }
                             }
                         }
                     }
@@ -449,6 +462,85 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
             
             SetUnitDestination(currentWalkingPoint.transform, false);
         }
+    }
+    
+    /// <summary>
+    /// Проверяет перед тем как побежать к зданию, не будет ли после ее постройки нарушено потребление энергии
+    /// </summary>
+    /// <returns></returns>
+    public async Task<bool> CheckEnergyConsumptionBeforeBuilding(BuildingData buildingData)
+    {
+        PlayerResources playerResources = await GetResourcesPLayer(CurrentPlayersDataControl.WhichPlayerCreate);
+        if ((playerResources.Energy - buildingData.HoneyConsumption) < 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    #endregion
+
+    #region Другие полезные методы
+
+    private async Task<PlayerResources> GetResourcesPLayer(EntityID playerID)
+    {
+        PlayerResources playerResources = null;
+        await SyncManager.Enqueue(async () =>
+        {
+            playerResources = await APIManager.Instance.GetPlayerResources(playerID);
+        });
+        return playerResources;
+    }
+    
+    /// <summary>
+    /// Добваление текста в подскакзки при выводе информации об ошибке, связанной с типами рабочих
+    /// </summary>
+    /// <param name="buildingData"></param>
+    private void HintBuildingUpdate(string WhichTypeActionText, BuildingData buildingData, string debug)
+    {
+        Debug.Log(debug);
+
+        if (!buildingData.gameObject.GetComponent<InteractionBuildingController>().IsTextStartWorkingActive)
+        {
+            InteractionBuildingController interactionBuildingController = buildingData.gameObject.GetComponent<InteractionBuildingController>();
+            TextMeshPro text = buildingData.AwaitBuildingThisTMPro;
+            string newText = $"{WhichTypeActionText}";
+            TemporaryText(interactionBuildingController, text, newText);
+        }
+    }
+    
+    /// <summary>
+    /// Показ текста, который пропадет через определенное время 
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="whichText"></param>
+    private void TemporaryText(InteractionBuildingController interactionBuildingController, TextMeshPro text, string whichText)
+    {
+        string oldText = text.text;
+        text.gameObject.SetActive(true);
+        text.text = whichText;
+        Utility.Invoke(this, () =>
+        {
+            if (interactionBuildingController.gameObject.GetComponent<BuildingData>().IsThisBuilt)
+            {
+                foreach (var obj in interactionBuildingController.objectsInTrigger)
+                {
+                    if (obj.gameObject.CompareTag("Player"))
+                    {
+                        interactionBuildingController.TextOnEvent?.Invoke();
+                        return;
+                    }
+                }
+                text.gameObject.SetActive(false);
+            }
+            else
+            {
+                text.text = oldText;
+            }
+        }, interactionBuildingController.textOnTime);
     }
 
     #endregion

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
 using TMPro;
@@ -5,7 +6,7 @@ using Unitilities;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUnit
+public class WorkerMovementController : MonoBehaviour, IWorkerUnit
 {
     [Header("Properties")]
     public bool isSelected { get; set; }
@@ -114,7 +115,7 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
     /// <summary>
     /// Управление движением юнита
     /// </summary>
-    public void MovementHandler()
+    public async void MovementHandler()
     {
         if(isSelected && GeneralWorkersControl.possiilityControlEntities){
             
@@ -127,15 +128,27 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
                 if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
                     ArriveForBuildBuidling = false;
-                } else if (SelectedBuilding != null){
+                } else if (SelectedBuilding != null)
+                {
+
+                    BuildingData buildingData = SelectedBuilding.gameObject.GetComponent<BuildingData>();
                     // Если выбранное здание в процессе строительства и рабочий свободен, он идет его строить
-                    if (!SelectedBuilding.gameObject.GetComponent<BuildingData>().IsThisBuilt)
+                    if (!buildingData.IsThisBuilt)
                     {
                         if (_thisWorkerData.unitType == UnitType.Constructor)
                         {
                             if (ReadyForWork)
                             {
-                                ArriveForBuildBuidling = true;
+                                bool IsWorkerCanBuildBuilding = await CheckEnergyConsumptionBeforeBuilding(buildingData);
+                                if (IsWorkerCanBuildBuilding)
+                                {
+                                    ArriveForBuildBuidling = true;
+                                }
+                                else
+                                {
+                                    HintBuildingUpdate(GeneralWorkersControl.Instance.LimitRiskBeforeBuildingHint, buildingData, "<color=blue> Строительство здания будет чревато понижением энергии ниже 0 </color>",  1);
+                                    return;
+                                }
                             }
                         }
                         else
@@ -245,6 +258,23 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
             //Debug.Log($"Setting destination to: {point.position}");
         }
     }
+
+    /// <summary>
+    /// Проверяет перед тем как побежать к зданию, не будет ли после ее постройки нарушено потребление энергии
+    /// </summary>
+    /// <returns></returns>
+    public async Task<bool> CheckEnergyConsumptionBeforeBuilding(BuildingData buildingData)
+    {
+        PlayerResources playerResources = await GetResourcesPLayer(CurrentPlayersDataControl.WhichPlayerCreate);
+        if ((playerResources.Energy - buildingData.HoneyConsumption) < 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "WalkingPoint"){
@@ -300,19 +330,37 @@ public class WorkerMovementController : MonoBehaviour, IUnitMovement, IWorkerUni
     /// <param name="whichText"></param>
     private void TemporaryText(InteractionBuildingController interactionBuildingController, TextMeshPro text, string whichText)
     {
+        string oldText = text.text;
         text.gameObject.SetActive(true);
         text.text = whichText;
         Utility.Invoke(this, () =>
         {
-            foreach (var obj in interactionBuildingController.objectsInTrigger)
+            if (interactionBuildingController.gameObject.GetComponent<BuildingData>().IsThisBuilt)
             {
-                if (obj.gameObject.CompareTag("Player"))
+                foreach (var obj in interactionBuildingController.objectsInTrigger)
                 {
-                    interactionBuildingController.TextOnEvent?.Invoke();
-                    return;
+                    if (obj.gameObject.CompareTag("Player"))
+                    {
+                        interactionBuildingController.TextOnEvent?.Invoke();
+                        return;
+                    }
                 }
+                text.gameObject.SetActive(false);
             }
-            text.gameObject.SetActive(false);
+            else
+            {
+                text.text = oldText;
+            }
         }, interactionBuildingController.textOnTime);
+    }
+    
+    private async Task<PlayerResources> GetResourcesPLayer(EntityID playerID)
+    {
+        PlayerResources playerResources = null;
+        await SyncManager.Enqueue(async () =>
+        {
+            playerResources = await APIManager.Instance.GetPlayerResources(playerID);
+        });
+        return playerResources;
     }
 }

@@ -623,7 +623,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 829964320001570553}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5537968254434525257
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3db9224f28a26c4aa67761faeb22fc1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5abbe6e64c2aac0419bbef848097ca10, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

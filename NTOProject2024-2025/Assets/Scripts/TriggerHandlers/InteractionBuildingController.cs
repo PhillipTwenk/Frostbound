@@ -403,7 +403,7 @@ public class InteractionBuildingController : MonoBehaviour
 
     /// <summary>
     /// Вызывается при размещении и при постройке здания, на случай если игрок в этот момент окажется около него
-    /// Добавляется в Unityevent CompletionOfConstructionController.StartBuildingFunctionEvent
+    /// Добавляется в Unityevent CompletionOfConstructionController.OnEndBuilding
     /// </summary>
     public void PlayerNearBuildingAfterConstructBuilding()
     {

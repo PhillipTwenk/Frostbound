@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66884e9cfbc7ad54cad500d662bb4755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoneyConsumption: 0
+  HoneyConsumption: 10
   NumberOfWorkers: 0
 --- !u!1 &4654203089771753797
 GameObject:

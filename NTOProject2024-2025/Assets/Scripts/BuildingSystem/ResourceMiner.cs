@@ -2,7 +2,9 @@ using System;
 using System.Threading.Tasks;
 using TMPro;
 using Unitilities;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Типы добытчиков в зависимости от типа месторождения 
@@ -46,6 +48,10 @@ public class ResourceMiner : MonoBehaviour
     [Tooltip("Текст, выводящийся над зданием при возобновлении работы")] [TextArea] [SerializeField] private string resumeTextWorking;
     [Tooltip("Время, через которое текст должен удалится")] [SerializeField] private int showTextTime;
 
+    [Header("Unity Events")] 
+    [Tooltip("Срабатывает при старте добычи ресурсов")] public UnityEvent OnStartMiningEvent;
+    [Tooltip("Срабатывает при окончании добычи ресурсов")] public UnityEvent OnEndMiningEvent;
+
 
     private void Start()
     {
@@ -65,7 +71,6 @@ public class ResourceMiner : MonoBehaviour
             
             if (_buildingData.IsThisBuilt)
             {
-                Debug.Log(12122222222222222);
                 OnStartMining();
             }
         }
@@ -100,6 +105,8 @@ public class ResourceMiner : MonoBehaviour
             {
                  MinerCCAsync( _buildingData);
             }
+            
+            OnStartMiningEvent?.Invoke();
             
             await JSONSerializeManager.Instance.JSONSave();
         }
@@ -139,6 +146,7 @@ public class ResourceMiner : MonoBehaviour
                 IsWorkStop = true;
                 OneCycle = false;
                 _animator.SetBool(stopMineAnimationKey, true);
+                OnEndMiningEvent?.Invoke();
 
                 ShowTextMinerStatus(stopTextWorking);
                 
@@ -271,5 +279,5 @@ public class ResourceMiner : MonoBehaviour
             _buildingData.AwaitBuildingThisTMPro.text = $"Локальные ресурсы: {_buildingData.Storage[1]}/{resourcesLimits.resources[1]}";
         }
     }
-    public void WorkNotStop() => IsWorkStop = false; 
+    public void WorkNotStop() => IsWorkStop = false;
 }

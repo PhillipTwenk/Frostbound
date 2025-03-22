@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
     public GameEvent CloseQuestPanelEvent;
     public GameEvent OpenCallingWorkerPanelEvent;
     public GameEvent CloseCallingWorkerPanelEvent;
+    public GameEvent UIAudioEffectEvent;
     
     
     
@@ -210,6 +211,7 @@ public class UIManager : MonoBehaviour
     {
         var lastPanel = CancelLastOpenPanelEvent?.GetInvocationList().Last() as Action;
         lastPanel?.Invoke();
+        UIAudioEffectEvent.TriggerEvent();
         //CancelLastOpenPanelEvent -= lastPanel;
     }
     #endregion

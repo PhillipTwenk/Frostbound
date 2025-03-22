@@ -136,11 +136,8 @@ public class BuildingManager : MonoBehaviour
                 {
                     if ((playerResources.Energy - HoneyConsumptionBuilding) >= 0)
                     {
-                        if ((playerResources.Food - FoodConsumptionBuilding * 20) >= 0)
+                        if ((playerResources.Food - FoodConsumptionBuilding * GeneralWorkersControl.CurrentFoodConsumptionByWorkers) >= 0)
                         {
-                            playerResources.Energy -= HoneyConsumptionBuilding;
-                            playerResources.Food -= FoodConsumptionBuilding * 20; 
-                            
                             //Создаем новое здание, устанавливаем его позицию и удаляем триггер для строительства
                             MouseIndicator.transform.position = new Vector3(mousePosition.x, YplaceVector, mousePosition.z);
                             GameObject newBuildingObject = Instantiate(CurrentBuilding);

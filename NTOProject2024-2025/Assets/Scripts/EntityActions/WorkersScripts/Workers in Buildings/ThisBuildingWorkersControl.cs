@@ -21,13 +21,25 @@ public class ThisBuildingWorkersControl : MonoBehaviour
 
     [FormerlySerializedAs("suitableWorkerDataForThisBuilding")] [Header("Units")]
     public UnitType suitableUnitDataForThisBuilding;
+
+    [Header("Components")] 
+    private InteractionBuildingController _interactionBuildingController;
     
     private void Start()
     {
+        _interactionBuildingController = GetComponent<InteractionBuildingController>();
         if (CurrentNumberWorkersInThisBuilding == 0 && CurrentWorkerDataInThisBuilding == null)
         {
             currentWorkerInThisBuilding = null;
         }
+    }
+
+    /// <summary>
+    /// Вызывается при уничтожении здания
+    /// </summary>
+    public void OnDestroyThis()
+    {
+        _interactionBuildingController.InteractionEvent?.Invoke();
     }
 
     [Header("Points")]

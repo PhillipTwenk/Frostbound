@@ -52,8 +52,14 @@ public class EnergyProduction : MonoBehaviour
         }
     }
 
-    public PlayerResources OnDestroyThis(PlayerResources playerResources)
+    /// <summary>
+    /// Добавляется в ивент, который вызывается при уничтожении здания
+    /// </summary>
+    public async void OnDestroyThis()
     {
+        
+        PlayerResources playerResources = await GetResourcesPLayer(CurrentPlayersDataControl.WhichPlayerCreate);
+        
         if (_thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding >= 1)
         {
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);    
@@ -65,12 +71,23 @@ public class EnergyProduction : MonoBehaviour
             playerResources.Food -= foodProduction;
             ResourceUpdateEvent.TriggerEvent();
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
-            return playerResources;
         }
-        else
+        
+        await SyncManager.Enqueue(async () =>
         {
-            return playerResources;
-        }
+            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy, playerResources.Food,
+                playerResources.CryoCrystal);
+        });
+    }
+    
+    private async Task<PlayerResources> GetResourcesPLayer(EntityID playerID)
+    {
+        PlayerResources playerResources = null;
+        await SyncManager.Enqueue(async () =>
+        {
+            playerResources = await APIManager.Instance.GetPlayerResources(playerID);
+        });
+        return playerResources;
     }
 
     public async void OnWorkerLeave(TextMeshPro text)

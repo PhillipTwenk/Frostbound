@@ -17,7 +17,7 @@ public class BuildingUpdateLimitService : MonoBehaviour
         BaseUpgradeConditionManager.CurrentNumberOfHome --;
     }
 
-    private void OnDisable()
+    public void OnDestroyThis()
     {
         GeneralWorkersControl.Instance.MaxValueOfUnits -= LimitUpUnit;
         GeneralWorkersControl.Instance.MaxValueOfWorkers -= LimitUpWorkers;

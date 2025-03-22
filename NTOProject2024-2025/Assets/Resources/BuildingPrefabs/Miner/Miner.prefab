@@ -31,6 +31,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3379743434024046391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &980213112022884477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8063691058916610680}
+  m_Layer: 7
+  m_Name: BuildingAudioControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8063691058916610680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980213112022884477}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2694158822303494311}
+  - {fileID: 8364871307050949392}
+  m_Father: {fileID: 3379743434024046391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1775260311085803478
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,10 +95,10 @@ Transform:
   m_Children:
   - {fileID: 3054152956677978722}
   - {fileID: 9064610160651543406}
+  - {fileID: 8063691058916610680}
   - {fileID: 7564531049284198826}
   - {fileID: 727464216805548623}
   - {fileID: 7567993789235495893}
-  - {fileID: 7004986064953722755}
   - {fileID: 8703065868010850275}
   - {fileID: 4218468091158860253}
   - {fileID: 5615711681408211148}
@@ -180,6 +213,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7285641324128850035, guid: 002ff8b80d5f9ca429c94596baa1e8e7, type: 3}
+--- !u!1 &2649624121261014211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2694158822303494311}
+  m_Layer: 7
+  m_Name: '[BAC] General Local Sounds'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2694158822303494311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649624121261014211}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5453805589740790482}
+  m_Father: {fileID: 8063691058916610680}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2673190225882409290
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,12 +396,12 @@ GameObject:
   - component: {fileID: 3054152956677978722}
   - component: {fileID: 4511011414429075075}
   - component: {fileID: 1775729156111199710}
+  - component: {fileID: 2186671833411195337}
   - component: {fileID: 3683477478396116158}
   - component: {fileID: 1164435565411162428}
   - component: {fileID: 3952047634658591917}
   - component: {fileID: 7658571048178436077}
   - component: {fileID: 8960675788310402197}
-  - component: {fileID: 2186671833411195337}
   m_Layer: 7
   m_Name: TechTriggerScripts
   m_TagString: ClickOnBuilding
@@ -415,6 +480,95 @@ MonoBehaviour:
   IsThisBuilt: 0
   AwaitBuildingThisTMPro: {fileID: 1066252068129457369}
   BuildingVE: {fileID: 3605468693236232073}
+--- !u!114 &2186671833411195337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401689744584005675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28148d6b4a96a849903a30bba8545c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
+  HintAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u0435\u043C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E
+    . . ."
+  HintAwaitBuilding: "\u0421\u0442\u0440\u043E\u0438\u043C . . . "
+  HintAwaitTimeWorker: "\u0441\u0435\u043A \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C"
+  OnEndBuilding:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3952047634658591917}
+        m_TargetAssemblyTypeName: ResourceMiner, Assembly-CSharp
+        m_MethodName: OnStartMining
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3683477478396116158}
+        m_TargetAssemblyTypeName: InteractionBuildingController, Assembly-CSharp
+        m_MethodName: PlayerNearBuildingAfterConstructBuilding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 975742067960111131}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlacementBuilding:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartBuilding:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 975742067960111131}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDestroyBuilding:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b92ea051776e00c4cb9e8e69e0d7f191, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3683477478396116158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +666,36 @@ MonoBehaviour:
     \u0432\u043E\u0437\u043E\u0431\u043D\u043E\u0432\u0438\u043B\u043E \u0434\u043E\u0431\u044B\u0447\u0443
     \u0440\u0435\u0441\u0443\u0440\u0441\u0430"
   showTextTime: 4
+  OnStartMiningEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2108290626658317418}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnEndMiningEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2108290626658317418}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7658571048178436077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,50 +763,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &2186671833411195337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3401689744584005675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28148d6b4a96a849903a30bba8545c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
-  HintAwaitArriveWorker: "\u041E\u0436\u0438\u0434\u0430\u0435\u043C \u0440\u0430\u0431\u043E\u0447\u0435\u0433\u043E
-    . . ."
-  HintAwaitBuilding: "\u0421\u0442\u0440\u043E\u0438\u043C . . . "
-  HintAwaitTimeWorker: "\u0441\u0435\u043A \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C"
-  StartBuildingFunctionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3952047634658591917}
-        m_TargetAssemblyTypeName: ResourceMiner, Assembly-CSharp
-        m_MethodName: OnStartMining
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3683477478396116158}
-        m_TargetAssemblyTypeName: InteractionBuildingController, Assembly-CSharp
-        m_MethodName: PlayerNearBuildingAfterConstructBuilding
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &3509057801853138337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1488,135 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1982877014985498672, guid: 002ff8b80d5f9ca429c94596baa1e8e7, type: 3}
+--- !u!1 &5828194279465102826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5453805589740790482}
+  - component: {fileID: 975742067960111131}
+  m_Layer: 7
+  m_Name: '[General] Building Sound'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5453805589740790482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828194279465102826}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071056, z: -0, w: 0.7071081}
+  m_LocalPosition: {x: 2.6000001, y: 46, z: 4.1000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2694158822303494311}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &975742067960111131
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828194279465102826}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6363107526179331580, guid: f7cacf93dfd093e4580b39a37e819a22, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7439166df2b916240aae6fadb4976a3b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7439166df2b916240aae6fadb4976a3b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 260
+  MaxDistance: 618
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5931448228671927270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,7 +1628,7 @@ GameObject:
   - component: {fileID: 7004986064953722755}
   - component: {fileID: 2108290626658317418}
   m_Layer: 7
-  m_Name: MiningEffect
+  m_Name: '[Unique] Mining Sound'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,11 +1643,11 @@ Transform:
   m_GameObject: {fileID: 5931448228671927270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071056, z: -0, w: 0.7071081}
-  m_LocalPosition: {x: 2.6, y: 46, z: 4.1}
+  m_LocalPosition: {x: 2.6000001, y: 46, z: 4.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3379743434024046391}
+  m_Father: {fileID: 8364871307050949392}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2108290626658317418
 AudioSource:
@@ -1390,21 +1659,21 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6363107526179331580, guid: f7cacf93dfd093e4580b39a37e819a22, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4d4b4d1d905e7bd4687cfd2a64c267a2, type: 3}
-  m_Resource: {fileID: 8300000, guid: 4d4b4d1d905e7bd4687cfd2a64c267a2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.643
+  m_audioClip: {fileID: 8300000, guid: 3dfba370603724c47b65f1e4c864da8a, type: 3}
+  m_Resource: {fileID: 8300000, guid: 3dfba370603724c47b65f1e4c864da8a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.28
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 3.8
-  MaxDistance: 38.6
+  DopplerLevel: 0
+  MinDistance: 260
+  MaxDistance: 618
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -2096,6 +2365,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 727464216805548623}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7916392916564123493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8364871307050949392}
+  m_Layer: 7
+  m_Name: '[BAC] Unique Local Sounds'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8364871307050949392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916392916564123493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7004986064953722755}
+  m_Father: {fileID: 8063691058916610680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7961327546487863488
 GameObject:

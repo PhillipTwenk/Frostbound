@@ -2,8 +2,10 @@ using System;
 using System.Threading.Tasks;
 using EntityActions.WorkersScripts;
 using Unitilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class CompletionOfConstructionController : MonoBehaviour
 {
@@ -24,8 +26,13 @@ public class CompletionOfConstructionController : MonoBehaviour
    [TextArea] [SerializeField] public string HintAwaitBuilding;
    [TextArea] [SerializeField] public string HintAwaitTimeWorker;
    
-   [Header("Function of this building")] 
-   [Tooltip("Что должно быть сделано при постройке здания")] public UnityEvent StartBuildingFunctionEvent;
+   [FormerlySerializedAs("StartBuildingFunctionEvent")]
+   [Header("Events of this building")] 
+   [Tooltip("Что должно быть сделано при постройке здания")] public UnityEvent OnEndBuilding;
+   [Tooltip("Что выполняется при размещении здания")] public UnityEvent OnPlacementBuilding;
+   [Tooltip("Что выполняется при старте строительства здания")] public UnityEvent OnStartBuilding;
+   [Tooltip("Что выполняется при уничтожении")] public UnityEvent OnDestroyBuilding;
+   
 
    private void Start()
    {
@@ -39,11 +46,12 @@ public class CompletionOfConstructionController : MonoBehaviour
    /// </summary>
    public async Task StartCompletionOfConstruction(PlayerResources playerResources)
    {
+      OnPlacementBuilding?.Invoke();
+      
       await WaitForWorkerArrival();
 
       await AwaitEndWorking(_buildingData, playerResources);
    }
-   
    
    ///<summary> 
    /// Ожидание прибытия рабочего
@@ -79,6 +87,7 @@ public class CompletionOfConstructionController : MonoBehaviour
       movementController.ReadyForWork = false;
       GeneralWorkersControl.Instance.NumberOfFreeUnits -= 1;
       
+      OnStartBuilding?.Invoke();
       IsWorkerHereEvent?.Invoke();
    }
    
@@ -101,7 +110,7 @@ public class CompletionOfConstructionController : MonoBehaviour
          await SaveNewBuildingData(); // Сохраняем данные о новом здании
          
          Debug.Log("Здание построено");
-         StartBuildingFunctionEvent?.Invoke();
+         OnEndBuilding?.Invoke();
          
          
          _buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(false);
@@ -164,11 +173,12 @@ public class CompletionOfConstructionController : MonoBehaviour
    public async Task PaymentForConstruction(PlayerResources playerResources, BuildingData buildingData)
    {
       int priceBuilding = buildingData.buildingTypeSO.priceBuilding;
+      int EnergyConsumption = buildingData.HoneyConsumption;
          
       await SyncManager.Enqueue(async () =>
       {
          await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceBuilding,
-            playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
+            playerResources.Energy - EnergyConsumption, playerResources.Food, playerResources.CryoCrystal);
       });
       UpdateResourcesEvent.TriggerEvent();
    }

@@ -3026,7 +3026,7 @@ MonoBehaviour:
     . . ."
   HintAwaitBuilding: "\u0421\u0442\u0440\u043E\u0438\u043C . . . "
   HintAwaitTimeWorker: "\u0441\u0435\u043A \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C"
-  StartBuildingFunctionEvent:
+  OnEndBuilding:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8281539622866198797}
@@ -3044,6 +3044,27 @@ MonoBehaviour:
       - m_Target: {fileID: 7764499367831402566}
         m_TargetAssemblyTypeName: InteractionBuildingController, Assembly-CSharp
         m_MethodName: PlayerNearBuildingAfterConstructBuilding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlacementBuilding:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartBuilding:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDestroyBuilding:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8281539622866198797}
+        m_TargetAssemblyTypeName: EnergyProduction, Assembly-CSharp
+        m_MethodName: OnDestroyThis
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

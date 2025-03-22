@@ -16,6 +16,7 @@ namespace EntityActions.WorkersScripts
         [TextArea] public string HintNotNeededWorkerType; 
         [TextArea] public string HintNoBeAbleToBuildWorker;
         [TextArea] public string FullWorkerInThisBuilding;
+        [TextArea] public string LimitRiskBeforeBuildingHint;
 
         [Header("Texts calling worker")]
         [TextArea] public string LimitUnitsErrorCallingWorkerText;
