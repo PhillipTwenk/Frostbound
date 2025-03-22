@@ -221,7 +221,6 @@ public class CompletionOfConstructionController : MonoBehaviour
        
        _buildingData.IsThisBuilt = true;
        
-       _buildingData.BuildingVE.Stop();
        
        CurrentPlayersDataControl.currentBuildingsDatas.Add(_buildingData);
        

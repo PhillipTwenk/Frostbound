@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 using EntityActions.WorkersScripts;
 using TMPro;
 using Unitilities;
-using Unity.VisualScripting;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistics
+public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovement, IUnitLogistics
 {
     #region Свойства
 
@@ -88,6 +89,22 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         }
     }
 
+    public UnityEvent OnStartTakeOff
+    {
+        get
+        {
+            return OnStartTakeOffEvent;
+        }
+    }
+
+    public UnityEvent OnShutdown
+    {
+        get
+        {
+            return OnShutdownEvent;
+        }
+    }
+
     #endregion
 
     #region Переменные
@@ -139,6 +156,10 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
     
     [Header("GameEvents")]
     public GameEvent UpdateResourcesEvent;
+
+    [Header("Unity Events")] 
+    public UnityEvent OnStartTakeOffEvent;
+    public UnityEvent OnShutdownEvent;
 
     #endregion
 
@@ -287,6 +308,10 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
             }
         }
     }
+    
+    #endregion
+
+    #region Контроль полета ( реализация IDroneMovement )
 
     public void StartTakeoff()
     {
@@ -302,8 +327,10 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         }
     }
 
-    private IEnumerator TakeoffCoroutine()
+    public IEnumerator TakeoffCoroutine()
     {
+        OnStartTakeOff?.Invoke();
+        
         agent.enabled = false;
 
         anim.SetBool(droneFly_AK, true);
@@ -367,7 +394,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         }
     }
 
-    private IEnumerator LandingCoroutine(Vector3 targetGroundPosition)
+    public IEnumerator LandingCoroutine(Vector3 targetGroundPosition)
     {
         isLanding = true;
         agent.enabled = false;
@@ -388,14 +415,14 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IUnitLogistic
         
         anim.SetBool(droneFly_AK, false);
         
-        //agent.enabled = true;
-        //agent.Warp(targetGroundPosition); // Синхронизация с NavMesh
         isLanding = false;
         isFlyNow = false;
         isPlaceNow = true; // Убедитесь, что флаг посадки установлен
+        
+        OnShutdown?.Invoke();
     }
 
-    private Vector3 FindNearestLandingPosition()
+    public Vector3 FindNearestLandingPosition()
     {
         int groundLayer = LayerMask.GetMask("Ground");
         int walkableArea = 1 << NavMesh.GetAreaFromName("Walkable");

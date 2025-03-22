@@ -6,7 +6,7 @@ public class CallingWorkerPanelLimitWorkerControl : MonoBehaviour
 {
     private TextMeshProUGUI textMesh;
 
-    private void Start()
+    private void Awake()
     {
         textMesh = GetComponent<TextMeshProUGUI>();
     }

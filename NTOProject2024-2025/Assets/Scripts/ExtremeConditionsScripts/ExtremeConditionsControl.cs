@@ -3,6 +3,9 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using EntityActions.WorkersScripts;
+
 public class ExtremeConditionsControl : MonoBehaviour{
     public GameEvent StartExtremeConditionsEvent;
     public GameEvent EndExtremeConditionsEvent;
@@ -12,7 +15,15 @@ public class ExtremeConditionsControl : MonoBehaviour{
     private NavMeshAgent agent;
     private UnitType TypeOfUnit;
     void Start(){
-        TypeOfUnit = gameObject.GetComponent<WorkerData>().unitType;
+        if (gameObject.GetComponent<WorkerData>())
+        {
+            TypeOfUnit = gameObject.GetComponent<WorkerData>().unitType;
+        }
+        else if (gameObject.GetComponent<PlayerSaveDataController>())
+        {
+            TypeOfUnit = UnitType.Player;
+        }
+        
         agent = GetComponent<NavMeshAgent>();
     }
     void Update(){
@@ -21,7 +32,10 @@ public class ExtremeConditionsControl : MonoBehaviour{
             GetComponent<NavMeshAgent>().speed = 20;
             if(DeathTimer >= 12f){
                 EndExtremeConditionsEvent.TriggerEvent();
-                Destroy(gameObject.transform.parent.gameObject); // здесь чел сдыхает ухихихи
+                if (gameObject.GetComponent<WorkerData>())
+                {
+                    DeleteWorker();  // здесь чел сдыхает ухихихи
+                }
             }
         }
     }
@@ -44,6 +58,26 @@ public class ExtremeConditionsControl : MonoBehaviour{
             DeathTimer = 0f;
             GetComponent<NavMeshAgent>().speed = 90;
         }
+    }
+
+    /// <summary>
+    /// Метод удаления рабочего и информации о нем
+    /// </summary>
+    private async Task DeleteWorker()
+    {
+        WorkerData workerData = gameObject.GetComponent<WorkerData>();
+        int saveListIndex = workerData.SaveListIndex;
+        PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
+        playerSaveData.workers.RemoveAt(saveListIndex);
+        playerSaveData.workersTransform.RemoveAt(saveListIndex);
+        playerSaveData.workerDatas.RemoveAt(saveListIndex);
+
+        GeneralWorkersControl.Instance.CurrentValueOfWorkers--;
+        GeneralWorkersControl.Instance.CurrentValueOfUnits--;
+
+        await JSONSerializeManager.Instance.JSONSave();
+        
+        Destroy(gameObject.transform.parent.gameObject); 
     }
 }
 

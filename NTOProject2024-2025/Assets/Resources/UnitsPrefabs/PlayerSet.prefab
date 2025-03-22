@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1081063097279748711, guid: 297b5f44613c4ae4f89f1c0f3dfc9856, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6183149654121826703, guid: 297b5f44613c4ae4f89f1c0f3dfc9856, type: 3}
       propertyPath: m_Enabled
       value: 1

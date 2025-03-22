@@ -24,71 +24,26 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/Rocket with workers 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/Rocket with workers 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/DefenceFieldEffectEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/DefenceFieldEffectEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/DeleteBuidlingEffectEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/DeleteBuidlingEffectEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/HoneyGunEffectEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/HoneyGunEffectEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/MinerEffectEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/MinerEffectEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/PlaceBuildingEffectEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/PlaceBuildingEffectEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/UIEffectEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Effects/UIEffectEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Music.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Music/BaseSongEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Music/BaseSongEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Music/MainMenuSongEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Music/MainMenuSongEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Music/TutorialSongStartEvent.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Events/EventSOs/AudioEvents/Music/TutorialSongStartEvent.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingBeekeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingBeekeper.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingConstructor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingConstructor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingWorkersPanel .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingWorkersPanel .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/DeletePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/DeletePlayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/SettingsPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/SettingsPanel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Alexey/Gameprefab/Bear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Alexey/Gameprefab/Bear.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/DM Apiarier.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/DM Apiarier.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/DM Apiarier.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/DM Apiarier.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/M Apiarier Tools.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/M Apiarier Tools.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Engineer/DM Ingineer.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Engineer/DM Ingineer.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art_VFX/Buildings improvment/Buildings Improvement.vfx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_VFX/Buildings improvment/Buildings Improvement.vfx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Drones/[Drone] - Main Drone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Drones/[Drone] - Main Drone.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Apiary/Apiary.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Apiary/Apiary.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Home/home.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Home/home.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Miner/Miner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Miner/Miner.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/MobileBase/MobileBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/MobileBase/MobileBase.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Pier/Pier.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Pier/Pier.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/Storage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/Storage.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/StorageTrigger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/StorageTrigger.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location/NavMesh-NavMesh Unit.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location/NavMesh-NavMesh Unit.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location/OcclusionCullingData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location/OcclusionCullingData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location/Post Process Profile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location/Post Process Profile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location/Wind Desert Profile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Location/Wind Desert Profile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/PlayerSet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/PlayerSet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Beekeeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Beekeeper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Constructor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Constructor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Drone.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Drone.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Unit.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation/NavMesh-NavMesh Unit.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/CompletionOfConstructionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/CompletionOfConstructionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/IWorkerUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/IWorkerUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/Workers in Buildings/BuildingUpdateLimitService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/Workers in Buildings/BuildingUpdateLimitService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/Workers in Buildings/ThisBuildingWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/Workers in Buildings/ThisBuildingWorkersControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtremeConditionsScripts/ExtremeConditionsControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtremeConditionsScripts/ExtremeConditionsControl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Special/CallingWorkerPanelLimitWorkerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Special/CallingWorkerPanelLimitWorkerControl.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +95,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/CharacterSoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/GlobalAudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/LocalAudioManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/LocalBuildingAudioControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -149,6 +103,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BuildingSystem/YouCantBuildHereTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/EnemiesScripts/EnemyMovementController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IDroneMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitLogistics.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/NavMeshScripts/NavMeshUpdater.cs" root0="FORCE_HIGHLIGHTING" />
@@ -419,6 +374,7 @@
       <workItem from="1742487800532" duration="17189000" />
       <workItem from="1742562791213" duration="3653000" />
       <workItem from="1742569079195" duration="15621000" />
+      <workItem from="1742638275935" duration="9046000" />
     </task>
     <servers />
   </component>

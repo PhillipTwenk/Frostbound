@@ -1950,7 +1950,7 @@ MonoBehaviour:
   CloseQuestPanelEvent: {fileID: 11400000, guid: 54fa40fad0f0fc24bb84590300bcef73, type: 2}
   OpenCallingWorkerPanelEvent: {fileID: 11400000, guid: 713e335bbd8c83643a35ea08805c06e6, type: 2}
   CloseCallingWorkerPanelEvent: {fileID: 11400000, guid: c7185726af4ab2947aab98699686f129, type: 2}
-  UIAudioEffectEvent: {fileID: 0}
+  UIAudioEffectEvent: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
   Resources_Icons: {fileID: 36106226}
   uiListForQuestTransform: {fileID: 1156989810859222030}
   AllUIQuestPanels:
@@ -2618,7 +2618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

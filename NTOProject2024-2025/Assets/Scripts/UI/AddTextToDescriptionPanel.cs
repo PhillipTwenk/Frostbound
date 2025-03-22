@@ -47,7 +47,6 @@ public class AddTextToDescriptionPanel : MonoBehaviour
     [SerializeField] private Transform pointInPanelAngle4;
 
     [SerializeField] private GameEvent UpdateResourcesEvent;
-    public GameEvent UpgradeAudioEvent;
     private bool IsPanelActive;
 
     private void Start()
@@ -343,7 +342,7 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                     BuildingSaveData buildingSaveData = new BuildingSaveData(buildingData);
                     playerSaveData.BuildingDatas[buildingData.SaveListIndex] = buildingSaveData;
                     
-                    UpgradeAudioEvent.TriggerEvent();
+                    buildingData.OnUpgradeEvent?.Invoke();
                     
                     OnHintPanel(UpgradeLevelBuildingInformation);
                 }
@@ -384,8 +383,8 @@ public class AddTextToDescriptionPanel : MonoBehaviour
                     
                 BuildingSaveData buildingSaveData = new BuildingSaveData(buildingData);
                 playerSaveData.BuildingDatas[buildingData.SaveListIndex] = buildingSaveData;
-
-                UpgradeAudioEvent.TriggerEvent();
+                
+                buildingData.OnUpgradeEvent?.Invoke();
                 
                 OnHintPanel(ImprovementReport[0]);
             }

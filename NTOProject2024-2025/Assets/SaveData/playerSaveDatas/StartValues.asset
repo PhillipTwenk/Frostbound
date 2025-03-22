@@ -37,10 +37,10 @@ MonoBehaviour:
   workersTransform:
   - position: {x: 3321.5852, y: 0, z: 548.34326}
     rotation: {x: 0, y: 0, z: 0, w: 1}
-    scale: {x: 3, y: 3, z: 3}
+    scale: {x: 30, y: 30, z: 30}
   - position: {x: 3463.0002, y: 0, z: 687}
     rotation: {x: 0, y: 0, z: 0, w: 1}
-    scale: {x: 3, y: 3, z: 3}
+    scale: {x: 30, y: 30, z: 30}
   workerDatas:
   - IsWorkerAtWork: 0
     SaveListIndex: 0
