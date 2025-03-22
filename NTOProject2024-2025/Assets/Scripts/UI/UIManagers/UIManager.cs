@@ -66,9 +66,12 @@ public class UIManager : MonoBehaviour
     [FormerlySerializedAs("ExtremeCondImage")]
     [Header("Extreme")]
     [SerializeField] private GameObject extremeCondImage;
+    [SerializeField] private GameObject extremeFadeImage;
     public bool isExtremeActivated;
+    public bool InSafeZone;
     private float timer;
-    private Color tempColor;
+    private Color condColor;
+    private Color fadeColor;
     
     [Header("Request Error UI")]
     [SerializeField] private TMP_Text failedRequestLimitExceededUITMP_Text;
@@ -172,17 +175,50 @@ public class UIManager : MonoBehaviour
             Debug.Log("SHEEEEESH");
             timer += Time.deltaTime;
             if (timer >= 12f){
-                timer = 0;
+                timer = 0f;
             } else {
-                tempColor = extremeCondImage.GetComponent<Image>().color;
-                tempColor.a = timer/12f;
-                extremeCondImage.GetComponent<Image>().color = new Color(tempColor.r, tempColor.g, tempColor.b, tempColor.a);
+                condColor = extremeCondImage.GetComponent<Image>().color;
+                condColor.a = timer/12f;
+                fadeColor = extremeFadeImage.GetComponent<Image>().color;
+                fadeColor.a = timer/24f;
+                extremeCondImage.GetComponent<Image>().color = new Color(condColor.r, condColor.g, condColor.b, condColor.a);
+                extremeFadeImage.GetComponent<Image>().color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeColor.a);
             }
-        } else {
-            timer = 0f;
-            tempColor = extremeCondImage.GetComponent<Image>().color;
-            tempColor.a = 0f;
-            extremeCondImage.GetComponent<Image>().color = tempColor;
+        } else if (!isExtremeActivated) {
+            timer -= Time.deltaTime;
+            if (timer <= 0f){
+                condColor = extremeCondImage.GetComponent<Image>().color;
+                fadeColor = extremeFadeImage.GetComponent<Image>().color;
+                condColor.a = 0f;
+                fadeColor.a = 0f;
+                extremeCondImage.GetComponent<Image>().color = condColor;
+                extremeFadeImage.GetComponent<Image>().color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeColor.a);
+            } else {
+                condColor = extremeCondImage.GetComponent<Image>().color;
+                fadeColor = extremeFadeImage.GetComponent<Image>().color;
+                condColor.a = timer/1.5f;
+                fadeColor.a = timer/3f;
+                extremeCondImage.GetComponent<Image>().color = new Color(condColor.r, condColor.g, condColor.b, condColor.a);
+                extremeFadeImage.GetComponent<Image>().color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeColor.a);
+            }
+        }
+        if (InSafeZone){
+            timer -= Time.deltaTime;
+            if (timer <= 0f){
+                condColor = extremeCondImage.GetComponent<Image>().color;
+                fadeColor = extremeFadeImage.GetComponent<Image>().color;
+                condColor.a = 0f;
+                fadeColor.a = 0f;
+                extremeCondImage.GetComponent<Image>().color = condColor;
+                extremeFadeImage.GetComponent<Image>().color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeColor.a);
+            } else {
+                condColor = extremeCondImage.GetComponent<Image>().color;
+                fadeColor = extremeFadeImage.GetComponent<Image>().color;
+                condColor.a = timer/1.5f;
+                fadeColor.a = timer/3f;
+                extremeCondImage.GetComponent<Image>().color = new Color(condColor.r, condColor.g, condColor.b, condColor.a);
+                extremeFadeImage.GetComponent<Image>().color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, fadeColor.a);
+            }
         }
     }
 
@@ -487,12 +523,23 @@ public class UIManager : MonoBehaviour
     
     #region Экстремальные условия
 
-     public void FunctionStartExtremeConditions(){
-        isExtremeActivated = true;
+    public void FunctionStartExtremeConditions(){
+        if(!isExtremeActivated){
+            InSafeZone = false;
+            isExtremeActivated = true;
+            timer = 0f;
+        }
     }
 
     public void FunctionEndExtremeConditions(){
         isExtremeActivated = false;
+        timer = 1.5f;
+    }
+
+    public void FunctionSafeZoneConditions(){
+        isExtremeActivated = false;
+        timer = 1.5f;
+        InSafeZone = true;
     }
 
     #endregion

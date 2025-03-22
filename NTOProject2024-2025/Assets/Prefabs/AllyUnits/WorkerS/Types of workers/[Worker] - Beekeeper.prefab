@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 3421886237767497727}
   - component: {fileID: 4964045910102140477}
   - component: {fileID: -2810993098645214172}
+  - component: {fileID: 819161938831206064}
   m_Layer: 9
   m_Name: '[Worker] - Beekeeper'
   m_TagString: ClickOnWorker
@@ -295,16 +296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e8ed65be2878b47a18be86cfab5b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReadyForWork: 1
-  ArriveForBuildBuidling: 0
-  isSelecting: 0
-  possibilityClickOnWorker: 0
   outlineRotate: {fileID: 4887249124086083444}
-  OutlinePOD: {fileID: 0}
+  outlinePOD: {fileID: 0}
   NameOfTTS: TechTriggerScripts
-  WorkerPointOfDestination: {fileID: 0}
-  SelectedBuilding: {fileID: 0}
-  MainCamera: {fileID: 0}
+  unitPointOfDestination: {fileID: 0}
+  selectedBuilding: {fileID: 0}
+  camera: {fileID: 0}
   currentWalkingPoint: {fileID: 0}
   placementLayerMask:
     serializedVersion: 2
@@ -362,9 +359,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee0151155eb6c046b95f88869a1f83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerType: 0
+  unitType: 0
   IsWorkerAtWork: 0
   SaveListIndex: 0
+  droneSaveData:
+    LogisticsStorage: 0
+    buildingDataLogistics:
+      Level: 0
+      Durability: 0
+      Storage: 
+      SaveListIndex: 0
+      HoneyConsumption: 0
+      Production: 
+    IsLogisticsCycleActive: 0
+    isFlyNow: 0
+    isPlaceNow: 0
+    isTakingOff: 0
+    isLanding: 0
+    isMovingToLandingSpot: 0
+--- !u!114 &819161938831206064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67134279220973632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc2168adb8246b499bae255d9363b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartExtremeConditionsEvent: {fileID: 11400000, guid: 749b08babdb198149a0fd0c16a2c95f7, type: 2}
+  EndExtremeConditionsEvent: {fileID: 11400000, guid: ea6e5005ba9706541b3c0c20f6b4ebf4, type: 2}
+  SafeZoneConditions: {fileID: 11400000, guid: ba6193561b8f8df44a461566460e0807, type: 2}
 --- !u!1 &454466408095048598
 GameObject:
   m_ObjectHideFlags: 0

@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 5681358245248490458}
   - component: {fileID: 4943624194290128509}
   - component: {fileID: 8601021669479383574}
+  - component: {fileID: 359284883758491003}
   m_Layer: 9
   m_Name: '[Drone] - Main Drone'
   m_TagString: ClickOnWorker
@@ -594,6 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00537b9207bcca249bcd1aba4dfb5e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsClickOnOtherEntity: 0
   isFlyNow: 0
   isPlaceNow: 0
   isTakingOff: 0
@@ -670,6 +672,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
+--- !u!114 &359284883758491003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707323034071668460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc2168adb8246b499bae255d9363b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartExtremeConditionsEvent: {fileID: 11400000, guid: 749b08babdb198149a0fd0c16a2c95f7, type: 2}
+  EndExtremeConditionsEvent: {fileID: 11400000, guid: ea6e5005ba9706541b3c0c20f6b4ebf4, type: 2}
+  SafeZoneConditions: {fileID: 11400000, guid: ba6193561b8f8df44a461566460e0807, type: 2}
 --- !u!1 &1849060798639215341
 GameObject:
   m_ObjectHideFlags: 0
