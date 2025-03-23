@@ -194,8 +194,17 @@ public class PlansInShopControl : MonoBehaviour
             
             if (shopResources.Pier.IsPurchased && shopResources.Minner.IsPurchased && shopResources.Storage.IsPurchased)
             {
-                // Выполняем ваш функционал
                DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.BuyFirstThreePlans);
+            }
+
+            if (shopResources.Apiary.IsPurchased)
+            {
+                DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.BuyFoodModulePlan);
+            }
+
+            if (shopResources.ResidentialModule.IsPurchased)
+            {
+                DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.BuyHomePlan);
             }
             
         }

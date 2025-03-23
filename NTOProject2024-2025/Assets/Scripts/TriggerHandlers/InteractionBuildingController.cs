@@ -113,35 +113,12 @@ public class InteractionBuildingController : MonoBehaviour
             // Если данное здание не построено, прибежавший рабочий занят постройкой, и это здание является для него выделенным
             if (!_buildingData.IsThisBuilt && unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>() == GetComponent<BuildingData>())
             {
-                // у рабочего пропадает цель следования
-                IWorkerUnit movementController = other.gameObject.GetComponent<IWorkerUnit>();
-                GameObject worker = other.gameObject;
-                WorkerData workerData = worker.GetComponent<WorkerData>();
-                movementController.UnitPointOfDestination = null;
-                movementController.PossibilityClickOnUnit = false;
-                other.transform.LookAt(_buildingData.transform);
-                    
-                Debug.Log("Рабочий добрался, начинает строить здание");
-                _completionOfConstructionController.NotifyWorkerArrival(workerData);
-
-                if (workerData.unitType != UnitType.MainDrone)
-                {
-                    worker.SetActive(false);
-                }
+                WorkerBuildBuilding(other, unitMovementController);
             }
             // Рабочий прибыл не для строительства
             else if (_buildingData.IsThisBuilt && !unitMovementController.ArriveForBuildBuidling && unitMovementController.SelectedBuilding.GetComponent<BuildingData>() == GetComponent<BuildingData>())
             {
-                // Здание может содержать рабочих
-                if (GetComponent<ThisBuildingWorkersControl>())
-                {
-                    WorkerComeToBuilding(other);
-                } 
-                // Здание добывает ресурсы
-                else if (IsThisLogisticsIncluded && unitMovementController is IUnitLogistics)
-                {
-                    DroneArriveToMiner(unitMovementController);
-                }
+                WorkerCameToBuilding(other, unitMovementController);
             }
         }
     }
@@ -161,12 +138,52 @@ public class InteractionBuildingController : MonoBehaviour
     }
 
     /// <summary>
+    /// Рабочий начинает постройку здания
+    /// </summary>
+    public void WorkerBuildBuilding(Collider other, IWorkerUnit unitMovementController)
+    {
+        // у рабочего пропадает цель следования
+        IWorkerUnit movementController = other.gameObject.GetComponent<IWorkerUnit>();
+        GameObject worker = other.gameObject;
+        WorkerData workerData = worker.GetComponent<WorkerData>();
+        movementController.UnitPointOfDestination = null;
+        movementController.PossibilityClickOnUnit = false;
+        other.transform.LookAt(_buildingData.transform);
+                    
+        Debug.Log("Рабочий добрался, начинает строить здание");
+        _completionOfConstructionController.NotifyWorkerArrival(workerData);
+
+        if (workerData.unitType != UnitType.MainDrone)
+        {
+            worker.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Какой-либо юнит подошел к зданию
+    /// </summary>
+    public void WorkerCameToBuilding(Collider other, IWorkerUnit unitMovementController)
+    {
+        // Здание может содержать рабочих
+        if (GetComponent<ThisBuildingWorkersControl>())
+        {
+            WorkerComeToBuilding(other);
+        } 
+        // Здание добывает ресурсы
+        else if (IsThisLogisticsIncluded && unitMovementController is IUnitLogistics)
+        {
+            DroneArriveToMiner(unitMovementController);
+        }
+    }
+    
+    /// <summary>
     /// Юнит, участвующий в системе логистики подошел к зданию
     /// </summary>
     /// <param name="unitMovementController"></param>
     public async void DroneArriveToMiner(IWorkerUnit unitMovementController)
     {
         Debug.Log($"<color=yellow> К зданию {_buildingData.Title} подлетел дрон");
+        DialogueManager.OnBuildingPlaced?.Invoke(_buildingData.buildingTypeSO, ActionTypeInteractWithObject.DroneCameToBuilding);
         DroneMovementController droneMovementController = unitMovementController as DroneMovementController;
         
         if (GetComponent<ResourceMiner>())
@@ -345,13 +362,12 @@ public class InteractionBuildingController : MonoBehaviour
         AddTextToDescriptionPanel.buildingData = _buildingData;
         AddTextToDescriptionPanel.buildingTransform = gameObject.transform;
         AddTextToDescriptionPanel.buildingSO = _buildingData.buildingTypeSO;
-
+        OpenDescriptionPanel.TriggerEvent();
+        
         if (_buildingData.buildingTypeSO.buildingType == BuildingsTypes.MobileBase)
         {
             DialogueManager.OnObjectInteracted?.Invoke(ActionTypeInteractWithObject.ClickOnMobileBase);
         }
-        
-        OpenDescriptionPanel.TriggerEvent();
     }
     
     /// <summary>
@@ -410,6 +426,27 @@ public class InteractionBuildingController : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Перебор коллайдеров рядом со зданием, если серди них есть игрок, выполняем логику
+    /// </summary>
+    /// <param name="f"></param>
+    public void WorkerNearBuilding(Action<Collider, IWorkerUnit> f)
+    {
+        foreach (var obj in objectsInTrigger)
+        {
+            if (obj.gameObject.CompareTag("ClickOnWorker"))
+            {
+                IWorkerUnit unitMovementController =
+                    obj.gameObject.GetComponent<IWorkerUnit>();
+                if (unitMovementController.SelectedBuilding.GetComponent<BuildingData>() == GetComponent<BuildingData>())
+                {
+                    f?.Invoke(obj.GetComponent<Collider>(), unitMovementController);
+                    return;
+                }
+            }
+        }
+    } 
 
     /// <summary>
     /// Вызывается при размещении и при постройке здания, на случай если игрок в этот момент окажется около него

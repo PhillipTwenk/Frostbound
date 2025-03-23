@@ -374,6 +374,8 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
         }
         
         isTakingOff = false;
+        
+        DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.TakeOffDrone);
     }
 
     public void StartLanding()

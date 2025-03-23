@@ -149,6 +149,8 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
                 {
 
                     BuildingData buildingData = SelectedBuilding.gameObject.GetComponent<BuildingData>();
+                    InteractionBuildingController interactionBuildingController =
+                        SelectedBuilding.GetComponent<InteractionBuildingController>();
                     // Если выбранное здание в процессе строительства и рабочий свободен, он идет его строить
                     if (!buildingData.IsThisBuilt)
                     {
@@ -160,6 +162,9 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
                                 if (IsWorkerCanBuildBuilding)
                                 {
                                     ArriveForBuildBuidling = true;
+                                    Collider other = gameObject.GetComponent<Collider>();
+                                    Action<Collider, IWorkerUnit> f = (collider, unit) => interactionBuildingController.WorkerBuildBuilding(collider, unit);
+                                    interactionBuildingController.WorkerNearBuilding(f);
                                     DialogueManager.OnBuildingPlaced?.Invoke(buildingData.buildingTypeSO, ActionTypeInteractWithObject.WorkerDestinationOnBuilding);
                                 }
                                 else
@@ -191,11 +196,12 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
                         }
                     }
                     currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
-                    // if (!IsWorkerMovetoApiary)
-                    // {
-                    //     //WorkerStartMovementToApiaryTutorial.CheckAndUpdateTutorialState();
-                    //     IsWorkerMovetoApiary = true;
-                    // }
+                    if (!ArriveForBuildBuidling)
+                    {
+                        Collider other = gameObject.GetComponent<Collider>();
+                        Action<Collider, IWorkerUnit> f = (collider, unit) => interactionBuildingController.WorkerCameToBuilding(collider, unit);
+                        interactionBuildingController.WorkerNearBuilding(f);
+                    }
                 }
                 SetUnitDestination(currentWalkingPoint.transform, false);
             }

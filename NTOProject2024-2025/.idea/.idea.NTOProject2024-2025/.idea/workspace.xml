@@ -24,112 +24,36 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Alexey/Gameprefab/Bear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Alexey/Gameprefab/Bear.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/DM Apiarier.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/DM Apiarier.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/DM Apiarier.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/DM Apiarier.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/M Apiarier Tools.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Apiarier/M Apiarier Tools.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Engineer/DM Ingineer.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Engineer/DM Ingineer.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art_VFX/Buildings improvment/Buildings Improvement.vfx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_VFX/Buildings improvment/Buildings Improvement.vfx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Buildings/Plan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Buildings/Plan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Drones/[Drone] - Main Drone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Drones/[Drone] - Main Drone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O10.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O10.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O11.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O11.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O12.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O12.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O13.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O13.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O14.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O14.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O15.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O15.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O16.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O16.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O17.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O17.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O18.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O18.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O19.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O19.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O20.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O20.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O21.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O21.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O22.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O22.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O23.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O23.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O24.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O24.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O25.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O25.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O26.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O26.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O27.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O27.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O28.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O28.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O29.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O29.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O3.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O30.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O30.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O31.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O31.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O32.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O32.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O4.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O4.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O5.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O5.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O6.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O6.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O7.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O7.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O8.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O8.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O9.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/Tutorial/Objectives/O9.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Apiary/Apiary.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Apiary/Apiary.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Home/home.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Home/home.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Miner/Miner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Miner/Miner.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/MobileBase/MobileBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/MobileBase/MobileBase.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Pier/Pier.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Pier/Pier.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/Storage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/Storage.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/PlayerSet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/PlayerSet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Beekeeper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Beekeeper.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Constructor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UnitsPrefabs/WorkerSet - Constructor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Buildings/Boer/TriggerMiner.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art_VFX/Big Field/Big Sheild 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_VFX/Big Field/Big Sheild 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art_VFX/Big Field/Big Sheild.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_VFX/Big Field/Big Sheild.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art_VFX/Big Field/Big Shield.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_VFX/Big Field/Big Shield.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/DialogueManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 05.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 05.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 10.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 10.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 11.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 11.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 12.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 12.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 16.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 16.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 46.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 46.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 52.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 52.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 57.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 57.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 61.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 61.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 63.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 63.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 65.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 65.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Phrase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Phrase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Prefabs/Dialogue Panels.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Prefabs/Dialogue Panels.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player1/Player1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player1/Player1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player2/Player2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player2/Player2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/3 Big effect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/3 Big effect.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/playerSaveDatas/StartValues.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BuildingManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/CompletionOfConstructionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/CompletionOfConstructionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EngineeringModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EngineeringModule.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Movement Control/IUnitMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/CallingWorkers/RocketFlightControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/CallingWorkers/RocketFlightControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtremeConditionsScripts/ExtremeConditionsControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtremeConditionsScripts/ExtremeConditionsControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Special/CallingWorkerPanelLimitWorkerControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Special/CallingWorkerPanelLimitWorkerControl.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerMainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManagerMainMenu.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -464,6 +388,7 @@
       <workItem from="1742562791213" duration="3653000" />
       <workItem from="1742569079195" duration="15621000" />
       <workItem from="1742638275935" duration="43453000" />
+      <workItem from="1742742879372" duration="11099000" />
     </task>
     <servers />
   </component>

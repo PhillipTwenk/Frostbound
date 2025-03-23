@@ -23,5 +23,5 @@ MonoBehaviour:
   actionParameterBuildBuilding: 7
   actionParameterUIPanel: 0
   actionParameterCallWorker: 0
-  actionParameterMoveUnit: 5
+  actionParameterMoveUnit: 6
   actionParameterInteractWithObject: 0

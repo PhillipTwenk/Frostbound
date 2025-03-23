@@ -911,9 +911,9 @@ MonoBehaviour:
   StartGameInChoiceCharacterPanel: {fileID: 11400000, guid: 67b0c91a8689fbf40a93d1357ae5c4ba, type: 2}
   StartGameAfterCreatingCharacter: {fileID: 11400000, guid: eb18c4a5b3023c04fb7feeeff90fe2a1, type: 2}
   StartTutorialEvent: {fileID: 11400000, guid: 8e421e349be70094c9bd4b8cb43da81c, type: 2}
-  StartValueIron: 400
+  StartValueIron: 575
   StartValueEnergy: 10
-  StartValueFood: 20
+  StartValueFood: 40
   StartValueCrioCrystal: 15
   StartValueApiaryShop:
     IronPrice: 50

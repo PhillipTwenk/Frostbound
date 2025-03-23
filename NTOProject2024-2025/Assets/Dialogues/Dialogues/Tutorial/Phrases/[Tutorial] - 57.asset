@@ -19,8 +19,8 @@ MonoBehaviour:
   isFade: 0
   isActionAwait: 1
   actionCategory: 1
-  actionParameterBuildBuilding: 7
+  actionParameterBuildBuilding: 1
   actionParameterUIPanel: 0
   actionParameterCallWorker: 0
   actionParameterMoveUnit: 0
-  actionParameterInteractWithObject: 4
+  actionParameterInteractWithObject: 10

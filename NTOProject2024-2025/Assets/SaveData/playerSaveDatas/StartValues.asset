@@ -39,7 +39,7 @@ MonoBehaviour:
     scale: {x: 30, y: 30, z: 30}
   workerDatas:
   - IsWorkerAtWork: 0
-    SaveListIndex: 1
+    SaveListIndex: 0
     unitType: 2
     droneSaveData:
       LogisticsStorage: 0

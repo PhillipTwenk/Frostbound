@@ -77,14 +77,17 @@ namespace Dialogues
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Return) && canContinue)
+            if (Input.GetButtonDown("TutorialUpdate"))
             {
                 if (isTextWriting)
                 {
                     ShowFullText();
                     return;
                 }
-                ShowNextPhrase();
+                if (canContinue)
+                {
+                    ShowNextPhrase();
+                }
             }
         }
 
@@ -123,16 +126,18 @@ namespace Dialogues
                 Time.timeScale = 1f;
             }
 
-            // Запуск печати текста
-            var targetText = phrase.side == DialogueSide.Left ? leftText : rightText;
-            await TypeText(targetText, phrase.text);
-
             // Если фраза требует действия, настраиваем подписку
             if (phrase.isActionAwait)
             {
                 SetupActionRequirement(phrase);
             }
-            else
+
+            // Запуск печати текста
+            var targetText = phrase.side == DialogueSide.Left ? leftText : rightText;
+            await TypeText(targetText, phrase.text);
+
+            // Если фраза не требует действия, разрешаем продолжение
+            if (!phrase.isActionAwait)
             {
                 canContinue = true;
             }
@@ -159,6 +164,12 @@ namespace Dialogues
             var phrase = currentDialogue.phrases[currentPhraseIndex];
             var targetText = phrase.side == DialogueSide.Left ? leftText : rightText;
             targetText.text = phrase.text;
+
+            // Если фраза не требует действия, разрешаем продолжение
+            if (!phrase.isActionAwait)
+            {
+                canContinue = true;
+            }
         }
 
         private void ShowNextPhrase()
@@ -185,12 +196,25 @@ namespace Dialogues
 
         private void EndDialogue()
         {
+            EndTutorial();
             IsDialogueInProcess = false;
             currentDialogue.isActive = false;
             currentDialogue.isCompleted = true;
             fadeOverlay.SetActive(false);
             DialogueFolder.SetActive(false);
             ClearPanels();
+        }
+
+        /// <summary>
+        /// Окончание туториала, если он был активен
+        /// </summary>
+        private void EndTutorial()
+        {
+            if (currentDialogue.isTutorial)
+            {
+                Time.timeScale = 1f;
+                PlayerPrefs.SetInt("TutorialCompleted", 1);
+            }
         }
 
         #endregion

@@ -22,7 +22,7 @@ MonoBehaviour:
     \u0434\u0440\u043E\u043D"
   characterImage: {fileID: 21300000, guid: 453c406e1729a394790e794fb08c2f44, type: 3}
   side: 1
-  isFade: 0
+  isFade: 1
   isActionAwait: 0
   actionCategory: 0
   actionParameterBuildBuilding: 7

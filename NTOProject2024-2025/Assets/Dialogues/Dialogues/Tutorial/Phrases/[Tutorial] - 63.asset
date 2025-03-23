@@ -23,6 +23,6 @@ MonoBehaviour:
   actionCategory: 3
   actionParameterBuildBuilding: 7
   actionParameterUIPanel: 0
-  actionParameterCallWorker: 2
+  actionParameterCallWorker: 5
   actionParameterMoveUnit: 0
   actionParameterInteractWithObject: 0

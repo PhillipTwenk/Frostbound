@@ -30,7 +30,7 @@ Material:
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3400
   stringTagMap:
@@ -88,7 +88,7 @@ Material:
     - _Height: 9.94
     - _MaterialID: 1
     - _MaterialTypeMask: 2
-    - _Noise_Scale: 172.16
+    - _Noise_Scale: 203.9
     - _Noise_speed: 0.1
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0

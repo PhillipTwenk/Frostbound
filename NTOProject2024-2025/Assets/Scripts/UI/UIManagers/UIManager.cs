@@ -509,7 +509,7 @@ public class UIManager : MonoBehaviour
     {
         string newText = await GeneralWorkersControl.Instance.CheckValidNumberOfWorkers(CurrentConstNumberOfNewWorkersAfterCalling);
         UpdateTextNearCallingWorkerPanel(newText);
-
+        
         if (newText == String.Empty)
         {
             CallingNewWorkerEvent?.Invoke(workerType);
@@ -519,6 +519,13 @@ public class UIManager : MonoBehaviour
             }else if (workerType == 2)
             {
                 DialogueManager.OnWorkerCalled?.Invoke(ActionTypeCallWorker.CallConstructor);
+            }
+        }
+        else
+        {
+            if (workerType == 1)
+            {
+                DialogueManager.OnWorkerCalled?.Invoke(ActionTypeCallWorker.UnsuccesefullCallBeekeeper);
             }
         }
         

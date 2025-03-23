@@ -28,6 +28,8 @@ namespace Dialogues
         CloseBarter,
         OpenBuildingPanel,
         OpenCallingWorkersPanel,
+        BuyFoodModulePlan,
+        BuyHomePlan,
     }
     
     [System.Serializable]
@@ -38,6 +40,7 @@ namespace Dialogues
         CallBeekeeper,
         EndAwaitRocket,
         CreateDrone,
+        UnsuccesefullCallBeekeeper,
     }
     
     [System.Serializable]
@@ -49,7 +52,8 @@ namespace Dialogues
         SelectConstructor,
         SelectBeekeeper,
         SelectDrone,
-        SetFreeDestination
+        TakeOffDrone,
+        SetFreeDestination,
     }
     
     [System.Serializable]
@@ -64,6 +68,8 @@ namespace Dialogues
         ClickOnMobileBase,
         OpenBarter,
         DroneGetResources,
+        DroneDestinationOnBuilding,
+        DroneCameToBuilding
     }
 
     [CreateAssetMenu(fileName = "Phrase", menuName = "Dialogues/Phrase")]

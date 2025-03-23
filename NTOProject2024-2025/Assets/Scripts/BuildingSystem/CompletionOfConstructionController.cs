@@ -102,19 +102,31 @@ public class CompletionOfConstructionController : MonoBehaviour
       // Что будет сделано по завершению строительства
       Utility.Invoke( async () =>
       {
+         Debug.Log("Активация прозрачного холста загрузки...");
          LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
-         
-         ActivateWorker(); // Актвируем рабочего
 
+         Debug.Log("Активация рабочего...");
+         ActivateWorker(); // Активируем рабочего
+
+         Debug.Log("Начало оплаты стоимости здания металлом...");
          await PaymentForConstruction(playerResources, buildingData); // Оплачиваем стоимость здания металлом
+         Debug.Log("Оплата завершена.");
 
+         Debug.Log("Сохранение данных о новом здании...");
          await SaveNewBuildingData(); // Сохраняем данные о новом здании
-         
-         Debug.Log("Здание построено");
+         Debug.Log("Данные о здании успешно сохранены.");
+
+         Debug.Log("Здание построено.");
          OnEndBuilding?.Invoke();
-         DialogueManager.OnBuildingPlaced?.Invoke(_buildingData.buildingTypeSO, ActionTypeInteractWithObject.EndWorkingOnBuilding);
-         
-         
+         Debug.Log("Событие OnEndBuilding вызвано.");
+
+         Debug.Log("Вызов события BuildingPlaced в DialogueManager...");
+         DialogueManager.OnBuildingPlaced?.Invoke(buildingData.buildingTypeSO, ActionTypeInteractWithObject.EndWorkingOnBuilding);
+         Debug.Log("Событие BuildingPlaced вызвано.");
+
+         Debug.Log("Скрытие текста ожидания постройки...");
+         _buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(false);
+         Debug.Log("Текст ожидания постройки скрыт.");
          _buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(false);
          foreach (var obj in _interactionBuildingController.objectsInTrigger)
          {
