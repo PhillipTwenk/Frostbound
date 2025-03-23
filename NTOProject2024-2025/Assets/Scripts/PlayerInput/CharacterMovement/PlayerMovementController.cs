@@ -1,3 +1,5 @@
+using System;
+using Dialogues;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
 using UnityEngine;
@@ -53,6 +55,8 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
             camera = value;
         }
     }
+    
+    public Action OnUnitSelected { get; set; }
 
     [Header("LayerMasks")]
     [SerializeField] private LayerMask placementLayerMask;
@@ -125,6 +129,7 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
                 // Если клинкули не на здание и не на рабочего
                 if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
+                    DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.SetFreeDestination);
                 } else {
                     currentWalkingPoint.transform.position = SelectedBuilding.transform.parent.transform.Find("EndPointWalk").transform.position;
                 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dialogues;
 using EntityActions.Movement_Control;
 using Unitilities;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace EntityActions.WorkersScripts
 {
     public class GeneralWorkersControl : MonoBehaviour
     {
+        
         public static GeneralWorkersControl Instance { get; private set;}
     
         [Header("Texts in building hint")]
@@ -101,7 +103,6 @@ namespace EntityActions.WorkersScripts
                             DroneMovementController droneMovementController = SelectedUnit as DroneMovementController;
                             if (droneMovementController != null && !droneMovementController.CheckForNonGroundObjects())
                             {
-                                Debug.Log(1);
                                 droneMovementController.StartLanding(); // Начало посадки дрона
                                 ResetSelectedUnit();
                                 return;
@@ -109,15 +110,12 @@ namespace EntityActions.WorkersScripts
                             
                             if(droneMovementController != null && droneMovementController.CheckForNonGroundObjects())
                             {
-                                Debug.Log(2);
                                 return;
                             }
                         }
-                        Debug.Log(3);
                         ResetSelectedUnit();
                         return;
                     }
-                    Debug.Log(4);
                     ResetSelectedUnit();
                 
                     //Debug.Log($"<color=purple> Выделен юнит: {hit.collider.tag} </color>");
@@ -135,6 +133,10 @@ namespace EntityActions.WorkersScripts
                         }
                     }
 
+                    DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.SelectUnit);
+                    
+                    selectedUnit.OnUnitSelected?.Invoke();
+                    
                     UIManager.CancelLastOpenPanelEvent += ResetSelectedUnit;
                     return;
                 }
@@ -178,6 +180,7 @@ namespace EntityActions.WorkersScripts
             if (SelectedUnit != null)
             {
                 //Debug.Log($"<color=yellow> Снято выделение с выбранного юнита </color>");
+                DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.DeselectUnit);
                 SelectedUnit.isSelected = false;
                 SelectedUnit.isSelecting = false;
                 SelectedUnit.OutlineRotate.SetActive(false);

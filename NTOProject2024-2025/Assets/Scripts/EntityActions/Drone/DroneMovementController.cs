@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using TMPro;
 using Unitilities;
@@ -105,6 +106,8 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
         }
     }
 
+    public Action OnUnitSelected { get; set; }
+    
     #endregion
 
     #region Переменные
@@ -183,6 +186,11 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
         unitType = _thisWorkerData.unitType;
         
         _rb.useGravity = false;
+
+        OnUnitSelected += () =>
+        {
+            DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.SelectDrone);
+        };
     }
 
     #endregion
@@ -257,6 +265,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
                 if (SelectedBuilding == null && !IsClickOnOtherEntity)
                 {
                     currentWalkingPoint.transform.position = new Vector3(point.x, droneFlyHeight, point.z);
+                    DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.SetFreeDestination);
                     ArriveForBuildBuidling = false;
                 }
                 else if (SelectedBuilding != null)

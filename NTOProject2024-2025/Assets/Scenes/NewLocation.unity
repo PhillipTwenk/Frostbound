@@ -10268,7 +10268,6 @@ GameObject:
   m_Component:
   - component: {fileID: 413672279}
   - component: {fileID: 413672282}
-  - component: {fileID: 413672281}
   - component: {fileID: 413672280}
   m_Layer: 0
   m_Name: TutorialManager
@@ -10320,19 +10319,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &413672281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413672278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5060d87d42958947a82c7a3f5c649ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myQuest: {fileID: 11400000, guid: 4f5ef9f59c46695488ff5221d1e372b8, type: 2}
 --- !u!114 &413672282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34197,7 +34183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FindNote: 000000
   MaximumNumberOfUnitsForDifferentLevels: 04000000080000000c000000
-  DefaultNumberOfWorkersForDifferentLevels: 03000000060000000a000000
+  DefaultNumberOfWorkersForDifferentLevels: 02000000060000000a000000
   HomesLimitsUp: 0
   NotEnoughtResourcesTextError: "\u041D\u0435\u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E
     \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432"
@@ -37949,6 +37935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
   BaseSongStartEvent: {fileID: 11400000, guid: e35d6c8714b3bdf4893ff5d794fb2af0, type: 2}
+  tutorialDialogue: {fileID: 11400000, guid: 7be62bd159b978e40bb025a567530291, type: 2}
 --- !u!4 &1268535700
 Transform:
   m_ObjectHideFlags: 0
@@ -59350,7 +59337,6 @@ MonoBehaviour:
   pointInPanelAngle3: {fileID: 555512944}
   pointInPanelAngle4: {fileID: 555512943}
   UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
-  UpgradeAudioEvent: {fileID: 11400000, guid: ab5fdc732dd43c140b5907cf4a1f4096, type: 2}
 --- !u!114 &1694935298
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -914,7 +914,7 @@ MonoBehaviour:
   StartValueIron: 400
   StartValueEnergy: 10
   StartValueFood: 20
-  StartValueCrioCrystal: 10
+  StartValueCrioCrystal: 15
   StartValueApiaryShop:
     IronPrice: 50
     CryoCrystalPrice: 3

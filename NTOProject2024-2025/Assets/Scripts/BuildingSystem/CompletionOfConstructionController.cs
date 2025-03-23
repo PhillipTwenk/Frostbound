@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using Unitilities;
 using Unity.VisualScripting;
@@ -111,6 +112,7 @@ public class CompletionOfConstructionController : MonoBehaviour
          
          Debug.Log("Здание построено");
          OnEndBuilding?.Invoke();
+         DialogueManager.OnBuildingPlaced?.Invoke(_buildingData.buildingTypeSO, ActionTypeInteractWithObject.EndWorkingOnBuilding);
          
          
          _buildingData.AwaitBuildingThisTMPro.gameObject.SetActive(false);

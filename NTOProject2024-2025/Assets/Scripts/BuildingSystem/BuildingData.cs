@@ -15,8 +15,8 @@ public enum BuildingsTypes
     MobileBase = 3,
     HydroelectricModule = 4,
     Home = 5,
-    EngineeringModule = 6
-    
+    EngineeringModule = 6,
+    None = 7
 }
 public class BuildingData : MonoBehaviour
 {

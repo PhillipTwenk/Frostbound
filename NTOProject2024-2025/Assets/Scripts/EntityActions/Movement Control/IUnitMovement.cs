@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace EntityActions.Movement_Control
@@ -43,5 +44,6 @@ namespace EntityActions.Movement_Control
         GameObject OutlinePOD { get; }
         Transform UnitPointOfDestination { get; set; }
         Camera MainCamera { get; set; }
+        Action OnUnitSelected { get; set;}
     }
 }

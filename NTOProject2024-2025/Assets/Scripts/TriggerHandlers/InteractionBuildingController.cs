@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using RTS_Cam;
 using TMPro;
@@ -261,6 +262,8 @@ public class InteractionBuildingController : MonoBehaviour
                     droneMovementController.SelectedBuilding =
                         droneMovementController.buildingDataLogistics.gameObject;
                     droneMovementController.LogisticsCycleMovementHandler();
+                    
+                    DialogueManager.OnObjectInteracted?.Invoke(ActionTypeInteractWithObject.DroneGetResources);
                 }
 
             }
@@ -286,6 +289,7 @@ public class InteractionBuildingController : MonoBehaviour
                 energyProduction.OnAddEnergy();
                 string newText = $"{_buildingData.Title} запущен ({thisBuildingWorkersControl.CurrentNumberWorkersInThisBuilding}/{thisBuildingWorkersControl.MaxValueOfWorkersInThisBuilding})";
                 TemporaryText(text, newText);
+                DialogueManager.OnBuildingPlaced?.Invoke(_buildingData.buildingTypeSO, ActionTypeInteractWithObject.WorkerCameToBuilding);
             }
             else
             {
@@ -341,6 +345,11 @@ public class InteractionBuildingController : MonoBehaviour
         AddTextToDescriptionPanel.buildingData = _buildingData;
         AddTextToDescriptionPanel.buildingTransform = gameObject.transform;
         AddTextToDescriptionPanel.buildingSO = _buildingData.buildingTypeSO;
+
+        if (_buildingData.buildingTypeSO.buildingType == BuildingsTypes.MobileBase)
+        {
+            DialogueManager.OnObjectInteracted?.Invoke(ActionTypeInteractWithObject.ClickOnMobileBase);
+        }
         
         OpenDescriptionPanel.TriggerEvent();
     }
@@ -354,6 +363,7 @@ public class InteractionBuildingController : MonoBehaviour
     {
         OpenBarterMenuEvent.TriggerEvent();
         RTS_Camera.possibilityZoomCamera = false;
+        DialogueManager.OnObjectInteracted?.Invoke(ActionTypeInteractWithObject.OpenBarter);
         UIManager.CancelLastOpenPanelEvent += UIManager.Instance.CloseBarterMenu;
     }
     

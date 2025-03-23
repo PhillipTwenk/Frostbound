@@ -1,25 +1,15 @@
-using Unity.VisualScripting;
+using Dialogues;
 using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    private QuestOwner thisQuestOwner;
-    public Objective obj3;
-
-    private void Start()
-    {
-        thisQuestOwner = GetComponent<QuestOwner>();
-    }
+    public Dialogue sss;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && !DialogueManager.IsDialogueInProcess)
         {
-            thisQuestOwner.GiveQuest(CurrentPlayersDataControl.CurrentQuestController);
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            obj3.CompleteObjective(); 
+            DialogueManager.LaunchDialogue?.Invoke(sss);
         }
     }
 }

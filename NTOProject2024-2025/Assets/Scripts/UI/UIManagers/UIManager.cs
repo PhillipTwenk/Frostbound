@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using RTS_Cam;
 using TMPro;
@@ -377,6 +378,7 @@ public class UIManager : MonoBehaviour
         //PlansPanelOpenTutorial.CheckAndUpdateTutorialState();
         OpenBuildingPanelEvent.TriggerEvent();
         IsOpenBuildingPanel = false;
+        DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.OpenBuildingPanel);
         CancelLastOpenPanelEvent += CloseBuildingPanel;
     }
     public void CloseBuildingPanel()
@@ -429,6 +431,7 @@ public class UIManager : MonoBehaviour
         GameObject PlaceNewBuildingTrigger = Instantiate(plan.buildingSO.PrefabBeforeBuilding);
         BuildingManager.Instance.MouseIndicator = PlaceNewBuildingTrigger;
         BuildingManager.Instance.CurrentBuilding = plan.buildingSO.PrefabBuilding;
+        DialogueManager.OnBuildingPlaced?.Invoke(plan.buildingSO, ActionTypeInteractWithObject.SelectPlan);
         StartPlacingBuildEvent.TriggerEvent();
     }
     #endregion
@@ -470,6 +473,7 @@ public class UIManager : MonoBehaviour
         Debug.Log($"<color=yellow> Закрыта панель магазина </color>");
         CloseBarterMenuEvent.TriggerEvent();
         RTS_Camera.possibilityZoomCamera = true;
+        DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.CloseBarter);
         CancelLastOpenPanelEvent -= CloseBarterMenu;
     }
 
@@ -484,6 +488,7 @@ public class UIManager : MonoBehaviour
     {
         OpenCallingWorkerPanelEvent.TriggerEvent();
         RTS_Camera.possibilityZoomCamera = false;
+        DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.OpenCallingWorkersPanel);
         CancelLastOpenPanelEvent += CloseCallingWorkersPanel;
     }
 
@@ -508,6 +513,13 @@ public class UIManager : MonoBehaviour
         if (newText == String.Empty)
         {
             CallingNewWorkerEvent?.Invoke(workerType);
+            if (workerType == 1)
+            {
+                DialogueManager.OnWorkerCalled?.Invoke(ActionTypeCallWorker.CallBeekeeper);
+            }else if (workerType == 2)
+            {
+                DialogueManager.OnWorkerCalled?.Invoke(ActionTypeCallWorker.CallConstructor);
+            }
         }
         
     }

@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using Dialogues;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
 using TMPro;
@@ -58,6 +60,8 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
         }
     }
     
+    public Action OnUnitSelected { get; set; }
+    
     
     [Header("Flags")]
     private bool IsClickOnOtherEntity; // Кликнули на другой тип сущности
@@ -100,6 +104,18 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
         OutlinePOD.SetActive(false);
         OutlineRotate.SetActive(false);
         unitType = _thisWorkerData.unitType;
+        
+        OnUnitSelected += () =>
+        {
+            if (unitType == UnitType.Constructor)
+            {
+                DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.SelectConstructor);
+            }
+            else if (unitType == UnitType.Beekeeper)
+            {
+                DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.SelectBeekeeper);
+            }
+        };
     }
 
     private void FixedUpdate()
@@ -127,6 +143,7 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
                 // Если клинкули не на здание и не на другую сущность
                 if(SelectedBuilding == null && !IsClickOnOtherEntity){
                     currentWalkingPoint.transform.position = new Vector3(point.x, point.y, point.z);
+                    DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.SetFreeDestination);
                     ArriveForBuildBuidling = false;
                 } else if (SelectedBuilding != null)
                 {
@@ -143,6 +160,7 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
                                 if (IsWorkerCanBuildBuilding)
                                 {
                                     ArriveForBuildBuidling = true;
+                                    DialogueManager.OnBuildingPlaced?.Invoke(buildingData.buildingTypeSO, ActionTypeInteractWithObject.WorkerDestinationOnBuilding);
                                 }
                                 else
                                 {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using Unitilities;
 using UnityEngine;
@@ -121,5 +122,7 @@ public class RocketFlightControl : MonoBehaviour
         Debug.Log($"<color=green>Свободные рабочие + 1: {GeneralWorkersControl.Instance.NumberOfFreeUnits}</color>");
 
         currentWorkerType = -1;
+        
+        DialogueManager.OnWorkerCalled?.Invoke(ActionTypeCallWorker.EndAwaitRocket);
     }
 }

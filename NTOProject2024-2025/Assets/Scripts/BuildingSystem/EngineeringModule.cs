@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using TMPro;
 using Unitilities;
@@ -105,6 +106,8 @@ public class EngineeringModule : MonoBehaviour
                         await JSONSerializeManager.Instance.JSONSave();
                     
                         TextOn(buildingData.AwaitBuildingThisTMPro);
+                        
+                        DialogueManager.OnWorkerCalled?.Invoke(ActionTypeCallWorker.CreateDrone);
                     }
                     else
                     {

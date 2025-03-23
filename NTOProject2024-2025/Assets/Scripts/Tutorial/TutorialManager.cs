@@ -41,7 +41,6 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
-        questOwner = GetComponent<QuestOwner>();
         UpdateTutorialStateEvent += () => UpdateTutorialState();
     }
 
@@ -62,13 +61,11 @@ public class TutorialManager : MonoBehaviour
                 {
                     if (CanEnterT)
                     {
-                        Debug.Log("SkibidiINC");
                         UpdateTutorialStateEvent?.Invoke();
                     }
                 }
                 else
                 {
-                    Debug.Log("SkibidiINC");
                     UpdateTutorialStateEvent?.Invoke();
                 }
             }
@@ -77,7 +74,6 @@ public class TutorialManager : MonoBehaviour
 
     public void UpdateTutorialState()
     {
-        Debug.Log("SKIBIDIDOPDOPDOPDOPDOPDOP");
         i++;
         if (i == TutorialObjectives.Count)
         {

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using RTS_Cam;
 using UnityEngine;
@@ -161,6 +163,7 @@ public class BuildingManager : MonoBehaviour
                             await _navMeshSurfaceDrone.UpdateNavMesh(_navMeshSurfaceDrone.navMeshData);
                             Debug.Log("NavMesh updated");
 
+                            DialogueManager.OnBuildingPlaced?.Invoke(buildingData.buildingTypeSO, ActionTypeInteractWithObject.PlacementBuilding);
                             componentContainingBuilding.StartCompletionOfConstruction(playerResources);
                             
                             

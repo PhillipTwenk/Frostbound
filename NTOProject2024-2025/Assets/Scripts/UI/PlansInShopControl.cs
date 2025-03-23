@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using UnityEngine;
 using UnityEngine.UI;
@@ -176,9 +177,9 @@ public class PlansInShopControl : MonoBehaviour
 
             await SyncManager.Enqueue(async () =>
             {
-                await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, 
-                    shopResources.Apiary, shopResources.MobileBase, shopResources.Storage,
-                    shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
+                // await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, 
+                //     shopResources.Apiary, shopResources.MobileBase, shopResources.Storage,
+                //     shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
                 
                 await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, 
                     playerResources.Iron - product.IronPrice, 
@@ -190,6 +191,13 @@ public class PlansInShopControl : MonoBehaviour
             boughtPanel.SetActive(true);
             button.SetActive(false);
             UIManager.Instance.AddNewPlanInPanel(planUI);
+            
+            if (shopResources.Pier.IsPurchased && shopResources.Minner.IsPurchased && shopResources.Storage.IsPurchased)
+            {
+                // Выполняем ваш функционал
+               DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.BuyFirstThreePlans);
+            }
+            
         }
         else
         {

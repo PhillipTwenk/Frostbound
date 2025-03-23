@@ -4,6 +4,9 @@ using UnityEngine;
 public class Plan : ScriptableObject
 {
     public string Title;
+
+    public BuildingsTypes buildingType;
+    
     [TextArea] public string Description;
 
     public string durability;
