@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EntityActions.WorkersScripts;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -38,9 +39,18 @@ public class BaseUpgradeConditionManager : MonoBehaviour
     [SerializeField] private Material ShieldColor;
     [SerializeField] private MeshRenderer ShieldRenderer;
     
+    [Header("Quest Control")]
+    public List<Objective> MobileBaseUpgradeObjectives;
+    
     private void Awake()
     {
         Instance = this;
+        DescriptionPanelController.OnMobileBaseUpgrade += EndAppropriateObjectiveQuest;
+    }
+
+    private void OnDestroy()
+    {
+        DescriptionPanelController.OnMobileBaseUpgrade -= EndAppropriateObjectiveQuest;
     }
 
     public void Initialization()
@@ -67,6 +77,15 @@ public class BaseUpgradeConditionManager : MonoBehaviour
         //     testDictionary.Add("ДАбулум нипнип", "- 997 deadinside");
         //     APIManager.Instance.CreatePlayerLog("Тестовые логи шкебеде допдоп", UIManagerLocation.WhichPlayerCreate.Name, testDictionary);
         // }
+    }
+
+    /// <summary>
+    /// Завршение соответствущей цели квеста по прокачке моильной базы
+    /// </summary>
+    /// <param name="newMobileBase"></param>
+    public void EndAppropriateObjectiveQuest(int newMobileBase)
+    {
+        MobileBaseUpgradeObjectives[newMobileBase - 1].CompleteObjective();
     }
 
     public async Task<List<string>> CanUpgradeMobileBase(PlayerResources playerResources)
@@ -242,10 +261,10 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                     string report = $"{NoApiaryBuidlingText}: {currentNumberNeededBuildingLevel1} / {3}";
                     resultReport.Add(report);
                 }
-                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.Miner, 2))
+                if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.Miner, 3))
                 {
                     IsThisReportUnsuccess = true;
-                    string report = $"{NoMinerBuidlingText}: {currentNumberNeededBuildingLevel1} / {2}";
+                    string report = $"{NoMinerBuidlingText}: {currentNumberNeededBuildingLevel1} / {3}";
                     resultReport.Add(report);
                 }
                 if (!BuildingNeededNumberCheck(out currentNumberNeededBuildingLevel1, CurrentBuidlings, BuildingsTypes.HydroelectricModule, 4))

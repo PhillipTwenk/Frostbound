@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 /// <summary>
@@ -40,7 +41,6 @@ public class Quest : ScriptableObject, ISerializableSO
     }
     
     [Tooltip("Имя квеста")] [SerializeField]private string name;
-    
     [Tooltip("Ивент для завершения квеста")]public event Action<Quest> OnQuestCompleted;
     
     [Tooltip("Активен ли")] public bool active;
@@ -55,6 +55,10 @@ public class Quest : ScriptableObject, ISerializableSO
 
     [Space] [Header("UI Control")] [Tooltip("Префаб пункта квеста на панели с квестами")]
     public GameObject UIItemOnQuestPanel;
+    
+    [Header("Quest Events")]
+    public UnityEvent OnQuestCompletedUnityEvent;
+    public UnityEvent OnQuestStartedUnityEvent;
     
 
     /// <summary>
@@ -72,6 +76,8 @@ public class Quest : ScriptableObject, ISerializableSO
 
                     currentObjective = objectives[i];
                     
+                    currentObjective?.OnObjectiveStartedUnityEvent?.Invoke();
+                    
                     //startNewObjection.TriggerEvent();
                     
                     return;
@@ -84,6 +90,7 @@ public class Quest : ScriptableObject, ISerializableSO
 
         Debug.Log($"Завершен квест {this.Name}, вызов ивента завершения квеста ");
         OnQuestCompleted?.Invoke(this);
+        OnQuestCompletedUnityEvent?.Invoke();
     }
 
     /// <summary>

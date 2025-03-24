@@ -35,6 +35,8 @@ namespace Dialogues
         public Image leftImage;
         public Image rightImage;
         public GameObject fadeOverlay;
+        public GameObject leftContinuePanel; // Панель продолжения для левой панели
+        public GameObject rightContinuePanel; // Панель продолжения для правой панели
 
         [Header("Parameters")]
         public float charactersPerSecond = 30f;
@@ -55,6 +57,7 @@ namespace Dialogues
         [Header("Events")]
         private List<Action> _currentSubscriptions = new List<Action>();
         public static Action<Dialogue> LaunchDialogue;
+        public static Action OnEndTutorial;
 
         [Header("UnityEvents")]
         public UnityEvent OnStartDialogueUE;
@@ -69,7 +72,7 @@ namespace Dialogues
         private void OnDestroy()
         {
             // Отписка от событий
-            LaunchDialogue -= StartDialogue;
+            LaunchDialogue -= StartDialogue;    
             LaunchDialogue -= (Dialogue dialogue) => OnStartDialogueUE?.Invoke();
         }
 
@@ -136,10 +139,11 @@ namespace Dialogues
             var targetText = phrase.side == DialogueSide.Left ? leftText : rightText;
             await TypeText(targetText, phrase.text);
 
-            // Если фраза не требует действия, разрешаем продолжение
+            // Если фраза не требует действия, разрешаем продолжение и показываем панель продолжения
             if (!phrase.isActionAwait)
             {
                 canContinue = true;
+                ShowContinuePanel(phrase.side);
             }
         }
 
@@ -165,15 +169,19 @@ namespace Dialogues
             var targetText = phrase.side == DialogueSide.Left ? leftText : rightText;
             targetText.text = phrase.text;
 
-            // Если фраза не требует действия, разрешаем продолжение
+            // Если фраза не требует действия, разрешаем продолжение и показываем панель продолжения
             if (!phrase.isActionAwait)
             {
                 canContinue = true;
+                ShowContinuePanel(phrase.side);
             }
         }
 
         private void ShowNextPhrase()
         {
+            // Скрываем панели продолжения
+            HideContinuePanels();
+
             currentPhraseIndex++;
 
             if (currentPhraseIndex >= currentDialogue.phrases.Count)
@@ -197,12 +205,14 @@ namespace Dialogues
         private void EndDialogue()
         {
             EndTutorial();
+            OnEndTutorial?.Invoke();
             IsDialogueInProcess = false;
             currentDialogue.isActive = false;
             currentDialogue.isCompleted = true;
             fadeOverlay.SetActive(false);
             DialogueFolder.SetActive(false);
             ClearPanels();
+            HideContinuePanels(); // Скрываем панели продолжения при завершении диалога
         }
 
         /// <summary>
@@ -321,6 +331,28 @@ namespace Dialogues
                 unsubscribeAction();
             }
             _currentSubscriptions.Clear();
+        }
+
+        #endregion
+
+        #region Методы для управления панелями продолжения
+
+        private void ShowContinuePanel(DialogueSide side)
+        {
+            if (side == DialogueSide.Left)
+            {
+                leftContinuePanel.SetActive(true);
+            }
+            else if (side == DialogueSide.Right)
+            {
+                rightContinuePanel.SetActive(true);
+            }
+        }
+
+        private void HideContinuePanels()
+        {
+            leftContinuePanel.SetActive(false);
+            rightContinuePanel.SetActive(false);
         }
 
         #endregion

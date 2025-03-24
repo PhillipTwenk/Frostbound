@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 /// <summary>
@@ -43,6 +44,10 @@ public class Objective : ScriptableObject, ISerializableSO
     [Tooltip("Описание")] [TextArea] public string description;
 
     public event Action OnObjectiveComplete;  
+    
+    [Header("Quest Events")]
+    public UnityEvent OnObjectiveCompletedUnityEvent;
+    public UnityEvent OnObjectiveStartedUnityEvent;
 
     /// <summary>
     /// Заврешение данной цели
@@ -54,6 +59,7 @@ public class Objective : ScriptableObject, ISerializableSO
             Debug.Log($"<color=green>===========Цель №{parentQuest.objectives.IndexOf(this)} - [{this.description}] в квесте {parentQuest.Name} выполненa==========</color>");
             completed = true;
             OnObjectiveComplete?.Invoke();
+            OnObjectiveCompletedUnityEvent?.Invoke();
             parentQuest.TryEndQuest();
         }
     }

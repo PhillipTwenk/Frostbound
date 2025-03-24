@@ -5081,6 +5081,65 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8290947941647810087, guid: 4963c77f180c9f44386639bfbd618120, type: 3}
   m_PrefabInstance: {fileID: 234973825}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &235707142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 235707145}
+  - component: {fileID: 235707144}
+  - component: {fileID: 235707143}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &235707143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235707142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5060d87d42958947a82c7a3f5c649ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myQuest: {fileID: 11400000, guid: 5733c5c4eaf53024d82fa5f4737efc2c, type: 2}
+--- !u!114 &235707144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235707142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1d197968f67cf41abd9da7927e0d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisQuestOwner: {fileID: 235707143}
+--- !u!4 &235707145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235707142}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &235890316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14156,6 +14215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DescriptionPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4511151663999105140, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4538031252503796496, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -22338,7 +22401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastTab: 2
+  lastTab: 1
   movementSettingsFoldout: 0
   zoomingSettingsFoldout: 0
   rotationSettingsFoldout: 0
@@ -22389,7 +22452,7 @@ MonoBehaviour:
   useKeyboardRotation: 1
   rotateRightKey: 120
   rotateLeftKey: 122
-  useMouseRotation: 1
+  useMouseRotation: 0
   mouseRotationKey: 324
 --- !u!4 &800638974
 Transform:
@@ -34224,6 +34287,10 @@ MonoBehaviour:
   ResourceMinerRestored: {fileID: 11400000, guid: 087353e1388894a39938d4c0540c6d48, type: 2}
   ShieldColor: {fileID: 2100000, guid: 9dce96cbc63290e43ba8cf6963628685, type: 2}
   ShieldRenderer: {fileID: 0}
+  MobileBaseUpgradeObjectives:
+  - {fileID: 11400000, guid: 1ceeadb2475c13343b55b0e728e5c28b, type: 2}
+  - {fileID: 11400000, guid: ab4ebb17552bb684f962a57aa558f4e8, type: 2}
+  - {fileID: 11400000, guid: 632bb29da5220dd44adeb428f8d22f64, type: 2}
 --- !u!114 &1095738377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37898,6 +37965,7 @@ GameObject:
   - component: {fileID: 1268535700}
   - component: {fileID: 1268535699}
   - component: {fileID: 1268535698}
+  - component: {fileID: 1268535701}
   m_Layer: 0
   m_Name: EntryLocationControl
   m_TagString: Untagged
@@ -37948,6 +38016,8 @@ MonoBehaviour:
   UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
   BaseSongStartEvent: {fileID: 11400000, guid: e35d6c8714b3bdf4893ff5d794fb2af0, type: 2}
   tutorialDialogue: {fileID: 11400000, guid: 7be62bd159b978e40bb025a567530291, type: 2}
+  startGameQuests:
+  - {fileID: 1268535701}
 --- !u!4 &1268535700
 Transform:
   m_ObjectHideFlags: 0
@@ -37963,6 +38033,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1268535701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268535697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5060d87d42958947a82c7a3f5c649ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myQuest: {fileID: 11400000, guid: 5733c5c4eaf53024d82fa5f4737efc2c, type: 2}
 --- !u!1001 &1271121670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77730,3 +77813,4 @@ SceneRoots:
   - {fileID: 1675040625}
   - {fileID: 1031238761}
   - {fileID: 262475056}
+  - {fileID: 235707145}

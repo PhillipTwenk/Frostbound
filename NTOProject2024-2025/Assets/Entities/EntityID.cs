@@ -39,7 +39,7 @@ public class EntityID : ScriptableObject, ISerializableSO
     public float speedTurn;
 
     [Header("Quests")]
-    public List<Quest> openQuests;
+    public List<Quest> openQuests = new List<Quest>();
 
     [Header("OfflineData")] 
     public PlayerResources playerResources;

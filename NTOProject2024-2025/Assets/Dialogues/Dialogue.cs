@@ -17,5 +17,17 @@ namespace Dialogues
         
         [Header("Phrases Info")] 
         [Tooltip("Все фразы данного диалога по порядку")] public List<Phrase> phrases;
+
+        #region Методы
+
+        /// <summary>
+        /// Запуск данного диалога
+        /// </summary>
+        public void LaunchDialogue()
+        {
+            DialogueManager.LaunchDialogue?.Invoke(this);
+        }
+
+        #endregion
     }
 }

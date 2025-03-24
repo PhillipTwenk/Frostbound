@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TestMovementCharacter : MonoBehaviour
 {
-    private QuestOwner thisQuestOwner;
+    public QuestOwner thisQuestOwner;
     private void Start()
     {
         thisQuestOwner = GetComponent<QuestOwner>();
@@ -12,6 +12,7 @@ public class TestMovementCharacter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            Debug.Log(CurrentPlayersDataControl.CurrentQuestController.name);
             thisQuestOwner.GiveQuest(CurrentPlayersDataControl.CurrentQuestController);
         }
     }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b0b8e6f77ca164592db669b1717135, type: 3}
+  m_Name: BerlogaformingMBLevel1
+  m_EditorClassIdentifier: 
+  title: "\u0411\u0435\u0440\u043B\u043E\u0433\u043E\u0444\u043E\u0440\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435
+    - \u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 \u043D\u0430 2 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
+  isTutorial: 0
+  isActive: 0
+  isCompleted: 0
+  phrases:
+  - {fileID: 11400000, guid: 8a796dbd3d041f347a62d6b99c0dc487, type: 2}
+  - {fileID: 11400000, guid: 2246cfc4613bc7e458dab364a0217891, type: 2}
+  - {fileID: 11400000, guid: 9776a9d91e684db478663e91b0f8f8db, type: 2}

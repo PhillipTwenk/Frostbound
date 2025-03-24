@@ -14,19 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IDoB: 4
   buildingType: 4
-  levelListLevel: 01000000
-  MaxLevelThisBuilding: 1
-  durabilityListLevel: 41000000
-  energyHoneyConsumptionListLevel: 00000000
+  levelListLevel: 0100000002000000
+  MaxLevelThisBuilding: 2
+  durabilityListLevel: 4100000055000000
+  energyHoneyConsumptionListLevel: 0000000000000000
   resourceProductionListLevel:
   - resources: 3c00000000000000
+    SpriteAssetsUsingIndex: 0000000001000000
+  - resources: 5000000000000000
     SpriteAssetsUsingIndex: 0000000001000000
   storageListLevel:
   - resources: 
     SpriteAssetsUsingIndex: 
+  - resources: 
+    SpriteAssetsUsingIndex: 
   priceBuilding: 70
   priceUpgrade: 0
-  MBLevelForUpgradethisIron: 0
+  MBLevelForUpgradethisIron: 2
   MBLevelForBuidlingthisIron: 1
   TimeAwaitBuildingThis: 3
   prefabBuilding: {fileID: 8578325989455466753, guid: b7fdeea38571ad648a8eda32fdc89039, type: 3}

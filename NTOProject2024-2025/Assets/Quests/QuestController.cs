@@ -30,6 +30,7 @@ public class QuestController : MonoBehaviour
         quest.OnQuestCompleted += UIManager.Instance.RemoveQuestItemInQuestPanel;
         quest.OnQuestCompleted += RemoveCompletedQuest;
         OnStartNewQuest?.Invoke(quest);
+        quest?.OnQuestStartedUnityEvent?.Invoke();
     }
 
     /// <summary>

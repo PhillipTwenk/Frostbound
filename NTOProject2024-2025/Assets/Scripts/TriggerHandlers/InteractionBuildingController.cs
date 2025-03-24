@@ -5,6 +5,7 @@ using Dialogues;
 using EntityActions.WorkersScripts;
 using RTS_Cam;
 using TMPro;
+using UI;
 using Unitilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -359,9 +360,9 @@ public class InteractionBuildingController : MonoBehaviour
     /// </summary>
     public void OnMouseDownBuilding()
     {
-        AddTextToDescriptionPanel.buildingData = _buildingData;
-        AddTextToDescriptionPanel.buildingTransform = gameObject.transform;
-        AddTextToDescriptionPanel.buildingSO = _buildingData.buildingTypeSO;
+        DescriptionPanelController.buildingData = _buildingData;
+        DescriptionPanelController.buildingTransform = gameObject.transform;
+        DescriptionPanelController.buildingSO = _buildingData.buildingTypeSO;
         OpenDescriptionPanel.TriggerEvent();
         
         if (_buildingData.buildingTypeSO.buildingType == BuildingsTypes.MobileBase)

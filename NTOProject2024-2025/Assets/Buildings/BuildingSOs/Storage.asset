@@ -30,7 +30,7 @@ MonoBehaviour:
     SpriteAssetsUsingIndex: 05000000
   priceBuilding: 70
   priceUpgrade: 30
-  MBLevelForUpgradethisIron: 2
+  MBLevelForUpgradethisIron: 3
   MBLevelForBuidlingthisIron: 1
   TimeAwaitBuildingThis: 3
   prefabBuilding: {fileID: 3453498794941356753, guid: b7ccb103c01beb649a6c4cd65efb2d0e, type: 3}
