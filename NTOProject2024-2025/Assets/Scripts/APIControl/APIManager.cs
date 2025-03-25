@@ -10,34 +10,20 @@ using Newtonsoft.Json;
 public class Requests
 {
     private static string UUID = "ad9eeae2-76a0-4074-86e5-cc77b967816d";
-    public static string CreatePlayerURL = $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/";
-    public static string GetPlayersURL = $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/";
+    public static string CreatePlayerURL = $"https://final.2025.nti-gamedev.ru/api/games/{UUID}/players/";
+    public static string GetPlayerURL(string playerName) =>  $"https://final.2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/";
 
-    public static string GetPlayerURL(string playerName) =>  $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/";
+    public static string PutPlayerURL(string playerName) => $"https://final.2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/";
 
-    public static string PutPlayerURL(string playerName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/";
+    public static string DeletePlayerURL(string playerName) => $"https://final.2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/";
 
-    public static string DeletePlayerURL(string playerName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/";
+    public static string CreateShopURL(string playerName) => $"https://final.2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/";
 
-    public static string CreateLogURL = $"https://2025.nti-gamedev.ru/api/games/{UUID}/logs/";
+    public static string GetShopURL(string playerName, string shopName) => $"https://final.2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/{shopName}/";
 
-    public static string GetPlayerLogsURL(string playerName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/";
+    public static string PutShopURL(string playerName, string shopName) => $"https://final.2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/{shopName}/";
 
-    public static string CreateShopURL(string playerName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/";
-
-    public static string GetShopsURL(string playerName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/";
-
-    public static string GetShopURL(string playerName, string shopName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/{shopName}/";
-
-    public static string PutShopURL(string playerName, string shopName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/{shopName}/";
-
-    public static string DeleteShopURL(string playerName, string shopName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/{shopName}/";
-
-    public static string CreateShopLogURL = $"https://2025.nti-gamedev.ru/api/games/{UUID}/logs/";
-
-    public static string GetShopLogURL(string playerName, string shopName) => $"https://2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/{shopName}/logs/";
-
-    public static string GetLogGameURL = $"https://2025.nti-gamedev.ru/api/games/{UUID}/logs/";
+    public static string DeleteShopURL(string playerName, string shopName) => $"https://final.2025.nti-gamedev.ru/api/games/{UUID}/players/{playerName}/shops/{shopName}/";
 }
 
 /// <summary>
@@ -45,7 +31,7 @@ public class Requests
 /// </summary>
 public class TimeoutValues
 {
-    public static float CreatePlayerTimeoutValue = 4f;
+    public static float CreatePlayerTimeoutValue = 8f;
     public static float GetPlayerResourcesTimeoutValue = 2f;
     public static float PutPlayerResourcesTimeoutValue = 2f;
     public static float DeletePlayerTimeoutValue = 3f;
@@ -163,62 +149,6 @@ public class APIManager : MonoBehaviour
     }
     
     
-    /// <summary>
-    /// Возвращает Dictionary cо всеми игроками
-    /// </summary>
-    /// <returns></returns>
-    public async Task<Dictionary<string, PlayerData>> GetPlayersList()
-    {
-        // // Создаем TaskCompletionSource для обработки асинхронного ответа
-        var taskCompletionSource = new TaskCompletionSource<Dictionary<string, PlayerData>>();
-        //
-        // string URL = Requests.GetPlayersURL;
-        //
-        // HTTPRequests.Instance.Get(URL,
-        //     onSuccess: response =>
-        //     {
-        //         try
-        //         {
-        //             // Парсим ответ
-        //             List<PlayerData> players = JsonUtility.FromJson<PlayerDataList>($"{{\"players\":{response}}}").players;
-        //
-        //             // Проверяем, есть ли игроки
-        //             var playerDict = new Dictionary<string, PlayerData>();
-        //             foreach (var player in players)
-        //             {
-        //                 if (!playerDict.ContainsKey(player.name))
-        //                 {
-        //                     playerDict[player.name] = player;
-        //                 }
-        //             }
-        //             
-        //             // Завершаем Task успешным результатом
-        //             taskCompletionSource.SetResult(playerDict);
-        //         }
-        //         catch (Exception ex)
-        //         {
-        //             // Завершаем Task с ошибкой при возникновении исключения
-        //             Debug.LogError($"Ошибка при обработке данных: {ex.Message}");
-        //             taskCompletionSource.SetException(ex);
-        //         }
-        //     },
-        //     onError: error =>
-        //     {
-        //         if (!InternetMonitor.IsOfflineMode)
-        //         {
-        //             Debug.LogError($"Ошибка запроса: {error}"); 
-        //         }
-        //         else
-        //         {
-        //             Debug.Log("OfflineMode on");
-        //         }
-        //
-        //         taskCompletionSource.SetException(new Exception(error));
-        //     });
-        //
-        // // Ждем завершения Task и возвращаем результат
-        return await taskCompletionSource.Task;
-    }
 
     
     /// <summary>
@@ -260,8 +190,7 @@ public class APIManager : MonoBehaviour
         // Ждем завершения Task и возвращаем результат
         return await taskCompletionSource.Task;
     }
-
-
+    
     /// <summary>
     /// Загрузка новых ресурсов определенному игроку
     /// </summary>
@@ -366,62 +295,7 @@ public class APIManager : MonoBehaviour
         // Ждем завершения Task
         await taskCompletionSource.Task;
     }   
-
-
-    /// <summary>
-    /// Создание логов персонажа
-    /// </summary>
-    /// <param name="comment"> Комментарий лога</param>
-    /// <param name="playerName"> Имя персонажа </param>
-    /// <param name="ChangedResources"> Словарь изменённых ресурсов </param>
-    public async void CreatePlayerLog(string comment, string playerName, Dictionary<string, string> ChangedResources)
-    {
-        // Создаем объект для логов
-        PlayerLog playerLog = new PlayerLog()
-        {
-            comment = comment,
-            player_name = playerName,
-            resources_changed = ChangedResources
-        };
     
-        // Сериализуем объект в JSON
-        string json = JsonConvert.SerializeObject(playerLog, Formatting.Indented);
-
-        // Создаем TaskCompletionSource для ожидания ответа
-        var taskCompletionSource = new TaskCompletionSource<bool>();
-    
-        if (!InternetMonitor.IsOfflineMode)
-        {
-            // Выполняем POST-запрос
-            HTTPRequests.Instance.Post(Requests.CreateLogURL, TimeoutValues.CreatePlayerLogTimeoutValue,json, 
-                onSuccess: response =>
-                {
-                    Debug.Log("Логи были отправлены");
-                    taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
-                },
-                onError: error =>
-                {
-                    Debug.LogError($"Ошибка при создании логов: {error}");
-                    taskCompletionSource.SetResult(false); // Завершаем Task
-                });
-        }
-        else
-        {
-            Debug.Log("OfflineMode on - CreatePlayerLog");
-            taskCompletionSource.SetResult(true);
-        }
-        
-
-        // Ждем завершения Task
-        await taskCompletionSource.Task;
-    }
-
-    public PlayerLog GetPlayerLogs()
-    {
-        PlayerLog playerLog = new PlayerLog();
-        return playerLog;
-    }
-
     /// <summary>
     /// Создает магазин
     /// </summary>
@@ -485,56 +359,6 @@ public class APIManager : MonoBehaviour
 
         // Ждем завершения Task
         await taskCompletionSource.Task;
-    }
-
-    /// <summary>
-    /// Получает Dictionary со списком магазинов игрока
-    /// </summary>
-    /// <param name="playerName"> имя игрока</param>
-    /// <returns></returns>
-    public async Task<Dictionary<string, ShopData>> GetShopsList(string playerName)
-    {
-        // Создаем TaskCompletionSource для обработки асинхронного ответа
-        var taskCompletionSource = new TaskCompletionSource<Dictionary<string, ShopData>>();
-
-        // string URL = Requests.GetShopsURL(playerName);
-        //
-        // HTTPRequests.Instance.Get(URL,
-        //     onSuccess: response =>
-        //     {
-        //         try
-        //         {
-        //             // Парсим ответ
-        //             List<ShopData> shops = JsonUtility.FromJson<ShopsDataList>($"{{\"shops\":{response}}}").shops;
-        //
-        //             // Проверяем, есть ли игроки
-        //             var shopsDict = new Dictionary<string, ShopData>();
-        //             foreach (var shop in shops)
-        //             {
-        //                 if (!shopsDict.ContainsKey(shop.name))
-        //                 {
-        //                     shopsDict[shop.name] = shop;
-        //                 }
-        //             }
-        //             // Завершаем Task успешным результатом
-        //             taskCompletionSource.SetResult(shopsDict);
-        //         }
-        //         catch (Exception ex)
-        //         {
-        //             // Завершаем Task с ошибкой при возникновении исключения
-        //             Debug.LogError($"Ошибка при обработке данных: {ex.Message}");
-        //             taskCompletionSource.SetException(ex);
-        //         }
-        //     },
-        //     onError: error =>
-        //     {
-        //         // Завершаем Task с ошибкой при проблемах с запросом
-        //         Debug.LogError($"Ошибка запроса: {error}");
-        //         taskCompletionSource.SetException(new Exception(error));
-        //     });
-
-        // Ждем завершения Task и возвращаем результат
-        return await taskCompletionSource.Task;
     }
 
     /// <summary>
@@ -678,58 +502,4 @@ public class APIManager : MonoBehaviour
         // Ждем завершения Task
         await taskCompletionSource.Task;
     }
-    
-    /// <summary>
-    /// Cоздает логи магазина 
-    /// </summary>
-    /// <param name="comment"> комментарий лога </param>
-    /// <param name="playerName"> имя игрока </param>
-    /// <param name="shopName"> имя его магазина </param>
-    public async void CreateShopLog(string comment, string playerName, string shopName, Dictionary<string, string> ChangedResources)
-    {
-        ShopLog shopLog = new ShopLog()
-        {
-            comment = comment,
-            player_name = playerName,
-            shop_Name = shopName,
-            resources_changed = ChangedResources
-        };
-        
-        // Сериализуем объект в JSON
-        string json = JsonConvert.SerializeObject(shopLog, Formatting.Indented);
-
-        // Создаем TaskCompletionSource для ожидания ответа
-        var taskCompletionSource = new TaskCompletionSource<bool>();
-    
-        if (!InternetMonitor.IsOfflineMode)
-        {
-            // Выполняем POST-запрос
-            HTTPRequests.Instance.Post(Requests.CreateLogURL, TimeoutValues.CreateShopLogTimeoutValue,json, 
-                onSuccess: response =>
-                {
-                    Debug.Log("Логи были отправлены");
-                    taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
-                },
-                onError: error =>
-                {
-                    Debug.LogError($"Ошибка при создании логов: {error}");
-                    taskCompletionSource.SetResult(false); // Завершаем Task
-                });
-        }
-        else
-        {
-            Debug.Log("OfflineMode on - CreateShopLog");
-            taskCompletionSource.SetResult(true);
-        }
-        
-        // Ждем завершения Task
-        await taskCompletionSource.Task;
-    }
-
-    public ShopLog GetShopLog(string shopName)
-    {
-        ShopLog shopLog = new ShopLog();
-        return shopLog;
-    } 
-
 }

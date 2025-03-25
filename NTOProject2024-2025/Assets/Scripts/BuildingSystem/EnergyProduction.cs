@@ -127,12 +127,4 @@ public class EnergyProduction : MonoBehaviour
             text.text =  $"{_buildingData.Title} работает ({GetComponent<ThisBuildingWorkersControl>().CurrentNumberWorkersInThisBuilding}/{GetComponent<ThisBuildingWorkersControl>().MaxValueOfWorkersInThisBuilding}) \n Нажмите E чтобы выгрузить рабочего";
         }
     }
-
-    private void LogSender(string playerName, string comment, int ChangeEnergy, int ChangeFood)
-    {
-        Dictionary<string,string> playerDictionary = new Dictionary<string, string>();
-        playerDictionary.Add("EnergyValueUpdate", $"{ChangeEnergy}");
-        playerDictionary.Add("FoodValueUpdate", $"{ChangeFood}");
-        APIManager.Instance.CreatePlayerLog(comment, playerName, playerDictionary);
-    }
 }
