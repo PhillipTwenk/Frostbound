@@ -87,12 +87,12 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _Fresnel_Power: 0.83
+    - _Fresnel_Power: -11.2
     - _Height: 600
     - _MaterialID: 1
     - _MaterialTypeMask: 2
-    - _Noise_Scale: 8.57
-    - _Noise_speed: 1.72
+    - _Noise_Scale: 300
+    - _Noise_speed: 0.006
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0
     - _RayTracing: 0
@@ -102,7 +102,7 @@ Material:
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
     - _Size_height: 100
-    - _Sota_Scale: 4.57
+    - _Sota_Scale: 5
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
@@ -133,7 +133,7 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Emission_Color: {r: 0.745283, g: 0.094918124, b: 0.094918124, a: 0}
-    - _Sota_Color: {r: 2.3496325, g: 4.4627333, b: 7.9066997, a: 0}
-    - _Sota_Second_Color: {r: 1.61756, g: 1.7959533, b: 3.5352855, a: 0}
+    - _Sota_Color: {r: 0.08721892, g: 0.5577054, b: 1.8509803, a: 0}
+    - _Sota_Second_Color: {r: 0, g: 1.2075472, b: 0.6753477, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
