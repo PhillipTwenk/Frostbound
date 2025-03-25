@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2994355802782270135
+--- !u!114 &-8116627237566833764
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Big Sheild
+  m_Name: Updated Shield
   m_Shader: {fileID: -6465566751694194690, guid: 1d233c1cd19bd864b81a38c312c983fd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -29,28 +32,25 @@ Material:
   - _ENABLE_FOG_ON_TRANSPARENT
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
-  m_EnableInstancingVariants: 1
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3400
+  m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
     RenderType: Transparent
   disabledShaderPasses:
-  - RayTracingPrepass
   - TransparentDepthPrepass
   - TransparentDepthPostpass
   - TransparentBackface
+  - RayTracingPrepass
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _SampleTexture2D_97d8e0d8c2b5498db4478d7cc464d936_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 0937654098aeafb4b82aeb2c3ccce4ba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_a0f604c55a1e42afb44f52e531f1c962_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 66bfb01305edf1548bf63855352d7249, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -70,10 +70,10 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
-    - _AlphaSrcBlend: 0
-    - _Alpha_Clip: -1.44
-    - _Apha_intensity: 0.4
-    - _BlendMode: 4
+    - _AlphaSrcBlend: 1
+    - _Alpha_Clip: 4.47
+    - _Apha_intensity: 3.04
+    - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 1
     - _CullModeForward: 1
@@ -83,28 +83,26 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
     - _DstBlend2: 10
-    - _Emissiojn_Fresnel_Power: 0
-    - _Emission_Fresnel_Power: 321.76
+    - _Emission_Fresnel_Power: 1.4
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _Fresnel_Power: 1.29
-    - _Height: 9.94
+    - _Fresnel_Power: 0.83
+    - _Height: 600
     - _MaterialID: 1
     - _MaterialTypeMask: 2
-    - _Noise_Scale: 203.9
-    - _Noise_speed: 0.02
+    - _Noise_Scale: 8.57
+    - _Noise_speed: 1.72
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0
-    - _QueueControl: 0
-    - _QueueOffset: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
-    - _RenderQueueType: 5
+    - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _Size_height: -15.31
+    - _Size_height: 100
+    - _Sota_Scale: 4.57
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
@@ -132,26 +130,10 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Emission_Color: {r: 0.0008475823, g: 0.0004170253, b: 0.0001479271, a: 1}
-    - _Sota_Color: {r: 0.8631925, g: 1.0315416, b: 3.3272145, a: 0.69803923}
-    - _Sota_Second_Color: {r: 0.47658452, g: 1.1413693, b: 1.9810967, a: 0.38039216}
+    - _Emission_Color: {r: 0.745283, g: 0.094918124, b: 0.094918124, a: 0}
+    - _Sota_Color: {r: 2.3496325, g: 4.4627333, b: 7.9066997, a: 0}
+    - _Sota_Second_Color: {r: 1.61756, g: 1.7959533, b: 3.5352855, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &3473866379859315827
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 13
-  hdPluginSubTargetMaterialVersions:
-    m_Keys: []
-    m_Values: 

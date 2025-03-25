@@ -6121,27 +6121,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5704761820051526269, guid: b15819ef9955079488c43d36d630c39c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1944.039
+      value: 1480.4585
       objectReference: {fileID: 0}
     - target: {fileID: 5704761820051526269, guid: b15819ef9955079488c43d36d630c39c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1944.039
+      value: 1480.4585
       objectReference: {fileID: 0}
     - target: {fileID: 5704761820051526269, guid: b15819ef9955079488c43d36d630c39c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1944.039
+      value: 1480.4585
       objectReference: {fileID: 0}
     - target: {fileID: 5704761820051526269, guid: b15819ef9955079488c43d36d630c39c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4182
+      value: 4098
       objectReference: {fileID: 0}
     - target: {fileID: 5704761820051526269, guid: b15819ef9955079488c43d36d630c39c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -747.89
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5704761820051526269, guid: b15819ef9955079488c43d36d630c39c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -241
+      value: -140
       objectReference: {fileID: 0}
     - target: {fileID: 5704761820051526269, guid: b15819ef9955079488c43d36d630c39c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6171,6 +6171,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6872579320892500242, guid: b15819ef9955079488c43d36d630c39c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a8b44d52c793cc4ebee13382786ea70, type: 2}
+    - target: {fileID: 8684269611017756120, guid: b15819ef9955079488c43d36d630c39c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 289301614986012343, guid: 25f4e7f426faabc479b29ed90684378d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
