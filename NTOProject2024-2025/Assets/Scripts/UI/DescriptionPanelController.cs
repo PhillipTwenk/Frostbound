@@ -317,11 +317,6 @@ namespace UI
                 {
                     if (BaseLevel >= buildingSO.MBLevelForUpgradethisIron)
                     {
-                        Dictionary<string, string> playerDictionary = new Dictionary<string, string>();
-                        playerDictionary.Add("IronValueUpdate", $"{(playerResources.Iron - priceUpgrade) - playerResources.Iron}");
-                        APIManager.Instance.CreatePlayerLog($"Улучшение здания {buildingData.Title}", playerName, playerDictionary);
-
-
                         buildingData.Level += 1;
                         buildingData.Durability = buildingSO.Durability(buildingData.Level);
                         buildingData.HoneyConsumption = buildingSO.EnergyHoneyConsumpiton(buildingData.Level);
@@ -370,10 +365,6 @@ namespace UI
                 List<string> ImprovementReport = await BaseUpgradeConditionManager.Instance.CanUpgradeMobileBase(playerResources);
                 if ((ImprovementReport[0] == BaseUpgradeConditionManager.Instance.SuccesUpgradeText || ImprovementReport[0] == BaseUpgradeConditionManager.Instance.ENDGAME) || Input.GetKey(KeyCode.Alpha0))
                 {
-                    Dictionary<string, string> playerDictionary = new Dictionary<string, string>();
-                    playerDictionary.Add("IronValueUpdate", $"{(playerResources.Iron - priceUpgrade) - playerResources.Iron}");
-                    APIManager.Instance.CreatePlayerLog($"Улучшение здания {buildingData.Title}", playerName, playerDictionary);
-                
                     await SyncManager.Enqueue(async () =>
                     {
                         await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
