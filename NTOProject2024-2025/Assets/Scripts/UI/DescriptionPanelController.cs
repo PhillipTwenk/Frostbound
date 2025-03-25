@@ -13,7 +13,7 @@ namespace UI
     {
 
         [Header("Events")]
-        public static Action<int> OnMobileBaseUpgrade;
+        public static Action OnMobileBaseUpgrade;
     
     
     
@@ -80,8 +80,8 @@ namespace UI
         /// </summary>
         public void EventODP()
         {
-            if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
-                GeneralWorkersControl.SelectedUnit == null)
+            if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) 
+                && GeneralWorkersControl.SelectedUnit == null)
             {
                 UIManager.CancelLastOpenPanelEvent += HideDescriptionPanel;
                 currentIBC = buildingData.gameObject.GetComponent<InteractionBuildingController>();
@@ -102,7 +102,7 @@ namespace UI
         /// </summary>
         public void ShowDescriptionPanel()
         {
-            if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
+            if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) &&
                 GeneralWorkersControl.SelectedUnit == null)
             {
                 IsPanelActive = true;
@@ -368,7 +368,7 @@ namespace UI
             else
             {
                 List<string> ImprovementReport = await BaseUpgradeConditionManager.Instance.CanUpgradeMobileBase(playerResources);
-                if (ImprovementReport[0] == BaseUpgradeConditionManager.Instance.SuccesUpgradeText || ImprovementReport[0] == BaseUpgradeConditionManager.Instance.ENDGAME)
+                if ((ImprovementReport[0] == BaseUpgradeConditionManager.Instance.SuccesUpgradeText || ImprovementReport[0] == BaseUpgradeConditionManager.Instance.ENDGAME) || Input.GetKey(KeyCode.Alpha0))
                 {
                     Dictionary<string, string> playerDictionary = new Dictionary<string, string>();
                     playerDictionary.Add("IronValueUpdate", $"{(playerResources.Iron - priceUpgrade) - playerResources.Iron}");
@@ -394,7 +394,7 @@ namespace UI
                     playerSaveData.BuildingDatas[buildingData.SaveListIndex] = buildingSaveData;
                 
                     buildingData.OnUpgradeEvent?.Invoke();
-                    OnMobileBaseUpgrade?.Invoke(buildingData.Level);
+                    OnMobileBaseUpgrade?.Invoke();
                     OnHintPanel(ImprovementReport[0]);
                 }
                 else

@@ -702,6 +702,8 @@ MonoBehaviour:
   fadeOverlay: {fileID: 1928795759}
   leftContinuePanel: {fileID: 1192909554467472422}
   rightContinuePanel: {fileID: 1192909554467472423}
+  leftCharacterNameText: {fileID: 1192909554467472424}
+  rightCharacterNameText: {fileID: 1192909554467472425}
   charactersPerSecond: 30
   OnStartDialogueUE:
     m_PersistentCalls:
@@ -8213,6 +8215,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3435242318595135712, guid: 6039f10583c3fad49959cab1093240c6, type: 3}
   m_PrefabInstance: {fileID: 1192909554467472421}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1192909554467472424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1705017574086206059, guid: 6039f10583c3fad49959cab1093240c6, type: 3}
+  m_PrefabInstance: {fileID: 1192909554467472421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1192909554467472425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6972441739917791678, guid: 6039f10583c3fad49959cab1093240c6, type: 3}
+  m_PrefabInstance: {fileID: 1192909554467472421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5982111176469237003
 PrefabInstance:
   m_ObjectHideFlags: 0

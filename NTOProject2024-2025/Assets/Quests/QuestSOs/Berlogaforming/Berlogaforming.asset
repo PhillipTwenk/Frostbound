@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ceeadb2475c13343b55b0e728e5c28b, type: 2}
   - {fileID: 11400000, guid: ab4ebb17552bb684f962a57aa558f4e8, type: 2}
   - {fileID: 11400000, guid: 632bb29da5220dd44adeb428f8d22f64, type: 2}
-  currentObjective: {fileID: 11400000, guid: 1ceeadb2475c13343b55b0e728e5c28b, type: 2}
+  currentObjective: {fileID: 11400000, guid: 632bb29da5220dd44adeb428f8d22f64, type: 2}
   UIItemOnQuestPanel: {fileID: 7955306229360465755, guid: 705d2090c5c37e94495a7f908a09f69e, type: 3}
   OnQuestCompletedUnityEvent:
     m_PersistentCalls:

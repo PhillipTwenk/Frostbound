@@ -12,14 +12,6 @@ using UnityEngine.Serialization;
 
 public class BuildingManager : MonoBehaviour
 {
-    [Header("Tutorial")]
-    [SerializeField] private TutorialObjective ApiaryPlacementTutorial;
-    [SerializeField] private TutorialObjective WaitWorkerApiaryTutorial;
-    [SerializeField] private TutorialObjective HomePlacementTutorial;
-    [SerializeField] private TutorialObjective WaitWorkerHomeTutorial;
-    [SerializeField] private TutorialObjective MinerPlacementTutorial;
-    [SerializeField] private TutorialObjective WaitWorkerMinerTutorial;
-    
     public static BuildingManager Instance { get; private set; }
 
     [TextArea] [SerializeField] private string HintNotEnoughtResourcesText;

@@ -46,6 +46,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
     {
         Instance = this;
         DescriptionPanelController.OnMobileBaseUpgrade += EndAppropriateObjectiveQuest;
+        Debug.Log(12);
     }
 
     private void OnDestroy()
@@ -83,9 +84,11 @@ public class BaseUpgradeConditionManager : MonoBehaviour
     /// Завршение соответствущей цели квеста по прокачке моильной базы
     /// </summary>
     /// <param name="newMobileBase"></param>
-    public void EndAppropriateObjectiveQuest(int newMobileBase)
+    private void EndAppropriateObjectiveQuest()
     {
-        MobileBaseUpgradeObjectives[newMobileBase - 1].CompleteObjective();
+        Debug.Log(CurrentBaseLevel);
+        Debug.Log(MobileBaseUpgradeObjectives[CurrentBaseLevel - 2].name);
+        MobileBaseUpgradeObjectives[CurrentBaseLevel - 2].CompleteObjective();
     }
 
     public async Task<List<string>> CanUpgradeMobileBase(PlayerResources playerResources)

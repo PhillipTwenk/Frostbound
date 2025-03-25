@@ -18,6 +18,7 @@ MonoBehaviour:
     \u043D\u0435 1 \u0434\u0440\u043E\u043D, \u0430 \u0446\u0435\u043B\u044B\u0445
     3"
   characterImage: {fileID: 21300000, guid: 0a68ab52a50ed6942846feae38f15740, type: 3}
+  characterName: "\u0410\u0433\u0435\u043D\u0442-\u043F\u043E\u043C\u043E\u0449\u043D\u0438\u043A"
   side: 1
   isFade: 0
   isActionAwait: 0

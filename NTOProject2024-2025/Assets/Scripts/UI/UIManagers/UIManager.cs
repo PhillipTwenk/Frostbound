@@ -31,11 +31,6 @@ public class UIManager : MonoBehaviour
     
     #region Переменные / Свойства
 
-    [Header("Tutorial")]
-    [SerializeField] private TutorialObjective PlansPanelOpenTutorial;
-    [SerializeField] private TutorialObjective ApiaryStartBuildingTutorial;
-    [SerializeField] private TutorialObjective HomeStartBuildingTutorial;
-
     [Header("UI Control Events")]
     public GameEvent OpenBuildingPanelEvent;
     public GameEvent CloseBuildingPanelEvent;

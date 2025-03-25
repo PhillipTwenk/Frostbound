@@ -11,6 +11,7 @@ namespace EntityActions.WorkersScripts
 {
     public class GeneralWorkersControl : MonoBehaviour
     {
+        public static bool BlockMouseClickThisFrame { get; private set; }
         
         public static GeneralWorkersControl Instance { get; private set;}
     
@@ -74,6 +75,8 @@ namespace EntityActions.WorkersScripts
 
         private void Update()
         {
+            BlockMouseClickThisFrame = false;
+            
             // Каждый кадр проверяем: если нажата левая кнопка, то пытаемся выделить (OnClick),
             // иначе просто обновляем наведение (OnClick == false)
             if (!Input.GetMouseButtonDown(0))
@@ -95,6 +98,7 @@ namespace EntityActions.WorkersScripts
             {
                 if (hit.collider.CompareTag("ClickOnWorker") || hit.collider.CompareTag("Player"))
                 {
+                    BlockMouseClickThisFrame = true;
                     IUnitMovement selectedUnit = hit.collider.GetComponent<IUnitMovement>();
                     if (selectedUnit == SelectedUnit)
                     {

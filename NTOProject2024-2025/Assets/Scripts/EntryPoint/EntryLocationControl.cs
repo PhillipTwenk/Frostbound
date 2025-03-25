@@ -15,7 +15,7 @@ public class EntryLocationControl : MonoBehaviour
 
     public void InitizilizePLayer()
     {
-        DialogueManager.OnEndTutorial += InitializatonQuest;
+        DialogueManager.OnEndTutorial += InitializationQuest;
         UpdateResourcesEvent.TriggerEvent();
 
         PlayerSaveData pLayerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
@@ -23,8 +23,6 @@ public class EntryLocationControl : MonoBehaviour
         BaseSongStartEvent.TriggerEvent();
         
         LoadingCanvasController.Instance.LoadingCanvasNotTransparent.SetActive(false);
-
-        StartTutorialControl();
     }
 
     private void StartTutorialControl()
@@ -32,13 +30,13 @@ public class EntryLocationControl : MonoBehaviour
         if (PlayerPrefs.HasKey("TutorialCompleted"))
         {
             int isTutorialCompleted = PlayerPrefs.GetInt("TutorialCompleted");
-            if (isTutorialCompleted == 0 )
+            if (isTutorialCompleted == 0)
             {
                 DialogueManager.LaunchDialogue?.Invoke(tutorialDialogue);
             }
-            else
+            else 
             {
-                InitializatonQuest();
+                InitializationQuest();
                 return;
             }
         }
@@ -52,7 +50,7 @@ public class EntryLocationControl : MonoBehaviour
     /// <summary>
     /// Инициализация первых квестов
     /// </summary>
-    private void InitializatonQuest()
+    public void InitializationQuest()
     {
         foreach (QuestOwner questOwner in startGameQuests)
         {
@@ -62,6 +60,6 @@ public class EntryLocationControl : MonoBehaviour
 
     private void OnDestroy()
     {
-        DialogueManager.OnEndTutorial -= InitializatonQuest;
+        DialogueManager.OnEndTutorial -= InitializationQuest;
     }
 }

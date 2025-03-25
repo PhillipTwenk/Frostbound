@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class MovementCharacter : MonoBehaviour
 {
-    [Header("Tutorial")]
-    [SerializeField] private TutorialObjective WASDTutorial;
     private bool IsBearMove;
     
     
