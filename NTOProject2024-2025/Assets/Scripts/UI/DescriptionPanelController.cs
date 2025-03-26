@@ -46,6 +46,7 @@ namespace UI
         [SerializeField] private GameObject point;
         [SerializeField] private GameObject ButtonUpgrade;
         [SerializeField] private GameObject ButtonFunctionThisBuilding;
+        [SerializeField] private GameObject ButtonDelete;
 
         public static BuildingData buildingData;
         public static Transform buildingTransform;
@@ -130,6 +131,15 @@ namespace UI
                 else
                 {
                     ButtonFunctionThisBuilding.SetActive(false);
+                }
+
+                if (buildingSO.buildingType == BuildingsTypes.MobileBase)
+                {
+                    ButtonDelete.SetActive(false);
+                }
+                else
+                {
+                    ButtonDelete.SetActive(true);
                 }
 
                 // Центр экрана

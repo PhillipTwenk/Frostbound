@@ -216,7 +216,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
         {
             lastPosition = hit.point;
 
-            if (hit.collider.CompareTag("ClickOnBuilding"))
+            if (hit.collider.CompareTag("ClickOnBuilding") && hit.collider.GetComponent<BuildingData>().buildingTypeSO.buildingType == BuildingsTypes.Miner)
             {
                 SelectedBuilding = hit.collider.gameObject.transform.parent.gameObject;
                 IsClickOnOtherEntity = false;

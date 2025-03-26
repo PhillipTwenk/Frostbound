@@ -4723,6 +4723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba85f40f6b88c748ba57a92502c16aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neededEventName: Test1
 --- !u!1001 &235890316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34306,6 +34307,11 @@ Transform:
   - {fileID: 1350319459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1291036701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9105108555199770863, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
+  m_PrefabInstance: {fileID: 555512936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1292103270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53139,6 +53145,7 @@ MonoBehaviour:
   point: {fileID: 555512940}
   ButtonUpgrade: {fileID: 555512942}
   ButtonFunctionThisBuilding: {fileID: 1822117308}
+  ButtonDelete: {fileID: 1291036701}
   pointInPanelAngle1: {fileID: 555512946}
   pointInPanelAngle2: {fileID: 555512945}
   pointInPanelAngle3: {fileID: 555512944}
