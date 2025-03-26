@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour
     public GameEvent OpenCallingWorkerPanelEvent;
     public GameEvent CloseCallingWorkerPanelEvent;
     public GameEvent UIAudioEffectEvent;
+    public GameEvent OpenGlobalServerEventsPanelEvent;
+    public GameEvent CloseGlobalServerEventsPanelEvent;
     
     
     
@@ -554,6 +556,30 @@ public class UIManager : MonoBehaviour
         isExtremeActivated = false;
         timer = 1.5f;
         InSafeZone = true;
+    }
+
+    #endregion
+
+    #region Панель глобальных серверных ивентов
+
+    /// <summary>
+    /// Открытие панели уведомлений о серверных ивентах
+    /// </summary>
+    public void OpenGlobalServerEventsPanel()
+    {
+        OpenGlobalServerEventsPanelEvent.TriggerEvent();
+        RTS_Camera.possibilityZoomCamera = false;
+        CancelLastOpenPanelEvent += CloseGlobalServerEventsPanel;
+    }
+
+    /// <summary>
+    /// Закрытие панели уведолений о серверных ивентах 
+    /// </summary>
+    public void CloseGlobalServerEventsPanel()
+    {
+        CloseGlobalServerEventsPanelEvent.TriggerEvent();
+        RTS_Camera.possibilityZoomCamera = true;
+        CancelLastOpenPanelEvent -= CloseGlobalServerEventsPanel;
     }
 
     #endregion
