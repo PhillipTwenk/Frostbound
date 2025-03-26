@@ -5168,8 +5168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 235707145}
-  - component: {fileID: 235707144}
-  - component: {fileID: 235707143}
+  - component: {fileID: 235707146}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -5177,32 +5176,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &235707143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235707142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5060d87d42958947a82c7a3f5c649ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myQuest: {fileID: 11400000, guid: 5733c5c4eaf53024d82fa5f4737efc2c, type: 2}
---- !u!114 &235707144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235707142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff1d197968f67cf41abd9da7927e0d7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisQuestOwner: {fileID: 235707143}
 --- !u!4 &235707145
 Transform:
   m_ObjectHideFlags: 0
@@ -5218,6 +5191,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &235707146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235707142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba85f40f6b88c748ba57a92502c16aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &235890316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22689,7 +22674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastTab: 1
+  lastTab: 2
   movementSettingsFoldout: 0
   zoomingSettingsFoldout: 0
   rotationSettingsFoldout: 0

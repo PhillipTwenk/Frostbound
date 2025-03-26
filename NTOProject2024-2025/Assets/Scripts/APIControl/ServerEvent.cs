@@ -5,10 +5,10 @@ using UnityEngine;
 public class ServerEvent
 {
     public string name;
-    public string description;
-    public int intervalInHours;
-    public int durationInMinutes;
-    public string startDateTime;
+    public string text;
+    public int once_in_hours;
+    public int duration_in_minutes;
+    public string start_date_time;
 }
 
 [System.Serializable]

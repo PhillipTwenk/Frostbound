@@ -10,10 +10,10 @@ public class Test : MonoBehaviour
         {
             ServerEvent serverEvent = new ServerEvent();
             serverEvent.name = "Test";
-            serverEvent.description = "This is a test.";
-            serverEvent.intervalInHours = 3;
-            serverEvent.durationInMinutes = 1488;
-            serverEvent.startDateTime = "2025-02-10T00:00:00";
+            serverEvent.text = "This is a test.";
+            serverEvent.once_in_hours = 3;
+            serverEvent.duration_in_minutes = 1488;
+            serverEvent.start_date_time = "2025-02-10T00:00:00";
             
             await APIManager.Instance.PostCreateServerEvent(serverEvent);
         }

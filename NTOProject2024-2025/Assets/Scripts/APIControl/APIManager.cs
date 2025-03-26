@@ -530,6 +530,7 @@ public class APIManager : MonoBehaviour
         // Преобразуем в JSON
         string json = JsonUtility.ToJson(serverEvent, true);
         
+        Debug.Log(json);
         
         // Создаем TaskCompletionSource для ожидания ответа
         var taskCompletionSource = new TaskCompletionSource<bool>();
