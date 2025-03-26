@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UI.UIManagers;
 using UnityEngine;
@@ -16,6 +17,14 @@ namespace APIControl.Global_Server_Event
         public static event Action<ServerEvent> OnEventAdded;
         public static event Action<ServerEvent> OnEventRemoved;
         public static event Action<ServerEvent> OnEventUpdated;
+        
+        private CancellationTokenSource _cts;
+
+        private void OnDestroy()
+        {
+            _cts?.Cancel();
+            _cts?.Dispose();
+        }
 
         private void Start()
         {
@@ -32,7 +41,7 @@ namespace APIControl.Global_Server_Event
         }
 
         /// <summary>
-        /// 
+        /// Перебор глобальных ивентов для их инициализации
         /// </summary>
         private async Task InitialLoadEvents()
         {
@@ -59,10 +68,10 @@ namespace APIControl.Global_Server_Event
 
         private async Task EventMonitoringRoutine()
         {
-            while (true)
+            while (!_cts.Token.IsCancellationRequested)
             {
-                await Task.Delay(120*1000); // Проверка каждые 30 секунд
                 await CheckForEventUpdates();
+                await Task.Delay(30000, _cts.Token); // + CancellationToken
             }
         }
 
@@ -124,35 +133,45 @@ namespace APIControl.Global_Server_Event
 
         private async Task MonitorEventTime(ServerEvent serverEvent)
         {
-            DateTime startTime = DateTime.Parse(serverEvent.start_date_time);
-            DateTime endTime = startTime.AddMinutes(serverEvent.duration_in_minutes);
-
-            // Ожидаем начала
-            while (DateTime.Now < startTime)
+            try
             {
-                // Уведомление за 5 минут до начала
-                if ((startTime - DateTime.Now).TotalMinutes <= 5)
+                while (!_cts.Token.IsCancellationRequested)
                 {
-                    UIManager.Instance.ShowNotificationPanel();
+                   
+                    DateTime startTime = DateTime.Parse(serverEvent.start_date_time);
+                    DateTime endTime = startTime.AddMinutes(serverEvent.duration_in_minutes);
+        
+                    // Ожидаем начала
+                    while (DateTime.Now < startTime)
+                    {
+                        // Уведомление за 5 минут до начала
+                        if ((startTime - DateTime.Now).TotalMinutes <= 5)
+                        {
+                            UIManager.Instance.ShowNotificationPanel();
+                        }
+        
+                        await Task.Delay(120*1000);
+                    }
+        
+                    // Запускаем ивент
+                    serverEvent.OnEventStart?.Invoke();
+                    
+                    // Ожидаем окончания (с динамической проверкой длительности)
+                    while (DateTime.Now < endTime)
+                    {
+                        // Если длительность изменилась - обновляем endTime
+                        endTime = startTime.AddMinutes(serverEvent.duration_in_minutes);
+                        await Task.Delay(120*1000);
+                    }
+        
+                    // Завершаем ивент
+                    serverEvent.OnEventEnd?.Invoke();
+                    UnregisterEvent(serverEvent);
+                    await Task.Delay(120*1000, _cts.Token);
                 }
-
-                await Task.Delay(1000);
             }
-
-            // Запускаем ивент
-            serverEvent.OnEventStart?.Invoke();
+            catch (OperationCanceledException) { }
             
-            // Ожидаем окончания (с динамической проверкой длительности)
-            while (DateTime.Now < endTime)
-            {
-                // Если длительность изменилась - обновляем endTime
-                endTime = startTime.AddMinutes(serverEvent.duration_in_minutes);
-                await Task.Delay(1000);
-            }
-
-            // Завершаем ивент
-            serverEvent.OnEventEnd?.Invoke();
-            UnregisterEvent(serverEvent);
         }
 
         private bool EventsEqual(ServerEvent a, ServerEvent b)
