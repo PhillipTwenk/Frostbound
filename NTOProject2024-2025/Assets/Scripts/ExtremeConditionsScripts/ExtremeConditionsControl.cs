@@ -51,7 +51,7 @@ public class ExtremeConditionsControl : MonoBehaviour{
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.tag == "BaseHemisphere"){
+        if(other.tag == "BaseHemisphere" && !IsSafe){
             Debug.Log("yeah");
             IsSafe = true;
             SafeZoneConditions.TriggerEvent();
