@@ -24,7 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" afterDir="false" />
@@ -374,7 +373,7 @@
       <workItem from="1742818633943" duration="19799000" />
       <workItem from="1742916067682" duration="2487000" />
       <workItem from="1742928531726" duration="6718000" />
-      <workItem from="1742971199064" duration="3322000" />
+      <workItem from="1742971199064" duration="4030000" />
     </task>
     <servers />
   </component>

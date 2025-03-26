@@ -18,7 +18,19 @@ public class Test : MonoBehaviour
             await APIManager.Instance.PostCreateServerEvent(serverEvent);
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            ServerEvent serverEvent = new ServerEvent();
+            serverEvent.name = "sss";
+            serverEvent.text = "ssssssssssss";
+            serverEvent.once_in_hours = 3;
+            serverEvent.duration_in_minutes = 1488;
+            serverEvent.start_date_time = "2025-02-10T00:00:00";
+            
+            await APIManager.Instance.PostCreateServerEvent(serverEvent);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
         {
             List<ServerEvent> serverEvents = await APIManager.Instance.GetServerEventList();
             foreach (var s in serverEvents)

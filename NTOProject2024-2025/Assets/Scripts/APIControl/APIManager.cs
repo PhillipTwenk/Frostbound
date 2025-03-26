@@ -576,7 +576,7 @@ public class APIManager : MonoBehaviour
                 try
                 {
                     // Парсим ответ
-                    List<ServerEvent> servers = JsonUtility.FromJson<ServerEventList>($"{{\"shops\":{response}}}").events;
+                    List<ServerEvent> servers = JsonUtility.FromJson<ServerEventList>($"{{\"events\":{response}}}").events;
                     
                     // Завершаем Task успешным результатом
                     taskCompletionSource.SetResult(servers);
