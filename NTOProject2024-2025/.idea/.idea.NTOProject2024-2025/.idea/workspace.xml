@@ -23,10 +23,92 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/ServerEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/ServerEvent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel1/Phrases/[BerlogaformingMBLevel1] - 02.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel1/Phrases/[BerlogaformingMBLevel1] - 02.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel2/Phrases/[BerlogaformingMBLevel2] - 02.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel2/Phrases/[BerlogaformingMBLevel2] - 02.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel2/Phrases/[BerlogaformingMBLevel2] - 04.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel2/Phrases/[BerlogaformingMBLevel2] - 04.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel3/Phrases/[BerlogaformingMBLevel3] - 02.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel3/Phrases/[BerlogaformingMBLevel3] - 02.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel3/Phrases/[BerlogaformingMBLevel3] - 04.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel3/Phrases/[BerlogaformingMBLevel3] - 04.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 01.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 02.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 02.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 03.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 03.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 04.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 04.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 05.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 05.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 06.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 06.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 07.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 07.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 08.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 08.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 09.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 09.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 10.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 10.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 11.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 11.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 12.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 12.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 13.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 13.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 14.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 14.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 15.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 15.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 16.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 16.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 17.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 17.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 18.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 18.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 19.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 19.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 20.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 20.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 21.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 21.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 22.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 22.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 23.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 23.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 24.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 24.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 25.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 25.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 26.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 26.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 27.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 27.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 28.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 28.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 29.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 29.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 30.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 30.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 31.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 31.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 32.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 32.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 33.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 33.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 34.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 34.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 35.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 35.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 36.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 36.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 37.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 37.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 38.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 38.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 39.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 39.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 40.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 40.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 41.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 41.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 42.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 42.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 43.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 43.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 44.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 44.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 45.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 45.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 46.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 46.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 47.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 47.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 48.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 48.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 49.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 49.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 50.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 50.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 51.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 51.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 52.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 52.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 53.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 53.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 54.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 54.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 55.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 55.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 56.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 56.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 57.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 57.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 58.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 58.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 59.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 59.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 60.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 60.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 61.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 61.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 62.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 62.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 63.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 63.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 64.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 64.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 65.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 65.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 66.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 66.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 67.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 67.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 68.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 68.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 69.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 69.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 70.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 70.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 71.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 71.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 72.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 72.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 73.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 73.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Prefabs/Dialogue Panels.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Prefabs/Dialogue Panels.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/EnergyProduction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DescriptionPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DescriptionPanelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +159,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/ProductChangesShopLog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/ResourcesChangedPlayerLog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/Semaphore/SyncManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/ServerEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/ShopData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/ShopLog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/ShopResources.cs" root0="FORCE_HIGHLIGHTING" />
@@ -112,8 +195,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/DronePlaceEMTriggerCheck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/EntryLocationTriggerHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/HoneyGunHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AddTextToDescriptionPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/DeletePlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ScreenResolutionControl.cs" root0="FORCE_HIGHLIGHTING" />
@@ -196,21 +277,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Final",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Final&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/FrostboundBuildFCF\FrostBound.exe" />
@@ -249,15 +330,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21644">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="21644" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -372,6 +451,8 @@
       <workItem from="1742785211689" duration="16061000" />
       <workItem from="1742818633943" duration="19799000" />
       <workItem from="1742916067682" duration="2487000" />
+      <workItem from="1742928531726" duration="6718000" />
+      <workItem from="1742971199064" duration="987000" />
     </task>
     <servers />
   </component>
