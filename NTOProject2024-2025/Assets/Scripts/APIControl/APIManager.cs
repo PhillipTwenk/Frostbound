@@ -208,7 +208,7 @@ public class APIManager : MonoBehaviour
         /// <param name="playerEnergy"> Энергомед </param>
         /// <param name="playerFood"> Еда </param>
         /// <param name="playerCrioCrystal"> Криосталы </param>
-        public async Task PutPlayerResources(EntityID playerID, int playerIron, int playerEnergy, int playerFood, int playerCrioCrystal)
+        public async Task PutPlayerResources(EntityID playerID, int playerIron, int playerEnergy, int playerFood, int playerCryoCrystal)
         {
             await SyncManager.Enqueue(async () =>
             {
@@ -221,7 +221,7 @@ public class APIManager : MonoBehaviour
                         Iron = playerIron,
                         Energy = playerEnergy,
                         Food = playerFood,
-                        CryoCrystal = playerCrioCrystal
+                        CryoCrystal = playerCryoCrystal
                     }
                 };
         
