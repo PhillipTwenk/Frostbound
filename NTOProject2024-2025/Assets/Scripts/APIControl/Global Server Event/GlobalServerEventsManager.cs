@@ -224,7 +224,7 @@ namespace APIControl.Global_Server_Event
                     var timeToStart = startTime - DateTime.Now;
                     
                     // 5-minute warning
-                    if (timeToStart.TotalMinutes <= 5 && timeToStart.TotalMinutes > 0)
+                    if (timeToStart.TotalMinutes <= notificationTimeAttention && timeToStart.TotalMinutes > 0)
                     {
                         Debug.Log(LOG_PREFIX + $"Event '{serverEvent.name}' starting in {timeToStart:mm\\:ss}");
                         UIManager.NotificationServerEvent?.Invoke();
