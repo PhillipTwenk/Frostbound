@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using JetBrains.Annotations;
 using TMPro;
 using Unity.VisualScripting;
@@ -41,13 +42,10 @@ public class EnergyProduction : MonoBehaviour
             });
             playerResources.Energy += honeyProduction;
             playerResources.Food += foodProduction;
-
-            await SyncManager.Enqueue(async () =>
-            {
-                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
+            
+            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
                     playerResources.Food, playerResources.CryoCrystal);
-                ResourceUpdateEvent.TriggerEvent();
-            });
+            ResourceUpdateEvent.TriggerEvent();
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
         }
     }
@@ -73,11 +71,8 @@ public class EnergyProduction : MonoBehaviour
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
         }
         
-        await SyncManager.Enqueue(async () =>
-        {
-            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy, playerResources.Food,
+        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy, playerResources.Food,
                 playerResources.CryoCrystal);
-        });
     }
     
     private async Task<PlayerResources> GetResourcesPLayer(EntityID playerID)
@@ -103,11 +98,8 @@ public class EnergyProduction : MonoBehaviour
                 await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
             playerResources.Energy -= honeyProduction;
             playerResources.Food -= foodProduction;
-            await SyncManager.Enqueue(async () =>
-            {
-                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
+            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron, playerResources.Energy,
                     playerResources.Food, playerResources.CryoCrystal);
-            });
             ResourceUpdateEvent.TriggerEvent();
 
             TextChangerEnergy(text);

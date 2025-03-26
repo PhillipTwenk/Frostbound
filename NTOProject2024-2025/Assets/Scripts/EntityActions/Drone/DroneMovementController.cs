@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
 using TMPro;

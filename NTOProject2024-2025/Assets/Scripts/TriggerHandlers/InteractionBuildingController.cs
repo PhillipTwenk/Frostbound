@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
 using RTS_Cam;
@@ -270,10 +271,7 @@ public class InteractionBuildingController : MonoBehaviour
 
                     droneMovementController.LogisticsStorage = 0;
 
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutPlayerResources(currentPlayer, playerResources.Iron, playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                    });
+                    await APIManager.Instance.PutPlayerResources(currentPlayer, playerResources.Iron, playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
                     
                     droneMovementController.UpdateResourcesEvent.TriggerEvent();
 

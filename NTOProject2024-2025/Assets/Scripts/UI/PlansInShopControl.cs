@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
 using UI.UIManagers;
@@ -167,18 +168,10 @@ public class PlansInShopControl : MonoBehaviour
         if (playerResources.Iron >= product.IronPrice && playerResources.CryoCrystal >= product.CryoCrystalPrice)
         {
             product.IsPurchased = true;
-
-            await SyncManager.Enqueue(async () =>
-            {
-                // await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, 
-                //     shopResources.Apiary, shopResources.MobileBase, shopResources.Storage,
-                //     shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                
-                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, 
+            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, 
                     playerResources.Iron - product.IronPrice, 
                     playerResources.Energy, playerResources.Food, 
                     playerResources.CryoCrystal - product.CryoCrystalPrice);
-            });
 
             // Обновляем UI
             boughtPanel.SetActive(true);

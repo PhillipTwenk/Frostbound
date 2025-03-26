@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using EntityActions.WorkersScripts;
 using TMPro;
 using UI.UIManagers;
@@ -275,13 +276,9 @@ namespace UI
                 buildingData.gameObject.GetComponent<CompletionOfConstructionController>();
             UnityEvent OnDestroyThisBuildingEvent = completionOfConstructionController?.OnDestroyBuilding;
             OnDestroyThisBuildingEvent?.Invoke();
-        
-        
-            await SyncManager.Enqueue(async () =>
-            {
-                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron + NewIron, playerResources.Energy, playerResources.Food,
+
+            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron + NewIron, playerResources.Energy, playerResources.Food,
                     playerResources.CryoCrystal);
-            });
         
             PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
         
@@ -328,19 +325,16 @@ namespace UI
                         {
                             buildingData.Production = buildingSO.Production(buildingData.Level).resources;
                         }
-
-                        await SyncManager.Enqueue(async () =>
+                        
+                        if (buildingData.gameObject.GetComponent<EnergyProduction>())
                         {
-                            if (buildingData.gameObject.GetComponent<EnergyProduction>())
-                            {
-                                playerResources.Energy += (buildingData.Production[0] -
-                                                           (buildingSO.Production(buildingData.Level - 1).resources[0]));
-                                playerResources.Food += (buildingData.Production[1] -
-                                                         (buildingSO.Production(buildingData.Level - 1).resources[1]));
-                            }
-                            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
-                                playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                        });
+                            playerResources.Energy += (buildingData.Production[0] -
+                                                       (buildingSO.Production(buildingData.Level - 1).resources[0]));
+                            playerResources.Food += (buildingData.Production[1] -
+                                                     (buildingSO.Production(buildingData.Level - 1).resources[1]));
+                        }
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
+                            playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
                     
                         PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                     
@@ -366,11 +360,8 @@ namespace UI
                 List<string> ImprovementReport = await BaseUpgradeConditionManager.Instance.CanUpgradeMobileBase(playerResources);
                 if ((ImprovementReport[0] == BaseUpgradeConditionManager.Instance.SuccesUpgradeText || ImprovementReport[0] == BaseUpgradeConditionManager.Instance.ENDGAME) || Input.GetKey(KeyCode.Alpha0))
                 {
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
+                    await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
                             playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                    });
                
                     buildingData.Level += 1;
                     buildingData.Durability = buildingSO.Durability(BaseLevel);

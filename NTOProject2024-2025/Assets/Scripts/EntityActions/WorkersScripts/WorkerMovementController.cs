@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using UnityEngine;
 using Newtonsoft.Json;
 
@@ -85,14 +86,11 @@ public class APIManager : MonoBehaviour
         Debug.Log("Интернет снова доступен! Выполняю нужные действия...");
 
         EntityID playerID = CurrentPlayersDataControl.WhichPlayerCreate;
-        await SyncManager.Enqueue(async () =>
-        {
-            await PutPlayerResources(playerID, playerID.playerResources.Iron, playerID.playerResources.Energy, playerID.playerResources.Food, playerID.playerResources.CryoCrystal);
+        await PutPlayerResources(playerID, playerID.playerResources.Iron, playerID.playerResources.Energy, playerID.playerResources.Food, playerID.playerResources.CryoCrystal);
             
-            await PutShopResources(playerID, $"{playerID.entityName}'sShop", playerID.shopResources.Apiary, playerID.shopResources.MobileBase, playerID.shopResources.Storage, playerID.shopResources.ResidentialModule, playerID.shopResources.Minner, playerID.shopResources.Pier);
+        await PutShopResources(playerID, $"{playerID.entityName}'sShop", playerID.shopResources.Apiary, playerID.shopResources.MobileBase, playerID.shopResources.Storage, playerID.shopResources.ResidentialModule, playerID.shopResources.Minner, playerID.shopResources.Pier);
             // PlayerResources playerResources = await GetPlayerResources(UIManagerMainMenu.WhichPlayerCreate);
             // await PutPlayerResources(UIManagerMainMenu.WhichPlayerCreate, playerResources.Iron, playerResources.Energy, playerResources.Food, playerResources.CryoCrystal); 
-        });
     }
 
     #region Методы контроля игрока и его ресурсов 
@@ -212,58 +210,62 @@ public class APIManager : MonoBehaviour
         /// <param name="playerCrioCrystal"> Криосталы </param>
         public async Task PutPlayerResources(EntityID playerID, int playerIron, int playerEnergy, int playerFood, int playerCrioCrystal)
         {
-            // Создаем объект PlayerData
-            PlayerData playerData = new PlayerData()
+            await SyncManager.Enqueue(async () =>
             {
-                name = playerID.entityName,
-                resources = new PlayerResources()
+                // Создаем объект PlayerData
+                PlayerData playerData = new PlayerData()
                 {
-                    Iron = playerIron,
-                    Energy = playerEnergy,
-                    Food = playerFood,
-                    CryoCrystal = playerCrioCrystal
+                    name = playerID.entityName,
+                    resources = new PlayerResources()
+                    {
+                        Iron = playerIron,
+                        Energy = playerEnergy,
+                        Food = playerFood,
+                        CryoCrystal = playerCrioCrystal
+                    }
+                };
+        
+                //Для оффлайн
+                playerID.playerResources = playerData.resources;
+                
+                // Преобразуем объект в JSON
+                string json = JsonUtility.ToJson(playerData, true);
+                
+                Debug.Log(json);
+        
+                // Формируем URL для PUT-запроса
+                string URL = Requests.PutPlayerURL(playerID.entityName);
+        
+                // Создаем TaskCompletionSource для ожидания завершения запроса
+                var taskCompletionSource = new TaskCompletionSource<bool>();
+        
+        
+                if (!InternetMonitor.IsOfflineMode)
+                {
+                    // Выполняем PUT-запрос
+                    HTTPRequests.Instance.Put(URL, TimeoutValues.PutPlayerResourcesTimeoutValue, json,
+                        onSuccess: response =>
+                        {
+                            Debug.Log("Ресурсы персонажа успешно обновлены");
+                            Debug.Log(response);
+                            taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
+                        },
+                        onError: error =>
+                        {
+                            Debug.LogError($"Ошибка при обновлении ресурсов персонажа: {error}");
+                            taskCompletionSource.SetResult(false); // Завершаем Task
+                        });
                 }
-            };
-    
-            //Для оффлайн
-            playerID.playerResources = playerData.resources;
+                else
+                {
+                    Debug.Log("OfflineMode on - PutPlayerResources");
+                    taskCompletionSource.SetResult(true);
+                }
+        
+                // Ждем завершения Task
+                await taskCompletionSource.Task;
+            });
             
-            // Преобразуем объект в JSON
-            string json = JsonUtility.ToJson(playerData, true);
-            
-            Debug.Log(json);
-    
-            // Формируем URL для PUT-запроса
-            string URL = Requests.PutPlayerURL(playerID.entityName);
-    
-            // Создаем TaskCompletionSource для ожидания завершения запроса
-            var taskCompletionSource = new TaskCompletionSource<bool>();
-    
-    
-            if (!InternetMonitor.IsOfflineMode)
-            {
-                // Выполняем PUT-запрос
-                HTTPRequests.Instance.Put(URL, TimeoutValues.PutPlayerResourcesTimeoutValue, json,
-                    onSuccess: response =>
-                    {
-                        Debug.Log("Ресурсы персонажа успешно обновлены");
-                        Debug.Log(response);
-                        taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
-                    },
-                    onError: error =>
-                    {
-                        Debug.LogError($"Ошибка при обновлении ресурсов персонажа: {error}");
-                        taskCompletionSource.SetResult(false); // Завершаем Task
-                    });
-            }
-            else
-            {
-                Debug.Log("OfflineMode on - PutPlayerResources");
-                taskCompletionSource.SetResult(true);
-            }
-    
-            // Ждем завершения Task
-            await taskCompletionSource.Task;
         }
     
     
@@ -273,38 +275,42 @@ public class APIManager : MonoBehaviour
         /// <param name="playerName"></param>
         public async Task DeletePlayer(EntityID playerID)
         {
-            // Формируем URL для удаления игрока
-            string URL = Requests.DeletePlayerURL(playerID.entityName);
-    
-            // Создаем TaskCompletionSource для обработки результата запроса
-            var taskCompletionSource = new TaskCompletionSource<bool>();
-            
-            if (!InternetMonitor.IsOfflineMode)
+            await SyncManager.Enqueue(async () =>
             {
-                // Выполняем DELETE-запрос
-                HTTPRequests.Instance.Delete(URL, TimeoutValues.DeletePlayerTimeoutValue,
-                    onSuccess: response =>
-                    {
-                        Debug.Log("Персонаж успешно удален");
-                        taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
-                    },
-                    onError: error =>
-                    {
-                        Debug.LogError($"Ошибка при удалении персонажа: {error}");
-                        
-                        taskCompletionSource.SetResult(false); // Завершаем Task
-                    });
-    
-            }
-            else
-            {
-                Debug.Log("OfflineMode on - DeletePlayer");
-                taskCompletionSource.SetResult(true);
-            }
+                // Формируем URL для удаления игрока
+                string URL = Requests.DeletePlayerURL(playerID.entityName);
+        
+                // Создаем TaskCompletionSource для обработки результата запроса
+                var taskCompletionSource = new TaskCompletionSource<bool>();
+                
+                if (!InternetMonitor.IsOfflineMode)
+                {
+                    // Выполняем DELETE-запрос
+                    HTTPRequests.Instance.Delete(URL, TimeoutValues.DeletePlayerTimeoutValue,
+                        onSuccess: response =>
+                        {
+                            Debug.Log("Персонаж успешно удален");
+                            taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
+                        },
+                        onError: error =>
+                        {
+                            Debug.LogError($"Ошибка при удалении персонажа: {error}");
+                            
+                            taskCompletionSource.SetResult(false); // Завершаем Task
+                        });
+        
+                }
+                else
+                {
+                    Debug.Log("OfflineMode on - DeletePlayer");
+                    taskCompletionSource.SetResult(true);
+                }
+                
+                
+                // Ждем завершения Task
+                await taskCompletionSource.Task;
+            });
             
-            
-            // Ждем завершения Task
-            await taskCompletionSource.Task;
         }   
 
     #endregion
@@ -325,55 +331,59 @@ public class APIManager : MonoBehaviour
         /// <returns></returns>
         public async Task CreateShop(EntityID playerID, string shopName, PriceShopProduct apiaryShop, PriceShopProduct mobileBaseShop, PriceShopProduct storageShop, PriceShopProduct residentialModuleShop, PriceShopProduct breadwinnerShop, PriceShopProduct pierShop)
         {
-            // Создаем объект ShopData
-            ShopData shopData = new ShopData()
+            await SyncManager.Enqueue(async () =>
             {
-                name = shopName,
-                resources = new ShopResources()
+                // Создаем объект ShopData
+                ShopData shopData = new ShopData()
                 {
-                    Apiary = apiaryShop,
-                    MobileBase = mobileBaseShop,
-                    Storage = storageShop,
-                    ResidentialModule = residentialModuleShop,
-                    Minner = breadwinnerShop,
-                    Pier = pierShop
+                    name = shopName,
+                    resources = new ShopResources()
+                    {
+                        Apiary = apiaryShop,
+                        MobileBase = mobileBaseShop,
+                        Storage = storageShop,
+                        ResidentialModule = residentialModuleShop,
+                        Minner = breadwinnerShop,
+                        Pier = pierShop
+                    }
+                };
+        
+                //Для оффлайн
+                playerID.shopResources= shopData.resources;
+                
+                // Преобразуем в JSON
+                string json = JsonUtility.ToJson(shopData, true);
+        
+                // Создаем TaskCompletionSource для ожидания ответа
+                var taskCompletionSource = new TaskCompletionSource<bool>();
+        
+                if (!InternetMonitor.IsOfflineMode)
+                {
+                    // Выполняем POST-запрос
+                    HTTPRequests.Instance.Post(Requests.CreateShopURL(playerID.entityName), TimeoutValues.CreateShopTimeoutValue,json, 
+                        onSuccess: response =>
+                        {
+                            Debug.Log("Магазин персонажа успешно создан");
+                            taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
+                        },
+                        onError: error =>
+                        {
+                            Debug.LogError($"Ошибка при создании Магазина персонажа: {error}");
+                            taskCompletionSource.SetResult(false); // Завершаем Task
+                        });
                 }
-            };
-    
-            //Для оффлайн
-            playerID.shopResources= shopData.resources;
+                else
+                {
+                    Debug.Log("OfflineMode on - CreateShop");
+                    taskCompletionSource.SetResult(true);
+                }
+                
+                
+        
+                // Ждем завершения Task
+                await taskCompletionSource.Task;
+            });
             
-            // Преобразуем в JSON
-            string json = JsonUtility.ToJson(shopData, true);
-    
-            // Создаем TaskCompletionSource для ожидания ответа
-            var taskCompletionSource = new TaskCompletionSource<bool>();
-    
-            if (!InternetMonitor.IsOfflineMode)
-            {
-                // Выполняем POST-запрос
-                HTTPRequests.Instance.Post(Requests.CreateShopURL(playerID.entityName), TimeoutValues.CreateShopTimeoutValue,json, 
-                    onSuccess: response =>
-                    {
-                        Debug.Log("Магазин персонажа успешно создан");
-                        taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
-                    },
-                    onError: error =>
-                    {
-                        Debug.LogError($"Ошибка при создании Магазина персонажа: {error}");
-                        taskCompletionSource.SetResult(false); // Завершаем Task
-                    });
-            }
-            else
-            {
-                Debug.Log("OfflineMode on - CreateShop");
-                taskCompletionSource.SetResult(true);
-            }
-            
-            
-    
-            // Ждем завершения Task
-            await taskCompletionSource.Task;
         }
     
         /// <summary>
@@ -428,54 +438,58 @@ public class APIManager : MonoBehaviour
         /// <returns></returns>
         public async Task PutShopResources(EntityID playerID, string shopName, PriceShopProduct apiaryShop, PriceShopProduct mobileBaseShop, PriceShopProduct storageShop, PriceShopProduct residentialModuleShop, PriceShopProduct breadwinnerShop, PriceShopProduct pierShop)
         {
-            // Создаем объект ShopData
-            ShopData shopData = new ShopData()
+            await SyncManager.Enqueue(async () =>
             {
-                name = shopName,
-                resources = new ShopResources()
+                // Создаем объект ShopData
+                ShopData shopData = new ShopData()
                 {
-                    Apiary = apiaryShop,
-                    MobileBase = mobileBaseShop,
-                    Storage = storageShop,
-                    ResidentialModule = residentialModuleShop,
-                    Minner = breadwinnerShop,
-                    Pier = pierShop
+                    name = shopName,
+                    resources = new ShopResources()
+                    {
+                        Apiary = apiaryShop,
+                        MobileBase = mobileBaseShop,
+                        Storage = storageShop,
+                        ResidentialModule = residentialModuleShop,
+                        Minner = breadwinnerShop,
+                        Pier = pierShop
+                    }
+                };
+        
+                //Для оффлайн
+                playerID.shopResources = shopData.resources;
+                
+                // Преобразуем в JSON
+                string json = JsonUtility.ToJson(shopData, true);
+        
+                // Создаем TaskCompletionSource для ожидания ответа
+                var taskCompletionSource = new TaskCompletionSource<bool>();
+        
+                if (!InternetMonitor.IsOfflineMode)
+                {
+                     // Выполняем PUT-запрос
+                    HTTPRequests.Instance.Put(Requests.PutShopURL(playerID.entityName, shopName), TimeoutValues.PutShopResourcesTimeoutValue,json, 
+                        onSuccess: response =>
+                        {
+                            Debug.Log("Магазин персонажа успешно обновлен");
+                            taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
+                        },
+                        onError: error =>
+                        {
+                            Debug.LogError($"Ошибка при обновлении Магазина персонажа: {error}");
+                            taskCompletionSource.SetResult(false); // Завершаем Task
+                        });
+        
                 }
-            };
-    
-            //Для оффлайн
-            playerID.shopResources = shopData.resources;
+                else
+                {
+                    Debug.Log("OfflineMode on - PutShopResources");
+                    taskCompletionSource.SetResult(true);
+                }
+               
+                // Ждем завершения Task
+                await taskCompletionSource.Task;
+            });
             
-            // Преобразуем в JSON
-            string json = JsonUtility.ToJson(shopData, true);
-    
-            // Создаем TaskCompletionSource для ожидания ответа
-            var taskCompletionSource = new TaskCompletionSource<bool>();
-    
-            if (!InternetMonitor.IsOfflineMode)
-            {
-                 // Выполняем PUT-запрос
-                HTTPRequests.Instance.Put(Requests.PutShopURL(playerID.entityName, shopName), TimeoutValues.PutShopResourcesTimeoutValue,json, 
-                    onSuccess: response =>
-                    {
-                        Debug.Log("Магазин персонажа успешно обновлен");
-                        taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
-                    },
-                    onError: error =>
-                    {
-                        Debug.LogError($"Ошибка при обновлении Магазина персонажа: {error}");
-                        taskCompletionSource.SetResult(false); // Завершаем Task
-                    });
-    
-            }
-            else
-            {
-                Debug.Log("OfflineMode on - PutShopResources");
-                taskCompletionSource.SetResult(true);
-            }
-           
-            // Ждем завершения Task
-            await taskCompletionSource.Task;
         }
     
         /// <summary>
@@ -486,36 +500,40 @@ public class APIManager : MonoBehaviour
         /// <returns></returns>
         public async Task DeleteShop(EntityID playerID, string shopName)
         {
-            // Формируем URL для удаления игрока
-            string URL = Requests.DeleteShopURL(playerID.entityName, shopName);
-    
-            // Создаем TaskCompletionSource для обработки результата запроса
-            var taskCompletionSource = new TaskCompletionSource<bool>();
-    
-            if (!InternetMonitor.IsOfflineMode)
+            await SyncManager.Enqueue(async () =>
             {
-                // Выполняем DELETE-запрос
-                HTTPRequests.Instance.Delete(URL, TimeoutValues.DeleteShopTimeoutValue,
-                    onSuccess: response =>
-                    {
-                        Debug.Log("Магазин успешно удален");
-                        taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
-                    },
-                    onError: error =>
-                    {
-                        Debug.LogError($"Ошибка при удалении магазина: {error}");
-                        taskCompletionSource.SetResult(false); // Завершаем Task
-                    });
-            }
-            else
-            {
-                Debug.Log("OfflineMode on - DeleteShop");
-                taskCompletionSource.SetResult(true);
-            }
+                // Формируем URL для удаления игрока
+                string URL = Requests.DeleteShopURL(playerID.entityName, shopName);
+        
+                // Создаем TaskCompletionSource для обработки результата запроса
+                var taskCompletionSource = new TaskCompletionSource<bool>();
+        
+                if (!InternetMonitor.IsOfflineMode)
+                {
+                    // Выполняем DELETE-запрос
+                    HTTPRequests.Instance.Delete(URL, TimeoutValues.DeleteShopTimeoutValue,
+                        onSuccess: response =>
+                        {
+                            Debug.Log("Магазин успешно удален");
+                            taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
+                        },
+                        onError: error =>
+                        {
+                            Debug.LogError($"Ошибка при удалении магазина: {error}");
+                            taskCompletionSource.SetResult(false); // Завершаем Task
+                        });
+                }
+                else
+                {
+                    Debug.Log("OfflineMode on - DeleteShop");
+                    taskCompletionSource.SetResult(true);
+                }
+                
+                
+                // Ждем завершения Task
+                await taskCompletionSource.Task;
+            });
             
-            
-            // Ждем завершения Task
-            await taskCompletionSource.Task;
         }
     #endregion
 
@@ -527,38 +545,42 @@ public class APIManager : MonoBehaviour
     /// <param name="serverEvent"></param>
     public async Task PostCreateServerEvent(ServerEvent serverEvent)
     {
-        // Преобразуем в JSON
-        string json = JsonUtility.ToJson(serverEvent, true);
-        
-        Debug.Log(json);
-        
-        // Создаем TaskCompletionSource для ожидания ответа
-        var taskCompletionSource = new TaskCompletionSource<bool>();
-    
-        if (!InternetMonitor.IsOfflineMode)
+        await SyncManager.Enqueue(async () =>
         {
-            // Выполняем POST-запрос
-            HTTPRequests.Instance.Post(Requests.CreateServerEventURL, TimeoutValues.CreateServerEventTimeoutValue, json,  
-                onSuccess: response =>
-                {
-                    Debug.Log("Глобальный ивент успешно создан");
-                    taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
-                },
-                onError: error =>
-                {
-                    Debug.LogError($"Ошибка при создании глобального ивента: {error}");
-                    
-                    taskCompletionSource.SetResult(false); // Завершаем Task 
-                });
-        }
-        else
-        {
-            Debug.Log("OfflineMode on - CreatePlayer");
-            taskCompletionSource.SetResult(true);
-        }
-    
-        // Ждем завершения Task
-        await taskCompletionSource.Task;
+            // Преобразуем в JSON
+            string json = JsonUtility.ToJson(serverEvent, true);
+            
+            Debug.Log(json);
+            
+            // Создаем TaskCompletionSource для ожидания ответа
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+        
+            if (!InternetMonitor.IsOfflineMode)
+            {
+                // Выполняем POST-запрос
+                HTTPRequests.Instance.Post(Requests.CreateServerEventURL, TimeoutValues.CreateServerEventTimeoutValue, json,  
+                    onSuccess: response =>
+                    {
+                        Debug.Log("Глобальный ивент успешно создан");
+                        taskCompletionSource.SetResult(true); // Завершаем Task успешным результатом
+                    },
+                    onError: error =>
+                    {
+                        Debug.LogError($"Ошибка при создании глобального ивента: {error}");
+                        
+                        taskCompletionSource.SetResult(false); // Завершаем Task 
+                    });
+            }
+            else
+            {
+                Debug.Log("OfflineMode on - CreatePlayer");
+                taskCompletionSource.SetResult(true);
+            }
+        
+            // Ждем завершения Task
+            await taskCompletionSource.Task;
+        });
+        
     }
 
     /// <summary>
