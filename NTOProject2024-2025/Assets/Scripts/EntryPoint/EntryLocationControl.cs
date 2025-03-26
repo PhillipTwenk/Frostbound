@@ -25,7 +25,10 @@ public class EntryLocationControl : MonoBehaviour
         LoadingCanvasController.Instance.LoadingCanvasNotTransparent.SetActive(false);
     }
 
-    private void StartTutorialControl()
+    /// <summary>
+    /// Завршен ли туториал, если нет или не был начат, запускаем заново
+    /// </summary>
+    public void StartTutorialControl()
     {
         if (PlayerPrefs.HasKey("TutorialCompleted"))
         {
