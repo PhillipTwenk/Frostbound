@@ -2,6 +2,7 @@ using System;
 using Dialogues;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
+using UI.UIManagers;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
