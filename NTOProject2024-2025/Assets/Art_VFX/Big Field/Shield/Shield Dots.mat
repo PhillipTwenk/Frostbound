@@ -79,7 +79,7 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
-    - _Alpha_Intensity: 3.91
+    - _Alpha_Intensity: 1
     - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
     - _Contrast: -0.51
@@ -137,7 +137,7 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Low_Emission_Color: {r: 0.8027794, g: 0.25715628, b: 0.10981419, a: 0}
+    - _Low_Emission_Color: {r: 5.2916355, g: 1.489964, b: 0.47425023, a: 0}
     - _Sota_Color: {r: 7.8433623, g: 18.327538, b: 97.811325, a: 0}
     - _Sota_Second_Color: {r: 13.388756, g: 7.037678, b: 36.329643, a: 0}
   m_BuildTextureStacks: []
