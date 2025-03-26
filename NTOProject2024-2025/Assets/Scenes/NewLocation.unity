@@ -22678,7 +22678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastTab: 2
+  lastTab: 1
   movementSettingsFoldout: 0
   zoomingSettingsFoldout: 0
   rotationSettingsFoldout: 0
@@ -22703,7 +22703,7 @@ MonoBehaviour:
   keyboardZoomingSensitivity: 2
   scrollWheelZoomingSensitivity: 25
   scrollWheelSizeZooming: 50
-  maxSizeZoomValue: 30
+  maxSizeZoomValue: 10
   minSizeZoomValue: 80
   limitMap: 1
   limitX: 2935
@@ -22739,13 +22739,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800638969}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2952851, y: -0.1968836, z: 0.061942883, w: 0.93284875}
+  m_LocalRotation: {x: 0.29340494, y: -0.2233224, z: 0.07031199, w: 0.9268748}
   m_LocalPosition: {x: 3789, y: 530, z: -120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 35.121, y: -23.851, z: -0.05}
+  m_LocalEulerAnglesHint: {x: 35.121, y: -27.109, z: -0.05}
 --- !u!81 &800638975
 AudioListener:
   m_ObjectHideFlags: 0
