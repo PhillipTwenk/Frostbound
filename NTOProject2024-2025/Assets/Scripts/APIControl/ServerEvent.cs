@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class ServerEvent
 {
     public string name;
@@ -9,9 +9,14 @@ public class ServerEvent
     public int once_in_hours;
     public int duration_in_minutes;
     public string start_date_time;
+    
+    [NonSerialized] 
+    public Action OnEventStart;
+    [NonSerialized]
+    public Action OnEventEnd;
 }
 
-[System.Serializable]
+[Serializable]
 public class ServerEventList
 {
     public List<ServerEvent> events;

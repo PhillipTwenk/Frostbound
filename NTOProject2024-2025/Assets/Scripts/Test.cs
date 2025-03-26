@@ -1,9 +1,32 @@
+using System;
 using System.Collections.Generic;
+using APIControl.Global_Server_Event;
 using Dialogues;
 using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    public string neededEventName;
+
+    private void OnEnable()
+    {
+        GlobalServerEventsManager.OnEventAdded += InitializeThisGlobalEvent;
+    }
+
+    public void InitializeThisGlobalEvent(ServerEvent serverEvent)
+    {
+        if (serverEvent.name == neededEventName)
+        {
+            serverEvent.OnEventStart += DebugTest;
+        }
+    }
+
+    public void DebugTest()
+    {
+        Debug.Log("GLOBAL EVENT TETTTTTTT");
+    }
+    
+
     private async void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
