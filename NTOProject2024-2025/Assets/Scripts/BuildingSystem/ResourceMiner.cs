@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using APIControl.Global_Server_Event.Secondary_Scripts;
 using TMPro;
 using Unitilities;
 using Unity.VisualScripting;
@@ -59,6 +60,18 @@ public class ResourceMiner : MonoBehaviour
         _animator = GetComponent<Animator>();
         _animator.SetBool(stopMineAnimationKey,true);
         resourcesLimits = _buildingData.buildingTypeSO.StorageLimit(BaseUpgradeConditionManager.CurrentBaseLevel);
+    }
+
+    private void OnEnable()
+    {
+        SnowBlizzardGEControl.ChangeParametersSnowBlizzardGEEvent += DeclineProduction;
+        SnowBlizzardGEControl.RevertParametersSnowBlizzardGEEvent += RevertDeclineProduction;
+    }
+
+    private void OnDisable()
+    {
+        SnowBlizzardGEControl.ChangeParametersSnowBlizzardGEEvent -= DeclineProduction;
+        SnowBlizzardGEControl.RevertParametersSnowBlizzardGEEvent += RevertDeclineProduction;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -280,4 +293,16 @@ public class ResourceMiner : MonoBehaviour
         }
     }
     public void WorkNotStop() => IsWorkStop = false;
+
+    public void DeclineProduction()
+    {
+        Debug.Log("Производство майнера снижено");
+        _buildingData.Production[(int)_minerType] = 2;
+    }
+
+    public void RevertDeclineProduction()
+    {
+        _buildingData.Production[(int)_minerType] = 10;
+    }
+    
 }

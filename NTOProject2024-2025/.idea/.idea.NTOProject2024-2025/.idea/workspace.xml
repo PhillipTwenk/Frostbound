@@ -24,20 +24,20 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Prefabs/Dialogue Panels.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Prefabs/Dialogue Panels.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/Events/Base Snow.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/Events/Base Snow.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 18.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Phrases/[Tutorial] - 18.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UISceneElements/QuestPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UISceneElements/QuestPanel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/Objective.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/Objective.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/Quest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/Quest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/Berlogaforming.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/Berlogaforming.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/GlobalServerEventsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/GlobalServerEventsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Local Save/LocalEventSaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Local Save/LocalEventSaveData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Local Save/MainLocalGlobalEventSaveData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Local Save/MainLocalGlobalEventSaveData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/InternetMonitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/InternetMonitor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/ServerEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/ServerEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlansInShopControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,12 +75,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Quests/Objective.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Quests/QuestController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Quests/QuestOwner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Quests/Secondary Scripts/DroneTriggerCompleteObjective.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SaveData/Json/ISerializableSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/GlobalServerEventsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Local Save/LocalEventSaveData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Secondary Scripts/SnowBlizzardGEControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/HTTPRequests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/InternetMonitor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -227,7 +229,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Build2\FrostBound.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/sad\FrostBound.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Philip\Downloads" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -387,7 +389,7 @@
       <workItem from="1742928531726" duration="6718000" />
       <workItem from="1742971199064" duration="25542000" />
       <workItem from="1743011532494" duration="13289000" />
-      <workItem from="1743052779137" duration="8658000" />
+      <workItem from="1743052779137" duration="22360000" />
     </task>
     <servers />
   </component>

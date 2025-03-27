@@ -820,10 +820,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7a32648b7e2733242b500ac38a3c4a14, type: 2}
   questsScriptableObjects:
   - {fileID: 11400000, guid: 5733c5c4eaf53024d82fa5f4737efc2c, type: 2}
+  - {fileID: 11400000, guid: c3cfbecab331c1b4083e0443c2bd374e, type: 2}
   objectivesScriptableObjects:
   - {fileID: 11400000, guid: 1ceeadb2475c13343b55b0e728e5c28b, type: 2}
   - {fileID: 11400000, guid: ab4ebb17552bb684f962a57aa558f4e8, type: 2}
   - {fileID: 11400000, guid: 632bb29da5220dd44adeb428f8d22f64, type: 2}
+  - {fileID: 11400000, guid: 1539daf017914d94ba5ad76fa64a0f2c, type: 2}
+  - {fileID: 11400000, guid: 8b52db03beb16b444951a6fd6bcccef1, type: 2}
+  - {fileID: 11400000, guid: 42e9b3298a496134bb90d50226f7b022, type: 2}
   dialoguesScriptableObjects:
   - {fileID: 11400000, guid: 924e481643c93f744bc9db4a0ed28b9b, type: 2}
   - {fileID: 11400000, guid: ac2383e726cce2a46a652b8630d81e98, type: 2}

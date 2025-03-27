@@ -30,7 +30,7 @@ namespace APIControl.Global_Server_Event
 
         public int notificationTimeAttention;
 
-        private void Start()
+        public void Initialize()
         {
             Debug.Log(LOG_PREFIX + "Initializing event manager...");
             _cts = new CancellationTokenSource();
@@ -159,7 +159,7 @@ namespace APIControl.Global_Server_Event
             Debug.Log(LOG_PREFIX + "Fetching current events from server...");
             var currentEvents = await APIManager.Instance.GetServerEventList();
             Debug.Log(LOG_PREFIX + $"Server returned {currentEvents.Count} events");
-
+            
             // Check for new/updated events
             foreach (var serverEvent in currentEvents)
             {
@@ -168,13 +168,22 @@ namespace APIControl.Global_Server_Event
                     if (!EventsEqual(existingEvent, serverEvent))
                     {
                         Debug.Log(LOG_PREFIX + $"Event '{serverEvent.name}' has been updated");
-                        UpdateEvent(existingEvent, serverEvent);
+                        await UpdateEvent(existingEvent, serverEvent);
                     }
                 }
                 else
                 {
-                    Debug.Log(LOG_PREFIX + $"New event detected: {serverEvent.name}");
-                    await RegisterEvent(serverEvent);
+                    DateTime currentUtcDate = DateTime.UtcNow;
+                    string dateString = serverEvent.start_date_time;
+                    // Парсинг строки в DateTime
+                    DateTime targetDate = DateTime.Parse(dateString, null, System.Globalization.DateTimeStyles.RoundtripKind);
+
+                    if (targetDate>=currentUtcDate)
+                    {
+                        Debug.Log(LOG_PREFIX + $"New event detected: {serverEvent.name}");
+                        await RegisterEvent(serverEvent);
+                    }
+                    
                 }
             }
 

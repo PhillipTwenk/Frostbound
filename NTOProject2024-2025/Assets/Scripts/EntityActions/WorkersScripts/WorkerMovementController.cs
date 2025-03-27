@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using APIControl.Global_Server_Event.Secondary_Scripts;
 using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.Movement_Control;
@@ -7,6 +8,7 @@ using EntityActions.WorkersScripts;
 using TMPro;
 using UI.UIManagers;
 using Unitilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -128,6 +130,35 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
     void Update()
     {
         MovementHandler();
+    }
+
+    private void OnEnable()
+    {
+        SnowBlizzardGEControl.ChangeParametersSnowBlizzardGEEvent += ChangeSpeedUnit;
+        SnowBlizzardGEControl.RevertParametersSnowBlizzardGEEvent += RevertSpedUnit;
+    }
+    private void OnDisable()
+    {
+        if (isSelected)
+        {
+            GeneralWorkersControl.SelectedUnit = null;
+            UIManager.CancelLastOpenPanelEvent -= GeneralWorkersControl.Instance.ResetSelectedUnit;
+        }
+
+        SnowBlizzardGEControl.ChangeParametersSnowBlizzardGEEvent -= ChangeSpeedUnit;
+        SnowBlizzardGEControl.RevertParametersSnowBlizzardGEEvent -= RevertSpedUnit;
+    }
+
+    public void ChangeSpeedUnit()
+    {
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.speed -= agent.speed * 0.25f;
+    }
+
+    public void RevertSpedUnit()
+    {
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.speed += agent.speed * 0.25f;
     }
 
     /// <summary>
@@ -337,15 +368,6 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
                     break;
             }
             TemporaryText(interactionBuildingController, text, newText);
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (isSelected)
-        {
-            GeneralWorkersControl.SelectedUnit = null;
-            UIManager.CancelLastOpenPanelEvent -= GeneralWorkersControl.Instance.ResetSelectedUnit;
         }
     }
     

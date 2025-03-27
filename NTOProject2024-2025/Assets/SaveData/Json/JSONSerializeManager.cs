@@ -82,12 +82,7 @@ public class JSONSerializeManager : MonoBehaviour
         }
 
         List<Task> saveTasks = new List<Task>();
-
         foreach (EntityID so in entitiesScriptableObjects)
-        {
-            saveTasks.Add(JSONSaveFunctionalAsync(so));
-        }
-        foreach (PlayerSaveData so in psdScriptableObjects)
         {
             saveTasks.Add(JSONSaveFunctionalAsync(so));
         }
@@ -99,11 +94,15 @@ public class JSONSerializeManager : MonoBehaviour
         {
             saveTasks.Add(JSONSaveFunctionalAsync(so));
         }
-        foreach (Dialogue so in dialoguesScriptableObjects)
+        foreach (PlayerSaveData so in psdScriptableObjects)
         {
             saveTasks.Add(JSONSaveFunctionalAsync(so));
         }
         foreach (Phrase so in phrasesScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+        foreach (Dialogue so in dialoguesScriptableObjects)
         {
             saveTasks.Add(JSONSaveFunctionalAsync(so));
         }

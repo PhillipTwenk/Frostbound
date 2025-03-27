@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
+[Serializable]
+public class QuestsSaveData
+{
+    public bool completed;
+    public bool active;
+}
 /// <summary>
 /// Описание свойств квеста
 /// </summary>
@@ -16,12 +22,18 @@ public class Quest : ScriptableObject, ISerializableSO
     /// <returns></returns>
     public string SerializeToJson()
     {
-        return JsonUtility.ToJson(this, true);
+        QuestsSaveData quest = new QuestsSaveData();
+        quest.completed = completed;
+        quest.active = active;
+        return JsonUtility.ToJson(quest, true);
     }
 
     public void DeserializeFromJson(string json)
     {
-        JsonUtility.FromJsonOverwrite(json, this);
+        QuestsSaveData questSD = new QuestsSaveData();
+        JsonUtility.FromJsonOverwrite(json, questSD);
+        completed = questSD.completed;
+        active = questSD.active;
     }
     
     

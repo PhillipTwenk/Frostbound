@@ -1147,7 +1147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 361.80005, y: -11.399963}
+  m_AnchoredPosition: {x: 361.80005, y: -11.399902}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508299500
@@ -1843,6 +1843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1433488322}
   - component: {fileID: 1433488323}
+  - component: {fileID: 1433488324}
   m_Layer: 0
   m_Name: GlobalServerEventsManager
   m_TagString: Untagged
@@ -1880,6 +1881,35 @@ MonoBehaviour:
   localEventSaveData: {fileID: 11400000, guid: eb32a67e3c07b7948b249b0bf796a896, type: 2}
   ActiveEvents: []
   notificationTimeAttention: 5
+--- !u!114 &1433488324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433488321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a9b84c69e3adf7d479b6c7ff086bc6a8, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1433488323}
+        m_TargetAssemblyTypeName: APIControl.Global_Server_Event.GlobalServerEventsManager,
+          Assembly-CSharp
+        m_MethodName: Initialize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1539310850
 GameObject:
   m_ObjectHideFlags: 0
