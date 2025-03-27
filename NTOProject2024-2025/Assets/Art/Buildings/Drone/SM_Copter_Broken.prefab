@@ -395,13 +395,13 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 20
+      - m_Value: 80
         m_Name: Spawn Rate
         m_Overridden: 1
       - m_Value: 20
         m_Name: Speed
         m_Overridden: 1
-      - m_Value: 11.67
+      - m_Value: 15.22
         m_Name: Size
         m_Overridden: 1
     m_Vector2f:
@@ -424,7 +424,7 @@ VisualEffect:
           serializedVersion: 2
           key0: {r: 0, g: 0, b: 0, a: 0}
           key1: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
-          key2: {r: 0, g: 0, b: 0, a: 0.22352941}
+          key2: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 0.48235294}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
@@ -432,7 +432,7 @@ VisualEffect:
           key7: {r: 0, g: 0, b: 0, a: 0}
           ctime0: 0
           ctime1: 65535
-          ctime2: 0
+          ctime2: 65535
           ctime3: 0
           ctime4: 0
           ctime5: 0
