@@ -1798,6 +1798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925f122516ca35143be2490e62b35f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localEventSaveData: {fileID: 11400000, guid: eb32a67e3c07b7948b249b0bf796a896, type: 2}
 --- !u!1 &1286056753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,7 +1877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414aa1bd4d97fcb44964ccee7a1ab80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localEventSaveData: {fileID: 11400000, guid: eb32a67e3c07b7948b249b0bf796a896, type: 2}
   ActiveEvents: []
+  notificationTimeAttention: 5
 --- !u!1 &1539310850
 GameObject:
   m_ObjectHideFlags: 0

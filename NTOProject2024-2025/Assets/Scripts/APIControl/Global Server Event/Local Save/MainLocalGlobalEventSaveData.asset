@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d43a5374ef14c149bd3d5b5c409a1c7, type: 3}
   m_Name: MainLocalGlobalEventSaveData
   m_EditorClassIdentifier: 
+  activeServerEvents: []
+  currentServerEvent:
+    name: 
+    text: 
+    once_in_hours: 0
+    duration_in_minutes: 0
+    start_date_time: 

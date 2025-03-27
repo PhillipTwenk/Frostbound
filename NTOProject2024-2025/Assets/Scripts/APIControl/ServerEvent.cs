@@ -14,6 +14,8 @@ public class ServerEvent
     public Action OnEventStart;
     [NonSerialized]
     public Action OnEventEnd;
+    
+    
 }
 
 [Serializable]

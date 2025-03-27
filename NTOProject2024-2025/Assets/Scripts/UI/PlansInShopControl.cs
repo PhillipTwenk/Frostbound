@@ -64,6 +64,7 @@ public class PlansInShopControl : MonoBehaviour
         string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         string shopName = $"{playerName}'sShop";
         ShopResources shopResources = await GetResourcesShop(playerName, shopName);
+        Debug.Log(shopResources);
         // Определяем текущий уровень базы
         int baseLevel = BaseUpgradeConditionManager.CurrentBaseLevel;
 
@@ -132,11 +133,13 @@ public class PlansInShopControl : MonoBehaviour
     public async void ClickBuyPlanButton(string typeBuyButton)
     {
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
-        
+
+        EntityID entityID = CurrentPlayersDataControl.WhichPlayerCreate;
         string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         PlayerResources playerResources = await GetResourcesPLayer(playerName);
         string shopName = $"{playerName}'sShop";
-        ShopResources shopResources = await GetResourcesShop(playerName, shopName);
+        // ShopResources shopResources = await GetResourcesShop(playerName, shopName);
+        ShopResources shopResources = entityID.shopResources;
 
         NotEnoughtResourcesTextPanel.SetActive(false);
 
@@ -172,11 +175,13 @@ public class PlansInShopControl : MonoBehaviour
                     playerResources.Iron - product.IronPrice, 
                     playerResources.Energy, playerResources.Food, 
                     playerResources.CryoCrystal - product.CryoCrystalPrice);
+            await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary, shopResources.MobileBase, shopResources.Storage, shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
 
             // Обновляем UI
             boughtPanel.SetActive(true);
             button.SetActive(false);
             UIManager.Instance.AddNewPlanInPanel(planUI);
+            
             
             if (shopResources.Pier.IsPurchased && shopResources.Minner.IsPurchased && shopResources.Storage.IsPurchased)
             {
@@ -206,21 +211,15 @@ public class PlansInShopControl : MonoBehaviour
     
     private async Task<PlayerResources> GetResourcesPLayer(string playerName)
     {
-        PlayerResources playerResources = null;
-        await SyncManager.Enqueue(async () =>
-        {
-            playerResources = await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
-        });
+        PlayerResources playerResources = null; 
+        playerResources = await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
         return playerResources;
     }
     
     private async Task<ShopResources> GetResourcesShop(string playerName, string shopName)
     {
         ShopResources shopResources = null;
-        await SyncManager.Enqueue(async () =>
-        {
-            shopResources = await APIManager.Instance.GetShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName);
-        });
+        shopResources = await APIManager.Instance.GetShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName);
         return shopResources;
     }
 }

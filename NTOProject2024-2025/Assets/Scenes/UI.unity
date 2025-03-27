@@ -1505,8 +1505,8 @@ MonoBehaviour:
   UIAudioEffectEvent: {fileID: 11400000, guid: 422820d127f9e4347872c271573e6c79, type: 2}
   OpenGlobalServerEventsPanelEvent: {fileID: 11400000, guid: 751e8fda92b06184d8bfb9c514a21538, type: 2}
   CloseGlobalServerEventsPanelEvent: {fileID: 11400000, guid: 268bba342a5432048aeccf1a6d297c47, type: 2}
-  ShowNotificationsPanelEvent: {fileID: 0}
-  HideNotificationsPanelEvent: {fileID: 0}
+  ShowNotificationsPanelEvent: {fileID: 11400000, guid: 66568d70ee072a04b9e3eec3a6c701f6, type: 2}
+  HideNotificationsPanelEvent: {fileID: 11400000, guid: f2f4f13473ae99d4eb9c9a6199932d70, type: 2}
   Resources_Icons: {fileID: 36106226}
   uiListForQuestTransform: {fileID: 1156989810859222030}
   AllUIQuestPanels:
@@ -1542,7 +1542,14 @@ MonoBehaviour:
   _screenResolutionControl: {fileID: 462131446}
   CurrentConstNumberOfNewWorkersAfterCalling: 1
   CallingWorkerText: {fileID: 5982111176469237004}
-  timeNotificationServerEventPanel: 0
+  timeNotificationServerEventPanel: 6
+  panelGlobalEventImage: {fileID: 1581956804}
+  panelGlobalEventName: {fileID: 1581956803}
+  panelGlobalEventDescription: {fileID: 1581956802}
+  allEventNames:
+  - Test1
+  allEventImages:
+  - {fileID: 21300000, guid: 0bfd70e3f2ffb3649aa6d94fbf0e47a6, type: 3}
 --- !u!114 &462131445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8220,6 +8227,39 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3859525218950399337, guid: bc9cabbebc69f8f4186a3cb517e20478, type: 3}
   m_PrefabInstance: {fileID: 1581956799}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1581956802 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4739607267469734251, guid: bc9cabbebc69f8f4186a3cb517e20478, type: 3}
+  m_PrefabInstance: {fileID: 1581956799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1581956803 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 977372153748652844, guid: bc9cabbebc69f8f4186a3cb517e20478, type: 3}
+  m_PrefabInstance: {fileID: 1581956799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1581956804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6642568945167119231, guid: bc9cabbebc69f8f4186a3cb517e20478, type: 3}
+  m_PrefabInstance: {fileID: 1581956799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1704231844 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1799880131713553601, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
@@ -9720,6 +9760,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 914306526}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 2130720760}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -10110,7 +10162,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1912507561}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine

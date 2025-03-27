@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Global_Server_Event.Local_Save;
 using APIControl.Semaphore;
 using UnityEngine;
 using Newtonsoft.Json;
@@ -35,13 +36,13 @@ public class Requests
 public class TimeoutValues
 {
     public const float CreatePlayerTimeoutValue = 8f;
-    public const float GetPlayerResourcesTimeoutValue = 2f;
+    public const float GetPlayerResourcesTimeoutValue = 3f;
     public const float PutPlayerResourcesTimeoutValue = 2f;
     public const float DeletePlayerTimeoutValue = 3f;
     public const float CreatePlayerLogTimeoutValue = 2f;
     
     public const float CreateShopTimeoutValue = 4f;
-    public const float GetShopResourcesTimeoutValue = 2f;
+    public const float GetShopResourcesTimeoutValue = 3f;
     public const float PutShopResourcesTimeoutValue = 2f; 
     public const float DeleteShopTimeoutValue = 3f;
     public const float CreateShopLogTimeoutValue = 2f;
@@ -65,6 +66,8 @@ public class LogComment
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }
+
+    public LocalEventSaveData localEventSaveData;
 
     private void Awake()
     {
@@ -555,6 +558,8 @@ public class APIManager : MonoBehaviour
             // Создаем TaskCompletionSource для ожидания ответа
             var taskCompletionSource = new TaskCompletionSource<bool>();
         
+            localEventSaveData.activeServerEvents.Add(serverEvent);
+            
             if (!InternetMonitor.IsOfflineMode)
             {
                 // Выполняем POST-запрос
@@ -591,31 +596,39 @@ public class APIManager : MonoBehaviour
     {
         var taskCompletionSource = new TaskCompletionSource<List<ServerEvent>>();
         string URL = Requests.GetListOfServerEvents;
+
+        if (!InternetMonitor.IsOfflineMode)
+        {
+            HTTPRequests.Instance.Get(URL, TimeoutValues.GetListOfServerEventsTimeoutValue,
+                        onSuccess: response =>
+                        {
+                            try
+                            {
+                                // Парсим ответ
+                                List<ServerEvent> servers = JsonUtility.FromJson<ServerEventList>($"{{\"events\":{response}}}").events;
+                                
+                                // Завершаем Task успешным результатом
+                                taskCompletionSource.SetResult(servers);
+                            }
+                            catch (Exception ex)
+                            {
+                                // Завершаем Task с ошибкой при возникновении исключения
+                                Debug.LogError($"Ошибка при обработке данных: {ex.Message}");
+                                taskCompletionSource.SetException(ex);
+                            }
+                        },
+                        onError: error =>
+                        {
+                            // Завершаем Task с ошибкой при проблемах с запросом
+                            Debug.LogError($"Ошибка запроса: {error}");
+                            taskCompletionSource.SetException(new Exception(error));
+                        });
+        }
+        else
+        {
+            taskCompletionSource.SetResult(localEventSaveData.activeServerEvents);
+        }
         
-        HTTPRequests.Instance.Get(URL, TimeoutValues.GetListOfServerEventsTimeoutValue,
-            onSuccess: response =>
-            {
-                try
-                {
-                    // Парсим ответ
-                    List<ServerEvent> servers = JsonUtility.FromJson<ServerEventList>($"{{\"events\":{response}}}").events;
-                    
-                    // Завершаем Task успешным результатом
-                    taskCompletionSource.SetResult(servers);
-                }
-                catch (Exception ex)
-                {
-                    // Завершаем Task с ошибкой при возникновении исключения
-                    Debug.LogError($"Ошибка при обработке данных: {ex.Message}");
-                    taskCompletionSource.SetException(ex);
-                }
-            },
-            onError: error =>
-            {
-                // Завершаем Task с ошибкой при проблемах с запросом
-                Debug.LogError($"Ошибка запроса: {error}");
-                taskCompletionSource.SetException(new Exception(error));
-            });
 
         // Ждем завершения Task и возвращаем результат
         return await taskCompletionSource.Task;

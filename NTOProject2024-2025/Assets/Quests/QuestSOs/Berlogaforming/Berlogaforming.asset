@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Berlogaforming
   m_EditorClassIdentifier: 
   name: "\u0411\u0435\u0440\u043B\u043E\u0433\u043E\u0444\u043E\u0440\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435"
-  active: 0
+  active: 1
   completed: 0
   questDescription: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u043E\u0439
     \u0431\u0430\u0437\u044B \u0434\u043E \u0443\u0440\u043E\u0432\u043D\u044F, \u043A\u043E\u0442\u043E\u0440\u044B\u0439
@@ -22,8 +22,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ceeadb2475c13343b55b0e728e5c28b, type: 2}
   - {fileID: 11400000, guid: ab4ebb17552bb684f962a57aa558f4e8, type: 2}
   - {fileID: 11400000, guid: 632bb29da5220dd44adeb428f8d22f64, type: 2}
-  currentObjective: {fileID: 11400000, guid: 632bb29da5220dd44adeb428f8d22f64, type: 2}
-  UIItemOnQuestPanel: {fileID: 7955306229360465755, guid: 705d2090c5c37e94495a7f908a09f69e, type: 3}
+  currentObjective: {fileID: 0}
+  UIItemOnQuestPanel: {fileID: 0}
   OnQuestCompletedUnityEvent:
     m_PersistentCalls:
       m_Calls: []
