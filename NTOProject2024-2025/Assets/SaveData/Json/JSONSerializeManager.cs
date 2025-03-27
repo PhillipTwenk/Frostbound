@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using APIControl.Global_Server_Event.Local_Save;
+using Dialogues;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,6 +16,10 @@ public class JSONSerializeManager : MonoBehaviour
     [Tooltip("Информация о сохраненных игровых данных игроков")] public List<PlayerSaveData> psdScriptableObjects;
     [Tooltip("Информация о квестах")] public List<Quest> questsScriptableObjects;
     [Tooltip("Информация о целях квестов")] public List<Objective> objectivesScriptableObjects;
+    [Tooltip("Диалоги")] public List<Dialogue> dialoguesScriptableObjects;
+    [Tooltip("Фразы диалогов")] public List<Phrase> phrasesScriptableObjects;
+    public LocalEventSaveData localEventSaveData;
+    
     private string savePath;
     private static readonly object _lock = new object();
 
@@ -50,6 +56,16 @@ public class JSONSerializeManager : MonoBehaviour
         {
             AwakeJSONLoadFunctional(so);
         }
+        foreach (Dialogue so in dialoguesScriptableObjects)
+        {
+            AwakeJSONLoadFunctional(so);
+        }
+        foreach (Phrase so in phrasesScriptableObjects)
+        {
+            AwakeJSONLoadFunctional(so);
+        }
+        
+        AwakeJSONLoadFunctional(localEventSaveData);
     }
 
     private async void OnApplicationQuit()
@@ -83,6 +99,16 @@ public class JSONSerializeManager : MonoBehaviour
         {
             saveTasks.Add(JSONSaveFunctionalAsync(so));
         }
+        foreach (Dialogue so in dialoguesScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+        foreach (Phrase so in phrasesScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+        
+        saveTasks.Add(JSONSaveFunctionalAsync(localEventSaveData));
 
         await Task.WhenAll(saveTasks);
     }

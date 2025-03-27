@@ -21,10 +21,10 @@ MonoBehaviour:
   speedTurn: 360
   openQuests: []
   playerResources:
-    Iron: 20
-    Energy: 30
+    Iron: 0
+    Energy: 0
     Food: 0
-    CryoCrystal: 6
+    CryoCrystal: 0
   shopResources:
     Apiary:
       IronPrice: 50
@@ -37,7 +37,7 @@ MonoBehaviour:
     Storage:
       IronPrice: 50
       CryoCrystalPrice: 3
-      IsPurchased: 1
+      IsPurchased: 0
     ResidentialModule:
       IronPrice: 50
       CryoCrystalPrice: 3
@@ -45,11 +45,11 @@ MonoBehaviour:
     Minner:
       IronPrice: 50
       CryoCrystalPrice: 3
-      IsPurchased: 1
+      IsPurchased: 0
     Pier:
       IronPrice: 50
       CryoCrystalPrice: 3
-      IsPurchased: 1
+      IsPurchased: 0
   DefaultPlayerResources:
     Iron: 0
     Energy: 0
@@ -80,5 +80,5 @@ MonoBehaviour:
       IronPrice: 0
       CryoCrystalPrice: 0
       IsPurchased: 0
-  _playerSaveData: {fileID: 11400000, guid: 70832cd75e7eb8642918827c39cad79a, type: 2}
-  DefaultPlayerSaveData: {fileID: 11400000, guid: 9093827f22e00ff4fbd12a55537b95df, type: 2}
+  _playerSaveData: {fileID: 0}
+  DefaultPlayerSaveData: {fileID: 0}

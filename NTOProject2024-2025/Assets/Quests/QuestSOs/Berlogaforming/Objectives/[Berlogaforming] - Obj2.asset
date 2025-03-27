@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc96625fe4e9c74a8140b559a5e427e, type: 3}
   m_Name: '[Berlogaforming] - Obj2'
   m_EditorClassIdentifier: 
-  parentQuest: {fileID: 11400000, guid: 5733c5c4eaf53024d82fa5f4737efc2c, type: 2}
+  parentQuest: {fileID: 0}
   required: 1
   completed: 0
   name: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 \u0431\u0430\u0437\u044B

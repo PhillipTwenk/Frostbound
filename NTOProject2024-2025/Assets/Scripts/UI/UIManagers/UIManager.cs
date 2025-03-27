@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using APIControl.Global_Server_Event;
 using Dialogues;
 using EntityActions.WorkersScripts;
 using RTS_Cam;
@@ -101,8 +102,13 @@ namespace UI.UIManagers
         public int CurrentConstNumberOfNewWorkersAfterCalling;
         public TextMeshProUGUI CallingWorkerText;
 
-        [Header("Parameters")] 
+        [Header("Server Global Events")] 
         public int timeNotificationServerEventPanel;
+        public Image panelGlobalEventImage;
+        public TextMeshProUGUI panelGlobalEventName;
+        public TextMeshProUGUI panelGlobalEventDescription;
+        public List<string> allEventNames = new List<string>();
+        public List<Sprite> allEventImages = new List<Sprite>();
 
 
         public bool PossibilityZoomCamera
@@ -136,6 +142,8 @@ namespace UI.UIManagers
             HTTPRequests.FailedRequestLimitExceededEvent += FailedRequestLimitExceededUI;
             QuestController.OnStartNewQuest += AddNewQuestItemInQuestPanel;
             NotificationServerEvent += ShowNotificationPanel;
+            GlobalServerEventsManager.OnPanelGlobalServerEventsOpened += CurrentGlobalEventPanelInitialize;
+            GlobalServerEventsManager.ClearNotificationServerEvent += CurrentGlobalEventPanelClear;
         }
 
         private void OnDisable()
@@ -144,6 +152,8 @@ namespace UI.UIManagers
             QuestController.OnStartNewQuest -= AddNewQuestItemInQuestPanel;
             QuestController.OnInitializationQuests -= InitializationQuestPanel;
             NotificationServerEvent -= ShowNotificationPanel;
+            GlobalServerEventsManager.OnPanelGlobalServerEventsOpened -= CurrentGlobalEventPanelInitialize;
+            GlobalServerEventsManager.ClearNotificationServerEvent -= CurrentGlobalEventPanelClear;
             UnsubscribeAllCancelLastOpenPanelEvent();
         }
 
@@ -581,6 +591,7 @@ namespace UI.UIManagers
         /// </summary>
         public void OpenGlobalServerEventsPanel()
         {
+            GlobalServerEventsManager.OnPanelGlobalServerEventsOpened?.Invoke(GlobalServerEventsManager.currentServerEvent);
             OpenGlobalServerEventsPanelEvent.TriggerEvent();
             RTS_Camera.possibilityZoomCamera = false;
             CancelLastOpenPanelEvent += CloseGlobalServerEventsPanel;
@@ -608,6 +619,28 @@ namespace UI.UIManagers
                 HideNotificationsPanelEvent.TriggerEvent();
             }, timeNotificationServerEventPanel);
 
+        }
+
+        /// <summary>
+        /// Инициаизация панели 
+        /// </summary>
+        public void CurrentGlobalEventPanelInitialize(ServerEvent serverEvent)
+        {
+            int indexImage = allEventNames.IndexOf(serverEvent.name);
+            Sprite currenImage = allEventImages[indexImage];
+            panelGlobalEventImage.sprite = currenImage;
+            panelGlobalEventName.text = serverEvent.name;
+            panelGlobalEventDescription.text = serverEvent.text;
+        }
+
+        /// <summary>
+        /// Очищение панели 
+        /// </summary>
+        public void CurrentGlobalEventPanelClear()
+        {
+            panelGlobalEventImage.sprite = null;
+            panelGlobalEventName.text = String.Empty;
+            panelGlobalEventDescription.text = String.Empty;
         }
 
         #endregion

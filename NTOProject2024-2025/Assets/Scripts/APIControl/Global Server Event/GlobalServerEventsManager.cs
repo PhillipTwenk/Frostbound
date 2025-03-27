@@ -2,22 +2,31 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using APIControl.Global_Server_Event.Local_Save;
 using UI.UIManagers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace APIControl.Global_Server_Event
 {
     public class GlobalServerEventsManager : MonoBehaviour
     {
+        public LocalEventSaveData localEventSaveData;
+        
         private const string LOG_PREFIX = "[GlobalEvents] ";
         
         public List<ServerEvent> ActiveEvents = new List<ServerEvent>();
         private Dictionary<string, ServerEvent> _eventDictionary = new Dictionary<string, ServerEvent>();
         private CancellationTokenSource _cts;
+        public static ServerEvent currentServerEvent;
 
         public static event Action<ServerEvent> OnEventAdded;
         public static event Action<ServerEvent> OnEventRemoved;
         public static event Action<ServerEvent> OnEventUpdated;
+        
+        public static Action<ServerEvent> OnPanelGlobalServerEventsOpened;
+        
+        public static Action ClearNotificationServerEvent;
 
         public int notificationTimeAttention;
 
@@ -61,10 +70,20 @@ namespace APIControl.Global_Server_Event
             {
                 var events = await APIManager.Instance.GetServerEventList();
                 Debug.Log(LOG_PREFIX + $"Received {events.Count} events from server");
-
+                
+                DateTime currentUtcDate = DateTime.UtcNow;
+                
                 foreach (var serverEvent in events)
                 {
-                    await RegisterEvent(serverEvent);
+                    string dateString = serverEvent.start_date_time;
+        
+                    // Парсинг строки в DateTime
+                    DateTime targetDate = DateTime.Parse(dateString, null, System.Globalization.DateTimeStyles.RoundtripKind);
+                    
+                    if (targetDate>=currentUtcDate)
+                    {
+                        await RegisterEvent(serverEvent);
+                    }
                 }
             }
             catch (Exception ex)
@@ -87,6 +106,10 @@ namespace APIControl.Global_Server_Event
 
             ActiveEvents.Add(serverEvent);
             _eventDictionary.Add(serverEvent.name, serverEvent);
+            currentServerEvent = serverEvent;
+            localEventSaveData.activeServerEvents.Add(serverEvent);
+            localEventSaveData.currentServerEvent = currentServerEvent;
+            await JSONSerializeManager.Instance.JSONSave();
             
             try
             {
@@ -99,7 +122,10 @@ namespace APIControl.Global_Server_Event
             {
                 Debug.LogError(LOG_PREFIX + $"Failed to register event {serverEvent.name}: {ex}");
                 ActiveEvents.Remove(serverEvent);
+                localEventSaveData.activeServerEvents.Remove(serverEvent);
                 _eventDictionary.Remove(serverEvent.name);
+                localEventSaveData.currentServerEvent = null;
+                await JSONSerializeManager.Instance.JSONSave();
                 throw;
             }
         }
@@ -165,20 +191,24 @@ namespace APIControl.Global_Server_Event
 
             foreach (var eventName in toRemove)
             {
-                UnregisterEvent(_eventDictionary[eventName]);
+                await UnregisterEvent(_eventDictionary[eventName]);
             }
         }
 
-        private void UnregisterEvent(ServerEvent serverEvent)
+        private async Task UnregisterEvent(ServerEvent serverEvent)
         {
             Debug.Log(LOG_PREFIX + $"Unregistering event: {serverEvent.name}");
             
             ActiveEvents.Remove(serverEvent);
             _eventDictionary.Remove(serverEvent.name);
+            localEventSaveData.activeServerEvents.Remove(serverEvent);
+            localEventSaveData.currentServerEvent = null;
+            await JSONSerializeManager.Instance.JSONSave();
             
             try
             {
                 OnEventRemoved?.Invoke(serverEvent);
+                ClearNotificationServerEvent?.Invoke();
                 serverEvent.OnEventEnd?.Invoke();
                 Debug.Log(LOG_PREFIX + $"Successfully unregistered event: {serverEvent.name}");
             }
@@ -188,7 +218,7 @@ namespace APIControl.Global_Server_Event
             }
         }
 
-        private void UpdateEvent(ServerEvent existing, ServerEvent updated)
+        private async Task UpdateEvent(ServerEvent existing, ServerEvent updated)
         {
             Debug.Log(LOG_PREFIX + $"Updating event {existing.name}. " +
                      $"Old duration: {existing.duration_in_minutes}min, " +
@@ -197,6 +227,12 @@ namespace APIControl.Global_Server_Event
             existing.text = updated.text;
             existing.duration_in_minutes = updated.duration_in_minutes;
             existing.start_date_time = updated.start_date_time;
+
+            localEventSaveData.currentServerEvent.text = updated.text;
+            localEventSaveData.currentServerEvent.duration_in_minutes = updated.duration_in_minutes;
+            localEventSaveData.currentServerEvent.start_date_time = updated.start_date_time;
+            
+            await JSONSerializeManager.Instance.JSONSave();
             
             try
             {
@@ -258,7 +294,7 @@ namespace APIControl.Global_Server_Event
                 // End event
                 Debug.Log(LOG_PREFIX + $"Ending event: {serverEvent.name}");
                 serverEvent.OnEventEnd?.Invoke();
-                UnregisterEvent(serverEvent);
+                await UnregisterEvent(serverEvent);
             }
             catch (OperationCanceledException)
             {
@@ -267,7 +303,7 @@ namespace APIControl.Global_Server_Event
             catch (Exception ex)
             {
                 Debug.LogError(LOG_PREFIX + $"Error monitoring event {serverEvent.name}: {ex}");
-                UnregisterEvent(serverEvent);
+                await UnregisterEvent(serverEvent);
             }
         }
 
