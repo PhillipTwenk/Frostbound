@@ -1511,7 +1511,6 @@ MonoBehaviour:
   uiListForQuestTransform: {fileID: 1156989810859222030}
   AllUIQuestPanels:
   - {fileID: 1156989810859222032}
-  - {fileID: 1801071195}
   NameOfObjective: {fileID: 1564173736}
   DescriptionOfObjective: {fileID: 104378428}
   IsCompletedObjective: {fileID: 1704231844}
@@ -1543,14 +1542,16 @@ MonoBehaviour:
   _screenResolutionControl: {fileID: 462131446}
   CurrentConstNumberOfNewWorkersAfterCalling: 1
   CallingWorkerText: {fileID: 5982111176469237004}
-  timeNotificationServerEventPanel: 6
   panelGlobalEventImage: {fileID: 1581956804}
   panelGlobalEventName: {fileID: 1581956803}
   panelGlobalEventDescription: {fileID: 1581956802}
-  allEventNames:
-  - "\u0421\u043D\u0435\u0436\u043D\u0430\u044F \u0431\u0443\u0440\u044F"
-  allEventImages:
-  - {fileID: 21300000, guid: 0bfd70e3f2ffb3649aa6d94fbf0e47a6, type: 3}
+  textTitleNoneEventPanel: "\u041A\u0430\u0442\u0430\u043A\u043B\u0438\u0437\u043C\u043E\u0432
+    \u043D\u0435\u0442"
+  textDescriptionNoneEventPanel: "\u041C\u043E\u0436\u0435\u0442\u0435 \u0441\u043F\u0430\u0442\u044C
+    \u0441\u043F\u043E\u043A\u043E\u0439\u043D\u043E"
+  textNotificationOpenGlobalEventPanel: "\u041F\u0440\u0438\u0431\u043B\u0438\u0436\u0430\u0435\u0442\u0441\u044F
+    \u043A\u0430\u0442\u0430\u043A\u043B\u0438\u0437\u043C: "
+  spriteNoneEventPanel: {fileID: 21300000, guid: 2b13b706006993747ac6c8c0ecf779e2, type: 3}
 --- !u!114 &462131445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8261,11 +8262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1588888008 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4250252436800177844, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
-  m_PrefabInstance: {fileID: 1156989810859222029}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1704231844 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1799880131713553601, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
@@ -8282,21 +8278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1776928149 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4945935217676225699, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
-  m_PrefabInstance: {fileID: 1156989810859222029}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1776928150 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4042791102175208243, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
-  m_PrefabInstance: {fileID: 1156989810859222029}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1801071195 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2616916315262774610, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
-  m_PrefabInstance: {fileID: 1156989810859222029}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1803179635
 GameObject:
   m_ObjectHideFlags: 0
@@ -11990,7 +11971,7 @@ PrefabInstance:
     - target: {fileID: 6467650554405601110, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1588888008}
+      objectReference: {fileID: 0}
     - target: {fileID: 6467650554405601110, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Objective, Assembly-CSharp
@@ -12162,7 +12143,7 @@ PrefabInstance:
     - target: {fileID: 6661571867556103794, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1776928150}
+      objectReference: {fileID: 0}
     - target: {fileID: 6661571867556103794, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Objective, Assembly-CSharp
@@ -12358,7 +12339,7 @@ PrefabInstance:
     - target: {fileID: 9204857607873073249, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1776928149}
+      objectReference: {fileID: 0}
     - target: {fileID: 9204857607873073249, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Objective, Assembly-CSharp

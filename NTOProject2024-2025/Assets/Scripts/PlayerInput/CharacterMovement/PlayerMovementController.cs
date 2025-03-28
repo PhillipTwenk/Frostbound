@@ -2,6 +2,7 @@ using System;
 using Dialogues;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
+using GlobalEvents.Cataclysm_Services;
 using UI.UIManagers;
 using UnityEngine;
 using UnityEngine.AI;
@@ -96,6 +97,35 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
         OutlineRotate.SetActive(false);
 
         unitType = UnitType.Player;
+    }
+    
+    private void OnEnable()
+    {
+        SnowBlizzardGEService.ChangeParametersSnowBlizzardGeEvent += ChangeSpeedUnit;
+        SnowBlizzardGEService.RevertParametersSnowBlizzardGeEvent += RevertSpedUnit;
+    }
+    private void OnDisable()
+    {
+        if (isSelected)
+        {
+            GeneralWorkersControl.SelectedUnit = null;
+            UIManager.CancelLastOpenPanelEvent -= GeneralWorkersControl.Instance.ResetSelectedUnit;
+        }
+
+        SnowBlizzardGEService.ChangeParametersSnowBlizzardGeEvent -= ChangeSpeedUnit;
+        SnowBlizzardGEService.RevertParametersSnowBlizzardGeEvent -= RevertSpedUnit;
+    }
+
+    public void ChangeSpeedUnit()
+    {
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.speed -= agent.speed * 0.33f;
+    }
+
+    public void RevertSpedUnit()
+    {
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.speed += agent.speed * 0.33f;
     }
     
     public void InitializePlayer()
@@ -224,15 +254,5 @@ public class PlayerMovementController : MonoBehaviour, IUnitMovement
             anim.SetBool("Running", false);
             anim.SetBool("Idle", true);
         } 
-    }
-    
-    
-    private void OnDisable()
-    {
-        if (isSelected)
-        {
-            GeneralWorkersControl.SelectedUnit = null;
-            UIManager.CancelLastOpenPanelEvent -= GeneralWorkersControl.Instance.ResetSelectedUnit;
-        }
     }
 }

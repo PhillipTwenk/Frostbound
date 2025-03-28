@@ -1234,6 +1234,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fa7efdb6c72c734988967f566439e54, type: 3}
+--- !u!1 &32708720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 32708721}
+  m_Layer: 0
+  m_Name: Cataclysm Services
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &32708721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32708720}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2112120525}
+  - {fileID: 61256127}
+  m_Father: {fileID: 722851218}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &35901111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 530688920037384504, guid: 4fa7efdb6c72c734988967f566439e54, type: 3}
@@ -1312,6 +1345,153 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fa7efdb6c72c734988967f566439e54, type: 3}
+--- !u!1 &61256126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61256127}
+  - component: {fileID: 61256128}
+  m_Layer: 0
+  m_Name: DroneCrash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &61256127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61256126}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 32708721}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &61256128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61256126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc24a34931dc80047946f9a1b4d39edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neededEventType: 1
+  activateVisual:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2837365862954454695}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1448953274237338387}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1205178773702070865}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7651812503634576138}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  deactivateVisual:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2837365862954454695}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1448953274237338387}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1205178773702070865}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7651812503634576138}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &70661786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 530688920037384504, guid: 4fa7efdb6c72c734988967f566439e54, type: 3}
@@ -17034,6 +17214,7 @@ Transform:
   - {fileID: 1095738374}
   - {fileID: 1148405832}
   - {fileID: 1138777663}
+  - {fileID: 32708721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &729645000
@@ -33345,7 +33526,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1420219151}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
@@ -33373,6 +33574,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 804912926}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 804912926}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -33382,7 +33587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
@@ -33390,7 +33595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -33407,7 +33612,7 @@ PrefabInstance:
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1403850355}
+      objectReference: {fileID: 804912926}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -33415,11 +33620,31 @@ PrefabInstance:
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 804912926}
+      objectReference: {fileID: 1403850357}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
       objectReference: {fileID: 804912926}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -33454,7 +33679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetActive
+      value: SetTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
@@ -33462,11 +33687,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: SetTrigger
+      value: Stop
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
       value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.VFX.VisualEffect, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -33478,7 +33723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Animator, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
@@ -33486,11 +33731,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.Animator, UnityEngine
+      value: UnityEngine.VFX.VisualEffect, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
       value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
+      value: IsSnowUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_StringArgument
+      value: IsSnowUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_StringArgument
+      value: IsSnowUp
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -33502,7 +33759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
@@ -33517,12 +33774,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
-      propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_StringArgument
+      propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
       value: IsSnowDown
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_StringArgument
-      value: IsSnowUp
+      value: IsSnowDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
+      propertyPath: activateVisual.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2819741114623327495, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
       propertyPath: deactivateVisual.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -33552,7 +33821,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2325566436392572719, guid: 9e709f7c92d8b8744a1b9a67e07d0125, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -70168,6 +70438,177 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104668073}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2112120524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2112120525}
+  - component: {fileID: 2112120526}
+  m_Layer: 0
+  m_Name: SnowBlizzard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2112120525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112120524}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 32708721}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2112120526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112120524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217a3dee481fb4744a5b789d76f6c0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neededEventType: 0
+  activateVisual:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2837365862954454695}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 318802151}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1403850355}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1403850357}
+        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: IsSnowUp
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 804912924}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 804912926}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: IsSnowUp
+          m_BoolArgument: 1
+        m_CallState: 2
+  deactivateVisual:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2837365862954454695}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 318802151}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 804912926}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: IsSnowDown
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1403850357}
+        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &2112203743
 GameObject:
   m_ObjectHideFlags: 0
@@ -73414,6 +73855,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8980e14acc5deb41930f1b84bdf1a88, type: 3}
+--- !u!1 &1205178773702070865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8443863309883573352, guid: f8980e14acc5deb41930f1b84bdf1a88, type: 3}
+  m_PrefabInstance: {fileID: 1205178773702070864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1205548035313879170
 Transform:
   m_ObjectHideFlags: 0
@@ -82916,6 +83362,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50bc9824c432a04d96db615ec264f40, type: 3}
+--- !u!1 &7651812503634576138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8191850918260411118, guid: e50bc9824c432a04d96db615ec264f40, type: 3}
+  m_PrefabInstance: {fileID: 7651812503634576137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!108 &7669237310466090396
 Light:
   m_ObjectHideFlags: 0

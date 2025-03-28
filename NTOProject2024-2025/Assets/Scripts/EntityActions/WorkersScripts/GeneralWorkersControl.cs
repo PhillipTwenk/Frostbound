@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dialogues;
 using EntityActions.Movement_Control;
+using GlobalEvents.Cataclysm_Services;
 using UI.UIManagers;
 using Unitilities;
 using UnityEngine;
@@ -106,17 +107,21 @@ namespace EntityActions.WorkersScripts
                         if (DroneTypes.Contains(SelectedUnit.ThisUnitType))
                         {
                             DroneMovementController droneMovementController = SelectedUnit as DroneMovementController;
-                            if (droneMovementController != null && !droneMovementController.CheckForNonGroundObjects())
+                            if (!droneMovementController.IsDronesFullStopOperation)
                             {
-                                droneMovementController.StartLanding(); // Начало посадки дрона
-                                ResetSelectedUnit();
-                                return;
+                                if (droneMovementController != null && !droneMovementController.CheckForNonGroundObjects())
+                                {
+                                    droneMovementController.StartLanding(); // Начало посадки дрона
+                                    ResetSelectedUnit();
+                                    return;
+                                }
+                                
+                                if(droneMovementController != null && droneMovementController.CheckForNonGroundObjects())
+                                {
+                                    return;
+                                }
                             }
                             
-                            if(droneMovementController != null && droneMovementController.CheckForNonGroundObjects())
-                            {
-                                return;
-                            }
                         }
                         ResetSelectedUnit();
                         return;

@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using APIControl.Global_Server_Event.Secondary_Scripts;
+using GlobalEvents.Cataclysm_Services;
 using TMPro;
 using Unitilities;
 using Unity.VisualScripting;
@@ -64,14 +64,14 @@ public class ResourceMiner : MonoBehaviour
 
     private void OnEnable()
     {
-        SnowBlizzardGEControl.ChangeParametersSnowBlizzardGEEvent += DeclineProduction;
-        SnowBlizzardGEControl.RevertParametersSnowBlizzardGEEvent += RevertDeclineProduction;
+        SnowBlizzardGEService.ChangeParametersSnowBlizzardGeEvent += DeclineProduction;
+        SnowBlizzardGEService.RevertParametersSnowBlizzardGeEvent += RevertDeclineProduction;
     }
 
     private void OnDisable()
     {
-        SnowBlizzardGEControl.ChangeParametersSnowBlizzardGEEvent -= DeclineProduction;
-        SnowBlizzardGEControl.RevertParametersSnowBlizzardGEEvent += RevertDeclineProduction;
+        SnowBlizzardGEService.ChangeParametersSnowBlizzardGeEvent -= DeclineProduction;
+        SnowBlizzardGEService.RevertParametersSnowBlizzardGeEvent += RevertDeclineProduction;
     }
 
     private void OnTriggerEnter(Collider other)

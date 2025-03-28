@@ -24,6 +24,39 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/Events/Base Snow.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/Events/Base Snow.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Animation/Events/SbowUP.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Animation/Events/SbowUP.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Drones/[Drone] - Main Drone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AllyUnits/Drones/[Drone] - Main Drone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Global event/Global Server Events Panel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Global event/Global Server Events Panel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Global event/Notification Server Events s.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Global event/Notification Server Events s.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/UI/[Berlogaforming] - UI Item.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/UI/[Berlogaforming] - UI Item.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/FlyingAroundThePointsGEQ.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/FlyingAroundThePointsGEQ.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/Objectives.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/Objectives/[FlyingAroundThePointsGEQ] - Obj1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/Objectives/[FlyingAroundThePointsGEQ] - Obj1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/Objectives/[FlyingAroundThePointsGEQ] - Obj2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/Objectives/[FlyingAroundThePointsGEQ] - Obj2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/Objectives/[FlyingAroundThePointsGEQ] - Obj3.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/Objectives/[FlyingAroundThePointsGEQ] - Obj3.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/UI/[FlyingAroundThePointsGEQ] - UI Item.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/FlyingAroundThePointsGEQ/UI/[FlyingAroundThePointsGEQ] - UI Item.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/GlobalServerEventsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/GlobalServerEventsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Secondary Scripts/SnowBlizzardGEControl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Secondary Scripts/SnowBlizzardGEControl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +78,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/3f/595b4688/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8a522b806eac9bb894e6e4c5fe87f353457535e769447e79c6b396beecb5d0/System.Threading.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/StateMachineBehaviour Scripts/DownStateMachineControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/StateMachineBehaviour Scripts/UpStateMachineControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Buildings/Building.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,7 +102,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/APIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/GlobalServerEventsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Local Save/LocalEventSaveData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/Global Server Event/Secondary Scripts/SnowBlizzardGEControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/HTTPRequests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/InternetMonitor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/APIControl/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,6 +137,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/WorkerMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/Workers in Buildings/BuildingUpdateLimitService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryPointMainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GlobalEvents/Cataclysm Services/DroneCrashGlobalEventService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GlobalEvents/Cataclysm Services/Secondary/DroneChangeVisualListener.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GlobalEvents/Cataclysm Services/SnowBlizzardGEService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GlobalEvents/Cataclysm Services/interfaces/ICataclysmService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Optimization/VisualEffectCulling.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/PlayerMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInput/PlayerSaveDataController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -377,6 +414,7 @@
       <workItem from="1743011532494" duration="13289000" />
       <workItem from="1743052779137" duration="24560000" />
       <workItem from="1743086975313" duration="1249000" />
+      <workItem from="1743110105884" duration="15019000" />
     </task>
     <servers />
   </component>

@@ -272,7 +272,6 @@ namespace APIControl.Global_Server_Event
                     if (timeToStart.TotalMinutes <= notificationTimeAttention && timeToStart.TotalMinutes > 0)
                     {
                         Debug.Log(LOG_PREFIX + $"Event '{serverEvent.name}' starting in {timeToStart:mm\\:ss}");
-                        UIManager.NotificationServerEvent?.Invoke();
                     }
 
                     await Task.Delay(120000, _cts.Token); // Check every 2 minutes

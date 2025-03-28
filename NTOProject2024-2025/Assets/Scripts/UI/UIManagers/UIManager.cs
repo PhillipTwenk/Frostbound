@@ -4,6 +4,7 @@ using System.Linq;
 using APIControl.Global_Server_Event;
 using Dialogues;
 using EntityActions.WorkersScripts;
+using GlobalEvents;
 using RTS_Cam;
 using TMPro;
 using Unitilities;
@@ -29,11 +30,6 @@ namespace UI.UIManagers
         /// Вызывается при подтвержднном вызове нового рабочего из космопорта
         /// </summary>
         public static event Action<int> CallingNewWorkerEvent;
-
-        /// <summary>
-        /// При появлении уведомления 
-        /// </summary>
-        public static Action NotificationServerEvent;
 
         #endregion
     
@@ -102,13 +98,16 @@ namespace UI.UIManagers
         public int CurrentConstNumberOfNewWorkersAfterCalling;
         public TextMeshProUGUI CallingWorkerText;
 
-        [Header("Server Global Events")] 
-        public int timeNotificationServerEventPanel;
+        [Header("Global Events")] 
         public Image panelGlobalEventImage;
         public TextMeshProUGUI panelGlobalEventName;
         public TextMeshProUGUI panelGlobalEventDescription;
-        public List<string> allEventNames = new List<string>();
-        public List<Sprite> allEventImages = new List<Sprite>();
+        [TextArea] public string textTitleNoneEventPanel;
+        [TextArea] public string textDescriptionNoneEventPanel;
+        [TextArea] public string textNotificationOpenGlobalEventPanel;
+        public Sprite spriteNoneEventPanel;
+        
+        
 
 
         public bool PossibilityZoomCamera
@@ -140,20 +139,25 @@ namespace UI.UIManagers
         private void OnEnable()
         {
             HTTPRequests.FailedRequestLimitExceededEvent += FailedRequestLimitExceededUI;
+            
             QuestController.OnStartNewQuest += AddNewQuestItemInQuestPanel;
-            NotificationServerEvent += ShowNotificationPanel;
-            GlobalServerEventsManager.OnPanelGlobalServerEventsOpened += CurrentGlobalEventPanelInitialize;
-            GlobalServerEventsManager.ClearNotificationServerEvent += CurrentGlobalEventPanelClear;
+            
+            GlobalEventsManager.OnNotificationPanelActive += ShowNotificationPanel;
+            GlobalEventsManager.OnNewEventStarted += CurrentGlobalEventPanelInitialize;
+            GlobalEventsManager.OnNewEventEnded += CurrentGlobalEventPanelClear;
         }
 
         private void OnDisable()
         {
             HTTPRequests.FailedRequestLimitExceededEvent -= FailedRequestLimitExceededUI;
+            
             QuestController.OnStartNewQuest -= AddNewQuestItemInQuestPanel;
             QuestController.OnInitializationQuests -= InitializationQuestPanel;
-            NotificationServerEvent -= ShowNotificationPanel;
-            GlobalServerEventsManager.OnPanelGlobalServerEventsOpened -= CurrentGlobalEventPanelInitialize;
-            GlobalServerEventsManager.ClearNotificationServerEvent -= CurrentGlobalEventPanelClear;
+            
+            GlobalEventsManager.OnNotificationPanelActive -= ShowNotificationPanel;
+            GlobalEventsManager.OnNewEventStarted -= CurrentGlobalEventPanelInitialize;
+            GlobalEventsManager.OnNewEventEnded -= CurrentGlobalEventPanelClear;
+            
             UnsubscribeAllCancelLastOpenPanelEvent();
         }
 
@@ -591,7 +595,6 @@ namespace UI.UIManagers
         /// </summary>
         public void OpenGlobalServerEventsPanel()
         {
-            GlobalServerEventsManager.OnPanelGlobalServerEventsOpened?.Invoke(GlobalServerEventsManager.currentServerEvent);
             OpenGlobalServerEventsPanelEvent.TriggerEvent();
             RTS_Camera.possibilityZoomCamera = false;
             CancelLastOpenPanelEvent += CloseGlobalServerEventsPanel;
@@ -610,37 +613,34 @@ namespace UI.UIManagers
         /// <summary>
         /// Показывает панель уведомления на определенное время 
         /// </summary>
-        public void ShowNotificationPanel()
+        public void ShowNotificationPanel(GlobalEvent globalEvent)
         {
             ShowNotificationsPanelEvent.TriggerEvent();
-
-            Utility.Invoke(this, () =>
-            {
-                HideNotificationsPanelEvent.TriggerEvent();
-            }, timeNotificationServerEventPanel);
-
+            Sprite currenImage = globalEvent.sprite;
+            panelGlobalEventImage.sprite = currenImage;
+            panelGlobalEventName.text = textNotificationOpenGlobalEventPanel + globalEvent.name;
+            panelGlobalEventDescription.text = globalEvent.notifiationDescription;
         }
 
         /// <summary>
         /// Инициаизация панели 
         /// </summary>
-        public void CurrentGlobalEventPanelInitialize(ServerEvent serverEvent)
+        public void CurrentGlobalEventPanelInitialize(GlobalEvent globalEvent)
         {
-            int indexImage = allEventNames.IndexOf(serverEvent.name);
-            Sprite currenImage = allEventImages[indexImage];
+            Sprite currenImage = globalEvent.sprite;
             panelGlobalEventImage.sprite = currenImage;
-            panelGlobalEventName.text = serverEvent.name;
-            panelGlobalEventDescription.text = serverEvent.text;
+            panelGlobalEventName.text = globalEvent.name;
+            panelGlobalEventDescription.text = globalEvent.description;
         }
 
         /// <summary>
         /// Очищение панели 
         /// </summary>
-        public void CurrentGlobalEventPanelClear()
+        public void CurrentGlobalEventPanelClear(GlobalEvent globalEvent)
         {
-            panelGlobalEventImage.sprite = null;
-            panelGlobalEventName.text = String.Empty;
-            panelGlobalEventDescription.text = String.Empty;
+            panelGlobalEventImage.sprite = spriteNoneEventPanel;
+            panelGlobalEventName.text = textTitleNoneEventPanel;
+            panelGlobalEventDescription.text = textDescriptionNoneEventPanel;
         }
 
         #endregion

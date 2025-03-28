@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using APIControl.Global_Server_Event.Secondary_Scripts;
 using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
+using GlobalEvents.Cataclysm_Services;
 using TMPro;
 using UI.UIManagers;
 using Unitilities;
@@ -134,8 +134,8 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
 
     private void OnEnable()
     {
-        SnowBlizzardGEControl.ChangeParametersSnowBlizzardGEEvent += ChangeSpeedUnit;
-        SnowBlizzardGEControl.RevertParametersSnowBlizzardGEEvent += RevertSpedUnit;
+        SnowBlizzardGEService.ChangeParametersSnowBlizzardGeEvent += ChangeSpeedUnit;
+        SnowBlizzardGEService.RevertParametersSnowBlizzardGeEvent += RevertSpedUnit;
     }
     private void OnDisable()
     {
@@ -145,20 +145,20 @@ public class WorkerMovementController : MonoBehaviour, IWorkerUnit
             UIManager.CancelLastOpenPanelEvent -= GeneralWorkersControl.Instance.ResetSelectedUnit;
         }
 
-        SnowBlizzardGEControl.ChangeParametersSnowBlizzardGEEvent -= ChangeSpeedUnit;
-        SnowBlizzardGEControl.RevertParametersSnowBlizzardGEEvent -= RevertSpedUnit;
+        SnowBlizzardGEService.ChangeParametersSnowBlizzardGeEvent -= ChangeSpeedUnit;
+        SnowBlizzardGEService.RevertParametersSnowBlizzardGeEvent -= RevertSpedUnit;
     }
 
     public void ChangeSpeedUnit()
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.speed -= agent.speed * 0.25f;
+        agent.speed -= agent.speed * 0.33f;
     }
 
     public void RevertSpedUnit()
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.speed += agent.speed * 0.25f;
+        agent.speed += agent.speed * 0.33f;
     }
 
     /// <summary>
