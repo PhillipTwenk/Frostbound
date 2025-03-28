@@ -543,6 +543,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
         IsDronesFullStopOperation = true;
         agent.isStopped = true;
         isSelected = false;
+        SelectedBuilding = null;
     }
 
     public void DroneResumeFunctionality()
