@@ -35240,7 +35240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
   BaseSongStartEvent: {fileID: 11400000, guid: e35d6c8714b3bdf4893ff5d794fb2af0, type: 2}
-  tutorialDialogue: {fileID: 11400000, guid: 7be62bd159b978e40bb025a567530291, type: 2}
+  tutorialDialogue: {fileID: 11400000, guid: 2983cf631e4981e4baeeed3855f14fa0, type: 2}
   startGameQuests:
   - {fileID: 1268535701}
 --- !u!4 &1268535700

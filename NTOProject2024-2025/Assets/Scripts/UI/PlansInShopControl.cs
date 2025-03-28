@@ -198,6 +198,11 @@ public class PlansInShopControl : MonoBehaviour
                 DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.BuyHomePlan);
             }
             
+            if (shopResources.Pier.IsPurchased && shopResources.Minner.IsPurchased && shopResources.Storage.IsPurchased && shopResources.Apiary.IsPurchased && shopResources.ResidentialModule.IsPurchased)
+            {
+                DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.BuyAllPlans);
+            }
+            
         }
         else
         {

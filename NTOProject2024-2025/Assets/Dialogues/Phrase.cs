@@ -30,6 +30,7 @@ namespace Dialogues
         OpenCallingWorkersPanel,
         BuyFoodModulePlan,
         BuyHomePlan,
+        BuyAllPlans,
     }
     
     [System.Serializable]
