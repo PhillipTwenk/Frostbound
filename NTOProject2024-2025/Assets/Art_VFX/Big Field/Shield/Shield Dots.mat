@@ -135,10 +135,10 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Low_Emission_Color: {r: 5.2916355, g: 1.489964, b: 0.47425023, a: 0}
-    - _Sota_Color: {r: 7.8433623, g: 18.327538, b: 97.811325, a: 0}
-    - _Sota_Second_Color: {r: 13.388756, g: 7.037678, b: 36.329643, a: 0}
+    - _Low_Emission_Color: {r: 13.766356, g: 3.8761883, b: 1.2337769, a: 0}
+    - _Sota_Color: {r: 61.50443, g: 143.71703, b: 766.9963, a: 0}
+    - _Sota_Second_Color: {r: 282.66516, g: 148.58038, b: 766.9962, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
