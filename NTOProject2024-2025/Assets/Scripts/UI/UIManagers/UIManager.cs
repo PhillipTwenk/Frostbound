@@ -351,16 +351,39 @@ namespace UI.UIManagers
         /// <param name="quests"> Активные квесты </param>
         public void InitializationQuestPanel(List<Quest> quests)
         {
+            if (quests == null)
+            {
+                Debug.LogError("Список квестов равен null");
+                return;
+            }
+
             Debug.Log("Начата инициализация панели квестов");
             List<string> listOfActiveQuests = new List<string>();
             for (int i = 0; i < quests.Count; i++)
             {
-                listOfActiveQuests.Add(quests[i].Name);
+                if (quests[i] != null && !string.IsNullOrEmpty(quests[i].Name))
+                {
+                    listOfActiveQuests.Add(quests[i].Name);
+                }
             }
-        
+
+            if (AllUIQuestPanels == null)
+            {
+                Debug.LogError("AllUIQuestPanels равен null");
+                return;
+            }
+
             for (int i = 0; i < AllUIQuestPanels.Count; i++)
             {
-                string questName = AllUIQuestPanels[i].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text;
+                if (AllUIQuestPanels[i] == null) continue;
+
+                Transform child = AllUIQuestPanels[i].transform.GetChild(0);
+                if (child == null) continue;
+
+                TextMeshProUGUI textComponent = child.gameObject.GetComponent<TextMeshProUGUI>();
+                if (textComponent == null) continue;
+
+                string questName = textComponent.text;
                 if (listOfActiveQuests.Contains(questName))
                 {
                     Debug.Log($"Инициализирован квест: {AllUIQuestPanels[i].name}");

@@ -8,21 +8,25 @@ public class EntryLocationControl : MonoBehaviour
 {
     [SerializeField] private GameEvent UpdateResourcesEvent;
     [SerializeField] private GameEvent BaseSongStartEvent;
+    public GameEvent StartMainGameGameEvent;
 
     public Dialogue tutorialDialogue;
     
     public List<QuestOwner> startGameQuests = new List<QuestOwner>();
 
-    public void InitizilizePLayer()
+    public async void InitizilizePLayer()
     {
         DialogueManager.OnEndTutorial += InitializationQuest;
         UpdateResourcesEvent.TriggerEvent();
 
         PlayerSaveData pLayerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
-        pLayerSaveData.InitializeData();
+        await pLayerSaveData.InitializeData();
+        StartTutorialControl();
         BaseSongStartEvent.TriggerEvent();
         
         LoadingCanvasController.Instance.LoadingCanvasNotTransparent.SetActive(false);
+        
+        Debug.Log("Инициализация игрока закончена");
     }
 
     /// <summary>
@@ -30,23 +34,19 @@ public class EntryLocationControl : MonoBehaviour
     /// </summary>
     public void StartTutorialControl()
     {
-        if (PlayerPrefs.HasKey("TutorialCompleted"))
+        EntityID player = CurrentPlayersDataControl.WhichPlayerCreate;
+
+        Debug.Log($"Состояние туториала у текущего игрока: {player.isTutorialComplete}");
+        if (!player.isTutorialComplete)
         {
-            int isTutorialCompleted = PlayerPrefs.GetInt("TutorialCompleted");
-            if (isTutorialCompleted == 0)
-            {
-                DialogueManager.LaunchDialogue?.Invoke(tutorialDialogue);
-            }
-            else 
-            {
-                InitializationQuest();
-                return;
-            }
+            Debug.Log("Инициализация туториала");
+            DialogueManager.LaunchDialogue?.Invoke(tutorialDialogue);
         }
         else
         {
-            PlayerPrefs.GetInt("TutorialCompleted", 0);
-            DialogueManager.LaunchDialogue?.Invoke(tutorialDialogue);
+            Debug.Log("Инициализация первичных квестов");
+            StartMainGameGameEvent.TriggerEvent();
+            InitializationQuest();
         }
     }
 

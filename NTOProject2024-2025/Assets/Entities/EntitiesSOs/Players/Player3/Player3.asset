@@ -12,14 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ae3d7a2c70f8e45a7c5fd09cbe68af, type: 3}
   m_Name: Player3
   m_EditorClassIdentifier: 
-  Name: None
+  entityName: None
   DefaultName: None
   thisPlayerID: 3
-  speed: 60
-  sprintSpeed: 80
-  normalSpeed: 60
-  speedTurn: 360
-  currentQuest: {fileID: 0}
   openQuests: []
   playerResources:
     Iron: 0
@@ -28,10 +23,6 @@ MonoBehaviour:
     CryoCrystal: 0
   shopResources:
     Apiary:
-      IronPrice: 0
-      CryoCrystalPrice: 0
-      IsPurchased: 0
-    HoneyGun:
       IronPrice: 0
       CryoCrystalPrice: 0
       IsPurchased: 0
@@ -62,10 +53,6 @@ MonoBehaviour:
     CryoCrystal: 0
   DefaultShopResources:
     Apiary:
-      IronPrice: 0
-      CryoCrystalPrice: 0
-      IsPurchased: 0
-    HoneyGun:
       IronPrice: 0
       CryoCrystalPrice: 0
       IsPurchased: 0

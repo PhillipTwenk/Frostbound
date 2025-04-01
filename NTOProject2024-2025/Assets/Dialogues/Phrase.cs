@@ -72,7 +72,7 @@ namespace Dialogues
         DroneDestinationOnBuilding,
         DroneCameToBuilding
     }
-
+    
     [CreateAssetMenu(fileName = "Phrase", menuName = "Dialogues/Phrase")]
     public class Phrase : ScriptableObject
     {

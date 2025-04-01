@@ -66,6 +66,9 @@ namespace Dialogues
         [Header("UnityEvents")]
         public UnityEvent OnStartDialogueUE;
 
+        [Header("Game Events")] 
+        public GameEvent StartMainGameGameEvent;
+
         private void Start()
         {
             // Подписка на события
@@ -105,7 +108,7 @@ namespace Dialogues
             }
         }
 
-        public void StartDialogue(Dialogue dialogue)
+        public async void StartDialogue(Dialogue dialogue)
         {
             DialogueFolder.SetActive(true);
             currentDialogue = dialogue;
@@ -113,7 +116,7 @@ namespace Dialogues
             currentDialogue.isActive = true;
             IsDialogueInProcess = true;
             fadeOverlay.SetActive(false);
-            ProcessCurrentPhrase();
+            await ProcessCurrentPhrase();
         }
 
         private async Task ProcessCurrentPhrase()
@@ -255,7 +258,8 @@ namespace Dialogues
             if (currentDialogue.isTutorial)
             {
                 Time.timeScale = 1f;
-                PlayerPrefs.SetInt("TutorialCompleted", 1);
+                CurrentPlayersDataControl.WhichPlayerCreate.isTutorialComplete = true;
+                StartMainGameGameEvent.TriggerEvent();
             }
         }
 

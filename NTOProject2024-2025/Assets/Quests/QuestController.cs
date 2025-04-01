@@ -26,6 +26,7 @@ public class QuestController : MonoBehaviour
     /// <param name="quest"> Ссылка на квест </param>
     public void ReceiveNewQuest(Quest quest)
     {
+        playerID = CurrentPlayersDataControl.WhichPlayerCreate;
         playerID.openQuests.Add(quest);
         quest.active = true;
         quest.OnQuestCompleted += UIManager.Instance.RemoveQuestItemInQuestPanel;
@@ -40,6 +41,7 @@ public class QuestController : MonoBehaviour
     /// <param name="quest"> Ссылка на квест </param>
     void RemoveCompletedQuest(Quest quest)
     {
+        playerID = CurrentPlayersDataControl.WhichPlayerCreate;
         quest.OnQuestCompleted -= UIManager.Instance.RemoveQuestItemInQuestPanel;
         quest.OnQuestCompleted -= RemoveCompletedQuest;
         playerID.openQuests.Remove(quest);
@@ -51,8 +53,8 @@ public class QuestController : MonoBehaviour
     /// </summary>
     public void QuestInitialize()
     {
-        Debug.Log("Инициализация квестов");
         playerID = CurrentPlayersDataControl.WhichPlayerCreate;
+        Debug.Log("Инициализация квестов");
         for(int i = playerID.openQuests.Count -  1; i>=0; i--)
         {
             Debug.Log($"Проверка квестов: {playerID.openQuests[i].Name}");

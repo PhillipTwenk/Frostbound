@@ -15,10 +15,6 @@ MonoBehaviour:
   entityName: None
   DefaultName: None
   thisPlayerID: 1
-  speed: 60
-  sprintSpeed: 80
-  normalSpeed: 60
-  speedTurn: 360
   openQuests: []
   playerResources:
     Iron: 0
@@ -80,5 +76,5 @@ MonoBehaviour:
       IronPrice: 0
       CryoCrystalPrice: 0
       IsPurchased: 0
-  _playerSaveData: {fileID: 0}
-  DefaultPlayerSaveData: {fileID: 0}
+  _playerSaveData: {fileID: 11400000, guid: c830670e2d972f446b66a992c2da4028, type: 2}
+  DefaultPlayerSaveData: {fileID: 11400000, guid: 9093827f22e00ff4fbd12a55537b95df, type: 2}

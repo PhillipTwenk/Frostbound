@@ -454,6 +454,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  StartMainGameGameEvent: {fileID: 11400000, guid: aa214a62dbb9e184f86cf7a9263c9ed2, type: 2}
 --- !u!1 &210821146
 GameObject:
   m_ObjectHideFlags: 0
@@ -12351,6 +12352,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1665882442775514883, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
+    - {fileID: 2349930169324932868, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc609d53fd66bdc4d8f6540fbfc5aa96, type: 3}

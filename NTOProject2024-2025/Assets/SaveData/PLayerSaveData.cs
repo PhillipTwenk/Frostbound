@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EntityActions.Movement_Control;
 using EntityActions.WorkersScripts;
 using UnityEngine;
@@ -105,7 +106,7 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
     /// <summary>
     /// Инициализирует все построеные здания в игре
     /// </summary>
-    public async void InitializeData()
+    public async Task InitializeData()
     {
         #region Инициализация зданий
 
@@ -250,6 +251,8 @@ public class PlayerSaveData : ScriptableObject, ISerializableSO
         await BuildingManager.Instance._navMeshSurfaceDrone.UpdateNavMesh(BuildingManager.Instance._navMeshSurfaceDrone.navMeshData);
         
         endOfInitializationDataEvent.TriggerEvent();
+        
+        Debug.Log("Инициализация игровых данных закончена");
     }
 
     /// <summary>

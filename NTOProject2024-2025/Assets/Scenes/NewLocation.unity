@@ -4903,7 +4903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba85f40f6b88c748ba57a92502c16aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neededEventName: Test1
 --- !u!1001 &235890316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9055,6 +9054,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   DroneTypes: 03000000
+  CloseDescriptionPanel: {fileID: 11400000, guid: 5255cdbbd281afe4ea91f82e3023f045, type: 2}
 --- !u!43 &428192745
 Mesh:
   m_ObjectHideFlags: 0
@@ -20166,7 +20166,7 @@ MonoBehaviour:
   followingSpeed: 5
   rotationSped: 3
   panningSpeed: 10
-  mouseRotationSpeed: 100
+  mouseRotationSpeed: 200
   autoHeight: 0
   groundMask:
     serializedVersion: 2
@@ -20203,7 +20203,7 @@ MonoBehaviour:
   useKeyboardRotation: 1
   rotateRightKey: 120
   rotateLeftKey: 122
-  useMouseRotation: 0
+  useMouseRotation: 1
   mouseRotationKey: 324
 --- !u!4 &800638974
 Transform:
@@ -35240,7 +35240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpdateResourcesEvent: {fileID: 11400000, guid: 53fed06d4f29ac3488027e3e6e2e6638, type: 2}
   BaseSongStartEvent: {fileID: 11400000, guid: e35d6c8714b3bdf4893ff5d794fb2af0, type: 2}
-  tutorialDialogue: {fileID: 11400000, guid: 2983cf631e4981e4baeeed3855f14fa0, type: 2}
+  StartMainGameGameEvent: {fileID: 11400000, guid: aa214a62dbb9e184f86cf7a9263c9ed2, type: 2}
+  tutorialDialogue: {fileID: 11400000, guid: 7be62bd159b978e40bb025a567530291, type: 2}
   startGameQuests:
   - {fileID: 1268535701}
 --- !u!4 &1268535700
@@ -35278,7 +35279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268535697}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
   m_Name: 
@@ -54439,6 +54440,7 @@ GameObject:
   - component: {fileID: 1694935298}
   - component: {fileID: 1694935297}
   - component: {fileID: 1694935296}
+  - component: {fileID: 1694935301}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -54675,6 +54677,34 @@ Transform:
   - {fileID: 62096}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1694935301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694935295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5255cdbbd281afe4ea91f82e3023f045, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1694935297}
+        m_TargetAssemblyTypeName: UI.DescriptionPanelController, Assembly-CSharp
+        m_MethodName: HideDescriptionPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1699231246
 PrefabInstance:
   m_ObjectHideFlags: 0

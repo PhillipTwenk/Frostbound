@@ -16,11 +16,8 @@ namespace UI
 
         [Header("Events")]
         public static Action OnMobileBaseUpgrade;
-    
-    
-    
-    
-    
+        
+        [Header("Info")]
         [SerializeField] private TextMeshProUGUI Title;
         [SerializeField] private TextMeshProUGUI Level;
         [SerializeField] private TextMeshProUGUI Durability;

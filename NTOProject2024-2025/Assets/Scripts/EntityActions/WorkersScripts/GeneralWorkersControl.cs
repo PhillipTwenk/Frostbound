@@ -58,6 +58,9 @@ namespace EntityActions.WorkersScripts
         [SerializeField] private List<UnitType> DroneTypes;
 
         [Header("Food")] public static int CurrentFoodConsumptionByWorkers = 20;
+        
+        [Header("Game Events")] 
+        public GameEvent CloseDescriptionPanel;
 
 
         #region Инициализация
@@ -148,6 +151,8 @@ namespace EntityActions.WorkersScripts
                     selectedUnit.OnUnitSelected?.Invoke();
                     
                     UIManager.CancelLastOpenPanelEvent += ResetSelectedUnit;
+                    
+                    CloseDescriptionPanel.TriggerEvent();
                     return;
                 }
             }

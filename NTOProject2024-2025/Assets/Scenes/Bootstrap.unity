@@ -818,6 +818,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c830670e2d972f446b66a992c2da4028, type: 2}
   - {fileID: 11400000, guid: 70832cd75e7eb8642918827c39cad79a, type: 2}
   - {fileID: 11400000, guid: 7a32648b7e2733242b500ac38a3c4a14, type: 2}
+  - {fileID: 11400000, guid: 9093827f22e00ff4fbd12a55537b95df, type: 2}
   questsScriptableObjects:
   - {fileID: 11400000, guid: 5733c5c4eaf53024d82fa5f4737efc2c, type: 2}
   objectivesScriptableObjects:
@@ -825,25 +826,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab4ebb17552bb684f962a57aa558f4e8, type: 2}
   - {fileID: 11400000, guid: 632bb29da5220dd44adeb428f8d22f64, type: 2}
   dialoguesScriptableObjects:
+  - {fileID: 11400000, guid: 7be62bd159b978e40bb025a567530291, type: 2}
   - {fileID: 11400000, guid: 924e481643c93f744bc9db4a0ed28b9b, type: 2}
   - {fileID: 11400000, guid: ac2383e726cce2a46a652b8630d81e98, type: 2}
   - {fileID: 11400000, guid: c8482e91e9dff2a43af7fecd321a0455, type: 2}
-  phrasesScriptableObjects:
-  - {fileID: 11400000, guid: 8a796dbd3d041f347a62d6b99c0dc487, type: 2}
-  - {fileID: 11400000, guid: 2246cfc4613bc7e458dab364a0217891, type: 2}
-  - {fileID: 11400000, guid: 9776a9d91e684db478663e91b0f8f8db, type: 2}
-  - {fileID: 11400000, guid: 2a5c621c6af69824da46484bde3c0952, type: 2}
-  - {fileID: 11400000, guid: 06745a5105d6baa46925fa768106b2b0, type: 2}
-  - {fileID: 11400000, guid: 79c4e25efc11c084cbe957d85c306b0b, type: 2}
-  - {fileID: 11400000, guid: beca98fe01cd75949bdb66882c5d62b0, type: 2}
-  - {fileID: 11400000, guid: 2e2e0e5cb5daae744a6766547acb0e17, type: 2}
-  - {fileID: 11400000, guid: 50eec04d0e4dd1142bed9d2581d5ffa9, type: 2}
-  - {fileID: 11400000, guid: 6c96455666fb7d24abb1476b86276897, type: 2}
-  - {fileID: 11400000, guid: 50806e7f3d862e043bc8bdde04c355dc, type: 2}
-  - {fileID: 11400000, guid: 5cc154f28923cd24183657a237f8647b, type: 2}
-  - {fileID: 11400000, guid: 1db9d94658e33f742b5e3525cd961f3e, type: 2}
-  - {fileID: 11400000, guid: 89c785581fa0a164b906db4487f4ea01, type: 2}
-  - {fileID: 11400000, guid: a74e71da0bb6bc342b327673c4f4276f, type: 2}
   localEventSaveData: {fileID: 11400000, guid: eb32a67e3c07b7948b249b0bf796a896, type: 2}
 --- !u!1 &2147065575
 GameObject:
