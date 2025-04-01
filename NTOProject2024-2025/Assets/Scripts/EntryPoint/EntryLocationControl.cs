@@ -8,51 +8,52 @@ public class EntryLocationControl : MonoBehaviour
 {
     [SerializeField] private GameEvent UpdateResourcesEvent;
     [SerializeField] private GameEvent BaseSongStartEvent;
+    public GameEvent StartMainGameGameEvent;
 
     public Dialogue tutorialDialogue;
     
     public List<QuestOwner> startGameQuests = new List<QuestOwner>();
 
-    public void InitizilizePLayer()
+    public async void InitizilizePLayer()
     {
-        DialogueManager.OnEndTutorial += InitializatonQuest;
+        DialogueManager.OnEndTutorial += InitializationQuest;
         UpdateResourcesEvent.TriggerEvent();
 
         PlayerSaveData pLayerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
-        pLayerSaveData.InitializeData();
+        await pLayerSaveData.InitializeData();
+        StartTutorialControl();
         BaseSongStartEvent.TriggerEvent();
         
         LoadingCanvasController.Instance.LoadingCanvasNotTransparent.SetActive(false);
-
-        StartTutorialControl();
+        
+        Debug.Log("Инициализация игрока закончена");
     }
 
-    private void StartTutorialControl()
+    /// <summary>
+    /// Завршен ли туториал, если нет или не был начат, запускаем заново
+    /// </summary>
+    public void StartTutorialControl()
     {
-        if (PlayerPrefs.HasKey("TutorialCompleted"))
+        EntityID player = CurrentPlayersDataControl.WhichPlayerCreate;
+
+        Debug.Log($"Состояние туториала у текущего игрока: {player.isTutorialComplete}");
+        if (!player.isTutorialComplete)
         {
-            int isTutorialCompleted = PlayerPrefs.GetInt("TutorialCompleted");
-            if (isTutorialCompleted == 0 )
-            {
-                DialogueManager.LaunchDialogue?.Invoke(tutorialDialogue);
-            }
-            else
-            {
-                InitializatonQuest();
-                return;
-            }
+            Debug.Log("Инициализация туториала");
+            DialogueManager.LaunchDialogue?.Invoke(tutorialDialogue);
         }
         else
         {
-            PlayerPrefs.GetInt("TutorialCompleted", 0);
-            DialogueManager.LaunchDialogue?.Invoke(tutorialDialogue);
+            Debug.Log("Инициализация первичных квестов");
+            StartMainGameGameEvent.TriggerEvent();
+            InitializationQuest();
         }
     }
 
     /// <summary>
     /// Инициализация первых квестов
     /// </summary>
-    private void InitializatonQuest()
+    public void InitializationQuest()
     {
         foreach (QuestOwner questOwner in startGameQuests)
         {
@@ -62,6 +63,6 @@ public class EntryLocationControl : MonoBehaviour
 
     private void OnDestroy()
     {
-        DialogueManager.OnEndTutorial -= InitializatonQuest;
+        DialogueManager.OnEndTutorial -= InitializationQuest;
     }
 }

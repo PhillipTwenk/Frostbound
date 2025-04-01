@@ -337,7 +337,7 @@ GameObject:
   m_Layer: 0
   m_Name: HTTPRequestsManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -410,8 +410,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7148232345679735708, guid: f7cacf93dfd093e4580b39a37e819a22, type: 2}
-  m_audioClip: {fileID: 8300000, guid: baa38fd1dab6eb44885fe326b1acb187, type: 3}
-  m_Resource: {fileID: 8300000, guid: baa38fd1dab6eb44885fe326b1acb187, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 82fcd3576e19b2741820b72562697a1c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 82fcd3576e19b2741820b72562697a1c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.731
   m_Pitch: 1
@@ -719,7 +719,7 @@ GameObject:
   m_Layer: 0
   m_Name: InternetConnectionCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -876,13 +876,12 @@ GameObject:
   m_Component:
   - component: {fileID: 419695267}
   - component: {fileID: 419695268}
-  - component: {fileID: 419695271}
   - component: {fileID: 419695270}
   - component: {fileID: 419695269}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -914,7 +913,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndMoveToSceneLocationEvent: {fileID: 11400000, guid: a9b84c69e3adf7d479b6c7ff086bc6a8, type: 2}
-  StartTutorial: {fileID: 11400000, guid: 8e421e349be70094c9bd4b8cb43da81c, type: 2}
   MainLocationSceneName: NewLocation
   MainMenuSceneName: MainMenu
   UISceneName: UI
@@ -977,34 +975,6 @@ MonoBehaviour:
       - m_Target: {fileID: 419695268}
         m_TargetAssemblyTypeName: SceneTransitionManager, Assembly-CSharp
         m_MethodName: MoveToSceneLocation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &419695271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419695266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8e421e349be70094c9bd4b8cb43da81c, type: 2}
-  onEventTriggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 419695268}
-        m_TargetAssemblyTypeName: SceneTransitionManager, Assembly-CSharp
-        m_MethodName: NewPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1177,7 +1147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 361.80005, y: -11.399963}
+  m_AnchoredPosition: {x: 361.80005, y: -11.399902}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508299500
@@ -1260,8 +1230,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7148232345679735708, guid: f7cacf93dfd093e4580b39a37e819a22, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3e78a4dae7a3ff6449909141bf7e04f1, type: 3}
-  m_Resource: {fileID: 8300000, guid: 3e78a4dae7a3ff6449909141bf7e04f1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0747ba435be6bf146896daffc3eeefcd, type: 3}
+  m_Resource: {fileID: 8300000, guid: 0747ba435be6bf146896daffc3eeefcd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.67
   m_Pitch: 1
@@ -1797,7 +1767,7 @@ GameObject:
   m_Layer: 0
   m_Name: APIManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1828,6 +1798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925f122516ca35143be2490e62b35f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localEventSaveData: {fileID: 11400000, guid: eb32a67e3c07b7948b249b0bf796a896, type: 2}
 --- !u!1 &1286056753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,6 +1833,112 @@ Transform:
   - {fileID: 150882243}
   m_Father: {fileID: 1539310851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1433488321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1433488322}
+  - component: {fileID: 1433488323}
+  - component: {fileID: 1433488324}
+  m_Layer: 0
+  m_Name: GlobalEventsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1433488322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433488321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433488323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433488321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b3225eb7a97b440b9936805632986b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notificationTimeAttentionSec: 15
+  downAwaitLimitTimeMinutes: 2
+  upAwaitLimitTimeMinutes: 3
+  notificationBeforehandTimeMinutes: 1
+  globalEvents:
+  - name: "\u0421\u043D\u0435\u0436\u043D\u0430\u044F \u0431\u0443\u0440\u044F "
+    description: "\u0421\u043D\u0435\u0436\u043D\u0430\u044F \u0431\u0443\u0440\u044F
+      \u043D\u0430 \u0426\u0435\u0442\u043E\u0441\u0435! \u041C\u0435\u0434\u0432\u0435\u0434\u0438
+      \u0437\u0430\u043C\u0435\u0440\u0437\u0430\u044E\u0442 \u0438 \u0437\u0430\u043C\u0435\u0434\u043B\u044F\u044E\u0442\u0441\u044F,
+      \u0442\u0430\u043A\u0436\u0435 \u043A\u0430\u043A \u0438 \u0448\u0435\u0441\u0442\u0435\u0440\u0435\u043D\u043A\u0438
+      \u0434\u043E\u0431\u044B\u0432\u0430\u044E\u0449\u0438\u0439 \u043C\u043E\u0434\u0443\u043B\u0435\u0439,
+      \u0441\u043D\u0438\u0436\u0435\u043D\u0430 \u0434\u043E\u0431\u044B\u0447\u0430
+      \u0440\u0435\u0441\u0443\u0440\u0441\u043E"
+    notifiationDescription: "\u0421\u043A\u043E\u0440\u043E \u043D\u0430 \u0426\u0435\u0442\u043E\u0441\u0435
+      \u043D\u0430\u0447\u043D\u0435\u0442\u0441\u044F \u043D\u0430\u0441\u0442\u043E\u044F\u0449\u0430\u044F
+      \u0431\u0443\u0440\u044F"
+    durationInMinutes: 1
+    type: 0
+    sprite: {fileID: 21300000, guid: 0bfd70e3f2ffb3649aa6d94fbf0e47a6, type: 3}
+  - name: "\u0410\u0432\u0430\u0440\u0438\u044F \u0434\u0440\u043E\u043D\u043E\u0432"
+    description: "\u0421\u0431\u043E\u0439 \u043F\u0440\u0438 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0438
+      \u0434\u0440\u043E\u043D\u043E\u0432! \u0414\u043E \u043C\u043E\u043C\u0435\u043D\u0442\u0430
+      \u043F\u043E\u0447\u0438\u043D\u043A\u0438 \u0434\u0440\u043E\u043D\u044B \u0430\u0431\u0441\u043E\u043B\u044E\u0442\u043D\u043E
+      \u0434\u0435\u0430\u043A\u0442\u0438\u0432\u0438\u0440\u043E\u0432\u0430\u043D\u044B"
+    notifiationDescription: "\u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u043E\u0442\u043B\u043E\u0432\u0438\u043B\u0430
+      \u043F\u0435\u0440\u0432\u044B\u0435 \u043F\u0440\u0438\u0437\u043D\u0430\u043A\u0438
+      \u043F\u043E\u0442\u0435\u0440\u0438 \u0441\u0438\u0433\u043D\u0430\u043B\u0430
+      \u0434\u0440\u043E\u043D\u043E\u0432. \u0411\u0443\u0434\u044C\u0442\u0435
+      \u0433\u043E\u0442\u043E\u0432\u044B \u043A \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0435
+      \u043B\u043E\u0433\u0438\u0441\u0442\u0438\u043A\u0438"
+    durationInMinutes: 1
+    type: 1
+    sprite: {fileID: 21300000, guid: 362c7ccd224b75345b00607097ae5f48, type: 3}
+--- !u!114 &1433488324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433488321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773d569e9cd2dda4aa8a812a2865713e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: aa214a62dbb9e184f86cf7a9263c9ed2, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1433488323}
+        m_TargetAssemblyTypeName: GlobalEvents.GlobalEventsManager, Assembly-CSharp
+        m_MethodName: Initialize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1539310850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,3 +2473,4 @@ SceneRoots:
   - {fileID: 1252900328}
   - {fileID: 2147065579}
   - {fileID: 2102673413}
+  - {fileID: 1433488322}

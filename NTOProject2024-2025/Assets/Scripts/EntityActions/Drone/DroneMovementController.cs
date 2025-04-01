@@ -4,8 +4,10 @@ using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
+using GlobalEvents.Cataclysm_Services;
 using TMPro;
 using Unitilities;
 using UnityEngine.Events;
@@ -119,6 +121,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
     public bool isTakingOff; 
     public bool isLanding;
     public bool isMovingToLandingSpot;
+    public bool IsDronesFullStopOperation; // Для катаклизмов
     
     [Header("Visual")]
     public GameObject outlineRotate;
@@ -192,6 +195,18 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
             DialogueManager.OnUnitMoved?.Invoke(ActionTypeMoveUnit.SelectDrone);
         };
     }
+    
+    private void OnEnable()
+    {
+        DroneCrashGlobalEventService.OnDroneBroke += DroneAbsolutelyStopOperation;
+        DroneCrashGlobalEventService.RevertDroneBroke += DroneResumeFunctionality;
+    }
+
+    private void OnDisable()
+    {
+        DroneCrashGlobalEventService.OnDroneBroke -= DroneAbsolutelyStopOperation;
+        DroneCrashGlobalEventService.RevertDroneBroke -= DroneResumeFunctionality;
+    }
 
     #endregion
 
@@ -199,7 +214,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
 
     void Update()
     {
-        if (isFlyNow)
+        if (isFlyNow && !IsDronesFullStopOperation)
         {
             MovementHandler();
         }
@@ -520,7 +535,25 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
     }
 
     #endregion
+    
+    #region Катаклизмы
 
+    public void DroneAbsolutelyStopOperation()
+    {
+        IsDronesFullStopOperation = true;
+        agent.isStopped = true;
+        isSelected = false;
+        SelectedBuilding = null;
+    }
+
+    public void DroneResumeFunctionality()
+    {
+        IsDronesFullStopOperation = false;
+        agent.isStopped = false; 
+    }
+
+    #endregion
+    
     #region Другие полезные методы
 
     private async Task<PlayerResources> GetResourcesPLayer(EntityID playerID)

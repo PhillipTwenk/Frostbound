@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: "\u0427\u0442\u043E? \u041F\u0440\u0430\u0432\u0434\u0430?"
   characterImage: {fileID: 21300000, guid: e94548c6d9d374d49a4c3f6f0af28757, type: 3}
+  characterName: "\u041F\u0430\u0441\u0435\u0447\u043D\u0438\u043A"
   side: 1
   isFade: 0
   isActionAwait: 0

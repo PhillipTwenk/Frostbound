@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
+[Serializable]
+public class ObjectiveSaveData
+{
+    public bool completed;
+}
+
+
 /// <summary>
 /// Описание свойств цели определенного квеста
 /// Предоставляет метод для завершения цели
@@ -17,12 +24,16 @@ public class Objective : ScriptableObject, ISerializableSO
     /// <returns></returns>
     public string SerializeToJson()
     {
-        return JsonUtility.ToJson(this, true);
+        ObjectiveSaveData obj = new ObjectiveSaveData();
+        obj.completed = completed;
+        return JsonUtility.ToJson(obj, true);
     }
 
     public void DeserializeFromJson(string json)
     {
-        JsonUtility.FromJsonOverwrite(json, this);
+        ObjectiveSaveData objSD = new ObjectiveSaveData();
+        JsonUtility.FromJsonOverwrite(json, objSD);
+        completed = objSD.completed;
     }
     
     

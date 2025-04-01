@@ -25,7 +25,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: SpawnHoneyCumb Variant Variant
   m_Shader: {fileID: -6465566751694194690, guid: f1b6767fbb535d8408f33965f9aa299d, type: 3}
-  m_Parent: {fileID: 2100000, guid: df68057e86829a34886ed98d8a436d77, type: 2}
+  m_Parent: {fileID: 2100000, guid: 4b9d97359cc4bb34a9d1834e990a25b8, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
@@ -66,8 +66,8 @@ Material:
     - _ZTestGBuffer: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 2, g: 2, b: 2, a: 1}
-    - _Fresnel_Color: {r: 43.51989, g: 115.3239, b: 166.24599, a: 0}
+    - _Color: {r: 4.25194, g: 3.5499685, b: 3.5499685, a: 1}
+    - _Fresnel_Color: {r: 67.96826, g: 165.09117, b: 294.06674, a: 0}
     - _VertexDirection: {r: 0.3, g: 0.3, b: 0.3, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

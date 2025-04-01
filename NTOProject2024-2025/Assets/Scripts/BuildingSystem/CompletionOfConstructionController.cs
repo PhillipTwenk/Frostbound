@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
 using Unitilities;
@@ -188,12 +189,9 @@ public class CompletionOfConstructionController : MonoBehaviour
    {
       int priceBuilding = buildingData.buildingTypeSO.priceBuilding;
       int EnergyConsumption = buildingData.HoneyConsumption;
-         
-      await SyncManager.Enqueue(async () =>
-      {
-         await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceBuilding,
+      
+      await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceBuilding,
             playerResources.Energy - EnergyConsumption, playerResources.Food, playerResources.CryoCrystal);
-      });
       UpdateResourcesEvent.TriggerEvent();
    }
    

@@ -1,6 +1,7 @@
 using System;
 using EntityActions.WorkersScripts;
 using TMPro;
+using UI.UIManagers;
 using UnityEditor;
 using UnityEngine;
 
@@ -65,14 +66,6 @@ public class PauseUIManager : MonoBehaviour
         else
         {
             Debug.Log("Продолжаем");
-            if (TutorialManager.IsTutorialTimeStop)
-            {
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-            }
             PauseOff();
         }
     }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
+using UI.UIManagers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,61 +64,54 @@ public class PlansInShopControl : MonoBehaviour
         string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         string shopName = $"{playerName}'sShop";
         ShopResources shopResources = await GetResourcesShop(playerName, shopName);
-        if (TutorialManager.IsTutorialActive)
-        {
-            
-        }
-        else
-        {
-            // Определяем текущий уровень базы
-            int baseLevel = BaseUpgradeConditionManager.CurrentBaseLevel;
+        Debug.Log(shopResources);
+        // Определяем текущий уровень базы
+        int baseLevel = BaseUpgradeConditionManager.CurrentBaseLevel;
 
-            // Словарь: уровень базы → товары, доступные на этом уровне
-            Dictionary<int, List<PriceShopProduct>> baseLevelProducts = new Dictionary<int, List<PriceShopProduct>>
+        // Словарь: уровень базы → товары, доступные на этом уровне
+        Dictionary<int, List<PriceShopProduct>> baseLevelProducts = new Dictionary<int, List<PriceShopProduct>>
+        {
+            { 1, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } },
+            { 2, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } },
+            { 3, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } }
+        };
+
+        // Словарь: товар → его купленный UI + кнопка
+        Dictionary<PriceShopProduct, (GameObject boughtPanel, GameObject buttonParent)> shopUIElements =
+            new Dictionary<PriceShopProduct, (GameObject, GameObject)>
             {
-                { 1, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } },
-                { 2, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } },
-                { 3, new List<PriceShopProduct> { shopResources.ResidentialModule, shopResources.Apiary, shopResources.Minner, shopResources.Pier, shopResources.Storage } }
+                { shopResources.ResidentialModule, (PanelRHBought, _buttonHome.transform.parent.gameObject) },
+                { shopResources.Apiary, (PanelABought, _buttonApiary.transform.parent.gameObject) },
+                { shopResources.Minner, (PanelMBought, _buttonMiner.transform.parent.gameObject) },
+                { shopResources.Pier, (PanelPierBought, _buttonP.transform.parent.gameObject) },
+                { shopResources.Storage, (PanelStorageBought, _buttonS.transform.parent.gameObject) }
             };
 
-            // Словарь: товар → его купленный UI + кнопка
-            Dictionary<PriceShopProduct, (GameObject boughtPanel, GameObject buttonParent)> shopUIElements =
-                new Dictionary<PriceShopProduct, (GameObject, GameObject)>
-                {
-                    { shopResources.ResidentialModule, (PanelRHBought, _buttonHome.transform.parent.gameObject) },
-                    { shopResources.Apiary, (PanelABought, _buttonApiary.transform.parent.gameObject) },
-                    { shopResources.Minner, (PanelMBought, _buttonMiner.transform.parent.gameObject) },
-                    { shopResources.Pier, (PanelPierBought, _buttonP.transform.parent.gameObject) },
-                    { shopResources.Storage, (PanelStorageBought, _buttonS.transform.parent.gameObject) }
-                };
-
-            // Проверяем, какие товары доступны на этом уровне базы
-            if (baseLevelProducts.TryGetValue(baseLevel, out var products))
+        // Проверяем, какие товары доступны на этом уровне базы
+        if (baseLevelProducts.TryGetValue(baseLevel, out var products))
+        {
+            foreach (var product in products)
             {
-                foreach (var product in products)
+                if (shopUIElements.TryGetValue(product, out var uiElements))
                 {
-                    if (shopUIElements.TryGetValue(product, out var uiElements))
+                    uiElements.boughtPanel.transform.parent.gameObject.SetActive(true); // Включаем панель чертежа (родитель купленного UI)
+                    if (product.IsPurchased)
                     {
-                        uiElements.boughtPanel.transform.parent.gameObject.SetActive(true); // Включаем панель чертежа (родитель купленного UI)
-                        if (product.IsPurchased)
-                        {
-                            uiElements.boughtPanel.SetActive(true); // Показываем, что товар куплен
-                            uiElements.buttonParent.SetActive(false); // Скрываем кнопку (родителя кнопки)
-                        }
+                        uiElements.boughtPanel.SetActive(true); // Показываем, что товар куплен
+                        uiElements.buttonParent.SetActive(false); // Скрываем кнопку (родителя кнопки)
                     }
                 }
             }
+        }
 
-            // Дополнительно: активируем купленные панели вне зависимости от уровня
-            foreach (var item in shopUIElements)
+        // Дополнительно: активируем купленные панели вне зависимости от уровня
+        foreach (var item in shopUIElements)
+        {
+            if (item.Key.IsPurchased)
             {
-                if (item.Key.IsPurchased)
-                {
-                    item.Value.boughtPanel.SetActive(true);
-                    item.Value.buttonParent.SetActive(false);
-                }
+                item.Value.boughtPanel.SetActive(true);
+                item.Value.buttonParent.SetActive(false);
             }
-
         }
         
         GeneralWorkersControl.possiilityControlEntities = false;
@@ -138,11 +133,13 @@ public class PlansInShopControl : MonoBehaviour
     public async void ClickBuyPlanButton(string typeBuyButton)
     {
         LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(true);
-        
+
+        EntityID entityID = CurrentPlayersDataControl.WhichPlayerCreate;
         string playerName = CurrentPlayersDataControl.WhichPlayerCreate.entityName;
         PlayerResources playerResources = await GetResourcesPLayer(playerName);
         string shopName = $"{playerName}'sShop";
-        ShopResources shopResources = await GetResourcesShop(playerName, shopName);
+        // ShopResources shopResources = await GetResourcesShop(playerName, shopName);
+        ShopResources shopResources = entityID.shopResources;
 
         NotEnoughtResourcesTextPanel.SetActive(false);
 
@@ -174,23 +171,17 @@ public class PlansInShopControl : MonoBehaviour
         if (playerResources.Iron >= product.IronPrice && playerResources.CryoCrystal >= product.CryoCrystalPrice)
         {
             product.IsPurchased = true;
-
-            await SyncManager.Enqueue(async () =>
-            {
-                // await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, 
-                //     shopResources.Apiary, shopResources.MobileBase, shopResources.Storage,
-                //     shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
-                
-                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, 
+            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, 
                     playerResources.Iron - product.IronPrice, 
                     playerResources.Energy, playerResources.Food, 
                     playerResources.CryoCrystal - product.CryoCrystalPrice);
-            });
+            await APIManager.Instance.PutShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName, shopResources.Apiary, shopResources.MobileBase, shopResources.Storage, shopResources.ResidentialModule, shopResources.Minner, shopResources.Pier);
 
             // Обновляем UI
             boughtPanel.SetActive(true);
             button.SetActive(false);
             UIManager.Instance.AddNewPlanInPanel(planUI);
+            
             
             if (shopResources.Pier.IsPurchased && shopResources.Minner.IsPurchased && shopResources.Storage.IsPurchased)
             {
@@ -207,6 +198,11 @@ public class PlansInShopControl : MonoBehaviour
                 DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.BuyHomePlan);
             }
             
+            if (shopResources.Pier.IsPurchased && shopResources.Minner.IsPurchased && shopResources.Storage.IsPurchased && shopResources.Apiary.IsPurchased && shopResources.ResidentialModule.IsPurchased)
+            {
+                DialogueManager.OnPanelOpened?.Invoke(ActionTypeUIPanel.BuyAllPlans);
+            }
+            
         }
         else
         {
@@ -220,21 +216,15 @@ public class PlansInShopControl : MonoBehaviour
     
     private async Task<PlayerResources> GetResourcesPLayer(string playerName)
     {
-        PlayerResources playerResources = null;
-        await SyncManager.Enqueue(async () =>
-        {
-            playerResources = await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
-        });
+        PlayerResources playerResources = null; 
+        playerResources = await APIManager.Instance.GetPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate);
         return playerResources;
     }
     
     private async Task<ShopResources> GetResourcesShop(string playerName, string shopName)
     {
         ShopResources shopResources = null;
-        await SyncManager.Enqueue(async () =>
-        {
-            shopResources = await APIManager.Instance.GetShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName);
-        });
+        shopResources = await APIManager.Instance.GetShopResources(CurrentPlayersDataControl.WhichPlayerCreate, shopName);
         return shopResources;
     }
 }

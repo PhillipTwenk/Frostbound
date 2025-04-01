@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dialogues;
 using EntityActions.Movement_Control;
+using GlobalEvents.Cataclysm_Services;
+using UI.UIManagers;
 using Unitilities;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,6 +13,7 @@ namespace EntityActions.WorkersScripts
 {
     public class GeneralWorkersControl : MonoBehaviour
     {
+        public static bool BlockMouseClickThisFrame { get; private set; }
         
         public static GeneralWorkersControl Instance { get; private set;}
     
@@ -55,6 +58,9 @@ namespace EntityActions.WorkersScripts
         [SerializeField] private List<UnitType> DroneTypes;
 
         [Header("Food")] public static int CurrentFoodConsumptionByWorkers = 20;
+        
+        [Header("Game Events")] 
+        public GameEvent CloseDescriptionPanel;
 
 
         #region Инициализация
@@ -74,6 +80,8 @@ namespace EntityActions.WorkersScripts
 
         private void Update()
         {
+            BlockMouseClickThisFrame = false;
+            
             // Каждый кадр проверяем: если нажата левая кнопка, то пытаемся выделить (OnClick),
             // иначе просто обновляем наведение (OnClick == false)
             if (!Input.GetMouseButtonDown(0))
@@ -95,23 +103,28 @@ namespace EntityActions.WorkersScripts
             {
                 if (hit.collider.CompareTag("ClickOnWorker") || hit.collider.CompareTag("Player"))
                 {
+                    BlockMouseClickThisFrame = true;
                     IUnitMovement selectedUnit = hit.collider.GetComponent<IUnitMovement>();
                     if (selectedUnit == SelectedUnit)
                     {
                         if (DroneTypes.Contains(SelectedUnit.ThisUnitType))
                         {
                             DroneMovementController droneMovementController = SelectedUnit as DroneMovementController;
-                            if (droneMovementController != null && !droneMovementController.CheckForNonGroundObjects())
+                            if (!droneMovementController.IsDronesFullStopOperation)
                             {
-                                droneMovementController.StartLanding(); // Начало посадки дрона
-                                ResetSelectedUnit();
-                                return;
+                                if (droneMovementController != null && !droneMovementController.CheckForNonGroundObjects())
+                                {
+                                    droneMovementController.StartLanding(); // Начало посадки дрона
+                                    ResetSelectedUnit();
+                                    return;
+                                }
+                                
+                                if(droneMovementController != null && droneMovementController.CheckForNonGroundObjects())
+                                {
+                                    return;
+                                }
                             }
                             
-                            if(droneMovementController != null && droneMovementController.CheckForNonGroundObjects())
-                            {
-                                return;
-                            }
                         }
                         ResetSelectedUnit();
                         return;
@@ -138,6 +151,8 @@ namespace EntityActions.WorkersScripts
                     selectedUnit.OnUnitSelected?.Invoke();
                     
                     UIManager.CancelLastOpenPanelEvent += ResetSelectedUnit;
+                    
+                    CloseDescriptionPanel.TriggerEvent();
                     return;
                 }
             }

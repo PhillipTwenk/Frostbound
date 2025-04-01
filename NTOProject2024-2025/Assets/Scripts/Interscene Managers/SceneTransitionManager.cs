@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 public class SceneTransitionManager : MonoBehaviour
 {
     [SerializeField] private GameEvent EndMoveToSceneLocationEvent;
-    [SerializeField] private GameEvent StartTutorial;
     [SerializeField] private string MainLocationSceneName;
     [SerializeField] private string MainMenuSceneName;
     [SerializeField] private string UISceneName;
-    private bool IsNewPlayer;
-
-
-    public void NewPlayer() => IsNewPlayer = true;
+    
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Alpha0))
+        {
+            PlayerPrefs.SetInt("TutorialCompleted", 1);
+        }
+    }
     
     /// <summary>
     /// Метод перехода на основную сцену
@@ -43,7 +46,6 @@ public class SceneTransitionManager : MonoBehaviour
         //Установка уровня как основной сцены
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(MainLocationSceneName));
         
-        Debug.Log(IsNewPlayer);
 
         //Проверка на активность нужных сцен, и их выгрузка
         bool isSceneMainMenuActive = SceneManager.GetSceneByName(MainMenuSceneName).isLoaded;
@@ -68,11 +70,5 @@ public class SceneTransitionManager : MonoBehaviour
         
         //LoadingCanvas.SetActive(false);
         EndMoveToSceneLocationEvent.TriggerEvent();
-
-        if (IsNewPlayer)
-        {
-            Debug.Log("Старт туториала");
-            StartTutorial.TriggerEvent();
-        }
     }
 }

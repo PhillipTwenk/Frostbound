@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
 using TMPro;
@@ -95,13 +96,9 @@ public class EngineeringModule : MonoBehaviour
                         GeneralWorkersControl.Instance.NumberOfFreeUnits += 1;
 
                         buildingData.Storage[0] += 1;
-                    
-                        await SyncManager.Enqueue(async () =>
-                        {
-                            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - droneBuildingPrice,
-                                playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                            UpdateResourcesEvent.TriggerEvent();
-                        });
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - droneBuildingPrice,
+                                playerResources.Energy, playerResources.Food, playerResources.CryoCrystal); 
+                        UpdateResourcesEvent.TriggerEvent();
                     
                         await JSONSerializeManager.Instance.JSONSave();
                     

@@ -32,36 +32,14 @@ MonoBehaviour:
     MaxValueOfWorkersInThisBuilding: 0
     suitableUnitDataForThisBuilding: 0
   workers:
-  - {fileID: 252557157471305869, guid: 57b113b62d75d8246bf78625c8eae227, type: 3}
   - {fileID: 2521149612875953399, guid: 52e40af68a408204e88057d76492cc20, type: 3}
   workersTransform:
-  - position: {x: 3321.5852, y: 0, z: 548.34326}
+  - position: {x: 3723, y: 0, z: 709}
     rotation: {x: 0, y: 0, z: 0, w: 1}
-    scale: {x: 3, y: 3, z: 3}
-  - position: {x: 3463.0002, y: 0, z: 687}
-    rotation: {x: 0, y: 0, z: 0, w: 1}
-    scale: {x: 3, y: 3, z: 3}
+    scale: {x: 30, y: 30, z: 30}
   workerDatas:
   - IsWorkerAtWork: 0
     SaveListIndex: 0
-    unitType: 1
-    droneSaveData:
-      LogisticsStorage: 0
-      buildingDataLogistics:
-        Level: 0
-        Durability: 0
-        Storage: 
-        SaveListIndex: 0
-        HoneyConsumption: 0
-        Production: 
-      IsLogisticsCycleActive: 0
-      isFlyNow: 0
-      isPlaceNow: 0
-      isTakingOff: 0
-      isLanding: 0
-      isMovingToLandingSpot: 0
-  - IsWorkerAtWork: 0
-    SaveListIndex: 1
     unitType: 2
     droneSaveData:
       LogisticsStorage: 0

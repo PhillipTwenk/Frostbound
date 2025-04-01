@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using APIControl.Global_Server_Event.Local_Save;
+using Dialogues;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,6 +16,9 @@ public class JSONSerializeManager : MonoBehaviour
     [Tooltip("Информация о сохраненных игровых данных игроков")] public List<PlayerSaveData> psdScriptableObjects;
     [Tooltip("Информация о квестах")] public List<Quest> questsScriptableObjects;
     [Tooltip("Информация о целях квестов")] public List<Objective> objectivesScriptableObjects;
+    [Tooltip("Диалоги")] public List<Dialogue> dialoguesScriptableObjects;
+    public LocalEventSaveData localEventSaveData;
+    
     private string savePath;
     private static readonly object _lock = new object();
 
@@ -34,15 +39,7 @@ public class JSONSerializeManager : MonoBehaviour
 
     public void AwakeJSONLoad()
     {
-        foreach (EntityID so in entitiesScriptableObjects)
-        {
-            AwakeJSONLoadFunctional(so);
-        }
         foreach (PlayerSaveData so in psdScriptableObjects)
-        {
-            AwakeJSONLoadFunctional(so);
-        }
-        foreach (Quest so in questsScriptableObjects)
         {
             AwakeJSONLoadFunctional(so);
         }
@@ -50,6 +47,20 @@ public class JSONSerializeManager : MonoBehaviour
         {
             AwakeJSONLoadFunctional(so);
         }
+        foreach (Quest so in questsScriptableObjects)
+        {
+            AwakeJSONLoadFunctional(so);
+        }
+        foreach (Dialogue so in dialoguesScriptableObjects)
+        {
+            AwakeJSONLoadFunctional(so);
+        }
+        foreach (EntityID so in entitiesScriptableObjects)
+        {
+            AwakeJSONLoadFunctional(so);
+        }
+        
+        AwakeJSONLoadFunctional(localEventSaveData);
     }
 
     private async void OnApplicationQuit()
@@ -66,12 +77,7 @@ public class JSONSerializeManager : MonoBehaviour
         }
 
         List<Task> saveTasks = new List<Task>();
-
         foreach (EntityID so in entitiesScriptableObjects)
-        {
-            saveTasks.Add(JSONSaveFunctionalAsync(so));
-        }
-        foreach (PlayerSaveData so in psdScriptableObjects)
         {
             saveTasks.Add(JSONSaveFunctionalAsync(so));
         }
@@ -83,6 +89,16 @@ public class JSONSerializeManager : MonoBehaviour
         {
             saveTasks.Add(JSONSaveFunctionalAsync(so));
         }
+        foreach (PlayerSaveData so in psdScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+        foreach (Dialogue so in dialoguesScriptableObjects)
+        {
+            saveTasks.Add(JSONSaveFunctionalAsync(so));
+        }
+        
+        saveTasks.Add(JSONSaveFunctionalAsync(localEventSaveData));
 
         await Task.WhenAll(saveTasks);
     }

@@ -12,24 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ae3d7a2c70f8e45a7c5fd09cbe68af, type: 3}
   m_Name: Player2
   m_EditorClassIdentifier: 
-  entityName: None
+  entityName: 123
   DefaultName: None
   thisPlayerID: 2
-  speed: 60
-  sprintSpeed: 80
-  normalSpeed: 60
-  speedTurn: 360
+  isTutorialComplete: 1
   openQuests: []
   playerResources:
-    Iron: 20
-    Energy: 30
-    Food: 0
-    CryoCrystal: 6
+    Iron: 515
+    Energy: 20
+    Food: 40
+    CryoCrystal: 0
   shopResources:
     Apiary:
       IronPrice: 50
       CryoCrystalPrice: 3
-      IsPurchased: 0
+      IsPurchased: 1
     MobileBase:
       IronPrice: 50
       CryoCrystalPrice: 3
@@ -41,7 +38,7 @@ MonoBehaviour:
     ResidentialModule:
       IronPrice: 50
       CryoCrystalPrice: 3
-      IsPurchased: 0
+      IsPurchased: 1
     Minner:
       IronPrice: 50
       CryoCrystalPrice: 3

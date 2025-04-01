@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using APIControl.Semaphore;
 using EntityActions.WorkersScripts;
 using TMPro;
+using UI.UIManagers;
 using Unitilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,12 +15,9 @@ namespace UI
     {
 
         [Header("Events")]
-        public static Action<int> OnMobileBaseUpgrade;
-    
-    
-    
-    
-    
+        public static Action OnMobileBaseUpgrade;
+        
+        [Header("Info")]
         [SerializeField] private TextMeshProUGUI Title;
         [SerializeField] private TextMeshProUGUI Level;
         [SerializeField] private TextMeshProUGUI Durability;
@@ -44,6 +43,7 @@ namespace UI
         [SerializeField] private GameObject point;
         [SerializeField] private GameObject ButtonUpgrade;
         [SerializeField] private GameObject ButtonFunctionThisBuilding;
+        [SerializeField] private GameObject ButtonDelete;
 
         public static BuildingData buildingData;
         public static Transform buildingTransform;
@@ -80,8 +80,8 @@ namespace UI
         /// </summary>
         public void EventODP()
         {
-            if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
-                GeneralWorkersControl.SelectedUnit == null)
+            if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) 
+                && GeneralWorkersControl.SelectedUnit == null)
             {
                 UIManager.CancelLastOpenPanelEvent += HideDescriptionPanel;
                 currentIBC = buildingData.gameObject.GetComponent<InteractionBuildingController>();
@@ -102,7 +102,7 @@ namespace UI
         /// </summary>
         public void ShowDescriptionPanel()
         {
-            if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) && !TutorialManager.IsTutorialActive &&
+            if (buildingData.IsThisBuilt && Mathf.Approximately(Time.timeScale, 1f) &&
                 GeneralWorkersControl.SelectedUnit == null)
             {
                 IsPanelActive = true;
@@ -128,6 +128,15 @@ namespace UI
                 else
                 {
                     ButtonFunctionThisBuilding.SetActive(false);
+                }
+
+                if (buildingSO.buildingType == BuildingsTypes.MobileBase)
+                {
+                    ButtonDelete.SetActive(false);
+                }
+                else
+                {
+                    ButtonDelete.SetActive(true);
                 }
 
                 // Центр экрана
@@ -274,13 +283,9 @@ namespace UI
                 buildingData.gameObject.GetComponent<CompletionOfConstructionController>();
             UnityEvent OnDestroyThisBuildingEvent = completionOfConstructionController?.OnDestroyBuilding;
             OnDestroyThisBuildingEvent?.Invoke();
-        
-        
-            await SyncManager.Enqueue(async () =>
-            {
-                await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron + NewIron, playerResources.Energy, playerResources.Food,
+
+            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron + NewIron, playerResources.Energy, playerResources.Food,
                     playerResources.CryoCrystal);
-            });
         
             PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
         
@@ -317,11 +322,6 @@ namespace UI
                 {
                     if (BaseLevel >= buildingSO.MBLevelForUpgradethisIron)
                     {
-                        Dictionary<string, string> playerDictionary = new Dictionary<string, string>();
-                        playerDictionary.Add("IronValueUpdate", $"{(playerResources.Iron - priceUpgrade) - playerResources.Iron}");
-                        APIManager.Instance.CreatePlayerLog($"Улучшение здания {buildingData.Title}", playerName, playerDictionary);
-
-
                         buildingData.Level += 1;
                         buildingData.Durability = buildingSO.Durability(buildingData.Level);
                         buildingData.HoneyConsumption = buildingSO.EnergyHoneyConsumpiton(buildingData.Level);
@@ -332,19 +332,16 @@ namespace UI
                         {
                             buildingData.Production = buildingSO.Production(buildingData.Level).resources;
                         }
-
-                        await SyncManager.Enqueue(async () =>
+                        
+                        if (buildingData.gameObject.GetComponent<EnergyProduction>())
                         {
-                            if (buildingData.gameObject.GetComponent<EnergyProduction>())
-                            {
-                                playerResources.Energy += (buildingData.Production[0] -
-                                                           (buildingSO.Production(buildingData.Level - 1).resources[0]));
-                                playerResources.Food += (buildingData.Production[1] -
-                                                         (buildingSO.Production(buildingData.Level - 1).resources[1]));
-                            }
-                            await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
-                                playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                        });
+                            playerResources.Energy += (buildingData.Production[0] -
+                                                       (buildingSO.Production(buildingData.Level - 1).resources[0]));
+                            playerResources.Food += (buildingData.Production[1] -
+                                                     (buildingSO.Production(buildingData.Level - 1).resources[1]));
+                        }
+                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
+                            playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
                     
                         PlayerSaveData playerSaveData = CurrentPlayersDataControl.Instance.WhichPlayerDataUse();
                     
@@ -368,17 +365,10 @@ namespace UI
             else
             {
                 List<string> ImprovementReport = await BaseUpgradeConditionManager.Instance.CanUpgradeMobileBase(playerResources);
-                if (ImprovementReport[0] == BaseUpgradeConditionManager.Instance.SuccesUpgradeText || ImprovementReport[0] == BaseUpgradeConditionManager.Instance.ENDGAME)
+                if ((ImprovementReport[0] == BaseUpgradeConditionManager.Instance.SuccesUpgradeText || ImprovementReport[0] == BaseUpgradeConditionManager.Instance.ENDGAME) || Input.GetKey(KeyCode.Alpha0))
                 {
-                    Dictionary<string, string> playerDictionary = new Dictionary<string, string>();
-                    playerDictionary.Add("IronValueUpdate", $"{(playerResources.Iron - priceUpgrade) - playerResources.Iron}");
-                    APIManager.Instance.CreatePlayerLog($"Улучшение здания {buildingData.Title}", playerName, playerDictionary);
-                
-                    await SyncManager.Enqueue(async () =>
-                    {
-                        await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
+                    await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
                             playerResources.Energy, playerResources.Food, playerResources.CryoCrystal);
-                    });
                
                     buildingData.Level += 1;
                     buildingData.Durability = buildingSO.Durability(BaseLevel);
@@ -394,7 +384,7 @@ namespace UI
                     playerSaveData.BuildingDatas[buildingData.SaveListIndex] = buildingSaveData;
                 
                     buildingData.OnUpgradeEvent?.Invoke();
-                    OnMobileBaseUpgrade?.Invoke(buildingData.Level);
+                    OnMobileBaseUpgrade?.Invoke();
                     OnHintPanel(ImprovementReport[0]);
                 }
                 else

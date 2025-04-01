@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine.Serialization;
 
+[System.Serializable]
+public class EntityIDSaveData
+{
+    public string name;
+    public int ID;
+    public List<Quest> openQuests;
+    public PlayerResources playerResources;
+    public ShopResources shopResources;
+    public bool isTutorialComplete;
+}
+
+
 /// <summary>
 /// Общее описание свойств сущности
 /// </summary>
@@ -15,12 +27,26 @@ public class EntityID : ScriptableObject, ISerializableSO
     /// <returns></returns>
     public string SerializeToJson()
     {
-        return JsonUtility.ToJson(this, true);
+        EntityIDSaveData saveData = new EntityIDSaveData();
+        saveData.name = entityName;
+        saveData.openQuests = openQuests;
+        saveData.playerResources = playerResources;
+        saveData.shopResources = shopResources;
+        saveData.ID = thisPlayerID;
+        saveData.isTutorialComplete = isTutorialComplete;
+        return JsonUtility.ToJson(saveData, true);
     }
 
     public void DeserializeFromJson(string json)
     {
-        JsonUtility.FromJsonOverwrite(json, this);
+        EntityIDSaveData saveData = new EntityIDSaveData();
+        JsonUtility.FromJsonOverwrite(json, saveData);
+        entityName = saveData.name;
+        openQuests = saveData.openQuests;
+        playerResources = saveData.playerResources;
+        shopResources = saveData.shopResources;
+        isTutorialComplete = saveData.isTutorialComplete;
+        thisPlayerID = saveData.ID;
     }
     
     
@@ -31,12 +57,7 @@ public class EntityID : ScriptableObject, ISerializableSO
     [TextArea] public string entityName;
     public string DefaultName;
     public int thisPlayerID;
-    
-    [Header("Stats")]
-    public float speed;
-    public float sprintSpeed;
-    public float normalSpeed;
-    public float speedTurn;
+    public bool isTutorialComplete;
 
     [Header("Quests")]
     public List<Quest> openQuests = new List<Quest>();

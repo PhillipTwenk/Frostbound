@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: '[Tutorial] - 69'
   m_EditorClassIdentifier: 
   text: "\u0414\u043E\u0436\u0434\u0438\u0441\u044C \u043F\u0440\u0438\u0431\u044B\u0442\u0438\u044F"
-  characterImage: {fileID: 21300000, guid: 453c406e1729a394790e794fb08c2f44, type: 3}
+  characterImage: {fileID: 21300000, guid: 5de573cf3744b654aaa99016b4db4047, type: 3}
+  characterName: "\u0410\u0433\u0435\u043D\u0442-\u043F\u043E\u043C\u043E\u0449\u043D\u0438\u043A"
   side: 1
   isFade: 0
   isActionAwait: 1

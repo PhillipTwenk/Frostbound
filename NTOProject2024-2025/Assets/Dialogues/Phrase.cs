@@ -30,6 +30,7 @@ namespace Dialogues
         OpenCallingWorkersPanel,
         BuyFoodModulePlan,
         BuyHomePlan,
+        BuyAllPlans,
     }
     
     [System.Serializable]
@@ -71,13 +72,14 @@ namespace Dialogues
         DroneDestinationOnBuilding,
         DroneCameToBuilding
     }
-
+    
     [CreateAssetMenu(fileName = "Phrase", menuName = "Dialogues/Phrase")]
     public class Phrase : ScriptableObject
     {
         [Header("Info")]
         [Tooltip("Текст фразы")] [TextArea] public string text;
         [Tooltip("Изображение говорящего персонажа")] public Sprite characterImage;
+        [Tooltip("Имя говорящего персонажа")] public string characterName;  
         
         [Header("State")]
         [Tooltip("В какой стороне будет находиться окно фразы")] public DialogueSide side;

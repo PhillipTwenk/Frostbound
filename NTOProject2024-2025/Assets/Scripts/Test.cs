@@ -1,15 +1,17 @@
+using System;
+using System.Collections.Generic;
+using APIControl.Global_Server_Event;
 using Dialogues;
 using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public Dialogue sss;
-
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O) && !DialogueManager.IsDialogueInProcess)
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            DialogueManager.LaunchDialogue?.Invoke(sss);
+            PlayerPrefs.SetInt("TutorialCompleted", 0);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EntityActions.WorkersScripts;
 using TMPro;
@@ -37,6 +38,8 @@ namespace Dialogues
         public GameObject fadeOverlay;
         public GameObject leftContinuePanel; // Панель продолжения для левой панели
         public GameObject rightContinuePanel; // Панель продолжения для правой панели
+        public TextMeshProUGUI leftCharacterNameText;
+        public TextMeshProUGUI rightCharacterNameText;
 
         [Header("Parameters")]
         public float charactersPerSecond = 30f;
@@ -49,6 +52,7 @@ namespace Dialogues
         private bool isTextWriting;
         private bool canContinue;
         public static bool IsDialogueInProcess;
+        private CancellationTokenSource _cancellationTokenSource; // Для отмены задачи печати текста
 
         [Header("Action System")]
         private Phrase _currentActionPhrase;
@@ -62,6 +66,9 @@ namespace Dialogues
         [Header("UnityEvents")]
         public UnityEvent OnStartDialogueUE;
 
+        [Header("Game Events")] 
+        public GameEvent StartMainGameGameEvent;
+
         private void Start()
         {
             // Подписка на события
@@ -72,7 +79,9 @@ namespace Dialogues
         private void OnDestroy()
         {
             // Отписка от событий
-            LaunchDialogue -= StartDialogue;    
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource?.Dispose();
+            LaunchDialogue -= StartDialogue;
             LaunchDialogue -= (Dialogue dialogue) => OnStartDialogueUE?.Invoke();
         }
 
@@ -82,6 +91,11 @@ namespace Dialogues
         {
             if (Input.GetButtonDown("TutorialUpdate"))
             {
+                if (Input.GetMouseButtonDown(0) && GeneralWorkersControl.BlockMouseClickThisFrame)
+                {
+                    return;
+                }
+                
                 if (isTextWriting)
                 {
                     ShowFullText();
@@ -94,7 +108,7 @@ namespace Dialogues
             }
         }
 
-        public void StartDialogue(Dialogue dialogue)
+        public async void StartDialogue(Dialogue dialogue)
         {
             DialogueFolder.SetActive(true);
             currentDialogue = dialogue;
@@ -102,23 +116,24 @@ namespace Dialogues
             currentDialogue.isActive = true;
             IsDialogueInProcess = true;
             fadeOverlay.SetActive(false);
-            ProcessCurrentPhrase();
+            await ProcessCurrentPhrase();
         }
 
         private async Task ProcessCurrentPhrase()
         {
             var phrase = currentDialogue.phrases[currentPhraseIndex];
             canContinue = false;
+            HideContinuePanels(); // Скрываем панели продолжения в начале новой фразы
 
-            // Настройка панелей
             leftPanel.SetActive(phrase.side == DialogueSide.Left);
             rightPanel.SetActive(phrase.side == DialogueSide.Right);
 
-            // Настройка изображения персонажа
             var currentImage = phrase.side == DialogueSide.Left ? leftImage : rightImage;
             currentImage.sprite = phrase.characterImage;
 
-            // Настройка затемнения
+            var currentCharacterNameText = phrase.side == DialogueSide.Left ? leftCharacterNameText : rightCharacterNameText;
+            currentCharacterNameText.text = phrase.characterName;
+
             fadeOverlay.SetActive(phrase.isFade);
             if (phrase.isFade)
             {
@@ -129,47 +144,67 @@ namespace Dialogues
                 Time.timeScale = 1f;
             }
 
-            // Если фраза требует действия, настраиваем подписку
             if (phrase.isActionAwait)
             {
                 SetupActionRequirement(phrase);
             }
 
-            // Запуск печати текста
             var targetText = phrase.side == DialogueSide.Left ? leftText : rightText;
             await TypeText(targetText, phrase.text);
-
-            // Если фраза не требует действия, разрешаем продолжение и показываем панель продолжения
-            if (!phrase.isActionAwait)
-            {
-                canContinue = true;
-                ShowContinuePanel(phrase.side);
-            }
         }
 
         private async Task TypeText(TextMeshProUGUI target, string text)
         {
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource = new CancellationTokenSource();
+            var cancellationToken = _cancellationTokenSource.Token;
+
             isTextWriting = true;
             target.text = "";
 
-            foreach (char c in text)
+            try
             {
-                if (!isTextWriting) break;
-                target.text += c;
-                await Task.Delay((int)(1000 / charactersPerSecond));
-            }
+                foreach (char c in text)
+                {
+                    if (cancellationToken.IsCancellationRequested)
+                        break;
 
-            isTextWriting = false;
+                    target.text += c;
+                    await Task.Delay((int)(1000 / charactersPerSecond), cancellationToken);
+                }
+
+                // После завершения печати текста (если не было отмены)
+                if (!cancellationToken.IsCancellationRequested)
+                {
+                    var phrase = currentDialogue.phrases[currentPhraseIndex];
+                    if (!phrase.isActionAwait)
+                    {
+                        canContinue = true;
+                        ShowContinuePanel(phrase.side);
+                    }
+                }
+            }
+            catch (TaskCanceledException)
+            {
+                // Игнорируем отмену
+            }
+            finally
+            {
+                isTextWriting = false;
+                _cancellationTokenSource.Dispose();
+                _cancellationTokenSource = null;
+            }
         }
 
         private void ShowFullText()
         {
-            isTextWriting = false;
+            _cancellationTokenSource?.Cancel();
+    
             var phrase = currentDialogue.phrases[currentPhraseIndex];
             var targetText = phrase.side == DialogueSide.Left ? leftText : rightText;
             targetText.text = phrase.text;
-
-            // Если фраза не требует действия, разрешаем продолжение и показываем панель продолжения
+            isTextWriting = false;
+    
             if (!phrase.isActionAwait)
             {
                 canContinue = true;
@@ -223,7 +258,8 @@ namespace Dialogues
             if (currentDialogue.isTutorial)
             {
                 Time.timeScale = 1f;
-                PlayerPrefs.SetInt("TutorialCompleted", 1);
+                CurrentPlayersDataControl.WhichPlayerCreate.isTutorialComplete = true;
+                StartMainGameGameEvent.TriggerEvent();
             }
         }
 
