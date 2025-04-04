@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
+using GlobalEvents.Cataclysm_Services;
 using RTS_Cam;
 using TMPro;
 using UI;
@@ -64,6 +65,16 @@ public class InteractionBuildingController : MonoBehaviour
                 Texthint.SetActive(true);
             }
         }));
+    }
+    
+    private void OnEnable()
+    {
+        DroneCrashGlobalEventService.RevertDroneBroke += CheckDrone;
+    }
+
+    private void OnDisable()
+    {
+        DroneCrashGlobalEventService.RevertDroneBroke -= CheckDrone;
     }
 
     private void Update()
@@ -463,5 +474,20 @@ public class InteractionBuildingController : MonoBehaviour
                 Texthint.SetActive(true);
             }
         }));
+    }
+    
+    /// <summary>
+    /// Проверяет область вокруг здания на наличие дронов
+    /// </summary>
+    /// <param name="interactionBuildingController"></param>
+    public void CheckDrone()
+    {
+        foreach (var obj in objectsInTrigger)
+        {
+            if (obj.GetComponent<DroneMovementController>())
+            {
+                DroneArriveToMiner(obj.GetComponent<DroneMovementController>());
+            }
+        }
     }
 }

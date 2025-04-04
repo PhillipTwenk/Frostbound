@@ -237,7 +237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0418\u0432\u0435\u043D\u0442\u043E\u0432 \u043D\u0435\u0442"
+  m_text: "\u041A\u0430\u0442\u0430\u043A\u043B\u0438\u0437\u043C\u043E\u0432 \u043D\u0435\u0442"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
   m_sharedMaterial: {fileID: 8713269978437595444, guid: 0ef75d6f972666f488c4e3d3a85bb388, type: 2}
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b13b706006993747ac6c8c0ecf779e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea9bfaba0d086b041b7498b200ab490c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

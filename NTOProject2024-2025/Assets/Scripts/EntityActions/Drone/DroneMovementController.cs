@@ -544,6 +544,7 @@ public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovemen
         agent.isStopped = true;
         isSelected = false;
         SelectedBuilding = null;
+        SetUnitDestination(transform, false);
     }
 
     public void DroneResumeFunctionality()

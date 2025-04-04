@@ -21,7 +21,7 @@ namespace GlobalEvents
         public string notifiationDescription;
         public int durationInMinutes;
         public EventType type;
-        public Sprite sprite;
+        public Sprite sprite; 
     }
 
     public class GlobalEventsManager : MonoBehaviour
@@ -186,23 +186,30 @@ namespace GlobalEvents
 
         private async Task WaitWithPause(int milliseconds, CancellationToken ct)
         {
-            float remainingTime = milliseconds;
-            float startTime = Time.unscaledTime;
-            
-            while (remainingTime > 0 && !ct.IsCancellationRequested)
+            DateTime startTime = DateTime.Now;
+            TimeSpan remainingTime = TimeSpan.FromMilliseconds(milliseconds);
+            float accumulatedPauseTime = 0f;
+            float lastPauseCheckTime = Time.unscaledTime;
+    
+            while (remainingTime.TotalMilliseconds > 0 && !ct.IsCancellationRequested)
             {
-                if (_isPaused)
+                if (Time.timeScale <= 0f) // Игра на паузе
                 {
+                    float now = Time.unscaledTime;
+                    accumulatedPauseTime += now - lastPauseCheckTime;
+                    lastPauseCheckTime = now;
                     await Task.Yield();
                     continue;
                 }
-
-                float elapsed = (Time.unscaledTime - startTime) * 1000;
-                remainingTime = milliseconds - elapsed;
-                
-                if (remainingTime > 0)
+        
+                // Корректировка времени с учетом пауз
+                DateTime adjustedNow = DateTime.Now.AddSeconds(-accumulatedPauseTime);
+                remainingTime = TimeSpan.FromMilliseconds(milliseconds) - (adjustedNow - startTime);
+                lastPauseCheckTime = Time.unscaledTime;
+        
+                if (remainingTime.TotalMilliseconds > 0)
                 {
-                    await Task.Delay(Mathf.Min(100, (int)remainingTime), ct);
+                    await Task.Delay(Mathf.Min(100, (int)remainingTime.TotalMilliseconds), ct);
                 }
             }
         }

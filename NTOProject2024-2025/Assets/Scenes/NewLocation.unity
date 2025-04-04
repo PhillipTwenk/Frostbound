@@ -1880,6 +1880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1641701228}
     m_Modifications:
+    - target: {fileID: 1775285746953154722, guid: 7ac5024e79a6a184bb476c11408be685, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2529863929644927941, guid: 7ac5024e79a6a184bb476c11408be685, type: 3}
       propertyPath: m_LocalScale.x
       value: 11430.886
@@ -9461,7 +9465,7 @@ GameObject:
   - component: {fileID: 443523348}
   - component: {fileID: 443523350}
   - component: {fileID: 443523349}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 6Gon Alarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12096,11 +12100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2011828380040249220, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 27.684204
       objectReference: {fileID: 0}
     - target: {fileID: 2011828380040249220, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 8.331299
       objectReference: {fileID: 0}
     - target: {fileID: 2011828380040249220, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -12188,11 +12192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3487576572382321341, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 27.684204
       objectReference: {fileID: 0}
     - target: {fileID: 3487576572382321341, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.5322018
       objectReference: {fileID: 0}
     - target: {fileID: 3487576572382321341, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -12300,11 +12304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5396353090468616430, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 27.684105
       objectReference: {fileID: 0}
     - target: {fileID: 5396353090468616430, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -11.171999
       objectReference: {fileID: 0}
     - target: {fileID: 5396353090468616430, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -12324,11 +12328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5413340556605656730, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 27.684105
       objectReference: {fileID: 0}
     - target: {fileID: 5413340556605656730, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 18.41635
       objectReference: {fileID: 0}
     - target: {fileID: 5413340556605656730, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -12348,11 +12352,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5837047234616912716, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 27.684105
       objectReference: {fileID: 0}
     - target: {fileID: 5837047234616912716, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -20.77485
       objectReference: {fileID: 0}
     - target: {fileID: 5837047234616912716, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -12404,7 +12408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7957275182925876627, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -58.441887
       objectReference: {fileID: 0}
     - target: {fileID: 7957275182925876627, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -12424,7 +12428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8068605442758724285, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -8.419525
       objectReference: {fileID: 0}
     - target: {fileID: 8068605442758724285, guid: 6e91a383b1c49b04eb48c9dbe82a169e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -14433,7 +14437,7 @@ Transform:
   m_GameObject: {fileID: 592751523}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2995, y: -188.79143, z: 5786}
+  m_LocalPosition: {x: -2932, y: -188.79143, z: 5823}
   m_LocalScale: {x: 94.42877, y: 1, z: 107.94246}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15613,7 +15617,7 @@ Transform:
   m_GameObject: {fileID: 637609527}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -221, y: -188.79143, z: 48}
+  m_LocalPosition: {x: -235.5, y: -188.79143, z: 36.7}
   m_LocalScale: {x: 94.42877, y: 1, z: 107.94246}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30188,7 +30192,7 @@ Transform:
   m_GameObject: {fileID: 1000834647}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24, y: -188.79143, z: 314}
+  m_LocalPosition: {x: 124.1, y: -188.79143, z: 250.8}
   m_LocalScale: {x: 94.42877, y: 1, z: 107.94246}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44375,7 +44379,7 @@ Transform:
   m_GameObject: {fileID: 1482380184}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -194, y: -188.79143, z: 3970}
+  m_LocalPosition: {x: -207, y: -188.79143, z: 3989}
   m_LocalScale: {x: 94.42877, y: 1, z: 107.94246}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52367,7 +52371,7 @@ Transform:
   m_GameObject: {fileID: 1594164071}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3665.2, y: -188.79143, z: 2872.7}
+  m_LocalPosition: {x: -3701, y: -188.79143, z: 2858}
   m_LocalScale: {x: 94.42877, y: 1, z: 107.94246}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67467,7 +67471,7 @@ Transform:
   m_GameObject: {fileID: 1987655046}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4258, y: -188.79143, z: 4929}
+  m_LocalPosition: {x: -4264, y: -188.79143, z: 4914}
   m_LocalScale: {x: 94.42877, y: 1, z: 107.94246}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -70388,7 +70392,7 @@ Transform:
   m_GameObject: {fileID: 2104668073}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3596, y: -188.79143, z: 1512}
+  m_LocalPosition: {x: -3630, y: -188.79143, z: 1583}
   m_LocalScale: {x: 94.42877, y: 1, z: 107.94246}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71412,7 +71416,7 @@ GameObject:
   - component: {fileID: 7530617803489471132}
   - component: {fileID: 1149425413044981182}
   - component: {fileID: 6517020444996305623}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectricArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72255,7 +72259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2943438570458343614}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -72709,7 +72713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5556653051999637249}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -73128,7 +73132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3673704849953943760}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -73594,7 +73598,7 @@ GameObject:
   - component: {fileID: 8132155629118865044}
   - component: {fileID: 3608714152109355513}
   - component: {fileID: 468862113842558814}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73612,7 +73616,7 @@ GameObject:
   - component: {fileID: 306061323331495513}
   - component: {fileID: 7738946696022285428}
   - component: {fileID: 3868686011561297537}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FieldGenerator (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73805,7 +73809,7 @@ GameObject:
   - component: {fileID: 358509523623384753}
   - component: {fileID: 2691553025559284356}
   - component: {fileID: 8360336121091758808}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73989,7 +73993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8832761162954459509}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -74210,7 +74214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7798512732394663612}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -74377,7 +74381,8 @@ GameObject:
   - component: {fileID: 5306366532080585895}
   - component: {fileID: 6982648994799206918}
   - component: {fileID: 6063427352427618245}
-  m_Layer: 0
+  - component: {fileID: 6982648994799206919}
+  m_Layer: 12
   m_Name: Cube.018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74596,7 +74601,7 @@ GameObject:
   - component: {fileID: 7622573480953453263}
   - component: {fileID: 9184680885035844044}
   - component: {fileID: 8881344001039076106}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 6Gon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74698,7 +74703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3738988232993807771}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -74732,7 +74737,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 184233482888915267}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -74811,7 +74816,7 @@ GameObject:
   - component: {fileID: 8814815332074388812}
   - component: {fileID: 6560162892436448578}
   - component: {fileID: 404436312254885459}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.022
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75115,7 +75120,7 @@ GameObject:
   - component: {fileID: 7690992119015632486}
   - component: {fileID: 6414665736856962223}
   - component: {fileID: 1675040628}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Field Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75131,7 +75136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5465420142899563134}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -75647,7 +75652,7 @@ GameObject:
   - component: {fileID: 4448686039404144330}
   - component: {fileID: 2475315878214372285}
   - component: {fileID: 1344335811352854650}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Circle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75816,7 +75821,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2156795907980863849}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -76018,7 +76023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8433313309418821320}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -76178,7 +76183,7 @@ GameObject:
   - component: {fileID: 4625705507068650685}
   - component: {fileID: 1606356227138352955}
   - component: {fileID: 6921152755462941485}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76356,7 +76361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8430355167780748939}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -76929,7 +76934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8353766375608237124}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -77029,7 +77034,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4071331798477876770}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Vfx 11 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77115,7 +77120,8 @@ GameObject:
   - component: {fileID: 6750771587676648573}
   - component: {fileID: 4863756144035872403}
   - component: {fileID: 6147142941287828600}
-  m_Layer: 0
+  - component: {fileID: 6750771587676648574}
+  m_Layer: 12
   m_Name: Cube.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77131,7 +77137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7232019657765619981}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -77332,7 +77338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1205548035313879170}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -77394,7 +77400,7 @@ GameObject:
   - component: {fileID: 4329928507513480419}
   - component: {fileID: 5803967397920118742}
   - component: {fileID: 7550378770053335717}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectricArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77502,7 +77508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6297178910818210364}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -77520,7 +77526,8 @@ GameObject:
   - component: {fileID: 1279832072175358467}
   - component: {fileID: 309542460682055648}
   - component: {fileID: 4488530706508690874}
-  m_Layer: 0
+  - component: {fileID: 4488530706508690875}
+  m_Layer: 12
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78101,7 +78108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5220224445973316366}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -78248,7 +78255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4700505230942853220}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -78432,7 +78439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8150671498165787610}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Vfx 12 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78573,6 +78580,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4488530706508690875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800538625796721334}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 21.79699, y: 6.9254026, z: 25.906815}
+  m_Center: {x: 0.20852327, y: 3.4627013, z: 0.5595379}
 --- !u!114 &4497024523178624144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79280,7 +79308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9064649346652593047}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -79369,7 +79397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6361109718771418095}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Vfx 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79385,7 +79413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3431856991541372028}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -79576,7 +79604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8040534885035910369}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -79691,7 +79719,7 @@ GameObject:
   - component: {fileID: 6263036493024471909}
   - component: {fileID: 1512215760300075209}
   - component: {fileID: 3704203549588282133}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectricArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79879,7 +79907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 512912675476858988}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -80052,7 +80080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9031805469524506791}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -80167,7 +80195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3053787910918344551}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -80190,7 +80218,7 @@ GameObject:
   - component: {fileID: 3609580559603512010}
   - component: {fileID: 5976899001587832968}
   - component: {fileID: 8590636081912405584}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectricArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80414,7 +80442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4235059612626595789}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Vfx 12 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80432,7 +80460,7 @@ GameObject:
   - component: {fileID: 8544144166129018315}
   - component: {fileID: 8322981956714614056}
   - component: {fileID: 1981378129885116463}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80688,7 +80716,7 @@ GameObject:
   - component: {fileID: 6385973983840180789}
   - component: {fileID: 30695610037778379}
   - component: {fileID: 7158307016643665724}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: "B\xE9zierCurve"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81068,7 +81096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2567880345978033498}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -81169,7 +81197,8 @@ GameObject:
   - component: {fileID: 6471976731330178502}
   - component: {fileID: 227531199379597820}
   - component: {fileID: 2928993720605254997}
-  m_Layer: 0
+  - component: {fileID: 6471976731330178503}
+  m_Layer: 12
   m_Name: Plane.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81462,7 +81491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3683653113364682075}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -81485,7 +81514,7 @@ GameObject:
   - component: {fileID: 4186011087268799735}
   - component: {fileID: 5564755130015472995}
   - component: {fileID: 6218022299031883691}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectricArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81579,7 +81608,7 @@ GameObject:
   - component: {fileID: 3065119384417884241}
   - component: {fileID: 3182232881840290479}
   - component: {fileID: 2340121261796708850}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectricArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81617,6 +81646,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8927273537990902895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6471976731330178503
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6085682174906810373}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.6219034, y: 0.555564, z: 7.779616}
+  m_Center: {x: 2.3109517, y: 0.277782, z: -2.889808}
 --- !u!2083052967 &6500281046237681972
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -81854,7 +81904,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5849235230381705281}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Vfx 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81929,6 +81979,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8927273537990902895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6750771587676648574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444283337622947914}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 23.644741, y: 0.8916001, z: 27.3727}
+  m_Center: {x: -0.0000076293945, y: 0.44580007, z: -0.000061035156}
 --- !u!1 &6752630592530477086
 GameObject:
   m_ObjectHideFlags: 0
@@ -81938,7 +82009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7893412536034339186}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -82342,6 +82413,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573670859980637961}
   m_Mesh: {fileID: -5928785198427282456, guid: e90df12b2b2e8fa478d2efde8a20b749, type: 3}
+--- !u!65 &6982648994799206919
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573670859980637961}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.274446, y: 6.0270224, z: 10.685244}
+  m_Center: {x: -0.0000076293945, y: -0.0033904314, z: -0.000061035156}
 --- !u!1 &7010532033026796419
 GameObject:
   m_ObjectHideFlags: 0
@@ -82403,7 +82495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3116006125400931179}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 4
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -82653,7 +82745,7 @@ GameObject:
   - component: {fileID: 2770726397707128805}
   - component: {fileID: 804974706343630396}
   - component: {fileID: 6453853551678695283}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectricArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82913,7 +83005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 603503685471203794}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -83757,7 +83849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6718616438215084680}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -84012,7 +84104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 200856620857127173}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Vfx  02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84591,7 +84683,7 @@ GameObject:
   - component: {fileID: 5586884312610511161}
   - component: {fileID: 4901955448980096589}
   - component: {fileID: 3721233499450104357}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectricArc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84806,7 +84898,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3715919233014296899}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 2
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -85007,7 +85099,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8449286216667990729}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Vfx 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85023,7 +85115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1001653602077027545}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -85443,7 +85535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9007105658035295232}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Vfx 11 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85459,7 +85551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3570284853739616136}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pos 1
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -85865,7 +85957,7 @@ GameObject:
   - component: {fileID: 1712430055863569667}
   - component: {fileID: 3585309281096913657}
   - component: {fileID: 8619026650881022760}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.017
   m_TagString: Untagged
   m_Icon: {fileID: 0}

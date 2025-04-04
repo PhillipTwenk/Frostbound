@@ -89,7 +89,11 @@ namespace Dialogues
 
         private void Update()
         {
-            if (Input.GetButtonDown("TutorialUpdate"))
+            if (Input.GetKeyDown(KeyCode.Alpha0) && DeveloperModeControl.IsDeveloperMode && currentDialogue.isActive)
+            {
+                ShowNextPhrase();
+            }
+            if (Input.GetButtonDown("TutorialUpdate") && currentDialogue.isActive)
             {
                 if (Input.GetMouseButtonDown(0) && GeneralWorkersControl.BlockMouseClickThisFrame)
                 {
@@ -258,8 +262,9 @@ namespace Dialogues
             if (currentDialogue.isTutorial)
             {
                 Time.timeScale = 1f;
-                CurrentPlayersDataControl.WhichPlayerCreate.isTutorialComplete = true;
                 StartMainGameGameEvent.TriggerEvent();
+                CurrentPlayersDataControl.WhichPlayerCreate.isTutorialComplete = true;
+                Debug.Log("Туториал закончен");
             }
         }
 

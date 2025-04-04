@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5961717060317541698}
   - component: {fileID: 8455703315618726280}
   - component: {fileID: 3420634255448236558}
+  - component: {fileID: 2003122534572539658}
   m_Layer: 12
   m_Name: StoneMidlle_2
   m_TagString: Untagged
@@ -107,3 +108,25 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: a98c17ec
+--- !u!64 &2003122534572539658
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7951190000796934237}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 521683786430680169, guid: fe5909a484e755745a6bdcc7b0d92540, type: 3}

@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 999284933029603476}
   - component: {fileID: 4900951954365720000}
   - component: {fileID: 2422722694007352189}
+  - component: {fileID: 340337660864166392}
   m_Layer: 3
   m_Name: StorageTrigger
   m_TagString: Building
@@ -400,6 +401,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: cbb932f5a985b054890f58a78cd4f4fe, type: 2}
+  greenTriggers:
+    serializedVersion: 2
+    m_Bits: 64
+  redTriggers:
+    serializedVersion: 2
+    m_Bits: 6016
 --- !u!65 &4900951954365720000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -419,8 +426,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 27.359371, y: 21.657232, z: 36.4}
-  m_Center: {x: -2.8496845, y: 10.328616, z: 6.8700004}
+  m_Size: {x: 21.011446, y: 21.657232, z: 41.75109}
+  m_Center: {x: -0.0031357768, y: 10.328616, z: 9.545557}
 --- !u!114 &2422722694007352189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +442,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoneyConsumption: 10
   NumberOfWorkers: 0
+--- !u!54 &340337660864166392
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3874897627713466660}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4654203089771753797
 GameObject:
   m_ObjectHideFlags: 0
