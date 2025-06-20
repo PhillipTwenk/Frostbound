@@ -63,6 +63,7 @@ namespace UI.UIManagers
         [SerializeField] private List<GameObject> AllUIQuestPanels;
         [SerializeField] private TextMeshProUGUI NameOfObjective;
         [SerializeField] private TextMeshProUGUI DescriptionOfObjective;
+        [SerializeField] private TextMeshProUGUI ConditionsOfObjective;
         [SerializeField] private GameObject IsCompletedObjective;
         private GameObject SelectedItemObjectiveIdicator;
         private Objective selectedObjective;
@@ -97,6 +98,8 @@ namespace UI.UIManagers
         [Header("Calling Worker Panel")] 
         public int CurrentConstNumberOfNewWorkersAfterCalling;
         public TextMeshProUGUI CallingWorkerText;
+        public List<GameObject> CallingWorkerAwaitPanels;
+        public List<GameObject> BuyButtonsGameObjects;
 
         [Header("Global Events")] 
         public Image panelGlobalEventImage;
@@ -307,7 +310,15 @@ namespace UI.UIManagers
             NameOfObjective.text = objective.name;
             DescriptionOfObjective.text = objective.description;
             IsCompletedObjective.SetActive(objective.completed);
-        
+            if (objective == objective.parentQuest.currentObjective)
+            {
+                ConditionsOfObjective.gameObject.SetActive(true);
+                DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
+            }
+            else
+            {
+                ConditionsOfObjective.gameObject.SetActive(false);
+            }
             selectedObjective = null;
             selectedObjective = objective;
         }
@@ -549,6 +560,22 @@ namespace UI.UIManagers
             RTS_Camera.possibilityZoomCamera = true;
             CancelLastOpenPanelEvent -= CloseCallingWorkersPanel;
         }
+
+        /// <summary>
+        /// Меняет текст на панели рабочих пока ожидаем рабочего и отключает кнопку
+        /// </summary>
+        public void AwaitWorkerTextChanger(bool await)
+        {
+            foreach (GameObject obj in CallingWorkerAwaitPanels)
+            {
+                obj.SetActive(await);
+            }
+            foreach (GameObject obj in BuyButtonsGameObjects)
+            {
+                obj.SetActive(!await);
+            }
+        }
+        
 
         /// <summary>
         /// Нажали на кнопку вызова рабочего

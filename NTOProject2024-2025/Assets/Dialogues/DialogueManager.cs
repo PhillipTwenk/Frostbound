@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EntityActions.WorkersScripts;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -89,7 +90,11 @@ namespace Dialogues
 
         private void Update()
         {
-            if (Input.GetButtonDown("TutorialUpdate"))
+            if (Input.GetKeyDown(KeyCode.Alpha0) && DeveloperModeControl.IsDeveloperMode && currentDialogue.isActive)
+            {
+                ShowNextPhrase();
+            }
+            if (Input.GetButtonDown("TutorialUpdate") && currentDialogue.isActive)
             {
                 if (Input.GetMouseButtonDown(0) && GeneralWorkersControl.BlockMouseClickThisFrame)
                 {
@@ -253,13 +258,15 @@ namespace Dialogues
         /// <summary>
         /// Окончание туториала, если он был активен
         /// </summary>
-        private void EndTutorial()
+        private async void EndTutorial()
         {
             if (currentDialogue.isTutorial)
             {
                 Time.timeScale = 1f;
-                CurrentPlayersDataControl.WhichPlayerCreate.isTutorialComplete = true;
                 StartMainGameGameEvent.TriggerEvent();
+                CurrentPlayersDataControl.WhichPlayerCreate.isTutorialComplete = true;
+                DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
+                Debug.Log("Туториал закончен");
             }
         }
 

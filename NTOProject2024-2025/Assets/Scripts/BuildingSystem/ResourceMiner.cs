@@ -1,9 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using GlobalEvents.Cataclysm_Services;
-using TMPro;
 using Unitilities;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -53,11 +51,15 @@ public class ResourceMiner : MonoBehaviour
     [Tooltip("Срабатывает при старте добычи ресурсов")] public UnityEvent OnStartMiningEvent;
     [Tooltip("Срабатывает при окончании добычи ресурсов")] public UnityEvent OnEndMiningEvent;
 
+    [Header("Components")] 
+    private InteractionBuildingController interactionBuildingController;
+
 
     private void Start()
     {
         _buildingData = GetComponent<BuildingData>();
         _animator = GetComponent<Animator>();
+        interactionBuildingController = GetComponent<InteractionBuildingController>();
         _animator.SetBool(stopMineAnimationKey,true);
         resourcesLimits = _buildingData.buildingTypeSO.StorageLimit(BaseUpgradeConditionManager.CurrentBaseLevel);
     }
@@ -66,14 +68,18 @@ public class ResourceMiner : MonoBehaviour
     {
         SnowBlizzardGEService.ChangeParametersSnowBlizzardGeEvent += DeclineProduction;
         SnowBlizzardGEService.RevertParametersSnowBlizzardGeEvent += RevertDeclineProduction;
+        
+        DroneCrashGlobalEventService.RevertDroneBroke += CheckDrone;
     }
 
     private void OnDisable()
     {
         SnowBlizzardGEService.ChangeParametersSnowBlizzardGeEvent -= DeclineProduction;
         SnowBlizzardGEService.RevertParametersSnowBlizzardGeEvent += RevertDeclineProduction;
+        
+        DroneCrashGlobalEventService.RevertDroneBroke -= CheckDrone;
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         // Добытчик на месторождении металла
@@ -165,18 +171,11 @@ public class ResourceMiner : MonoBehaviour
                 
                 isRunning = false;
             }
-
+            
             await JSONSerializeManager.Instance.JSONSave();
             
-            InteractionBuildingController interactionBuildingController = GetComponent<InteractionBuildingController>();
             
-            foreach (var obj in interactionBuildingController.objectsInTrigger)
-            {
-                if (obj.GetComponent<DroneMovementController>())
-                {
-                    interactionBuildingController.DroneArriveToMiner(obj.GetComponent<DroneMovementController>());
-                }
-            }
+            CheckDrone();
 
             if (isRunning)
             {
@@ -232,15 +231,8 @@ public class ResourceMiner : MonoBehaviour
             
             await JSONSerializeManager.Instance.JSONSave();
             
-            InteractionBuildingController interactionBuildingController = GetComponent<InteractionBuildingController>();
-            
-            foreach (var obj in interactionBuildingController.objectsInTrigger)
-            {
-                if (obj.GetComponent<DroneMovementController>())
-                {
-                    interactionBuildingController.DroneArriveToMiner(obj.GetComponent<DroneMovementController>());
-                }
-            }
+
+            CheckDrone();
             
             if (isRunning)
             {
@@ -248,6 +240,21 @@ public class ResourceMiner : MonoBehaviour
             }
             
             
+        }
+    }
+
+    /// <summary>
+    /// Проверяет область вокруг здания на наличие дронов
+    /// </summary>
+    /// <param name="interactionBuildingController"></param>
+    public void CheckDrone()
+    {
+        foreach (var obj in interactionBuildingController.objectsInTrigger)
+        {
+            if (obj.GetComponent<DroneMovementController>())
+            {
+                interactionBuildingController.DroneArriveToMiner(obj.GetComponent<DroneMovementController>());
+            }
         }
     }
     

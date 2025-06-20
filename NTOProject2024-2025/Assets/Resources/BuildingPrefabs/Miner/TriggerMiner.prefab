@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 4801172987281920727}
   - component: {fileID: 6530356733986579137}
   - component: {fileID: -1663472317470448978}
-  - component: {fileID: -51185073709068649}
+  - component: {fileID: 3235555407794893061}
   m_Layer: 3
   m_Name: TriggerMiner
   m_TagString: Untagged
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: c08c0a90668b16c489f7f39147a78a30, type: 2}
---- !u!54 &-51185073709068649
+--- !u!54 &3235555407794893061
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -805,7 +805,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0

@@ -29,7 +29,7 @@ MonoBehaviour:
   - resources: 
     SpriteAssetsUsingIndex: 
   priceBuilding: 70
-  priceUpgrade: 0
+  priceUpgrade: 30
   MBLevelForUpgradethisIron: 2
   MBLevelForBuidlingthisIron: 1
   TimeAwaitBuildingThis: 3

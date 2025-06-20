@@ -15,6 +15,7 @@ MonoBehaviour:
   entityName: None
   DefaultName: None
   thisPlayerID: 1
+  isTutorialComplete: 0
   openQuests: []
   playerResources:
     Iron: 0

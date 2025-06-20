@@ -24,91 +24,23 @@
   <component name="ChangeListManager">
     <list default="true" id="ab11041d-5c01-4718-885d-a6bebb443e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NTOProject2024-2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Character/Alexey/Gameprefab/Bear.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Character/Alexey/Gameprefab/Bear.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogue.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Dialogues/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/DialogueManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel1/BerlogaformingMBLevel1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel1/BerlogaformingMBLevel1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel2/BerlogaformingMBLevel2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel2/BerlogaformingMBLevel2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel3/BerlogaformingMBLevel3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Berlogaforming/BerlogaformingMBLevel3/BerlogaformingMBLevel3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 01.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 01.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 02.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 02.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 03.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 03.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 04.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 04.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 05.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 05.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 06.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 06.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 07.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 07.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 08.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 08.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 09.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 09.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 10.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 10.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 11.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 11.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 12.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 12.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 13.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 13.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 14.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 14.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 15.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 15.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 16.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 16.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 17.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 17.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 18.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 18.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 19.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 19.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 20.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 20.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 21.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 21.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 22.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 22.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 23.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 23.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 24.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 24.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 25.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 25.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 26.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 26.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 27.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 27.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 28.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/Phrases/[ShowcaseFinal2025] - 28.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/ShowcaseFinal2025.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/ShowcaseFinal2025/ShowcaseFinal2025.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Tutorial.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Dialogues/Tutorial/Tutorial.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dialogues/Phrase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Dialogues/Phrase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player1/Player1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player1/Player1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/CE_ResetPlayersData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/CE_ResetPlayersData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player2/Player2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player2/Player2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player3/Player3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntitiesSOs/Players/Player3/Player3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Entities/EntityID.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Entities/EntityID.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SaveData/PLayerSaveData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Bootstrap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingWorkersPanel .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Calling Workers/CallingWorkersPanel .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UISceneElements/QuestPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UISceneElements/QuestPanel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/Objectives/[Berlogaforming] - Obj1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/Objectives/[Berlogaforming] - Obj1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/Objectives/[Berlogaforming] - Obj2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/Objectives/[Berlogaforming] - Obj2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/Objectives/[Berlogaforming] - Obj3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quests/QuestSOs/Berlogaforming/Objectives/[Berlogaforming] - Obj3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/Storage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/BuildingPrefabs/Storage/Storage.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewLocation.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PersistentManagers.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/APIControl/InternetMonitor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/APIControl/InternetMonitor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/GeneralWorkersControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntryPoint/EntryLocationControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/MovementCharacter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInput/CharacterMovement/MovementCharacter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/BaseUpgradeConditionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/CompletionOfConstructionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/CompletionOfConstructionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildingSystem/ResourceMiner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/Drone/DroneMovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/CallingWorkers/RocketFlightControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EntityActions/WorkersScripts/CallingWorkers/RocketFlightControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TriggerHandlers/InteractionBuildingController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DescriptionPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DescriptionPanelController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagers/UIManager.cs" afterDir="false" />
     </list>
@@ -131,10 +63,6 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/3f/595b4688/Task.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6ba9fe1c802743b1bfd04964e3e58cb84000/6a/63f1de19/JsonUtility.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8a522b806eac9bb894e6e4c5fe87f353457535e769447e79c6b396beecb5d0/System.Threading.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/StateMachineBehaviour Scripts/DownStateMachineControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Art/Animation/Shuttle Moving/StateMachineBehaviour Scripts/UpStateMachineControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Buildings/Building.cs" root0="FORCE_HIGHLIGHTING" />
@@ -151,6 +79,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Quests/Objective.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Quests/QuestController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Quests/QuestOwner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Quests/Secondary Scripts/DescriptionQuestPanelUpdateConditionText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Quests/Secondary Scripts/DroneTriggerCompleteObjective.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SaveData/Json/ISerializableSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SaveData/Json/JSONSerializeManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -291,24 +220,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Final&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Final",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Build\FrostBound.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../../../../Games/Frostbound/FrostboundStableBuild2\FrostBound.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Philip\Downloads" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -474,6 +403,7 @@
       <workItem from="1743141440203" duration="2517000" />
       <workItem from="1743510981227" duration="3525000" />
       <workItem from="1743519869449" duration="10938000" />
+      <workItem from="1750433318832" duration="11454000" />
     </task>
     <servers />
   </component>

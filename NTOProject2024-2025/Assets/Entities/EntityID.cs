@@ -86,6 +86,7 @@ public class EntityID : ScriptableObject, ISerializableSO
         }
         
         entityName = DefaultName;
+        isTutorialComplete = false;
 
         playerResources = DefaultPlayerResources;
         shopResources = DefaultShopResources;
@@ -95,6 +96,12 @@ public class EntityID : ScriptableObject, ISerializableSO
         _playerSaveData.BuildingDatas = DefaultPlayerSaveData.BuildingDatas;
         _playerSaveData.BuildingWorkersInformationList =
             DefaultPlayerSaveData.BuildingWorkersInformationList;
+        _playerSaveData.workers = DefaultPlayerSaveData.workers;
+        _playerSaveData.workersTransform = DefaultPlayerSaveData.workersTransform;
+        _playerSaveData.workerDatas = DefaultPlayerSaveData.workerDatas;
+        _playerSaveData.player = DefaultPlayerSaveData.player;
+        _playerSaveData.transformPlayer = DefaultPlayerSaveData.transformPlayer;
+        openQuests.Clear();
     }
 }
 

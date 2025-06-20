@@ -126,58 +126,48 @@ public class BuildingManager : MonoBehaviour
                 int CNoW = GeneralWorkersControl.Instance.CurrentValueOfUnits;
                 int MVoW = GeneralWorkersControl.Instance.MaxValueOfUnits;
                 int AW = GeneralWorkersControl.Instance.NumberOfFreeUnits;
-                if(AW > 0)
+                if ((playerResources.Energy - HoneyConsumptionBuilding) >= 0)
                 {
-                    if ((playerResources.Energy - HoneyConsumptionBuilding) >= 0)
+                    if ((playerResources.Food - FoodConsumptionBuilding * GeneralWorkersControl.CurrentFoodConsumptionByWorkers) >= 0)
                     {
-                        if ((playerResources.Food - FoodConsumptionBuilding * GeneralWorkersControl.CurrentFoodConsumptionByWorkers) >= 0)
-                        {
-                            //Создаем новое здание, устанавливаем его позицию и удаляем триггер для строительства
-                            MouseIndicator.transform.position = new Vector3(mousePosition.x, YplaceVector, mousePosition.z);
-                            GameObject newBuildingObject = Instantiate(CurrentBuilding);
-                            newBuildingObject.transform.position = MouseIndicator.transform.position;
-                            Destroy(MouseIndicator);
-                            
-                            IsBuildingActive = false;
-                            CurrentBuilding = null;
-                            CanBuilding = true;
+                        //Создаем новое здание, устанавливаем его позицию и удаляем триггер для строительства
+                        MouseIndicator.transform.position = new Vector3(mousePosition.x, YplaceVector, mousePosition.z);
+                        GameObject newBuildingObject = Instantiate(CurrentBuilding);
+                        newBuildingObject.transform.position = MouseIndicator.transform.position;
+                        Destroy(MouseIndicator);
+                        
+                        IsBuildingActive = false;
+                        CurrentBuilding = null;
+                        CanBuilding = true;
 
-                            //Получение некорых данных о здании
-                            GameObject ComponentContainingBuilding = newBuildingObject.transform.GetChild(0).gameObject;
-                            BuildingData buildingData = ComponentContainingBuilding.GetComponent<BuildingData>();
-                            CompletionOfConstructionController componentContainingBuilding = ComponentContainingBuilding.GetComponent<CompletionOfConstructionController>();
+                        //Получение некорых данных о здании
+                        GameObject ComponentContainingBuilding = newBuildingObject.transform.GetChild(0).gameObject;
+                        BuildingData buildingData = ComponentContainingBuilding.GetComponent<BuildingData>();
+                        CompletionOfConstructionController componentContainingBuilding = ComponentContainingBuilding.GetComponent<CompletionOfConstructionController>();
 
-                            buildingData.IsThisBuilt = false;
+                        buildingData.IsThisBuilt = false;
 
-                            LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
-                            
-                            await _navMeshSurfaceUnit.UpdateNavMesh(_navMeshSurfaceUnit.navMeshData);
-                            await _navMeshSurfaceDrone.UpdateNavMesh(_navMeshSurfaceDrone.navMeshData);
-                            Debug.Log("NavMesh updated");
+                        LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
+                        
+                        await _navMeshSurfaceUnit.UpdateNavMesh(_navMeshSurfaceUnit.navMeshData);
+                        await _navMeshSurfaceDrone.UpdateNavMesh(_navMeshSurfaceDrone.navMeshData);
+                        Debug.Log("NavMesh updated");
 
-                            DialogueManager.OnBuildingPlaced?.Invoke(buildingData.buildingTypeSO, ActionTypeInteractWithObject.PlacementBuilding);
-                            componentContainingBuilding.StartCompletionOfConstruction(playerResources);
-                            
-                            
-                            //TutorialPLacementBuildingsCheck(buildingDataLogistics);
-                        }
-                        else
-                        {
-                            UpdateTextWhileBuild(HintNoFoodText);
-                        }
+                        DialogueManager.OnBuildingPlaced?.Invoke(buildingData.buildingTypeSO, ActionTypeInteractWithObject.PlacementBuilding);
+                        componentContainingBuilding.StartCompletionOfConstruction(playerResources);
+                        
+                        
+                        //TutorialPLacementBuildingsCheck(buildingDataLogistics);
                     }
+                    else
+                    {
+                        UpdateTextWhileBuild(HintNoFoodText);
+                    }
+                }
                     else
                     {
                         UpdateTextWhileBuild(HintNoEnergyText);
                     }
-                }
-                else
-                {
-                    Debug.Log($"Количество свободных рабочих: <color=blue>{AW}</color>");
-                    Debug.Log($"Всего рабочих: <color=blue>{CNoW}</color>");
-                    Debug.Log($"Максимальное количество рабочих: <color=blue>{MVoW}</color>");
-                    UpdateTextWhileBuild(HintNotFreeWorkersText);
-                }
             }
             else
             {
