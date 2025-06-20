@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EntityActions.WorkersScripts;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -257,13 +258,14 @@ namespace Dialogues
         /// <summary>
         /// Окончание туториала, если он был активен
         /// </summary>
-        private void EndTutorial()
+        private async void EndTutorial()
         {
             if (currentDialogue.isTutorial)
             {
                 Time.timeScale = 1f;
                 StartMainGameGameEvent.TriggerEvent();
                 CurrentPlayersDataControl.WhichPlayerCreate.isTutorialComplete = true;
+                DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
                 Debug.Log("Туториал закончен");
             }
         }

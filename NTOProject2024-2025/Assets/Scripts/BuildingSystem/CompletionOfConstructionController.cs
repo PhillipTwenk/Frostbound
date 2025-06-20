@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using APIControl.Semaphore;
 using Dialogues;
 using EntityActions.WorkersScripts;
+using UI;
 using Unitilities;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -137,6 +138,7 @@ public class CompletionOfConstructionController : MonoBehaviour
                _interactionBuildingController.TextOnEvent?.Invoke();
             }
          }
+         DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
          
          LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
          taskCompletionSource.SetResult(true);

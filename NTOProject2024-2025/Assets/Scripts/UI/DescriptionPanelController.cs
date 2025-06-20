@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using APIControl.Semaphore;
+using Dialogues;
 using EntityActions.WorkersScripts;
 using TMPro;
 using UI.UIManagers;
@@ -16,6 +17,7 @@ namespace UI
 
         [Header("Events")]
         public static Action OnMobileBaseUpgrade;
+        public static Action OnUpdateTextConditionsUpgradeBase;
         
         [Header("Info")]
         [SerializeField] private TextMeshProUGUI Title;
@@ -293,6 +295,8 @@ namespace UI
         
             UpdateResourcesEvent.TriggerEvent();
 
+            OnUpdateTextConditionsUpgradeBase.Invoke();
+            
             await JSONSerializeManager.Instance.JSONSave();
         
             LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
@@ -397,6 +401,8 @@ namespace UI
                 
                     OnHintPanel(TextNotCompleteConditionUpgradeMB + UnsuccessfullReportText);
                 }
+                
+                OnUpdateTextConditionsUpgradeBase.Invoke();
             }
         
             await JSONSerializeManager.Instance.JSONSave();

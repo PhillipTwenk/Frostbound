@@ -15,37 +15,37 @@ MonoBehaviour:
   entityName: None
   DefaultName: None
   thisPlayerID: 2
-  isTutorialComplete: 0
+  isTutorialComplete: 1
   openQuests: []
   playerResources:
-    Iron: 0
-    Energy: 0
-    Food: 0
-    CryoCrystal: 0
+    Iron: 575
+    Energy: 10
+    Food: 40
+    CryoCrystal: 15
   shopResources:
     Apiary:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
     MobileBase:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
     Storage:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
     ResidentialModule:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
     Minner:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
     Pier:
-      IronPrice: 0
-      CryoCrystalPrice: 0
+      IronPrice: 50
+      CryoCrystalPrice: 3
       IsPurchased: 0
   DefaultPlayerResources:
     Iron: 0

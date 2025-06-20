@@ -11,7 +11,6 @@ using GlobalEvents.Cataclysm_Services;
 using TMPro;
 using Unitilities;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class DroneMovementController : MonoBehaviour, IWorkerUnit, IDroneMovement, IUnitLogistics
 {

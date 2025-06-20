@@ -61,25 +61,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
         GeneralWorkersControl.Instance.MaxValueOfWorkers 
             = DefaultNumberOfWorkersForDifferentLevels[CurrentBaseLevel - 1] + CurrentNumberOfHome*HomesLimitsUp;
     }
-
-    private void Update()
-    {
-        //чит
-         // if (Input.GetKeyDown(KeyCode.Z))
-         // {
-         //     CurrentBaseLevel += 1; 
-         //     Debug.Log(CurrentBaseLevel);
-         // }
-        //
-        // if (Input.GetKeyDown(KeyCode.P))
-        // {
-        //     Dictionary<string, string> testDictionary = new Dictionary<string, string>();
-        //     testDictionary.Add("Шкебедедопдодп", "+1488 ");
-        //     testDictionary.Add("ДАбулум нипнип", "- 997 deadinside");
-        //     APIManager.Instance.CreatePlayerLog("Тестовые логи шкебеде допдоп", UIManagerLocation.WhichPlayerCreate.Name, testDictionary);
-        // }
-    }
-
+    
     /// <summary>
     /// Завршение соответствущей цели квеста по прокачке моильной базы
     /// </summary>

@@ -1,9 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using GlobalEvents.Cataclysm_Services;
-using TMPro;
 using Unitilities;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -173,7 +171,7 @@ public class ResourceMiner : MonoBehaviour
                 
                 isRunning = false;
             }
-
+            
             await JSONSerializeManager.Instance.JSONSave();
             
             

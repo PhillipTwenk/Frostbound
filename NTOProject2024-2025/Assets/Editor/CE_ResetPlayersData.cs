@@ -135,6 +135,7 @@ public class CE_ResetPlayersData: EditorWindow
             entityID.entityName = entityID.DefaultName;
             entityID._playerSaveData = PSD;
             entityID.DefaultPlayerSaveData = dPSD;
+            entityID.isTutorialComplete = false;
             entityID.openQuests.Clear();
         }
     }
