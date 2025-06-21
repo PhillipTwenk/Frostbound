@@ -125,7 +125,7 @@ public class RocketFlightControl : MonoBehaviour
 
         currentWorkerType = -1;
         
-        DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
+        DescriptionPanelController.OnUpdateTextConditionsUpgradeBase?.Invoke();
         
         DialogueManager.OnWorkerCalled?.Invoke(ActionTypeCallWorker.EndAwaitRocket);
     }

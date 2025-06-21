@@ -62,7 +62,7 @@ public class SceneTransitionManager : MonoBehaviour
         bool isSceneUIActive = SceneManager.GetSceneByName(UISceneName).isLoaded;
         if (!isSceneUIActive)
         {
-            Debug.Log("Выгрузка сцены UI");
+            Debug.Log("Загрузка сцены UI");
             AsyncOperation UILoadingScene = SceneManager.LoadSceneAsync(UISceneName, LoadSceneMode.Additive);
             yield return new WaitUntil(()=>UILoadingScene.isDone);
             Debug.Log("закончена");

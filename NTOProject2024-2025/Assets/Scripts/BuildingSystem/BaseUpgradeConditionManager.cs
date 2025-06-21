@@ -25,6 +25,8 @@ public class BaseUpgradeConditionManager : MonoBehaviour
     [TextArea] public string NotEnoughtWorkers;
     [TextArea] public string NotEnoughtLevelSomeBuildings;
     [TextArea] public string SuccesUpgradeText;
+    [TextArea] public string AllConditionsWereSolvingMode1;
+    [TextArea] public string AllConditionsWereSolvingMode1ENDGAME;
     [TextArea] public string NoStorageBuidlingText;
     [TextArea] public string NoApiaryBuidlingText;
     [TextArea] public string NoMinerBuidlingText;
@@ -73,7 +75,7 @@ public class BaseUpgradeConditionManager : MonoBehaviour
         MobileBaseUpgradeObjectives[CurrentBaseLevel - 2].CompleteObjective();
     }
 
-    public async Task<List<string>> CanUpgradeMobileBase(PlayerResources playerResources)
+    public async Task<List<string>> CanUpgradeMobileBase(PlayerResources playerResources, int mode)
     {
         int WorkersCount = GeneralWorkersControl.Instance.CurrentValueOfWorkers;
         List<GameObject> CurrentBuidlings = CurrentPlayersDataControl.WhichPlayerCreate._playerSaveData.playerBuildings;
@@ -144,7 +146,15 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 else
                 {
                     resultReport.Clear();
-                    resultReport.Add(SuccesUpgradeText);
+                    if (mode == 0)
+                    {
+                        resultReport.Add(SuccesUpgradeText);
+                    }
+                    else if (mode == 1)
+                    {
+                        resultReport.Add(AllConditionsWereSolvingMode1);
+                    }
+                    
                     ResourceMinerRestored.TriggerEvent();
                     return resultReport;
                 }
@@ -213,7 +223,14 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 else
                 {
                     resultReport.Clear();
-                    resultReport.Add(SuccesUpgradeText);
+                    if (mode == 0)
+                    {
+                        resultReport.Add(SuccesUpgradeText);
+                    }
+                    else if (mode == 1)
+                    {
+                        resultReport.Add(AllConditionsWereSolvingMode1);
+                    }
                     ResourceMinerRestored.TriggerEvent();
                     return resultReport;
                 }
@@ -282,7 +299,14 @@ public class BaseUpgradeConditionManager : MonoBehaviour
                 else
                 {
                     resultReport.Clear();
-                    resultReport.Add(ENDGAME);
+                    if (mode == 0)
+                    {
+                        resultReport.Add(ENDGAME);
+                    }
+                    else if (mode == 1)
+                    {
+                        resultReport.Add(AllConditionsWereSolvingMode1ENDGAME);
+                    }
                     ResourceMinerRestored.TriggerEvent();
                     ShieldRenderer.material = ShieldColor;
                     return resultReport;

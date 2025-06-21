@@ -286,7 +286,7 @@ public class InteractionBuildingController : MonoBehaviour
                     
                     droneMovementController.UpdateResourcesEvent.TriggerEvent();
 
-                    DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
+                    DescriptionPanelController.OnUpdateTextConditionsUpgradeBase?.Invoke();
                     
                     Debug.Log($"<color=yellow> Летим обратно к добытчику, {droneMovementController.IsLogisticsCycleActive}");
                     droneMovementController.SelectedBuilding =

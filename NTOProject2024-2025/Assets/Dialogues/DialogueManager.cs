@@ -265,7 +265,7 @@ namespace Dialogues
                 Time.timeScale = 1f;
                 StartMainGameGameEvent.TriggerEvent();
                 CurrentPlayersDataControl.WhichPlayerCreate.isTutorialComplete = true;
-                DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
+                DescriptionPanelController.OnUpdateTextConditionsUpgradeBase?.Invoke();
                 Debug.Log("Туториал закончен");
             }
         }

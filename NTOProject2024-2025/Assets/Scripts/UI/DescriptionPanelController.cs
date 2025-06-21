@@ -295,7 +295,7 @@ namespace UI
         
             UpdateResourcesEvent.TriggerEvent();
 
-            OnUpdateTextConditionsUpgradeBase.Invoke();
+            OnUpdateTextConditionsUpgradeBase?.Invoke();
             
             await JSONSerializeManager.Instance.JSONSave();
         
@@ -368,7 +368,7 @@ namespace UI
             }
             else
             {
-                List<string> ImprovementReport = await BaseUpgradeConditionManager.Instance.CanUpgradeMobileBase(playerResources);
+                List<string> ImprovementReport = await BaseUpgradeConditionManager.Instance.CanUpgradeMobileBase(playerResources, 0);
                 if ((ImprovementReport[0] == BaseUpgradeConditionManager.Instance.SuccesUpgradeText || ImprovementReport[0] == BaseUpgradeConditionManager.Instance.ENDGAME) || Input.GetKey(KeyCode.Alpha0))
                 {
                     await APIManager.Instance.PutPlayerResources(CurrentPlayersDataControl.WhichPlayerCreate, playerResources.Iron - priceUpgrade,
@@ -402,7 +402,7 @@ namespace UI
                     OnHintPanel(TextNotCompleteConditionUpgradeMB + UnsuccessfullReportText);
                 }
                 
-                OnUpdateTextConditionsUpgradeBase.Invoke();
+                OnUpdateTextConditionsUpgradeBase?.Invoke();
             }
         
             await JSONSerializeManager.Instance.JSONSave();

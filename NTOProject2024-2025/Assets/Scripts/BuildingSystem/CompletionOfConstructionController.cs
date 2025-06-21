@@ -138,7 +138,7 @@ public class CompletionOfConstructionController : MonoBehaviour
                _interactionBuildingController.TextOnEvent?.Invoke();
             }
          }
-         DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
+         DescriptionPanelController.OnUpdateTextConditionsUpgradeBase?.Invoke();
          
          LoadingCanvasController.Instance.LoadingCanvasTransparent.SetActive(false);
          taskCompletionSource.SetResult(true);

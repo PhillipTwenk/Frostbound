@@ -313,7 +313,7 @@ namespace UI.UIManagers
             if (objective == objective.parentQuest.currentObjective)
             {
                 ConditionsOfObjective.gameObject.SetActive(true);
-                DescriptionPanelController.OnUpdateTextConditionsUpgradeBase.Invoke();
+                DescriptionPanelController.OnUpdateTextConditionsUpgradeBase?.Invoke();
             }
             else
             {
